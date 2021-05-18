@@ -1,0 +1,248 @@
+html{
+    height: 100%;
+    margin: 0px;
+}
+body{
+    height: 100%;
+    font-family: "맑은 고딕","고딕",'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 0;
+}
+
+h1,ul,ol{
+    margin: 0;
+    padding: 0;
+}
+a{
+    color: initial;
+    text-decoration: initial;
+}
+ul,ol{
+    list-style: none;
+}
+/*-----------------------------------------------*/
+.d-none{
+    display: none;
+}
+.flex{
+    display: flex;
+}
+.align-center{
+    align-items: center;
+
+}
+
+
+:root{
+    --shadow : 0 1px 2px rgba(0,0,0,0.05),0 1px 4px rgba(0,0,0,0.05),0 2px 8px rgba(0,0,0,0.05);
+}
+/*-----------------*/
+.float-content{
+    width:1200px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+    min-height:inherit;
+    /* opacity: 0.7;     */
+    /* height: inherit; */
+}
+/*----------------------------------------------------*/
+#root{
+    height: 100%;
+    display: grid;
+    grid-template-rows: 70px 1fr 10px; /*header body footer*/
+    grid-template-columns: 1fr;  
+    grid-template-areas: 
+    "header header"
+    /*"nav nav"*/
+    "body body"
+    "footer footer";
+}
+
+#root>#header{
+    width: 100%;
+    height: 70px;
+    grid-area: header;
+    position :fixed;
+    background-color: white;
+    overflow: hidden;
+    display: flex;
+}
+/* #root>#nav{
+    background-color: antiquewhite;
+    grid-area: nav;
+} */
+
+#root>#footer{
+    /* background-color: antiquewhite; */
+    grid-area: footer;
+}
+
+#body{
+    grid-area: body;
+    background: url(../images/bg-login-page.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+#body>.float-content{
+    width: 100%;
+    height: 100%;
+
+}
+
+#main{
+    width: 100%;
+    height: 100%; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+@media screen and (max-width:500px){
+    #root{
+        grid-template-columns: 1fr;
+        grid-template-rows: 55px 1fr 70px;
+        grid-template-areas: 
+        "header"
+        /*"nav"*/
+        "body"
+        "footer";
+    }
+    /* #body{
+        display: grid;
+        grid-template-rows: 70px 1fr;
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+        "aside"
+        "main";
+    } */
+    .float-content{
+        width:100%;        
+        /* height: inherit; */ 
+    }
+  
+} 
+
+/*--------header-design----------*/
+
+#root>#header{ 
+    border-bottom: solid 2px orange;
+    box-shadow: var(--shadow);
+
+}
+
+#header>.float-content{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.logo-title-container{
+    display: inline-block;
+    width: 120px;
+    height: 35px;
+    min-height: inherit;
+}
+    .logo-title-container>img{
+        width: 120px;
+        height: auto;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+    .title{
+        font-family: 'Inter','RixSinGoRound','sans-serif'; 
+        color: #4b4b4b;
+        font-size: 22px;
+        font-weight: bold;
+        padding-top: 12px;
+        padding-left: 3px;
+        display: inline-block;
+    }
+
+
+
+
+
+#main>h1{
+    font-size: 20px;
+    margin-bottom: 50px;
+}
+
+
+.findId-main{
+    background: #fff;
+    width: 430px;
+    height: 200px;
+    padding: 24px;
+    border: 1px solid #f3f4f9;
+    border-radius: 16px;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 70px;
+}
+    .findId-main>.findId-form{
+        width: 100%;
+        height: 100px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding:0;
+    }
+    .findId-form>form{
+        width: 100%;
+        height: 100%;
+    }
+    
+    .findId-form fieldset{
+        display: block;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding:0;
+        border: none;
+
+    }
+
+.findId-input-container{
+    display: flex;
+    width: 100%;
+    position: relative;
+    margin-bottom: 17px;
+}
+.findId-lable{
+    line-height: 40px;
+
+}
+.findId-input{
+    width: 300px;    
+    height: 40px;
+    border: 1px solid #c5cbdc;
+    border-radius: 8px;
+    font-size: 18px;
+    position: absolute;
+    right: 5px;
+}
+
+input::placeholder{
+    font-size: 12px;
+    padding-left: 7px;
+
+}
+    
+.btn{
+    width: 120px;
+    height: 35px;
+    background-color: #424242;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+}
+

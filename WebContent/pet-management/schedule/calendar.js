@@ -1,0 +1,135 @@
+window.addEventListener("load",function(){
+    makeCalendar()
+});
+
+function makeCalendar(){
+    calendar = document.querySelector(".calendar");
+		//calendar테이블을 변수로 정의
+	row = calendar.insertRow();
+    row.classList.add("first-week");
+    row.classList.add("week");
+		//calendar에 행을 추가해준다.
+		//변수명(row)을 지정해주는 이유 : 후에 cell이 추가될 자리를 알려주기 위해
+	for(i=0; i<firstDay; i++){
+		//first_day에 해당하는 요일까지 열을 만든다.
+		//요일은 0부터 시작하기 때문에 i값도 0에서 시작한다.
+		cell = row.insertCell();
+        // cell.innerHTML = "HI";
+    }
+
+
+      for(i=1; i<=lastDate; i++){
+        // 달력은 1일부터 시작하므로 i=1
+        if(firstDay != 7){
+            //first_day는 0~6이다. 일주일은 한 줄에 7칸이니까 7이상은 찍히지 않는다.
+            cell = row.insertCell();
+            //셀추가
+            cell.setAttribute('id', [i]);
+            cell.classList.add("day");
+            //모든 셀에 id를 부여함
+            cell.innerHTML = "<div>"+[i]+"</div>";
+            //추가된 셀에 i값 입력
+            firstDay += 1;
+            //요일값이 하루 추가된걸 for문에 알려줌
+         }
+        else{
+            //첫줄의 first_day 값이 7이되면 작동
+            row = calendar.insertRow();
+            row.classList.add("week");
+            //행을 하나 추가
+            cell = row.insertCell();
+            cell.setAttribute('id', [i]);
+            cell.innerHTML = [i];
+            //세줄은 위와 같음
+            firstDay = firstDay - 6;
+            //6을 빼는 이유는 매번 7에서 else문으로 넘어오고, if문이 6번만 하면 되기때문이다.
+            //7을 빼버리면 0부터 시작해서 if문이 7번 실행되고 else로 넘어오므로 -6을한다.
+        }
+    }
+
+    var todayDate = today.getDate();
+    var todayYear = today.getFullYear();
+    var todayMonth = today.getMonth()+1;
+    var todayYM = todayYear+"."+todayMonth;
+    // console.log(todayYM);
+    // console.log(currentYM.innerText);
+    
+    
+    for(i=1; i<=lastDate; i++){
+        var date = document.getElementById([i]);
+        if(todayDate == date.getAttribute("id") && todayYM==currentYM.innerText){
+            datediv = date.querySelector("div");
+            datediv.classList.add("today");
+            console.log("hi");
+        }
+        
+    }
+}
+
+window.addEventListener("load",function(){
+    var todayDate = today.getDate();
+    var todayYear = today.getYear();
+    var todayMonth = today.getMonth();
+    var todayYM = todayYear+"."+todayMonth;
+    
+    for(i=1; i<=lastDate; i++){
+        var date = document.getElementById([i]);
+        if(todayDate == date.getAttribute("id") && todayYM==currentYM){
+            datediv = date.querySelector("div");
+            datediv.classList.add("today");
+        }
+        
+    }
+
+});
+
+window.addEventListener("load",function(){
+var prevBtn = document.querySelector(".prev-month");
+prevBtn.onclick = function(){
+    while (calendar.rows.length > 2) {
+        //2줄이 남을 때 까지 줄을 지워줌
+        //버튼과 요일이 남아야 하기 때문에 2줄만 남기고 지운다.
+          calendar.deleteRow(calendar.rows.length-1);
+        //length-1 = 아래서부터 지우라는 뜻
+               }
+    month = month-1
+        //한달씩 뒤로감
+    if( month === -1){
+        //0월이 되었을 때 이전연도 12월로 가도록 작업
+        //js에서 0월 = 실제 1월 이므로 -1로 맞춰야한다.
+        year = year - 1;
+        month = month + 12;
+    }
+    YM = year + "." + (month+1); 
+    currentYM.innerHTML = YM;
+    firstDate = new Date(year,month,1).getDate();
+    lastDate = new Date(year,month+1,0).getDate();
+    firstDay = new Date(year,month,1).getDay();
+    makeCalendar();	
+}
+});
+
+
+window.addEventListener("load",function(){
+    var nextBtn = document.querySelector(".next-month");
+    nextBtn.onclick = function(){
+        while (calendar.rows.length > 2) {
+            calendar.deleteRow(calendar.rows.length-1);
+             }
+     month = month+1
+     //한달씩 증가함
+     if(month === 12){
+         //13월이 되었을 때 다음연도 1월로 가도록 작업
+         //js에서 11월 = 실제 12월 이므로 12로 맞춰야한다.
+         year = year + 1;
+         month = month -12;
+     }
+     
+     YM = year + "." + (month+1); 
+     currentYM.innerHTML = YM;
+     firstDate = new Date(year,month,1).getDate();
+     lastDate = new Date(year,month+1,0).getDate();
+     firstDay = new Date(year,month,1).getDay();
+     makeCalendar();	
+    }
+});

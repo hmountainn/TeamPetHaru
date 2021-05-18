@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>notice-detail-admin</title>
+    <link href="./notice-detail-admin.css" type="text/css" rel="stylesheet">
+    <script>
+        function confirmDel() {
+            confirm("정말로 삭제하시겠습니까?");
+        }
+    </script>
+</head>
+<body>
+    <div id="root">
+        <header id="header">
+            <div class="float-content">
+                <div class="flex align-center">
+                    <a href="" class="logo-title-container">
+                        <img src="../../images/logo.png" alt="펫하루">
+                    </a>
+                    <nav class="main-menu">   
+                        <h1 class="d-none">메인메뉴</h1>
+                        <ul>
+                            <li><a href="../../myhome/diary-list.html">우리집</a></li>
+                            <li><a href="../../friends/friend-diary.html">이웃집</a></li>
+                            <li><a href="../../pet-management/mypet/mypet-list.html">내동물관리</a></li>
+                            <li><a href="./notice-list.html">커뮤니티</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <nav class="member-menu">
+                    <h1 class="d-none">회원메뉴</h1>
+                    <ul>
+                        <li><a href="../../mypage/profile/profile-edit.html">MyPage</a></li>
+                        <li><a href="../../login.html">LogOut</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <div id="body">
+            <div class="float-content">
+                <aside id="aside">
+                    <nav class="aside-menu">
+                        <h1 class="d-none">커뮤니티</h1>
+                        <ul>
+                            <li><a class="current-page" href="./notice-list.html">공지사항</a></li>                     
+                            <li><a href="../knowhow/knowhow-list.html">노하우</a></li>
+                        </ul>
+                    </nav>
+                </aside>
+
+                <main id="main">
+                    <h1>펫하루 오픈</h1>
+                    <section class="notice-info">
+                        <h1 class="d-none">작성 정보</h1>
+                        <ul>
+                            <li>글번호 : 1</li>
+                            <li>작성자 : 관리자</li>
+                            <li>작성일 : 2021-03-09</li>
+                            <li>조회수 : 50</li>
+                        </ul>
+                    </section>
+                    <article class="notice-article">
+                        <h1 class="d-none">공지사항 본문</h1>
+                        하루하루 달라지는 우리의 반려동물을 기록하고 저장하기 위해 펫하루가 오픈했습니다.<br>
+                        많이 찾아와주세요.<br>
+                        감사합니다!
+                    </article>
+                    <nav class="article-pager">
+                        <h1 class="d-none">상세 페이저</h1>
+                        <div class="up-article-pager">
+                            <span>▲ 다음글</span>
+                            <div><a href="">오픈 기념 이벤트</a></div>
+                        </div>
+                        <div class="down-article-pager">
+                            <span>▼ 이전글</span>
+                            <div>이전글이 없습니다.</div>
+                        </div>
+                    </nav>
+                    <nav class="article-pager-button">
+                        <h1 class="d-none">공지사항 버튼</h1>
+                        <button class="button-2"><a href="./notice-create.html">등록</a></button>
+                        <button class="button-2"><a href="./notice-create.html">수정</a></button>
+                        <button class="button-2" onclick="confirmDel()">삭제</button>
+                        <button class="button-2"><a href="./notice-list.html">목록</a></button>
+                    </nav>
+                </main>
+            </div>
+        </div>
+
+        <footer id="footer">
+            <div class="float-content">
+                copyright ©
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>notice-create</title>
+    <link href="./notice-create.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+    <div id="root">
+        <header id="header">
+            <div class="float-content">
+                <div class="flex align-center">
+                    <a href="" class="logo-title-container">
+                        <img src="../../images/logo.png" alt="펫하루">
+                    </a>
+                    <nav class="main-menu">   
+                        <h1 class="d-none">메인메뉴</h1>
+                        <ul>
+                            <li><a href="../../myhome/diary-list.html">우리집</a></li>
+                            <li><a href="../../friends/friend-diary.html">이웃집</a></li>
+                            <li><a href="../../pet-management/mypet/mypet-list.html">내동물관리</a></li>
+                            <li><a href="./notice-list.html">커뮤니티</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <nav class="member-menu">
+                    <h1 class="d-none">회원메뉴</h1>
+                    <ul>
+                        <li><a href="../../mypage/profile/profile-edit.html">MyPage</a></li>
+                        <li><a href="../../login.html">LogOut</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <div id="body">
+            <div class="float-content">
+                <aside id="aside">
+                    <nav class="aside-menu">
+                        <h1 class="d-none">커뮤니티</h1>
+                        <ul>
+                            <li><a class="current-page" href="./notice-list.html">공지사항</a></li>                       
+                            <li><a href="../knowhow/knowhow-list.html">노하우</a></li>
+                        </ul>
+                    </nav>
+                </aside>
+
+                <main id="main">
+                    <h1 class="d-none">공지사항 작성</h1>
+                    <form action="">
+                        <input class="notice-title-create" type="text" placeholder="제목을 입력하세요.">
+                        <textarea name="" id="notice-article-create" cols="110" rows="10"></textarea>
+                        <input type="file" accept="image/*"/>
+                        <button class="button-5"><a href="./notice-list.html">등록 완료</a></button>
+                    </form>
+                </main>
+            </div>
+        </div>
+
+        <footer id="footer">
+            <div class="float-content">
+                copyright ©
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

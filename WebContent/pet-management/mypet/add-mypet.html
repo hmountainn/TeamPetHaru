@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반려동물정보</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <link href="add-mypet.css" type="text/css" rel="stylesheet">
+    <script src="add-mypet.js"></script>
+</head>
+<body>
+    <div id="root">
+        <header id="header">
+            <div class="float-content">
+                <div class="flex align-center">
+                    <a href="" class="logo-title-container">
+                        <img src="../../images/logo.png" alt="">
+                    </a>
+                    <nav class="main-menu">   
+                            <h1 class="d-none">메인메뉴</h1>
+                            <ul>
+                                <li><a href="../../myhome/list.html">우리집</a></li>
+                                <li><a href="../../friends/list.html">이웃집</a></li>
+                                <li><a href="list.html">내 동물관리</a></li>
+                                <li><a href="../../community/knowhow/list.html">커뮤니티</a></li>
+                            </ul>
+                    </nav>
+                </div>
+                <nav class="member-menu">
+                    <h1 class="d-none">회원메뉴</h1>
+                    <ul>
+                      <li><a href="../../mypage/profile/progile-edit.html">MyPage</a></li>
+                      <li><a href="../../login">LogOut</a></li>
+                  </ul>
+                </nav>
+            </div>
+        
+            
+        </header>
+
+        <div id="body">
+            <div class="float-content">
+                <aside id="aside">
+                    <nav class="aside-menu">
+                        <h1 class="d-none">동물관리메뉴</h1>
+                        <ul>
+                          <li><a class="current-page" href="list.html"><i class="fas fa-paw"></i>동물 관리</a></li>
+                          <li><a href="../weight-record/form.html"><i class="fas fa-weight"></i>체중 관리</a></li>
+                          <li><a href="../schedule/calendar.html"><i class="far fa-calendar-alt"></i>일정 관리</a></li>                       
+                      </ul>
+                    </nav>
+                </aside>
+                <main id="main">
+                    
+                    <h1 class="d-none">반려동물 추가하기</h1>
+                    <div id="content">
+   
+                       <div class="mypet-section">
+                           <div class="inner-width">
+                             <h1>반려동물 추가하기</h1>
+                             <div class="pets"> 
+                               
+                              <a href="list.html"><i class="fas fa-times fa-4x"></i></a>
+                       
+                             <form>
+                               <div class="pet">
+                                 <div class="p-img">
+                                 <img class="img" src="../../images/dog.jpeg" alt="">
+                                 </div>
+   
+                                 <div class="dog_name add-container">
+                                   <label class="add-label">이름</label>                          
+                                   <input class="add-input"type="text" placeholder="반려동물 이름">
+                                 </div>
+       
+                                 <div class="dog_breed add-container">
+                                   <label class="add-label">품종</label>
+                                   <input class="add-input"type="text" placeholder="반려동물 품종">
+                                 </div>
+       
+                                 <div class="dog_weight add-container">
+                                   <label class="add-label">몸무게</label>
+                                   <input class="add-input" type="number" placeholder="반려동물 몸무게">
+                                 </div>
+                                 <div class="dog_birth add-container">
+                                   <label class="add-label">생년월일</label></th>
+                                   <input class="add-input" type="date" placeholder="반려동물 생일">
+                                 </div>
+       
+                                 <div class="dog_gender add-container">
+                                   <label class="add-label">성별</label>
+                                   <div class="dog_gender_input">
+                                   <input type="radio"style="width:15px" name="gender" value="암컷">암컷
+                                   <input type="radio"style="width:15px" name="gender" value="수컷">수컷
+                                   </div>
+                                 </div>
+       
+                                 <div class="dog_personality add-container">
+                                   <label class="dog_personality">성격</label>
+                                   <input class="add-input" type="text" placeholder="반려동물 성격">
+                                 </div>
+   
+                                 <div class="p-sm">
+                                   <a href="list.html" class="button">저장하기</a>
+                                 </div>
+                               </div>
+                             </form>
+                             </div><!--pets--> 
+   
+                             
+                           </div><!--inner-width-->
+                         </div><!--mypet-section-->
+   
+                   </div>
+                   <!-- content -->    
+                    
+                    
+                </main>
+            </div>
+        </div>
+
+        <footer id="footer">footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer</footer>
+
+
+    </div>
+    
+</body>
+</html>
