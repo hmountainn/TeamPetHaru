@@ -1,10 +1,12 @@
+@import url(popup.css);
+
 html{
     height: 100%;
     margin: 0px;
 }
 body{
     height: 100%;
-    font-family: "맑은 고딕","고딕",'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: "筌띾쵐占� �⑥쥓逾�","�⑥쥓逾�",'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin: 0;
 }
 h1,ul,ol{
@@ -21,7 +23,13 @@ ul,ol{
 .d-none{
     display: none !important;
 }
-.flex{
+.flex,
+.dog-breed-gender ul,
+.container,
+.box,
+.user,
+.user .userinfo,
+.profile-box{
     display: flex;
 }
 .align-center{
@@ -32,8 +40,8 @@ ul,ol{
     --shadow : 0 1px 2px rgba(0,0,0,0.05),0 1px 4px rgba(0,0,0,0.05),0 2px 8px rgba(0,0,0,0.05);
 }
 /*-----------------*/
-.float-content{
-    width:1200px;
+header .float-content{
+    width:1200px;/*占쎄섐�뜮袁㏉�э옙�젟 max-width占쎈퓠占쎄퐣癰귨옙野껓옙;*/
     margin-left: auto;
     margin-right: auto;
     height: 100%;
@@ -62,6 +70,7 @@ ul,ol{
     background-color: white;
     overflow: hidden;
     display: flex;
+    z-index: 999;
 }
 
 #root>#footer{
@@ -77,6 +86,7 @@ ul,ol{
         
         height: 100%;
         display: grid;  
+        width: 1200px;
         grid-template-columns: 200px 1fr;
         grid-template-rows: 1fr;
         grid-template-areas:
@@ -89,13 +99,13 @@ ul,ol{
     /* margin-top: 10PX;
     background-color: white;
     position: fixed;
-    width: 200px; */
-    
+    width: 200px; */    
 }
 #main{  
     grid-area: main;
     padding: 20PX;
     margin: 10px;
+    height: auto;
     
 }
 
@@ -145,7 +155,7 @@ ul,ol{
         justify-content: space-evenly;
         flex-wrap: nowrap;
     }
-    
+    .option span,  
     .main-menu>ul>li>a, .member-menu a{
         display: inline-block;
         color: #4B4B4B;   
@@ -155,6 +165,7 @@ ul,ol{
         padding: 0px 16px;
         }
 
+    .option span,    
     .main-menu>ul>li>a:hover{
         background-color: #eff0f1;
         color: black;
@@ -232,72 +243,148 @@ ul,ol{
         margin: 0;
     }
 } 
-/* ------------------------------------------------------------------- */
+/* ------------------main-------------------- */
 .fas,
 .far{
     line-height: 200%;
     margin-right: 10px;
 }
-
+#content{
+    position: relative;
+    min-height: 700px;
+}
 .mypet-section{
-    text-align: center;
-   }
-   .inner-width{
-     max-width: 1200px;
-     margin: auto;
-     padding: 40px;
-     color: #333;
-     overflow: hidden;
-   }
-   .mypet-section h1{
-     font-size: 20px;
-     display: inline-block;
-     border-bottom: 4px solid;
-     padding-bottom: 10px;
-   }
-   .pet{
-     float: left;
-     width: calc(85% / 3);
-     overflow: hidden;
-     padding: 30px 0;
-     transition: 0.4s;
-     border: 1px solid #ddd;
-     border-radius: 15px;
-     margin: 50px 20px;
- 
- 
-   }
-   .pet:hover{
-     background: #ddd;
-   }
-   .pet img{
-     width: 200px;
-     height: 200px;
-   }
-   .p-name{
-     margin: 16px 0;
-   }
-   .p-sm{
-     margin-top: 12px;
-   }
- 
-   .button {
-     display: inline-block;
- 
-     border: 2px solid #ffa726;
-     border-radius: 15px;
-     color: #ffa726;
-     padding: 5px 50px;
-     text-decoration: none;
-     transition: background-color 200ms ease-in-out;
- 
-   }
-   .button:hover, .button:focus{
-     background-color: #ffa726;
-     color: white;
-   }
-   .big{
-     padding: 10px 50px;
-     margin-top: 28px;
-   }
- 
+    min-height: 700px;
+}
+
+.container{
+    position: relative;
+    top: 10px;
+    height: 80%;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content : center;
+    overflow-wrap: break-word;
+    }
+.pet-list{
+	display: flex;
+}
+    .subject{
+        height: 50px;
+        text-align: center;
+        width: 100%;
+    }
+    .subject h1{
+        color: orange;
+        font-size: 22px;
+        display: inline-block;
+        border-bottom: 4px solid;
+        padding-bottom: 10px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        
+      }
+
+    .box{
+        flex-direction: column;
+        margin: 1rem;
+        overflow: hidden;
+        box-shadow: rgba(0, 0, 0, 0.08) 0px 12px 20px 0px;
+        border-radius: 4px;
+        background: white;
+        width: 17rem;
+        height: 22.5rem;
+
+    }
+    .inner-section .img-box img:hover {
+        transform: scale(1.15);
+        transition: .4s ease;
+
+    }
+    .box .img-box {
+        width: 100%;
+        position: relative;
+        padding-top:92%;
+        overflow: hidden;
+    }
+    
+    .img-box img {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        display: block;
+
+        transform: scale(1);
+        transition: .3s;
+    }
+    
+    .user {
+        padding: 4px 10px;
+        border-top: 1px solid rgb(248, 249, 250);
+        font-size: 0.75rem;
+        line-height: 1.5;
+        justify-content: space-between;
+    }
+    .user .userinfo {
+        text-decoration: none;
+        color: inherit;
+        align-items: center;
+    }
+    .user .userinfo img {
+        object-fit: cover;
+        border-radius: 50%;
+        width: 1.5rem;
+        height: 1.5rem;
+        display: block;
+        margin-right: 0.5rem;
+    }
+    .diary-content h4{
+        text-align: center;
+        margin: 17px 1px;
+    }
+    .diary-content .detail-btn{
+        cursor: pointer;
+        margin-left: 25%;
+    }
+    .button {
+        display: inline-block;
+    
+        border: 2px solid orange;
+        border-radius: 10px;
+        color: orange;
+        padding: 5px 30px;
+        text-decoration: none;
+        transition: 200ms ease-in-out;
+    
+      }
+    
+      .button:hover, .button:focus{
+        background-color: orange;
+        color: white;
+      }
+      .big{
+        padding: 10px 50px;
+        margin-top: 28px;
+        cursor: pointer;
+      }
+    .add{
+        display: block;
+        position: relative;
+        left: 35%;
+    } 
+.none-list img{
+  width: 300px;
+}
+.none-list p{
+  color: gray;
+  font-size: 15px;
+      text-align: center;
+    font-weight: bold;
+}
+.necessary{
+    color: red;
+
+}
+
