@@ -18,5 +18,4 @@ public interface KnowhowService {
 	List<Knowhow> getList(int page);
 	List<Knowhow> getList(String pet, int page);
 
-
 }
