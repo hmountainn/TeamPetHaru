@@ -28,14 +28,28 @@ public class JDBCNoticeService implements NoticeService {
 		int startIdx = (page-1)*size + 1;
 		int endIdx = size*page;
 		
-		String sql = "SELECT * FROM ("
+//		String sql = "SELECT * FROM ("
+//				+ "    SELECT ROWNUM \"INDEX\", N.*"
+//				+ "    FROM"
+//				+ "    (SELECT *"
+//				+ "    FROM NOTICE"
+//				+ "    WHERE "+field+" LIKE '%"+query+"%'"
+//				+ "    ORDER BY REGDATE DESC"
+//				+ "    ) N)"
+//				+ "    WHERE \"INDEX\" BETWEEN "+startIdx+" AND "+endIdx;
+		
+		String sql = "SELECT NN.\"INDEX\", NN.ID, NN.TITLE, NN.ADMIN_ID, A.USER_ID, NN.REGDATE, NN.HIT, NN.CONTENT, NN.FILES"
+				+ "    FROM ("
 				+ "    SELECT ROWNUM \"INDEX\", N.*"
-				+ "    FROM"
-				+ "    (SELECT *"
-				+ "    FROM NOTICE"
-				+ "    WHERE "+field+" LIKE '%"+query+"%'"
-				+ "    ORDER BY REGDATE DESC"
-				+ "    ) N)"
+				+ "    FROM ("
+				+ "        SELECT *"
+				+ "        FROM NOTICE"
+				+ "        WHERE "+field+" LIKE '%"+query+"%'"
+				+ "        ORDER BY REGDATE DESC"
+				+ "    ) N"
+				+ "    ) NN"
+				+ "    LEFT JOIN ADMIN A"
+				+ "    ON NN.ADMIN_ID = A.ID"
 				+ "    WHERE \"INDEX\" BETWEEN "+startIdx+" AND "+endIdx;
 		
 		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
@@ -48,7 +62,8 @@ public class JDBCNoticeService implements NoticeService {
 			int id = rs.getInt("id");
 			String title = rs.getString("title");
 			int adminId = rs.getInt("admin_id");
-			Date regDate = rs.getDate("regdate");
+			String userId = rs.getString("user_id");
+			Date regdate = rs.getDate("regdate");
 			int hit = rs.getInt("hit");
 			String content = rs.getString("content");
 			String files = rs.getString("files");
@@ -57,7 +72,8 @@ public class JDBCNoticeService implements NoticeService {
 			notice.setId(id);
 			notice.setTitle(title);
 			notice.setAdminId(adminId);
-			notice.setRegDate(regDate);
+			notice.setUserId(userId);
+			notice.setRegdate(regdate);
 			notice.setHit(hit);
 			notice.setContent(content);
 			notice.setFiles(files);
@@ -100,7 +116,11 @@ public class JDBCNoticeService implements NoticeService {
 	@Override
 	public Notice get(int id) throws ClassNotFoundException, SQLException {
 		
-		String sql = String.format("SELECT * FROM NOTICE WHERE ID=%d", id);
+		String sql = String.format("SELECT N.ID, N.TITLE, N.ADMIN_ID, A.USER_ID, N.REGDATE, N.HIT, N.CONTENT, N.FILES"
+				+ "    FROM NOTICE N"
+				+ "    LEFT JOIN ADMIN A"
+				+ "    ON N.ADMIN_ID = A.ID"
+				+ "    WHERE N.ID=%d", id);
 		
 		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
 		Class.forName("oracle.jdbc.OracleDriver");
@@ -112,7 +132,8 @@ public class JDBCNoticeService implements NoticeService {
 
 		String title = rs.getString("title");
 		int adminId = rs.getInt("admin_id");
-		Date regDate = rs.getDate("regdate");
+		String userId = rs.getString("user_id");
+		Date regdate = rs.getDate("regdate");
 		int hit = rs.getInt("hit");
 		String content = rs.getString("content");
 		String files = rs.getString("files");
@@ -121,7 +142,8 @@ public class JDBCNoticeService implements NoticeService {
 		notice.setId(id);
 		notice.setTitle(title);
 		notice.setAdminId(adminId);
-		notice.setRegDate(regDate);
+		notice.setUserId(userId);
+		notice.setRegdate(regdate);
 		notice.setHit(hit);
 		notice.setContent(content);
 		notice.setFiles(files);
