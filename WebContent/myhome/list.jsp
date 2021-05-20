@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="list.css" type="text/css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="root">
+        <header id="header">
+            <div class="float-content">
+                <div class="flex align-center">
+                    <a href="" class="logo-title-container">
+                        <img src="../images/logo.png">
+                    </a>
+                    <nav class="main-menu">   
+                            <h1 class="d-none">메인메뉴</h1>
+                            <ul>
+                                <li><a href="list.html">우리집</a></li>
+                                <li><a href="../friends/list.html">이웃집</a></li>
+                                <li><a href="../pet-management/mypet/list.html">내 동물 관리</a></li>
+                                <li><a href="../community/notice/list.html">커뮤니티</a></li>
+                            </ul>
+                    </nav>
+                </div>
+                <nav class="member-menu">
+                    <h1 class="d-none">회원메뉴</h1>
+                    <ul>
+                        <li><a href="../member/profile-edit.html">MyPage</a></li>
+                        <li><a href="../../login.html">LogOut</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <div id="body">
+            <div class="float-content">
+                <main id="main">
+                    <section>
+                        <section class="member-info">
+                            <h1 class="d-none">회원 정보</h1>
+                            <div class="img-member"></div>
+                            <span class="id">id1</span>
+                            <div class="friend-info">
+                                <span class="follower font">팔로워</span> 
+                                <button class="follower-num font">20</button>
+                                <span class="follow font">팔로우</span> 
+                                <button class="follow-num font">10</button>
+                            </div>
+                        </section>
+            
+                        <section class="diary-upload-btn">
+                            <h1 class="d-none">일기 등록</h1>
+                            <a href="upload.html"><button class="font">일기 쓰기</button></a>
+                        </section>
+                    </section>
+                    <div class="diary-list">
+                        <h1 class="d-none">동물 일기 목록</h1>
+                        <div>
+                            <div class="img-area">
+                                <a href="detail.html">
+                                <img class="img-pet" src="../images/puppy1.jpg">
+                                </a>
+                            </div>
+                            <div class="text-area">
+                                <div class="diary-content"><a href="detail.html">뽀삐와 산책한 날</a></div>
+                                <div class="keyword">
+                                    <span>#뽀삐</span>
+                                    <span>#산책</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="img-area">
+                                <a href="detail.html">
+                                <img class="img-pet" src="../images/puppy2.jpg">
+                                </a>
+                            </div>
+                            <div class="text-area">
+                                <div class="diary-content"><a href="detail.html">꽃밭에서 찰칵!</a><br>
+                                </div>
+                                <div class="keyword">
+                                    <span>#사랑이</span>
+                                    <span>#꽃밭산책</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="img-area">
+                                <a href="detail.html">
+                                <img class="img-pet" src="../images/cat1.jpg">
+                                </a>
+                            </div>
+                            <div class="text-area">
+                                <div class="diary-content"><a href="detail.html">코코의 새로운 모자 :)</a></div>
+                                <div class="keyword">
+                                    <span>#코코</span>
+                                    <span>#토끼모자</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="img-area">
+                                <a href="detail.html">
+                                <img class="img-pet" src="../images/puppy1.jpg">
+                                </a>
+                            </div>
+                            <div class="text-area">
+                                <div class="diary-content"><a href="detail.html">뽀삐와 산책한 날</a></div>
+                                <div class="keyword">
+                                    <span>#뽀삐</span>
+                                    <span>#산책</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="img-area">
+                                <a href="detail.html">
+                                <img class="img-pet" src="../images/puppy2.jpg">
+                                </a>
+                            </div>
+                            <div class="text-area">
+                                <div class="diary-content"><a href="detail.html">꽃밭에서 찰칵!</a><br>
+                                </div>
+                                <div class="keyword">
+                                    <span>#사랑이</span>
+                                    <span>#꽃밭산책</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="img-area">
+                                <a href="detail.html">
+                                <img class="img-pet" src="../images/cat1.jpg">
+                                </a>
+                            </div>
+                            <div class="text-area">
+                                <div class="diary-content"><a href="detail.html">코코의 새로운 모자 :)</a></div>
+                                <div class="keyword">
+                                    <span>#코코</span>
+                                    <span>#토끼모자</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="img-area">
+                                <a href="detail.html">
+                                <img class="img-pet" src="../images/puppy1.jpg">
+                                </a>
+                            </div>
+                            <div class="text-area">
+                                <div class="diary-content"><a href="detail.html">뽀삐와 산책한 날</a></div>
+                                <div class="keyword">
+                                    <span>#뽀삐</span>
+                                    <span>#산책</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="img-area">
+                                <a href="detail.html">
+                                <img class="img-pet" src="../images/puppy2.jpg">
+                                </a>
+                            </div>
+                            <div class="text-area">
+                                <div class="diary-content"><a href="detail.html">꽃밭에서 찰칵!</a><br>
+                                </div>
+                                <div class="keyword">
+                                    <span>#사랑이</span>
+                                    <span>#꽃밭산책</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="img-area">
+                                <a href="detail.html">
+                                <img class="img-pet" src="../images/cat1.jpg">
+                                </a>
+                            </div>
+                            <div class="text-area">
+                                <div class="diary-content"><a href="detail.html">코코의 새로운 모자 :)</a></div>
+                                <div class="keyword">
+                                    <span>#코코</span>
+                                    <span>#토끼모자</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <footer id="footer"></footer>
+    </div>        
+</body>
+</html>
