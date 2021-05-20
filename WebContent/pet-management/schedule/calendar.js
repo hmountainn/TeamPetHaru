@@ -1,6 +1,33 @@
 window.addEventListener("load",function(){
-    makeCalendar()
+    makeCalendar();
+    addSchedule();
+    detailSchedule();
+	
 });
+
+function getSchedule(){
+	
+	var request = new XMLHttpRequest();
+	request.onload = function(e){
+		var list = JSON.parse(request.responseText);
+		//console.log(request.responseText);
+		console.log(list);
+		for(var i=0; i<list.length; i++){
+			var day = list[i].dateTime;
+			day = parseInt(day.substring(8,10));
+			console.log(day);
+			var td = document.getElementById(day);
+			
+			//background-color를 음........case문으로.....?ㅎㅎㅎㅎㅎ;;;;
+			var div = `<div class="schedule" style="background-color:#F5A9A9">${list[i].title}</div>`	
+			
+			td.insertAdjacentHTML("beforeend",div);
+			}
+		}
+		//parameter로 month줘야함 user_id도...
+		request.open("GET",`../api/schedule/list`,true); //false면 동기, true면 비동기
+        request.send(null);		
+}
 
 function makeCalendar(){
     calendar = document.querySelector(".calendar");
@@ -27,7 +54,7 @@ function makeCalendar(){
             cell.setAttribute('id', [i]);
             cell.classList.add("day");
             //모든 셀에 id를 부여함
-            cell.innerHTML = "<div>"+[i]+"</div>";
+            cell.innerHTML = "<div class=\"number\">"+[i]+"</div>";
             //추가된 셀에 i값 입력
             firstDay += 1;
             //요일값이 하루 추가된걸 for문에 알려줌
@@ -47,6 +74,7 @@ function makeCalendar(){
         }
     }
 
+	//오늘날짜표시(함수로 빼야함)
     var todayDate = today.getDate();
     var todayYear = today.getFullYear();
     var todayMonth = today.getMonth()+1;
@@ -60,13 +88,14 @@ function makeCalendar(){
         if(todayDate == date.getAttribute("id") && todayYM==currentYM.innerText){
             datediv = date.querySelector("div");
             datediv.classList.add("today");
-            console.log("hi");
+            //console.log("hi");
         }
         
     }
+	getSchedule();
 }
-
-window.addEventListener("load",function(){
+/*
+window.addEventListener("load",function(){//오늘날짜표시
     var todayDate = today.getDate();
     var todayYear = today.getYear();
     var todayMonth = today.getMonth();
@@ -81,8 +110,9 @@ window.addEventListener("load",function(){
         
     }
 
-});
+});*/
 
+//이전버튼
 window.addEventListener("load",function(){
 var prevBtn = document.querySelector(".prev-month");
 prevBtn.onclick = function(){
@@ -109,7 +139,7 @@ prevBtn.onclick = function(){
 }
 });
 
-
+//다음달버튼
 window.addEventListener("load",function(){
     var nextBtn = document.querySelector(".next-month");
     nextBtn.onclick = function(){
@@ -133,3 +163,37 @@ window.addEventListener("load",function(){
      makeCalendar();	
     }
 });
+
+
+//스케쥴뿌리는거 지워도될듯?
+function addSchedule(){
+	
+    var calendar = document.querySelector(".calendar");
+    var day = document.getElementById("15");
+    console.log(day);
+    var div = document.createElement("div");
+    div.classList.add("schedule")
+    div.innerText = "15:30 진료";
+    div.style.backgroundColor="#F5A9A9";
+    day.append(div);
+}
+
+
+function detailSchedule(){
+    var section = document.querySelector("#content-wrap");
+    var calendar = section.querySelector(".calendar");
+    var scheduleDetail = section.querySelector(".schedule-detail");
+
+    //console.log(scheduleDetail);
+    calendar.onclick = function(e){
+        var target = e.target;
+        //console.log(target);
+        if(target.classList.contains("schedule")){
+            scheduleDetail.classList.toggle("d-none");
+
+        }else{
+            return;
+        }
+    }
+
+}

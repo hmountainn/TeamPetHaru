@@ -7,6 +7,7 @@
     <title>Document</title>
     <link href="calendar.css" type="text/css" rel="stylesheet">
     <script src="calendar.js"></script>
+    <script src="add.js"></script>
 </head>
 <body>
     <div id="root">
@@ -82,10 +83,77 @@
                                     <td class= "sat">Sat</td>
                                 </tr>
                               </thead>
-
-
                         </table>
+                        <div class="overlay d-none"></div>
+                        <div class="popup-wrapper d-none">
+                            <div class="add-schedule">
+                                <div class="close-btn">
+                                    <img src="../images/icon-close-btn.png" alt="">
+                                </div>
+                                <div class="add-schedule-form">
+    
+                                    <h1 class="d-none">일정추가</h1>                                   
+                                    <form action="">
+                                        <div class="schedule-input-container title-container">
+                                            <label class="schedule-lable title-lable d-none" for="">제목</label>
+                                            <input class="title-input" type="text" placeholder="제목">
+                                        </div>
+                                        <div class="schedule-input-container date-time-container">
+                                            <label class="schedule-lable  date-time-lable btn" for="">일시</label>
+                                            <input class="date-input" type="date">
+                                            <input class="time-input" type="time">
+                                        </div>
+                                        <div class="schedule-input-container content-container">
+                                            <label class="schedule-lable content-lable btn" for="">내용</label>
+                                            <textarea class="content-input" name="" id="" cols="40" rows="7" placeholder="내용"></textarea>
+                                        </div>
+                                        
+                                        
+                                        <div class="hashtag-container">
+                                            <ul>
+                                                <li class="hashtag hashtag1">#진료</li>
+                                                <li class="hashtag hashtag2">#예방접종</li>
+                                                <li class="hashtag hashtag3">#미용</li>
+                                                <li class="hashtag hashtag4">#기타</li>
+                                            </ul>
+                                        </div>
+                                        <div class="mailing-check">
+                                            <input type="checkbox">
+                                            <label for="">알림메일받기</label>
+                                        </div>
+                                        <div class="submit">
+    
+                                            <input class="submit-btn" type="submit" value="등록">
+                                        </div>
+                                    </form>
+                                </div>
+                                
+                            </div>
+                        </div>   
                         
+                        <div class="schedule-detail d-none">
+                            <div class="detail-date-day">
+                                <span class="detail-date">
+                                    15
+                                </span>
+                                <span class="detail-day">
+                                    목요일
+                                </span>
+                            </div>
+                            <div class="detail-hashtag-content">
+                                <div class="detail-hashtag">
+                                    #진료
+                                </div>
+                                <div class="detail-content">
+                                    15:30 abc동물병원 진료
+                                </div>
+                            </div>
+                            <div class="detail-buttons">
+                                <input  class="edit-btn btn" type="button" value="수정">
+                                <input  class="delete-btn btn" type="button" value="삭제">
+                                
+                            </div>              
+                        </div>
                     </section>
                     
                 </main>
