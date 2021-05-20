@@ -4,8 +4,8 @@ import java.util.Date;
 
 public class Weight {
 	private int id;
-	private int pet_id;
-	private Date measure_time;
+	private int petId;
+	private Date measureTime;
 	private float number;
 	
 	public Weight() {
@@ -14,11 +14,11 @@ public class Weight {
 	
 	
 
-	public Weight(int id, int pet_id, Date measure_time, float number) {
+	public Weight(int id, int petId, Date measureTime, float number) {
 		super();
 		this.id = id;
-		this.pet_id = pet_id;
-		this.measure_time = measure_time;
+		this.petId = petId;
+		this.measureTime = measureTime;
 		this.number = number;
 	}
 
@@ -32,20 +32,20 @@ public class Weight {
 		this.id = id;
 	}
 
-	public int getPet_id() {
-		return pet_id;
+	public int getPetId() {
+		return petId;
 	}
 
-	public void setPet_id(int pet_id) {
-		this.pet_id = pet_id;
+	public void setPetId(int petId) {
+		this.petId = petId;
 	}
 
-	public Date getMeasure_time() {
-		return measure_time;
+	public Date getMeasureTime() {
+		return measureTime;
 	}
 
-	public void setMeasure_time(Date measure_time) {
-		this.measure_time = measure_time;
+	public void setMeasureTime(Date measureTime) {
+		this.measureTime = measureTime;
 	}
 
 	public float getNumber() {
@@ -60,7 +60,7 @@ public class Weight {
 
 	@Override
 	public String toString() {
-		return "Weight [id=" + id + ", pet_id=" + pet_id + ", measure_time=" + measure_time + ", number=" + number
+		return "Weight [id=" + id + ", petId=" + petId + ", measureTime=" + measureTime + ", number=" + number
 				+ "]";
 	}
 	
