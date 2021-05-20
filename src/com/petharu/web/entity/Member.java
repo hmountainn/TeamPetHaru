@@ -13,10 +13,10 @@ public class Member {
 	
 	
 
-	public Member(int id, String user_id, String email, String password, String image) {
+	public Member(int id, String userId, String email, String password, String image) {
 		super();
 		this.id = id;
-		this.userId = user_id;
+		this.userId = userId;
 		this.email = email;
 		this.password = password;
 		this.image = image;
@@ -32,12 +32,12 @@ public class Member {
 		this.id = id;
 	}
 
-	public String getUser_id() {
+	public String getUserId() {
 		return userId;
 	}
 
-	public void setUser_id(String user_id) {
-		this.userId = user_id;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public String getEmail() {
