@@ -18,17 +18,17 @@
                         <img src="../images/logo.png">
                     </a>
                     <nav class="main-menu">   
-                            <h1 class="d-none">메인메뉴</h1>
+                            <h1 class="d-none">ë©ì¸ë©ë´</h1>
                             <ul>
-                                <li><a href="list.html">우리집</a></li>
-                                <li><a href="../friends/list.html">이웃집</a></li>
-                                <li><a href="../pet-management/mypet/list.html">내 동물 관리</a></li>
-                                <li><a href="../community/notice/list.html">커뮤니티</a></li>
+                                <li><a href="list.html">ì°ë¦¬ì§</a></li>
+                                <li><a href="../friends/list.html">ì´ìì§</a></li>
+                                <li><a href="../pet-management/mypet/list.html">ë´ ëë¬¼ ê´ë¦¬</a></li>
+                                <li><a href="../community/notice/list.html">ì»¤ë®¤ëí°</a></li>
                             </ul>
                     </nav>
                 </div>
                 <nav class="member-menu">
-                    <h1 class="d-none">회원메뉴</h1>
+                    <h1 class="d-none">íìë©ë´</h1>
                     <ul>
                         <li><a href="../member/profile-edit.html">MyPage</a></li>
                         <li><a href="../../login.html">LogOut</a></li>
@@ -42,24 +42,24 @@
                 <main id="main">
                     <section>
                         <section class="member-info">
-                            <h1 class="d-none">회원 정보</h1>
+                            <h1 class="d-none">íì ì ë³´</h1>
                             <div class="img-member"></div>
                             <span class="id">id1</span>
                             <div class="friend-info">
-                                <span class="follower font">팔로워</span> 
+                                <span class="follower font">íë¡ì</span> 
                                 <button class="follower-num font">20</button>
-                                <span class="follow font">팔로우</span> 
+                                <span class="follow font">íë¡ì°</span> 
                                 <button class="follow-num font">10</button>
                             </div>
                         </section>
             
                         <section class="diary-upload-btn">
-                            <h1 class="d-none">일기 등록</h1>
-                            <a href="upload.html"><button class="font">일기 쓰기</button></a>
+                            <h1 class="d-none">ì¼ê¸° ë±ë¡</h1>
+                            <a href="upload.html"><button class="font">ì¼ê¸° ì°ê¸°</button></a>
                         </section>
                     </section>
                     <div class="diary-list">
-                        <h1 class="d-none">동물 일기 목록</h1>
+                        <h1 class="d-none">ëë¬¼ ì¼ê¸° ëª©ë¡</h1>
                         <div>
                             <div class="img-area">
                                 <a href="detail.html">
@@ -67,10 +67,10 @@
                                 </a>
                             </div>
                             <div class="text-area">
-                                <div class="diary-content"><a href="detail.html">뽀삐와 산책한 날</a></div>
+                                <div class="diary-content"><a href="detail.html">ë½ìì ì°ì±í ë </a></div>
                                 <div class="keyword">
-                                    <span>#뽀삐</span>
-                                    <span>#산책</span>
+                                    <span>#ë½ì</span>
+                                    <span>#ì°ì±</span>
                                 </div>
                             </div>
                         </div>
@@ -81,11 +81,11 @@
                                 </a>
                             </div>
                             <div class="text-area">
-                                <div class="diary-content"><a href="detail.html">꽃밭에서 찰칵!</a><br>
+                                <div class="diary-content"><a href="detail.html">ê½ë°­ìì ì°°ì¹µ!</a><br>
                                 </div>
                                 <div class="keyword">
-                                    <span>#사랑이</span>
-                                    <span>#꽃밭산책</span>
+                                    <span>#ì¬ëì´</span>
+                                    <span>#ê½ë°­ì°ì±</span>
                                 </div>
                             </div>
                         </div>
@@ -96,10 +96,10 @@
                                 </a>
                             </div>
                             <div class="text-area">
-                                <div class="diary-content"><a href="detail.html">코코의 새로운 모자 :)</a></div>
+                                <div class="diary-content"><a href="detail.html">ì½ì½ì ìë¡ì´ ëª¨ì :)</a></div>
                                 <div class="keyword">
-                                    <span>#코코</span>
-                                    <span>#토끼모자</span>
+                                    <span>#ì½ì½</span>
+                                    <span>#í ë¼ëª¨ì</span>
                                 </div>
                             </div>
                         </div>
@@ -110,10 +110,10 @@
                                 </a>
                             </div>
                             <div class="text-area">
-                                <div class="diary-content"><a href="detail.html">뽀삐와 산책한 날</a></div>
+                                <div class="diary-content"><a href="detail.html">ë½ìì ì°ì±í ë </a></div>
                                 <div class="keyword">
-                                    <span>#뽀삐</span>
-                                    <span>#산책</span>
+                                    <span>#ë½ì</span>
+                                    <span>#ì°ì±</span>
                                 </div>
                             </div>
                         </div>
@@ -124,11 +124,11 @@
                                 </a>
                             </div>
                             <div class="text-area">
-                                <div class="diary-content"><a href="detail.html">꽃밭에서 찰칵!</a><br>
+                                <div class="diary-content"><a href="detail.html">ê½ë°­ìì ì°°ì¹µ!</a><br>
                                 </div>
                                 <div class="keyword">
-                                    <span>#사랑이</span>
-                                    <span>#꽃밭산책</span>
+                                    <span>#ì¬ëì´</span>
+                                    <span>#ê½ë°­ì°ì±</span>
                                 </div>
                             </div>
                         </div>
@@ -139,10 +139,10 @@
                                 </a>
                             </div>
                             <div class="text-area">
-                                <div class="diary-content"><a href="detail.html">코코의 새로운 모자 :)</a></div>
+                                <div class="diary-content"><a href="detail.html">ì½ì½ì ìë¡ì´ ëª¨ì :)</a></div>
                                 <div class="keyword">
-                                    <span>#코코</span>
-                                    <span>#토끼모자</span>
+                                    <span>#ì½ì½</span>
+                                    <span>#í ë¼ëª¨ì</span>
                                 </div>
                             </div>
                         </div>
@@ -153,10 +153,10 @@
                                 </a>
                             </div>
                             <div class="text-area">
-                                <div class="diary-content"><a href="detail.html">뽀삐와 산책한 날</a></div>
+                                <div class="diary-content"><a href="detail.html">ë½ìì ì°ì±í ë </a></div>
                                 <div class="keyword">
-                                    <span>#뽀삐</span>
-                                    <span>#산책</span>
+                                    <span>#ë½ì</span>
+                                    <span>#ì°ì±</span>
                                 </div>
                             </div>
                         </div>
@@ -167,11 +167,11 @@
                                 </a>
                             </div>
                             <div class="text-area">
-                                <div class="diary-content"><a href="detail.html">꽃밭에서 찰칵!</a><br>
+                                <div class="diary-content"><a href="detail.html">ê½ë°­ìì ì°°ì¹µ!</a><br>
                                 </div>
                                 <div class="keyword">
-                                    <span>#사랑이</span>
-                                    <span>#꽃밭산책</span>
+                                    <span>#ì¬ëì´</span>
+                                    <span>#ê½ë°­ì°ì±</span>
                                 </div>
                             </div>
                         </div>
@@ -182,10 +182,10 @@
                                 </a>
                             </div>
                             <div class="text-area">
-                                <div class="diary-content"><a href="detail.html">코코의 새로운 모자 :)</a></div>
+                                <div class="diary-content"><a href="detail.html">ì½ì½ì ìë¡ì´ ëª¨ì :)</a></div>
                                 <div class="keyword">
-                                    <span>#코코</span>
-                                    <span>#토끼모자</span>
+                                    <span>#ì½ì½</span>
+                                    <span>#í ë¼ëª¨ì</span>
                                 </div>
                             </div>
                         </div>
