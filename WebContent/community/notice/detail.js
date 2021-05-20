@@ -2,8 +2,8 @@ window.addEventListener("load", function() {
 	var section = document.querySelector("#main");
 	var title = section.querySelector("h1");
 	var id = section.querySelector(".notice-info .id");
-	var adminUserId = section.querySelector(".notice-info .admin-user-id");
-	var regDate = section.querySelector(".notice-info .reg-date");
+	var userId = section.querySelector(".notice-info .user-id");
+	var regdate = section.querySelector(".notice-info .reg-date");
 	var hit = section.querySelector(".notice-info .hit");
 	var article = section.querySelector(".notice-article div")
 	var updateBtn = section.querySelector(".article-button .update-btn");
@@ -17,8 +17,8 @@ window.addEventListener("load", function() {
 		var notice = JSON.parse(request.responseText);
 		title.innerHTML += `${notice.title}`;
 		id.innerHTML += `${notice.id}`;
-		adminUserId.innerHTML += `${notice.adminId}`;
-		regDate.innerHTML += `${notice.regDate}`;
+		userId.innerHTML += `${notice.userId}`;
+		regdate.innerHTML += `${notice.regdate}`;
 		hit.innerHTML += `${notice.hit}`;
 		article.innerHTML += `${notice.content}`;
 		

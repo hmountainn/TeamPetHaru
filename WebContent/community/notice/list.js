@@ -46,8 +46,8 @@ window.addEventListener("load", function() {
 					var tr = `<tr>
 							<td class="table-w50">${list[i].id}</td>
 							<td><a name="${list[i].id}" href="./detail.html?id=${list[i].id}">${list[i].title}</a></td>
-							<td class="table-w50">${list[i].adminId}</td>
-							<td class="table-w100">${list[i].regDate}</td>
+							<td class="table-w50">${list[i].userId}</td>
+							<td class="table-w100">${list[i].regdate}</td>
 							<td class="table-w50">${list[i].hit}</td>
 	                      </tr>`
 					tbody.insertAdjacentHTML("beforeend", tr);

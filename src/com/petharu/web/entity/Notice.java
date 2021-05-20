@@ -2,12 +2,14 @@ package com.petharu.web.entity;
 
 import java.util.Date;
 
+
 public class Notice {
 
 	private int id;
 	private String title;
+	private String userId;
 	private int adminId;
-	private Date regDate;
+	private Date regdate;
 	private int hit;
 	private String content;
 	private String files;
@@ -16,12 +18,13 @@ public class Notice {
 		
 	}
 
-	public Notice(int id, String title, int adminId, Date regDate, int hit, String content, String files) {
+	public Notice(int id, String title, int adminId, String userId, Date regdate, int hit, String content, String files) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.adminId = adminId;
-		this.regDate = regDate;
+		this.userId = userId;
+		this.regdate = regdate;
 		this.hit = hit;
 		this.content = content;
 		this.files = files;
@@ -51,12 +54,20 @@ public class Notice {
 		this.adminId = adminId;
 	}
 
-	public Date getRegDate() {
-		return regDate;
+	public String getUserId() {
+		return userId;
 	}
 
-	public void setRegDate(Date regDate) {
-		this.regDate = regDate;
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public Date getRegdate() {
+		return regdate;
+	}
+
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
 	}
 
 	public int getHit() {
@@ -88,7 +99,8 @@ public class Notice {
 		return "{\"id\":" + id
 				+ ", \"title\":\"" + title
 				+ "\", \"adminId\":" + adminId
-				+ ", \"regDate\":\"" + regDate
+				+ "\", \"userId\":" + userId
+				+ ", \"regdate\":\"" + regdate
 				+ "\", \"hit\":" + hit
 				+ ", \"content\":\"" + content
 				+ "\", \"files\":\"" + files + "\"}";

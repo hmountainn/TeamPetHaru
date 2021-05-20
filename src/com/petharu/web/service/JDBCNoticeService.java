@@ -12,13 +12,14 @@ import java.util.List;
 
 import com.petharu.web.entity.Notice;
 
+public class JDBCNoticeService implements NoticeService {
 
-public class JDBCNoticeService {
-	
+	@Override
 	public List<Notice> getList() throws ClassNotFoundException, SQLException {
 		return getList(1, "title", "");
 	}
 
+	@Override
 	public List<Notice> getList(int page, String field, String query) throws ClassNotFoundException, SQLException {
 		
 		List<Notice> list = new ArrayList<>();
@@ -27,14 +28,28 @@ public class JDBCNoticeService {
 		int startIdx = (page-1)*size + 1;
 		int endIdx = size*page;
 		
-		String sql = "SELECT * FROM ("
+//		String sql = "SELECT * FROM ("
+//				+ "    SELECT ROWNUM \"INDEX\", N.*"
+//				+ "    FROM"
+//				+ "    (SELECT *"
+//				+ "    FROM NOTICE"
+//				+ "    WHERE "+field+" LIKE '%"+query+"%'"
+//				+ "    ORDER BY REGDATE DESC"
+//				+ "    ) N)"
+//				+ "    WHERE \"INDEX\" BETWEEN "+startIdx+" AND "+endIdx;
+		
+		String sql = "SELECT NN.\"INDEX\", NN.ID, NN.TITLE, NN.ADMIN_ID, A.USER_ID, NN.REGDATE, NN.HIT, NN.CONTENT, NN.FILES"
+				+ "    FROM ("
 				+ "    SELECT ROWNUM \"INDEX\", N.*"
-				+ "    FROM"
-				+ "    (SELECT *"
-				+ "    FROM NOTICE"
-				+ "    WHERE "+field+" LIKE '%"+query+"%'"
-				+ "    ORDER BY REGDATE DESC"
-				+ "    ) N)"
+				+ "    FROM ("
+				+ "        SELECT *"
+				+ "        FROM NOTICE"
+				+ "        WHERE "+field+" LIKE '%"+query+"%'"
+				+ "        ORDER BY REGDATE DESC"
+				+ "    ) N"
+				+ "    ) NN"
+				+ "    LEFT JOIN ADMIN A"
+				+ "    ON NN.ADMIN_ID = A.ID"
 				+ "    WHERE \"INDEX\" BETWEEN "+startIdx+" AND "+endIdx;
 		
 		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
@@ -47,7 +62,8 @@ public class JDBCNoticeService {
 			int id = rs.getInt("id");
 			String title = rs.getString("title");
 			int adminId = rs.getInt("admin_id");
-			Date regDate = rs.getDate("regdate");
+			String userId = rs.getString("user_id");
+			Date regdate = rs.getDate("regdate");
 			int hit = rs.getInt("hit");
 			String content = rs.getString("content");
 			String files = rs.getString("files");
@@ -56,7 +72,8 @@ public class JDBCNoticeService {
 			notice.setId(id);
 			notice.setTitle(title);
 			notice.setAdminId(adminId);
-			notice.setRegDate(regDate);
+			notice.setUserId(userId);
+			notice.setRegdate(regdate);
 			notice.setHit(hit);
 			notice.setContent(content);
 			notice.setFiles(files);
@@ -71,6 +88,7 @@ public class JDBCNoticeService {
 		return list;
 	}
 	
+	@Override
 	public int getCount(String field, String query) throws ClassNotFoundException, SQLException {
 		
 		int count = 0;
@@ -95,9 +113,14 @@ public class JDBCNoticeService {
 		return count;
 	}
 	
+	@Override
 	public Notice get(int id) throws ClassNotFoundException, SQLException {
 		
-		String sql = String.format("SELECT * FROM NOTICE WHERE ID=%d", id);
+		String sql = String.format("SELECT N.ID, N.TITLE, N.ADMIN_ID, A.USER_ID, N.REGDATE, N.HIT, N.CONTENT, N.FILES"
+				+ "    FROM NOTICE N"
+				+ "    LEFT JOIN ADMIN A"
+				+ "    ON N.ADMIN_ID = A.ID"
+				+ "    WHERE N.ID=%d", id);
 		
 		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
 		Class.forName("oracle.jdbc.OracleDriver");
@@ -109,7 +132,8 @@ public class JDBCNoticeService {
 
 		String title = rs.getString("title");
 		int adminId = rs.getInt("admin_id");
-		Date regDate = rs.getDate("regdate");
+		String userId = rs.getString("user_id");
+		Date regdate = rs.getDate("regdate");
 		int hit = rs.getInt("hit");
 		String content = rs.getString("content");
 		String files = rs.getString("files");
@@ -118,7 +142,8 @@ public class JDBCNoticeService {
 		notice.setId(id);
 		notice.setTitle(title);
 		notice.setAdminId(adminId);
-		notice.setRegDate(regDate);
+		notice.setUserId(userId);
+		notice.setRegdate(regdate);
 		notice.setHit(hit);
 		notice.setContent(content);
 		notice.setFiles(files);
@@ -130,6 +155,7 @@ public class JDBCNoticeService {
 		return notice;
 	}
 
+	@Override
 	public int delete(int id) throws ClassNotFoundException, SQLException {
 
 		int result = 0;
@@ -151,6 +177,7 @@ public class JDBCNoticeService {
 		return result;
 	}
 
+	@Override
 	public int insert(Notice notice) throws ClassNotFoundException, SQLException {
 		
 		int result = 0;
@@ -174,6 +201,7 @@ public class JDBCNoticeService {
 		return result;
 	}
 
+	@Override
 	public int update(Notice notice) throws ClassNotFoundException, SQLException {
 		
 		int result = 0;

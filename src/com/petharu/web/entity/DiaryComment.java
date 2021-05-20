@@ -7,14 +7,14 @@ public class DiaryComment {
 	private int id;
 	private String content;
 	private Date regDate;
-	private int memberId;
+	private String memberId;
 	private int diaryId;
 	
 	public DiaryComment() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public DiaryComment(int id, String content, Date regDate, int memberId, int diaryId) {
+	public DiaryComment(int id, String content, Date regDate, String memberId, int diaryId) {
 		super();
 		this.id = id;
 		this.content = content;
@@ -47,11 +47,11 @@ public class DiaryComment {
 		this.regDate = regDate;
 	}
 
-	public int getMemberId() {
+	public String getMemberId() {
 		return memberId;
 	}
 
-	public void setMemberId(int memberId) {
+	public void setMemberId(String memberId) {
 		this.memberId = memberId;
 	}
 
