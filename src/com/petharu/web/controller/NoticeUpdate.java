@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.petharu.web.entity.Notice;
-import com.petharu.web.service.NoticeService;
+import com.petharu.web.service.JDBCNoticeService;
 
 
 @WebServlet("/community/notice/update")
@@ -30,7 +30,7 @@ public class NoticeUpdate extends HttpServlet {
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
 		
-		NoticeService noticeService = new NoticeService();
+		JDBCNoticeService noticeService = new JDBCNoticeService();
 		
 		try {
 			Notice notice = noticeService.get(id);

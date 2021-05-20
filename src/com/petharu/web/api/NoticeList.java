@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.petharu.web.entity.Notice;
-import com.petharu.web.service.NoticeService;
+import com.petharu.web.service.JDBCNoticeService;
 
 
 @WebServlet("/api/notice/list")
@@ -47,7 +47,7 @@ public class NoticeList extends HttpServlet {
 				query = q;
 			}
 			
-			NoticeService noticeService = new NoticeService();
+			JDBCNoticeService noticeService = new JDBCNoticeService();
 			List<Notice> list = noticeService.getList(page, field, query);
 
 			Gson gson = new Gson();

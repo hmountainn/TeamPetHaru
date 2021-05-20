@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.petharu.web.entity.Notice;
-import com.petharu.web.service.NoticeService;
+import com.petharu.web.service.JDBCNoticeService;
 
 
 @WebServlet("/community/notice/detail")
@@ -28,7 +28,7 @@ public class NoticeDetail extends HttpServlet {
 		try {
 			String id_ = req.getParameter("id");
 			int id = Integer.parseInt(id_);
-			NoticeService noticeService = new NoticeService();
+			JDBCNoticeService noticeService = new JDBCNoticeService();
 			Notice notice = noticeService.get(id);
 			out.println(notice);
 			
