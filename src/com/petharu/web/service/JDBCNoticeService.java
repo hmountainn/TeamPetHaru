@@ -12,13 +12,14 @@ import java.util.List;
 
 import com.petharu.web.entity.Notice;
 
+public class JDBCNoticeService implements NoticeService {
 
-public class JDBCNoticeService {
-	
+	@Override
 	public List<Notice> getList() throws ClassNotFoundException, SQLException {
 		return getList(1, "title", "");
 	}
 
+	@Override
 	public List<Notice> getList(int page, String field, String query) throws ClassNotFoundException, SQLException {
 		
 		List<Notice> list = new ArrayList<>();
@@ -87,6 +88,7 @@ public class JDBCNoticeService {
 		return list;
 	}
 	
+	@Override
 	public int getCount(String field, String query) throws ClassNotFoundException, SQLException {
 		
 		int count = 0;
@@ -111,6 +113,7 @@ public class JDBCNoticeService {
 		return count;
 	}
 	
+	@Override
 	public Notice get(int id) throws ClassNotFoundException, SQLException {
 		
 		String sql = String.format("SELECT N.ID, N.TITLE, N.ADMIN_ID, A.USER_ID, N.REGDATE, N.HIT, N.CONTENT, N.FILES"
@@ -152,6 +155,7 @@ public class JDBCNoticeService {
 		return notice;
 	}
 
+	@Override
 	public int delete(int id) throws ClassNotFoundException, SQLException {
 
 		int result = 0;
@@ -173,6 +177,7 @@ public class JDBCNoticeService {
 		return result;
 	}
 
+	@Override
 	public int insert(Notice notice) throws ClassNotFoundException, SQLException {
 		
 		int result = 0;
@@ -196,6 +201,7 @@ public class JDBCNoticeService {
 		return result;
 	}
 
+	@Override
 	public int update(Notice notice) throws ClassNotFoundException, SQLException {
 		
 		int result = 0;

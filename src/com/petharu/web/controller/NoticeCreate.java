@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.petharu.web.entity.Notice;
 import com.petharu.web.service.JDBCNoticeService;
 
-
 @WebServlet("/community/notice/create")
 public class NoticeCreate extends HttpServlet {
 

@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.petharu.web.service.JDBCNoticeService;
 
-
 @WebServlet("/community/notice/delete")
 public class NoticeDelete extends HttpServlet {
 	
