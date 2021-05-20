@@ -11,9 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
 import com.petharu.web.entity.Notice;
 import com.petharu.web.service.JDBCNoticeService;
-
 
 @WebServlet("/community/notice/detail")
 public class NoticeDetail extends HttpServlet {
@@ -30,7 +30,10 @@ public class NoticeDetail extends HttpServlet {
 			int id = Integer.parseInt(id_);
 			JDBCNoticeService noticeService = new JDBCNoticeService();
 			Notice notice = noticeService.get(id);
-			out.println(notice);
+			
+			Gson gson = new Gson();
+			String json = gson.toJson(notice);
+			out.println(json);
 			
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

@@ -14,7 +14,6 @@ import com.google.gson.Gson;
 import com.petharu.web.entity.Notice;
 import com.petharu.web.service.JDBCNoticeService;
 
-
 @WebServlet("/community/notice/update")
 public class NoticeUpdate extends HttpServlet {
 
