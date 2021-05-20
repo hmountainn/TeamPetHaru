@@ -1,3 +1,4 @@
+<%@page import="com.petharu.web.service.JDBCPetService"%>
 <%@page import="com.petharu.web.entity.Pet"%>
 <%@page import="com.petharu.web.service.PetService"%>
 <%@page import="java.util.List"%>
@@ -7,8 +8,8 @@
 <%
 
 
-PetService petService = new PetService();
-List<Pet> list = petService.getList();
+JDBCPetService petService = new JDBCPetService();
+List<Pet> list = petService.getPetList();
 System.out.println(list);
 
 
