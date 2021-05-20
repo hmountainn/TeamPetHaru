@@ -1,27 +1,34 @@
 package com.petharu.web.entity;
 
+import java.sql.Time;
 import java.util.Date;
 //Ä¿¹Ô¿¬½À
 public class Schedule {
 	private int id;
-	private String userId;
+	private String memberId;
 	private String title;
 	private String content;
-	private String type;
-	private Date dateTime;
+	private String scheduleTypeName;
+	private Date registeredDate;
+	private Time registeredTime;
 	
 	public Schedule() {	
 	}
 	
-	public Schedule(int id, String userId, String title, String content, String type, Date dateTime) {
+	
+
+	public Schedule(int id, String memberId, String title, String content, String scheduleTypeName, Date registeredDate,
+			Time registeredTime) {
 		super();
 		this.id = id;
-		this.userId = userId;
+		this.memberId = memberId;
 		this.title = title;
 		this.content = content;
-		this.type = type;
-		this.dateTime = dateTime;
+		this.scheduleTypeName = scheduleTypeName;
+		this.registeredDate = registeredDate;
+		this.registeredTime = registeredTime;
 	}
+
 
 
 	public int getId() {
@@ -32,12 +39,12 @@ public class Schedule {
 		this.id = id;
 	}
 
-	public String getUserId() {
-		return userId;
+	public String getMemberId() {
+		return memberId;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
 	}
 
 	public String getTitle() {
@@ -56,21 +63,30 @@ public class Schedule {
 		this.content = content;
 	}
 
-	public String getType() {
-		return type;
+	public String getscheduleTypeName() {
+		return scheduleTypeName;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public void setscheduleTypeName(String scheduleTypeName) {
+		this.scheduleTypeName = scheduleTypeName;
 	}
 
-	public Date getDateTime() {
-		return dateTime;
+	public Date getRegisteredDate() {
+		return registeredDate;
 	}
 
-	public void setDateTime(Date dateTime) {
-		this.dateTime = dateTime;
+	public void setRegisteredDate(Date registeredDate) {
+		this.registeredDate = registeredDate;
 	}
+
+	public Time getRegisteredTime() {
+		return registeredTime;
+	}
+
+	public void setRegisteredTime(Time registeredTime) {
+		this.registeredTime = registeredTime;
+	}
+
 	
 
 }
