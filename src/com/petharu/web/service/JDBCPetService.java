@@ -11,7 +11,7 @@ import java.util.List;
 
 import com.petharu.web.entity.Pet;
 
-public class PetService {
+public class JDBCPetService {
 
 	public List<Pet> getList() throws ClassNotFoundException, SQLException{
 		
