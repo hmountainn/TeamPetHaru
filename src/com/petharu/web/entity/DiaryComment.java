@@ -7,19 +7,19 @@ public class DiaryComment {
 	private int id;
 	private String content;
 	private Date regDate;
-	private String memberUserId;
+	private String memberId;
 	private int diaryId;
 	
 	public DiaryComment() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public DiaryComment(int id, String content, Date regDate, String memberUserId, int diaryId) {
+	public DiaryComment(int id, String content, Date regDate, String memberId, int diaryId) {
 		super();
 		this.id = id;
 		this.content = content;
 		this.regDate = regDate;
-		this.memberUserId = memberUserId;
+		this.memberId = memberId;
 		this.diaryId = diaryId;
 	}
 
@@ -47,12 +47,12 @@ public class DiaryComment {
 		this.regDate = regDate;
 	}
 
-	public String getMemberUserId() {
-		return memberUserId;
+	public String getMemberId() {
+		return memberId;
 	}
 
-	public void setMemberUserId(String memberUserId) {
-		this.memberUserId = memberUserId;
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
 	}
 
 	public int getDiaryId() {
@@ -65,8 +65,11 @@ public class DiaryComment {
 
 	@Override
 	public String toString() {
-		return "DiaryComment [id=" + id + ", content=" + content + ", regDate=" + regDate + ", memberUserId="
-				+ memberUserId + ", diaryId=" + diaryId + "]";
+		return "{\"id\":" + id
+				+ ", \"content\":\"" + content
+				+ "\", \"regDate\":\"" + regDate
+				+ "\", \"memberId\":" + memberId
+				+ ", \"diaryId\":" + diaryId + "}";
 	}
 	
 }

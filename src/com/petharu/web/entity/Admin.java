@@ -63,8 +63,12 @@ public class Admin {
 
 	@Override
 	public String toString() {
-		return "Admin [id=" + id + ", userId=" + userId + ", password=" + password + ", email=" + email + ", image="
-				+ image + "]";
+		return "{\"id\":" + id
+				+ ", \"userId\":\"" + userId
+				+ "\", \"password\":\"" + password
+				+ "\", \"email\":\"" + email
+				+ "\", \"image\":\"" + image + "\"}";
 	}
+	
 	
 }
