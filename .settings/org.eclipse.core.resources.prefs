@@ -1,2 +1,6 @@
 eclipse.preferences.version=1
+<<<<<<< HEAD
+encoding//WebContent/community/notice/notice-create.css=UTF-8
+=======
 encoding//WebContent/myhome/list.jsp=UTF-8
+>>>>>>> refs/remotes/origin/master

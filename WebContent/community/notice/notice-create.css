@@ -1,4 +1,4 @@
-/* font-size: 기본 14, 작은 12, 큰 16, 제일큰 24 */
+/* font-size: 湲곕낯 14, �옉�� 12, �겙 16, �젣�씪�겙 24 */
 /* color: hover #eff0f1, border #e4e6e8 */
 :root {
     --shadow: 0 1px 2px rgba(0,0,0,0.05),0 1px 4px rgba(0,0,0,0.05),0 2px 8px rgba(0,0,0,0.05);
@@ -24,13 +24,13 @@ html, body, h1, ul, ol, th, td, fieldset, input {
     padding: 0;
 }
 body {
-    font-family: "맑은고딕";
+    font-family: "留묒�怨좊뵓";
     font-size: 14px;
     color: var(--font-color-basic);
     background-color: #FFFFFF;
 }
 input, textarea {
-    font-family: "맑은고딕";
+    font-family: "留묒�怨좊뵓";
 }
 button, select {
     font-size: 12px !important;
