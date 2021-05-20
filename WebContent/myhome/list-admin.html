@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="css/admin-diary-list.css" type="text/css" rel="stylesheet">
+    <link href="list-admin.css" type="text/css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
 </head>
@@ -20,18 +20,18 @@
                     <nav class="main-menu">   
                             <h1 class="d-none">메인메뉴</h1>
                             <ul>
-                                <li><a href="diary-list.html">우리집</a></li>
-                                <li><a href="../friends/friend-diary.html">이웃집</a></li>
-                                <li><a href="../pet-management/mypet/mypet-list.html">내 동물 관리</a></li>
-                                <li><a href="../community/notice/notice-list.html">커뮤니티</a></li>
+                                <li><a href="list.html">우리집</a></li>
+                                <li><a href="../friends/list.html">이웃집</a></li>
+                                <li><a href="../pet-management/mypet/list.html">내 동물 관리</a></li>
+                                <li><a href="../community/notice/list.html">커뮤니티</a></li>
                             </ul>
                     </nav>
                 </div>
                 <nav class="member-menu">
                     <h1 class="d-none">회원메뉴</h1>
                     <ul>
-                        <li><a href="../mypage/profile/profile-edit.html">MyPage</a></li>
-                        <li><a href="../../../login.html">LogOut</a></li>
+                        <li><a href="../member/profile-edit.html">MyPage</a></li>
+                        <li><a href="../../login.html">LogOut</a></li>
                     </ul>
                 </nav>
             </div>
@@ -39,20 +39,10 @@
 
         <div id="body">
             <div class="float-content">
-                <aside id="aside">
-                    <nav class="aside-menu">
-                        <h1 class="d-none">동물관리 메뉴</h1>
-                        <ul>
-                            <li><a class="current-page" href="../../pet-management/mypet/mypet-list.html">동물 관리</a></li>
-                            <li><a href="../../pet-management/newweightrecord/form.html">체중 관리</a></li>
-                            <li><a href="../../pet-management/calendar/calendar.html">일정 관리</a></li>                       
-                        </ul>
-                    </nav>
-                </aside>
                 <main id="main">
                     <section>
                         <h1>일기 목록</h1>
-                        <table class="diary-list">
+                        <table>
                             <thead>
                                 <tr>
                                     <td class="w-0">번호</td>
@@ -62,6 +52,18 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <tr>
+                                    <td class="w-0">10</td>
+                                    <td class="w-1">id1</td>
+                                    <td class="overflow diary-content">뽀삐와 산책한 날</td>
+                                    <td class="w-2">2021.04.16</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-0">9</td>
+                                    <td class="w-1">id1</td>
+                                    <td class="overflow diary-content">뽀삐와 산책한 날</td>
+                                    <td class="w-2">2021.04.13</td>
+                                </tr>
                                 <tr>
                                     <td class="w-0">8</td>
                                     <td class="w-1">id1</td>

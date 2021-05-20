@@ -1,0 +1,262 @@
+    /*-------------------pop up------------------------*/
+    .result-popup,
+    .confirm-popup,
+    .update-popup,
+    .profile-popup,
+    .add-mypet{
+        position:fixed;
+        top:0px;
+        left:0px;
+        width:100vw;
+        height:100vh;
+        background:rgba(248, 249, 249, 0.5);
+        z-index:1;
+        display:none;
+      }
+      .result-popup .popup-content,
+      .confirm-popup .popup-content,
+      .add-mypet .popup-content,
+      .profile-popup .popup-content,
+      .update-popup .popup-content{
+        position:absolute;
+        top:50%;
+        left:50%;
+        width: 46rem;
+        height: 25rem;
+        padding:20px;
+        box-sizing:border-box;
+        text-align:center;
+        z-index:2;        
+        margin: 2.5rem 0;
+        overflow: hidden;
+        border-radius: 4px;
+        background:#fff;
+        transform:translate(-50%,-66%);
+        box-shadow: rgba(0, 0, 0, 0.08) 0px 12px 20px 0px;
+
+      }
+    .result-popup .popup-content,
+    .confirm-popup .popup-content{      
+       width: 30rem;
+       height: 15rem;
+}
+    .result-popup .close-btn,
+    .confirm-popup .close-btn,
+    .add-mypet .close-btn,
+    .update-popup .close-btn,
+    .profile-popup .close-btn {
+          position:absolute;
+          right:5px;
+          top:5px;
+          width:30px;
+          cursor:pointer;
+    
+        color:rgb(17, 17, 17);
+        font-size:25px;
+        font-weight:600;
+        text-align:center;
+        border-radius:50%;
+      }
+
+      .confirm-popup.active,
+      .result-popup.active,
+      .add-mypet.active,
+      .update-popup.active,
+      .profile-popup.active{
+        display:block;
+      }
+      
+    
+        .profile-box .img-box {
+            width: 50%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .profile-box .img-box img {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        .dog-info{
+            width: 43%;
+            padding: 1.5rem 0.5rem 2.5rem 1.5rem;
+        }
+        .option{
+            text-align: right;
+        }
+        .option span{
+            font-size: 13px;
+        }
+    .detail{
+        height: 240px;
+    }
+    .detail-name{
+        margin: 1.5rem 0;
+        font-size: 22px;
+        text-align: left;
+    }
+    
+    .dog-breed-gender li:first-child{
+        margin: 0px 2rem 1.5rem 0;
+    }
+    .table{
+        width: 90%;
+        height: 6rem;
+        margin-top: 1rem;
+        text-align: left;
+    }
+    .table-head{
+        font-size: 20px;
+        font-weight: bold;
+    
+    }
+
+/*--------수정하기--------------*/    
+.update-profile-box .img-box,
+.add-mypet .img-box {
+    width: 50%;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    line-height: 25rem;
+}
+
+.img-box img {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.image{
+outline:none;
+}
+.add-dog-info,
+.update-dog-info{
+    position: absolute;
+    top: 40px;
+    right: 24px;
+    height: 350px;
+    width: 42%;
+}
+.add-dog-info label,
+.update-dog-info label{
+    line-height: 30px;
+}
+
+.p-name{
+    margin: 16px 0;
+  }
+.add-button,
+.update-button{
+    margin-top: 20px;
+     }
+.add-button a,
+.update-button a{
+    width: 65%;
+}
+.add-container{
+    display: flex;
+    align-items: center;
+}
+.add-lable{
+    /* margin-top: auto; */
+    font-size:5pt; color:#666;
+    line-height: 40px;
+}
+.add-input-personality,
+.add-container input[type=text],
+.add-container input[type=date]
+{
+
+    height: 2rem;
+    border: 0px solid #d3d2d2;
+    border-radius: 10px;
+    font-size: 15px;
+    right: 5px;
+    margin: 8px 0px 8px auto;
+    background-color: #f5f5f5;
+    padding-left: 10px;
+       
+}
+.add-input-personality{
+    height: 6rem;
+    width: 12rem;
+    font-size: 15px;
+}
+.add-container input[type=date]{
+    width: 12rem;
+}
+.add-input-personality,
+.add-input{
+    outline:none;
+}
+
+.dog_gender_input{
+    position: relative;
+    left: 8.2rem;
+    display: flex;
+    justify-content: space-around;
+ }
+ .add-container input[type=radio]{
+    margin-bottom: 1rem;
+}
+
+.dog_gender_input input:nth-child(2){
+    margin-left: 2rem;
+}
+.file-button{
+    display: none;
+ }
+    .file-trigger-button{
+       background-color: white;
+       border: 1px solid #2196f3;
+       border-radius: 4px;
+       padding: 5px 20px;
+       color: #2196f3;
+       cursor: pointer;
+       font-weight: bold;
+    }
+    .file-trigger-button:hover{
+       background-color: #bbdefb;
+    } 
+   /*---------confirm pop up---------*/ 
+   .confirm-box h3{
+    margin-bottom: 15px;
+  }
+  .confirm-box p{
+   font-size: 15px;
+   margin: 35px;
+  }
+  .option-btn{
+    display: flex;
+    justify-content: space-around;
+    gap : 10px;
+  }
+  .cancel,
+  .delete-btn,
+  .result-btn{
+    box-sizing: border-box;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+  }
+  .cancel{
+    border:1px gray solid;
+    border-radius: 4px;
+    font-weight: bold;
+    color: gray;
+  }
+  .delete-btn,
+  .result-btn{
+   border:1px orange solid;
+   background-color: orange;
+   border-radius: 4px;
+   color: white;
+   font-weight: bold;
+ }
