@@ -1,20 +1,22 @@
 /* font-size: 기본 14, 작은 12, 큰 16, 제일큰 24 */
-/* color: hover #eff0f1, border #e4e6e8 */
 :root {
     --shadow: 0 1px 2px rgba(0,0,0,0.05),0 1px 4px rgba(0,0,0,0.05),0 2px 8px rgba(0,0,0,0.05);
     /*---------------------------------------*/
-    --font-color-basic: #464646 !important;
-    --font-color-light: #E2E2E2 !important;
-    --font-color-strong: #FD9F28 !important;
+    --text-color-basic: #464646 !important;
+    --text-color-light: #E2E2E2 !important;
+    --text-color-strong: #FD9F28 !important;
     --bg-color-light: #FFFEFD !important;
+    --hover-color-bg: #EFF0F1;
+    --border-color-light: #E4E6E8;
 }
 
 html, body {
     height: 100%;
 }
 a {
-    color: var(--font-color-basic);
+    color: var(--text-color-basic);
     text-decoration: initial;
+    cursor: pointer;
 }
 ul, ol {
     list-style: none;
@@ -26,32 +28,44 @@ html, body, h1, ul, ol, th, td, fieldset, input {
 body {
     font-family: "맑은고딕";
     font-size: 14px;
-    color: var(--font-color-basic);
+    color: var(--text-color-basic);
     background-color: #FFFFFF;
 }
 input, textarea {
     font-family: "맑은고딕";
 }
-input[type="button"], input[type="submit"], select {
+button, select {
     font-size: 12px !important;
 }
-input[type="button"], input[type="submit"] {
-    cursor: pointer;
+textarea {
+    font-size: 14px !important;
 }
+
+/*---------------------------------------*/
+
 .d-none{
     display: none !important;
 }
+
+/*---------------------------------------*/
+
+.button-2, .button-5 {
+    cursor: pointer;
+    border: 1px solid var(--text-color-basic);
+    border-radius: 3px;
+    background-color: white;
+    padding: 0;
+    height: 20px;
+    font-weight: 400;
+}
 .button-2 {
     width: 35px;
-    border: 1px solid var(--font-color-basic);
-    border-radius: 3px;
-    background-color: white;
 }
 .button-5 {
-    width: 60px;
-    border: 1px solid var(--font-color-basic);
-    border-radius: 3px;
-    background-color: white;
+    width: 65px;
+}
+button:hover {
+    font-weight: bold;
 }
 
 /*---------------------------------------*/
@@ -71,8 +85,8 @@ input[type="button"], input[type="submit"] {
 .table th,
 .table td {
     font-weight: 400;
-    border-top: 1px solid var(--font-color-light);
-    border-bottom: 1px solid var(--font-color-light);
+    border-top: 1px solid var(--border-color-light);
+    border-bottom: 1px solid var(--border-color-light);
 }
 .table th {
     background: var(--bg-color-light);
@@ -87,7 +101,7 @@ input[type="button"], input[type="submit"] {
     line-height: 40px;
 }
 .table>tbody>tr:hover {
-    background-color: #eff0f1;
+    background-color: var(--hover-color-bg);
 }
 
 /*---------------------------------------*/
@@ -147,7 +161,7 @@ input[type="button"], input[type="submit"] {
         }
         #aside {
             grid-area: aside;
-            border-right: solid #e4e6e8 1px;
+            border-right: solid var(--border-color-light) 1px;
             font-size: 16px; 
         }
         #main {  
@@ -205,7 +219,7 @@ input[type="button"], input[type="submit"] {
         padding: 0px 16px;
     }
     .main-menu>ul>li>a:hover {
-        background-color: #eff0f1;
+        background-color: var(--hover-color-bg);
         color: black;
         border-radius: 15px;
     }
@@ -241,7 +255,7 @@ input[type="button"], input[type="submit"] {
     padding-left: 4px;
 }
 .current-page, .aside-menu a:hover {
-    background-color: #eff0f1;
+    background-color: var(--hover-color-bg);
     border-right: 5px orange solid;
     border-radius: 3px;
 }
@@ -276,86 +290,39 @@ input[type="button"], input[type="submit"] {
 }
 
 /*---------------------------------------*/
+/*---------------------------------------*/
 
-#main {
-    display: grid;
-    grid-template-rows: 50px 1fr 40px 50px;
-    grid-template-columns: 1fr;
-    gap: 15px;
-    grid-template-areas:
-    "head-select"
-    "notice-table"
-    "pager"
-    "form";
-}
-    #main>h1 {
-        grid-area: head-select;
-
-        font-size: 24px;
-        color: var(--font-color-basic);
-        line-height: 50px;
-        background: url(../../images/icon-notice.png) no-repeat 0 center;
-        background-size: 30px;
-        padding-left: 40px;
-    }
-    #main>.select-box {
-        grid-area: head-select;
-
-        justify-self: end;
-        align-self: end;
-    }
-    .notice-table {
-        grid-area: notice-table;
-    }
-    .notice-table-pager {
-        grid-area: pager;
-
-        display: flex;
-        justify-self: center;
-        align-self: center;
-        align-items: center;
-        font-size: 14px;
-    }
-    .notice-search-form {
-        grid-area: form;
-
-        justify-self: center;
-        align-self: center;
-    }
-
-.notice-table-pager img {
-    width: 15px;
-    height: 15px;
-    padding: 0 5px 0 5px;
-}
-.notice-table-pager a {
-    height: 15px;
-}
-.notice-table-pager>ul {
-    display: flex;
-}
-.notice-table-pager li{
-    padding: 0 5px 0 5px;
-}
-.notice-table-pager .current-pager {
+.notice-title-create {
+    display: block;
+    border: none;
+    border-bottom: 1.5px solid var(--text-color-basic);
+    width: 940px;
+    height: 60px;
+    text-align: center;
+    font-size: 24px;
     font-weight: bold;
 }
 
-.notice-search-form fieldset {
-    display: flex;
-    border: 0;
-    height: 25px;
+#notice-article-create {
+    display: block;
+    border: none;
+    width: 910px;
+    height: 300px;
+    padding: 15px;
+    margin-top: 10px;
+    background: var(--bg-color-light);
+    resize: vertical;
 }
-.notice-search-form #select-notice-search {
-    margin-right: 5px;
+
+#main .file-select {
+    margin-top: 10px;
 }
-.notice-search-form input[type=text] {
-    width: 148px;
+
+#main button[type="submit"] {
+    display: block;
+    margin: 10px auto 0 auto;
 }
-.notice-search-form input[type=submit] {
-    margin-left: 5px;
-    width: 25px;
-    border: 0;
-    background: url(../../images/search.png) no-repeat center;
-    background-size: 22px;
+
+#main .file-name {
+    margin-left: 10px;
 }

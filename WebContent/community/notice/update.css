@@ -1,20 +1,22 @@
-/* font-size: 기본 14, 작은 12, 큰 16, 제일큰 24 */
-/* color: hover #eff0f1, border #e4e6e8 */
+
 :root {
     --shadow: 0 1px 2px rgba(0,0,0,0.05),0 1px 4px rgba(0,0,0,0.05),0 2px 8px rgba(0,0,0,0.05);
     /*---------------------------------------*/
-    --font-color-basic: #464646 !important;
-    --font-color-light: #E2E2E2 !important;
-    --font-color-strong: #FD9F28 !important;
+    --text-color-basic: #464646 !important;
+    --text-color-light: #E2E2E2 !important;
+    --text-color-strong: #FD9F28 !important;
     --bg-color-light: #FFFEFD !important;
+    --hover-color-bg: #EFF0F1;
+    --border-color-light: #E4E6E8;
 }
 
 html, body {
     height: 100%;
 }
 a {
-    color: var(--font-color-basic);
+    color: var(--text-color-basic);
     text-decoration: initial;
+    cursor: pointer;
 }
 ul, ol {
     list-style: none;
@@ -24,16 +26,19 @@ html, body, h1, ul, ol, th, td, fieldset, input {
     padding: 0;
 }
 body {
-    font-family: "맑은고딕";
+    font-family: "留묒�怨좊뵓";
     font-size: 14px;
-    color: var(--font-color-basic);
+    color: var(--text-color-basic);
     background-color: #FFFFFF;
 }
 input, textarea {
-    font-family: "맑은고딕";
+    font-family: "留묒�怨좊뵓";
 }
 button, select {
     font-size: 12px !important;
+}
+textarea {
+    font-size: 14px !important;
 }
 
 /*---------------------------------------*/
@@ -46,16 +51,21 @@ button, select {
 
 .button-2, .button-5 {
     cursor: pointer;
-    border: 1px solid var(--font-color-basic);
+    border: 1px solid var(--text-color-basic);
     border-radius: 3px;
     background-color: white;
     padding: 0;
+    height: 20px;
+    font-weight: 400;
 }
 .button-2 {
     width: 35px;
 }
 .button-5 {
     width: 65px;
+}
+button:hover {
+    font-weight: bold;
 }
 
 /*---------------------------------------*/
@@ -75,8 +85,8 @@ button, select {
 .table th,
 .table td {
     font-weight: 400;
-    border-top: 1px solid var(--font-color-light);
-    border-bottom: 1px solid var(--font-color-light);
+    border-top: 1px solid var(--border-color-light);
+    border-bottom: 1px solid var(--border-color-light);
 }
 .table th {
     background: var(--bg-color-light);
@@ -91,7 +101,7 @@ button, select {
     line-height: 40px;
 }
 .table>tbody>tr:hover {
-    background-color: #eff0f1;
+    background-color: var(--hover-color-bg);
 }
 
 /*---------------------------------------*/
@@ -151,7 +161,7 @@ button, select {
         }
         #aside {
             grid-area: aside;
-            border-right: solid #e4e6e8 1px;
+            border-right: solid var(--border-color-light) 1px;
             font-size: 16px; 
         }
         #main {  
@@ -209,7 +219,7 @@ button, select {
         padding: 0px 16px;
     }
     .main-menu>ul>li>a:hover {
-        background-color: #eff0f1;
+        background-color: var(--hover-color-bg);
         color: black;
         border-radius: 15px;
     }
@@ -245,7 +255,7 @@ button, select {
     padding-left: 4px;
 }
 .current-page, .aside-menu a:hover {
-    background-color: #eff0f1;
+    background-color: var(--hover-color-bg);
     border-right: 5px orange solid;
     border-radius: 3px;
 }
@@ -280,71 +290,39 @@ button, select {
 }
 
 /*---------------------------------------*/
+/*---------------------------------------*/
 
-#main {
-    display: grid;
-    grid-template-rows: 60px 30px 1fr 60px 30px;
-    grid-template-columns: 1fr;
-    gap: 10px;
-    grid-template-areas:
-    "title"
-    "info"
-    "article"
-    "pager"
-    "button";
+.notice-title-update {
+    display: block;
+    border: none;
+    border-bottom: 1.5px solid var(--text-color-basic);
+    width: 940px;
+    height: 60px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
 }
-    #main>h1 {
-        grid-area: title;
-        
-        line-height: 60px;
-        font-size: 24px;
-        text-align: center;
-        border-bottom: 1.5px solid var(--font-color-basic);
-    }
-    .notice-info {
-        grid-area: info;
 
-        font-size: 12px;
-    }
-    .notice-article {
-        grid-area: article;
-
-        background-color: var(--bg-color-light);
-        padding: 15px;
-    }
-    .article-pager {
-        grid-area: pager;
-
-        display: grid;
-        grid-template-rows: 30px 30px;
-        grid-template-columns: 1fr;
-        grid-template-areas:
-        "up-pager"
-        "down-pager";
-
-        line-height: 30px;
-        font-size: 12px;
-    }
-        .up-article-pager {
-            grid-area: up-pager;            
-        }
-        .down-article-pager {
-            grid-area: down-pager;
-            border-top: 1px solid var(--font-color-light);
-        }
-    .article-pager-button {
-        grid-area: button;
-    }
-
-.notice-info ul {
-    display: flex;
-    justify-content: space-around;
-    line-height: 30px;
+#notice-article-update {
+    display: block;
+    border: none;
+    width: 910px;
+    height: 300px;
+    padding: 15px;
+    margin-top: 10px;
+    background: var(--bg-color-light);
+    resize: vertical;
 }
-.article-pager>div>div {
-    display: inline-block;
-    padding-left: 20px
+
+#main .file-select {
+    margin-top: 10px;
 }
-.article-pager-button button {
-    float: right;
+
+#main button[type="submit"] {
+    display: block;
+    margin: 10px auto 0 auto;
+}
+
+#main .file-name {
+    margin-left: 10px;
 }

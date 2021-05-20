@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>notice-create</title>
-    <link href="./notice-create.css" type="text/css" rel="stylesheet">
+    <title>create</title>
+    <link href="./create.css" type="text/css" rel="stylesheet">
+    <script src="./create.js"></script>
 </head>
 <body>
     <div id="root">
@@ -18,17 +19,17 @@
                     <nav class="main-menu">   
                         <h1 class="d-none">메인메뉴</h1>
                         <ul>
-                            <li><a href="../../myhome/diary-list.html">우리집</a></li>
-                            <li><a href="../../friends/friend-diary.html">이웃집</a></li>
-                            <li><a href="../../pet-management/mypet/mypet-list.html">내동물관리</a></li>
-                            <li><a href="./notice-list.html">커뮤니티</a></li>
+                            <li><a href="../../myhome/list.html">우리집</a></li>
+                            <li><a href="../../friends/list.html">이웃집</a></li>
+                            <li><a href="../../pet-management/mypet/list.html">내동물관리</a></li>
+                            <li><a href="./list.html">커뮤니티</a></li>
                         </ul>
                     </nav>
                 </div>
                 <nav class="member-menu">
                     <h1 class="d-none">회원메뉴</h1>
                     <ul>
-                        <li><a href="../../mypage/profile/profile-edit.html">MyPage</a></li>
+                        <li><a href="../../member/profile-edit.html">MyPage</a></li>
                         <li><a href="../../login.html">LogOut</a></li>
                     </ul>
                 </nav>
@@ -41,19 +42,20 @@
                     <nav class="aside-menu">
                         <h1 class="d-none">커뮤니티</h1>
                         <ul>
-                            <li><a class="current-page" href="./notice-list.html">공지사항</a></li>                       
-                            <li><a href="../knowhow/knowhow-list.html">노하우</a></li>
+                            <li><a class="current-page" href="./list.html">공지사항</a></li>                       
+                            <li><a href="../knowhow/list.html">노하우</a></li>
                         </ul>
                     </nav>
                 </aside>
 
                 <main id="main">
                     <h1 class="d-none">공지사항 작성</h1>
-                    <form action="">
-                        <input class="notice-title-create" type="text" placeholder="제목을 입력하세요.">
-                        <textarea name="" id="notice-article-create" cols="110" rows="10"></textarea>
-                        <input type="file" accept="image/*"/>
-                        <button class="button-5"><a href="./notice-list.html">등록 완료</a></button>
+                    <form action="create" method="post">
+                        <input name="title" class="notice-title-create" type="text" placeholder="제목을 입력하세요.">
+                        <textarea name="content" id="notice-article-create" cols="110" rows="10"></textarea>
+                        <button class="file-select button-5">파일 선택</button>
+                        <input class="d-none" type="file" accept="image/*"/>
+	                    <button class="button-5" type="submit">등록 완료</button>
                     </form>
                 </main>
             </div>
