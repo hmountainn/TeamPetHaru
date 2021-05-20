@@ -11,15 +11,15 @@ import java.util.List;
 
 import com.petharu.web.entity.Pet;
 
-public class JDBCPetService {
+public class JDBCPetService implements PetService{
 
-	public List<Pet> getList() throws ClassNotFoundException, SQLException{
+	public List<Pet> getPetList() throws ClassNotFoundException, SQLException{
 		
-		return getList("name","breed",1);
+		return getPetList(1);
 		
 	}
 
-	public List<Pet> getList(String n,String b,int i) throws ClassNotFoundException, SQLException {
+	public List<Pet> getPetList(int memberId) throws ClassNotFoundException, SQLException {
 		List<Pet> list = new ArrayList<>();
 		
 		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
@@ -122,6 +122,24 @@ public class JDBCPetService {
 		
 		return result;
 		
+	}
+
+	@Override
+	public int updatePetProfile(int id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int deletePetProfile(int id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int insertPetProfile(int id) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 }

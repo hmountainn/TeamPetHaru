@@ -35,7 +35,7 @@ public class Diary {
 		return memberId;
 	}
 
-	public void setMemberId(int memberId) {
+	public void setMebmerId(int memberId) {
 		this.memberId = memberId;
 	}
 
