@@ -1,7 +1,7 @@
 package com.petharu.web.entity;
 
 import java.util.Date;
-
+//Ä¿¹Ô¿¬½À
 public class Schedule {
 	private int id;
 	private String userId;
@@ -13,7 +13,6 @@ public class Schedule {
 	public Schedule() {	
 	}
 	
-
 	public Schedule(int id, String userId, String title, String content, String type, Date dateTime) {
 		super();
 		this.id = id;
