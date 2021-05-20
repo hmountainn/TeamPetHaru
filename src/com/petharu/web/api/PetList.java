@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.petharu.web.entity.Pet;
+import com.petharu.web.service.JDBCPetService;
 import com.petharu.web.service.PetService;
 
 @WebServlet("/api/pet-management/mypet/list")
@@ -33,8 +34,8 @@ public class PetList extends HttpServlet {
 			String breed = req.getParameter("breed");			
 			System.out.println(id_);
 			
-			PetService petService = new PetService();
-			List<Pet> list = petService.getList(name,breed,id_);
+			JDBCPetService petService = new JDBCPetService();
+			List<Pet> list = petService.getPetList(id_);
 //			List<Pet> list = petService.getList();
 			
 			Gson gson = new Gson();				

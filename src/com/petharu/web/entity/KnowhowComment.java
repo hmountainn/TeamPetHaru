@@ -6,20 +6,20 @@ public class KnowhowComment {
 	private int id;
 	private String content;
 	private Date regDate;
-	private int memberId;
-	private int knowhowId;
+	private int member_id;
+	private int knowhow_id;
 	
 	public KnowhowComment() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public KnowhowComment(int id, String content, Date regDate, int memberId, int knowhowId) {
+	public KnowhowComment(int id, String content, Date regDate, int member_id, int knowhow_id) {
 		super();
 		this.id = id;
 		this.content = content;
 		this.regDate = regDate;
-		this.memberId = memberId;
-		this.knowhowId = knowhowId;
+		this.member_id = member_id;
+		this.knowhow_id = knowhow_id;
 	}
 
 	public int getId() {
@@ -46,26 +46,26 @@ public class KnowhowComment {
 		this.regDate = regDate;
 	}
 
-	public int getMemberId() {
-		return memberId;
+	public int getMember_id() {
+		return member_id;
 	}
 
-	public void setMemberId(int memberId) {
-		this.memberId = memberId;
+	public void setMember_id(int member_id) {
+		this.member_id = member_id;
 	}
 
-	public int getKnowhowId() {
-		return knowhowId;
+	public int getKnowhow_id() {
+		return knowhow_id;
 	}
 
-	public void setKnowhowId(int knowhowId) {
-		this.knowhowId = knowhowId;
+	public void setKnowhow_id(int knowhow_id) {
+		this.knowhow_id = knowhow_id;
 	}
 
 	@Override
 	public String toString() {
-		return "KnowhowComment [id=" + id + ", content=" + content + ", regDate=" + regDate + ", memberId=" + memberId
-				+ ", knowhow_Id=" + knowhowId + "]";
+		return "KnowhowComment [id=" + id + ", content=" + content + ", regDate=" + regDate + ", member_id=" + member_id
+				+ ", knowhow_id=" + knowhow_id + "]";
 	}
 	
 	
