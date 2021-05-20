@@ -1,6 +1,6 @@
 package com.petharu.web.entity;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Diary {
 
@@ -35,7 +35,7 @@ public class Diary {
 		return memberId;
 	}
 
-	public void setMebmerId(int memberId) {
+	public void setMemberId(int memberId) {
 		this.memberId = memberId;
 	}
 

@@ -125,7 +125,7 @@ button {
     .logo-title-container>img {
         width: 120px;
         height: auto;
-        margin-top: 7px;
+        /* margin-top: 7px; */
         /* margin-bottom: auto; */
     }
 

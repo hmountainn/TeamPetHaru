@@ -10,9 +10,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.petharu.web.entity.Diary;
 import com.petharu.web.entity.Knowhow;
 
-public class JDBCKnowhowService {
+public class JDBCKnowhowService implements KnowhowService {
 
 	public List<Knowhow> getList() throws ClassNotFoundException, SQLException {
 		
@@ -62,6 +63,57 @@ public class JDBCKnowhowService {
 		return list;
 	}
 	
+	@Override
+	public List<Knowhow> getList(int page, String pet) throws ClassNotFoundException, SQLException {
+		
+		List<Knowhow> list = new ArrayList<>();
+		int size = 12;
+		int startNum = 1+(page-1)*size;
+		int endNum = page*size;
+
+		String sql = "SELECT * FROM ("
+				+ "    SELECT ROWNUM NUM, D.* FROM ("
+				+ "        SELECT * FROM DIARY"
+				+ "        ORDER BY REGDATE DESC"
+				+ "    ) D"
+				+ ") WHERE NUM BETWEEN "+startNum+" AND "+endNum;
+		
+		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
+		Class.forName("oracle.jdbc.OracleDriver"); 
+		Connection con = DriverManager.getConnection(url, "PETHARU", "1357");
+		Statement st = con.createStatement();
+		ResultSet rs = st.executeQuery(sql);
+
+		while(rs.next()) {
+			
+			// Knowhow 데이터
+			int id = rs.getInt("id");
+			int memberId = rs.getInt("memberId");
+			int knowhowTypeId = rs.getInt("knowhowTypeId");
+			String title = rs.getString("title");
+			String content = rs.getString("content");
+			Date regDate = rs.getDate("regDate");
+			int hit = rs.getInt("hit");
+
+			// list에 담아주기
+			Knowhow knowhow = new Knowhow();
+			knowhow.setId(id);
+			knowhow.setMemberId(memberId);
+			knowhow.setKnowhowTypeId(knowhowTypeId);
+			knowhow.setTitle(title);
+			knowhow.setContent(content);
+			knowhow.setRegDate(regDate);
+			knowhow.setHit(hit);
+			
+			list.add(knowhow);
+		}
+		
+		rs.close();
+		st.close();
+		con.close();
+		
+		return list;		
+	}
 	
 	public Knowhow get(int id) throws ClassNotFoundException, SQLException {
 	  	  
@@ -174,4 +226,5 @@ public class JDBCKnowhowService {
 		
 		return result;
 	}
+
 }

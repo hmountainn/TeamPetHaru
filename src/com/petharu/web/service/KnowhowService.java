@@ -14,8 +14,13 @@ import com.petharu.web.entity.Knowhow;
 
 public interface KnowhowService {
 
-	List<Knowhow> getList();
-	List<Knowhow> getList(int page);
-	List<Knowhow> getList(String pet, int page);
+	List<Knowhow> getList() throws ClassNotFoundException, SQLException;
+	List<Knowhow> getList(int page, String pet) throws ClassNotFoundException, SQLException;
 
+	/*
+	Knowhow get(int id);
+	int insert(Knowhow knowhow);
+	int update(Knowhow knowhow);
+	int delete(Knowhow knowhow);
+	*/
 }
