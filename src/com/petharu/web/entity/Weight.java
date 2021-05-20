@@ -5,8 +5,6 @@ import java.util.Date;
 
 public class Weight {
 	private int id;
-
-
 	private int petId;
 	private Date measureDate;
 	private Time measureTime;
@@ -19,7 +17,7 @@ public class Weight {
 
 	public Weight(int id, int petId, Date measureDate, Time measureTime, float kg) {
 
-
+		this.id = id;
 		this.petId = petId;
 		this.measureDate = measureDate;
 		this.measureTime = measureTime;
