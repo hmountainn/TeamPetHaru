@@ -6,7 +6,7 @@ public class Notice {
 
 	private int id;
 	private String title;
-	private String adminUserId;
+	private int adminId;
 	private Date regDate;
 	private int hit;
 	private String content;
@@ -16,11 +16,11 @@ public class Notice {
 		
 	}
 
-	public Notice(int id, String title, String adminUserId, Date regDate, int hit, String content, String files) {
+	public Notice(int id, String title, int adminId, Date regDate, int hit, String content, String files) {
 		super();
 		this.id = id;
 		this.title = title;
-		this.adminUserId = adminUserId;
+		this.adminId = adminId;
 		this.regDate = regDate;
 		this.hit = hit;
 		this.content = content;
@@ -43,12 +43,12 @@ public class Notice {
 		this.title = title;
 	}
 
-	public String getAdminUserId() {
-		return adminUserId;
+	public int getAdminId() {
+		return adminId;
 	}
 
-	public void setAdminUserId(String adminUserId) {
-		this.adminUserId = adminUserId;
+	public void setAdminId(int adminId) {
+		this.adminId = adminId;
 	}
 
 	public Date getRegDate() {
@@ -87,8 +87,8 @@ public class Notice {
 	public String toString() {
 		return "{\"id\":" + id
 				+ ", \"title\":\"" + title
-				+ "\", \"adminUserId\":\"" + adminUserId
-				+ "\", \"regDate\":\"" + regDate
+				+ "\", \"adminId\":" + adminId
+				+ ", \"regDate\":\"" + regDate
 				+ "\", \"hit\":" + hit
 				+ ", \"content\":\"" + content
 				+ "\", \"files\":\"" + files + "\"}";
