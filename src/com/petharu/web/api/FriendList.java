@@ -12,13 +12,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
+import com.petharu.web.entity.Diary;
 import com.petharu.web.entity.Pet;
+import com.petharu.web.service.FriendService;
+import com.petharu.web.service.JdbcFriendService;
 import com.petharu.web.service.JdbcPetService;
-import com.petharu.web.service.PetService;
 
-@WebServlet("/api/pet-management/mypet/list")
-public class PetList extends HttpServlet {
-	//¸ñ·Ï
+@WebServlet("/api/friends/list")
+public class FriendList extends HttpServlet {
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		PrintWriter out = resp.getWriter();
@@ -34,9 +36,8 @@ public class PetList extends HttpServlet {
 			String breed = req.getParameter("breed");			
 			System.out.println(id_);
 			
-			PetService petService = new JdbcPetService();
-			List<Pet> list = petService.getPetList(id_);
-
+			FriendService friendService = new JdbcFriendService();
+			List<Diary> list = friendService.getFriendDiaryList(id_);
 //			List<Pet> list = petService.getList();
 			
 			Gson gson = new Gson();				
@@ -54,8 +55,6 @@ public class PetList extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
 
-	
 }
