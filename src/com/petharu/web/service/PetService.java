@@ -10,8 +10,8 @@ public interface PetService {
 	
 	public List<Pet> getPetList(int memberId) throws ClassNotFoundException, SQLException;
 
-	int updatePetProfile(int id);
-	int deletePetProfile(int id);
-	int insertPetProfile(int id);
+	int updatePetProfile(int id)throws ClassNotFoundException, SQLException;
+	int deletePetProfile(int id)throws ClassNotFoundException, SQLException;
+	int insertPetProfile(int id)throws ClassNotFoundException, SQLException;
 
 }

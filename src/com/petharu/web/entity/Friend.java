@@ -1,6 +1,6 @@
 package com.petharu.web.entity;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Friend {
 
@@ -8,19 +8,27 @@ public class Friend {
 	private int responseId;
 	private Date requestDate;
 	private Date responseDate;
+	private String uerId;
 	
 	public Friend() {
 		// TODO Auto-generated constructor stub
 	}
 
 	
-	public Friend(int requestId, int responseId, Date requestDate, Date responseDate) {
+
+
+
+	public Friend(int requestId, int responseId, Date requestDate, Date responseDate, String uerId) {
 		super();
 		this.requestId = requestId;
 		this.responseId = responseId;
 		this.requestDate = requestDate;
 		this.responseDate = responseDate;
+		this.uerId = uerId;
 	}
+
+
+
 
 
 	public int getRequestId() {
@@ -54,12 +62,30 @@ public class Friend {
 	public void setResponseDate(Date responseDate) {
 		this.responseDate = responseDate;
 	}
+	
+	
+
+	public String getUerId() {
+		return uerId;
+	}
+
+
+	public void setUerId(String uerId) {
+		this.uerId = uerId;
+	}
+
+
+
+
 
 	@Override
 	public String toString() {
 		return "Friend [requestId=" + requestId + ", responseId=" + responseId + ", requestDate=" + requestDate
-				+ ", responseDate=" + responseDate + "]";
+				+ ", responseDate=" + responseDate + ", uerId=" + uerId + "]";
 	}
+
+
+
 	
 	
 }
