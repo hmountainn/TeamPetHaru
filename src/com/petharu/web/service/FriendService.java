@@ -9,7 +9,7 @@ import com.petharu.web.entity.Pet;
 
 public interface FriendService {
 	
-	List<Diary> getFriendDiaryList()throws ClassNotFoundException, SQLException;
+	List<Diary> getFriendDiaryList(int memberId)throws ClassNotFoundException, SQLException;
 	List<Diary> getFriendDiaryCommentList()throws ClassNotFoundException, SQLException;
 	List<Friend> getFollowerCount() throws ClassNotFoundException, SQLException;
 	List<Friend> getFollowingCount()throws ClassNotFoundException, SQLException;
