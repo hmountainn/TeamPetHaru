@@ -55,10 +55,8 @@ public class NoticeList extends HttpServlet {
 			String json = gson.toJson(list);
 			out.println(json);
 			
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} catch (Exception e) {
+			resp.sendRedirect("exception.html");
 		}
 		
 	}

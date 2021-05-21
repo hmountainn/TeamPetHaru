@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.petharu.web.entity.Notice;
 import com.petharu.web.service.JDBCNoticeService;
+import com.petharu.web.service.NoticeService;
 
 @WebServlet("/community/notice/update")
 public class NoticeUpdate extends HttpServlet {
@@ -29,19 +30,15 @@ public class NoticeUpdate extends HttpServlet {
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
 		
-		JDBCNoticeService noticeService = new JDBCNoticeService();
+		NoticeService noticeService = new JDBCNoticeService();
 		
 		try {
 			Notice notice = noticeService.get(id);
 			notice.setTitle(title);
 			notice.setContent(content);
 			noticeService.update(notice);
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (Exception e) {
+			resp.sendRedirect("exception.html");
 		}
 		
 		resp.sendRedirect("detail.html?id="+id);

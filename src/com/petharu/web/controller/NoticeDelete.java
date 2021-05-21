@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.petharu.web.service.JDBCNoticeService;
+import com.petharu.web.service.NoticeService;
 
 
 @WebServlet("/community/notice/delete")
@@ -25,16 +26,12 @@ public class NoticeDelete extends HttpServlet {
 		
 		int id = Integer.parseInt(req.getParameter("id"));
 
-		JDBCNoticeService noticeService = new JDBCNoticeService();
+		NoticeService noticeService = new JDBCNoticeService();
 		
 		try {
 			noticeService.delete(id);
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (Exception e) {
+			resp.sendRedirect("exception.html");
 		}
 		
 		resp.sendRedirect("list.html");

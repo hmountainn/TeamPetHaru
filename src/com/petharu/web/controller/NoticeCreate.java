@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.petharu.web.entity.Notice;
 import com.petharu.web.service.JDBCNoticeService;
+import com.petharu.web.service.NoticeService;
 
 
 @WebServlet("/community/notice/create")
@@ -27,7 +28,7 @@ public class NoticeCreate extends HttpServlet {
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
 		
-		JDBCNoticeService noticeService = new JDBCNoticeService();
+		NoticeService noticeService = new JDBCNoticeService();
 		
 		try {
 			Notice notice = new Notice();
@@ -35,12 +36,8 @@ public class NoticeCreate extends HttpServlet {
 			notice.setAdminId(1);
 			notice.setContent(content);
 			noticeService.insert(notice);
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (Exception e) {
+			resp.sendRedirect("exception.html");
 		}
 		
 		resp.sendRedirect("list.html");

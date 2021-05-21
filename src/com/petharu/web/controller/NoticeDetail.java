@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.petharu.web.entity.Notice;
 import com.petharu.web.service.JDBCNoticeService;
+import com.petharu.web.service.NoticeService;
 
 
 @WebServlet("/community/notice/detail")
@@ -28,14 +29,13 @@ public class NoticeDetail extends HttpServlet {
 		try {
 			String id_ = req.getParameter("id");
 			int id = Integer.parseInt(id_);
-			JDBCNoticeService noticeService = new JDBCNoticeService();
+			
+			NoticeService noticeService = new JDBCNoticeService();
 			Notice notice = noticeService.get(id);
 			out.println(notice);
 			
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} catch (Exception e) {
+			resp.sendRedirect("exception.html");
 		}
 
 	}
