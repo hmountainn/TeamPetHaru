@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.petharu.web.entity.Notice;
 import com.petharu.web.service.JDBCNoticeService;
 import com.petharu.web.service.NoticeService;
@@ -32,7 +34,12 @@ public class NoticeDetail extends HttpServlet {
 			
 			NoticeService noticeService = new JDBCNoticeService();
 			Notice notice = noticeService.get(id);
-			out.println(notice);
+			noticeService.hitUp(notice);
+			
+			Gson gson = new Gson();
+			String json = gson.toJson(notice);
+			out.println(json);
+			
 			
 		} catch (Exception e) {
 			resp.sendRedirect("exception.html");

@@ -38,9 +38,9 @@ public class JDBCNoticeService implements NoticeService {
 //				+ "    ) N)"
 //				+ "    WHERE \"INDEX\" BETWEEN "+startIdx+" AND "+endIdx;
 		
-		String sql = "SELECT N.\"INDEX\", N.ID, N.TITLE, N.ADMIN_ID, N.USER_ID, N.REGDATE, N.HIT, N.CONTENT, N.FILES"
+		String sql = "SELECT N.RN, N.ID, N.TITLE, N.ADMIN_ID, N.USER_ID, N.REGDATE, N.HIT, N.CONTENT, N.FILES"
 				+ "    FROM ("
-				+ "        SELECT ROWNUM \"INDEX\", NV.*"
+				+ "        SELECT ROWNUM RN, NV.*"
 				+ "        FROM ("
 				+ "            SELECT *"
 				+ "            FROM NOTICE_VIEW"
@@ -48,7 +48,7 @@ public class JDBCNoticeService implements NoticeService {
 				+ "            ORDER BY REGDATE DESC"
 				+ "        ) NV"
 				+ "    ) N"
-				+ "    WHERE \"INDEX\" BETWEEN "+startIdx+" AND "+endIdx;
+				+ "    WHERE RN BETWEEN "+startIdx+" AND "+endIdx;
 		
 		try {
 			
@@ -146,6 +146,11 @@ public class JDBCNoticeService implements NoticeService {
 			int hit = rs.getInt("hit");
 			String content = rs.getString("content");
 			String files = rs.getString("files");
+			String upTitle = rs.getString("up_title");
+			int upId = rs.getInt("up_id");
+			String downTitle = rs.getString("down_title");
+			int downId = rs.getInt("down_id");
+			
 			
 			Notice notice = new Notice();
 			notice.setId(id);
@@ -156,6 +161,10 @@ public class JDBCNoticeService implements NoticeService {
 			notice.setHit(hit);
 			notice.setContent(content);
 			notice.setFiles(files);
+			notice.setUpTitle(upTitle);
+			notice.setUpId(upId);
+			notice.setDownTitle(downTitle);
+			notice.setDownId(downId);
 			
 			rs.close();
 			st.close();
@@ -253,4 +262,30 @@ public class JDBCNoticeService implements NoticeService {
 		return result;
 	}
 
+	@Override
+	public int hitUp(Notice notice) {
+		
+		int result = 0;
+		
+		String sql = String.format("UPDATE NOTICE SET HIT=HIT+1 WHERE ID=?");
+		
+		try {
+			String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
+			Class.forName("oracle.jdbc.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "PETHARU", "1357");
+			
+			PreparedStatement st = con.prepareStatement(sql);
+			st.setInt(1, notice.getId());
+			result = st.executeUpdate();
+			
+			st.close();
+			con.close();
+		} catch (Exception e) {
+			throw new ServiceException();
+		}
+		
+		return result;
+	}
+	
+	
 }

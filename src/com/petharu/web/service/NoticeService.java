@@ -15,5 +15,6 @@ public interface NoticeService {
 	int delete(int id);
 	int insert(Notice notice);
 	int update(Notice notice);
-	
+	int hitUp(Notice notice);
+
 }
