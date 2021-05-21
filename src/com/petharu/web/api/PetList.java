@@ -24,34 +24,25 @@ public class PetList extends HttpServlet {
 		PrintWriter out = resp.getWriter();
 		
 
-		try {		
-			int id_ = 1;
-			if (req.getParameter("id") != null) {
-				Integer.parseInt(req.getParameter("id"));				
-			}
+		int id_ = 1;
+		if (req.getParameter("id") != null) {
+			Integer.parseInt(req.getParameter("id"));				
+		}
 //			String name = req.getParameter("name");
 //			System.out.println(name);
 //			String breed = req.getParameter("breed");			
-			System.out.println(id_);
-			
-			PetService petService = new JdbcPetService();
-			List<Pet> list = petService.getPetList(id_);
-			
-			Gson gson = new Gson();				
-			String json = gson.toJson(list);
-			System.out.println(json.toString());
-			
-			out.println(json);
-						
-		System.out.println("list");
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		System.out.println(id_);
+		
+		PetService petService = new JdbcPetService();
+		List<Pet> list = petService.getPetList(id_);
+		
+		Gson gson = new Gson();				
+		String json = gson.toJson(list);
+		System.out.println(json.toString());
+		
+		out.println(json);
+					
+System.out.println("list");
 		
 	}
 

@@ -98,10 +98,4 @@ public class JdbcPetService implements PetService{
 	}
 
 
-
-	@Override
-	public List<Pet> getPetList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

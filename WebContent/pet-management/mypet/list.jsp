@@ -7,8 +7,8 @@
 	pageEncoding="UTF-8"%>
 
 <%
-JdbcPetService petService = new JdbcPetService();
-List<Pet> list = petService.getPetList();
+PetService petService = new JdbcPetService();
+List<Pet> list = petService.getPetList(1);
 System.out.println(list);
 
 
