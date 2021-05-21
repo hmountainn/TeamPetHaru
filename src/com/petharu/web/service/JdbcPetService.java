@@ -74,8 +74,29 @@ public class JdbcPetService implements PetService {
 
 	@Override
 	public int insertPetProfile(Pet pet) throws SQLException, ClassNotFoundException {
-		// TODO Auto-generated method stub
-		return 0;
+		//조회수,공개비공개 등 업데이트경우가 많다.
+		int result = 0;
+
+		//모든업데이트 시 하나의 쿼리문이용//데이터꽂을공간에 ?넣기
+		String sql = "INSERT INTO PET(NAME,GENDER,BIRTHDAY,PERSONALITY)"
+				+ "VALUES(?,?,?,?)";
+
+		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
+		Class.forName("oracle.jdbc.OracleDriver");
+		Connection con = DriverManager.getConnection(url, "PETHARU", "1357");
+		
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, pet.getName());//순서대로
+		st.setString(2, pet.getGender());
+		st.setString(3, pet.getBirthday());
+		st.setString(4, pet.getPersonality());
+		
+		result = st.executeUpdate();//sql넣지말것 ex.executeQuery(sql):Select, ex, Update:
+		
+		st.close();
+		con.close();
+		
+		return result;
 	}
 
 }
