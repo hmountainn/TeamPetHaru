@@ -302,7 +302,7 @@ System.out.println(list);
 									class="file-trigger-button">Upload</span>
 							</div>
 							<div class="add-dog-info">
-
+							<form action="reg" method="post">
 								<div class="dog_name add-container">
 									<label class="add-label">이름<span class="necessary">*</span></label>
 									<input class="add-input" type="text" placeholder="반려동물 이름">
@@ -333,9 +333,11 @@ System.out.println(list);
 								</div>
 
 								<div class="add-button">
-									<a href="list.html" class="button">저장하기</a>
+									<!-- <a href="list.html" class="button">저장하기</a> -->
+									<input type="submit" class="button">저장하기
 								</div>
-							</div>
+								</form>
+							</div><!--add-dog-info  -->
 
 						</div>
 						<!--popup-content-->
