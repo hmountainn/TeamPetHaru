@@ -30,11 +30,10 @@ public class NoticeDeleteController extends HttpServlet {
 		
 		try {
 			noticeService.delete(id);
+			//resp.sendRedirect("list.html");
 		} catch (Exception e) {
 			resp.sendRedirect("exception.html");
 		}
-		
-		resp.sendRedirect("list.html");
 	}
 
 }

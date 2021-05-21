@@ -55,14 +55,15 @@ window.addEventListener("load", function() {
 	request.send(null);
 	
 	
-	deleteBtn.onclick = function() {
+	deleteBtn.onclick = function(e) {
 		if(confirm("정말로 삭제하시겠습니까?")) {
 			var request = new XMLHttpRequest();
 			request.onload = function() {
 			};
 			request.open("GET", `./delete?id=${noticeId}`);
 			request.send(null);
-		};
+		} else
+			e.preventDefault();
 	};
 
 })
