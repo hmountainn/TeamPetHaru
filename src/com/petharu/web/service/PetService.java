@@ -12,6 +12,6 @@ public interface PetService {
 
 	int updatePetProfile(int id)throws ClassNotFoundException, SQLException;
 	int deletePetProfile(int id)throws ClassNotFoundException, SQLException;
-	int insertPetProfile(int id)throws ClassNotFoundException, SQLException;
+	int insertPetProfile(Pet pet) throws SQLException, ClassNotFoundException;
 
 }

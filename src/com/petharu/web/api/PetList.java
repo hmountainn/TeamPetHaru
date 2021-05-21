@@ -36,8 +36,6 @@ public class PetList extends HttpServlet {
 			
 			PetService petService = new JdbcPetService();
 			List<Pet> list = petService.getPetList(id_);
-
-//			List<Pet> list = petService.getList();
 			
 			Gson gson = new Gson();				
 			String json = gson.toJson(list);

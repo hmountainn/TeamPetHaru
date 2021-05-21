@@ -76,9 +76,25 @@ public class JdbcPetService implements PetService{
 	}
 
 	@Override
-	public int insertPetProfile(int id) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int insertPetProfile(Pet pet) throws SQLException, ClassNotFoundException {
+		int result = 0;
+	
+		String sql = "INSERT INTO PET(NAME,GENDER,BIRTHDAY,PERSONALITY) VALUES(?,?,?,?)";			
+		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
+		Class.forName("oracle.jdbc.OracleDriver"); 
+		Connection con = DriverManager.getConnection(url,"PETHARU","1357"); 
+		
+		PreparedStatement st = con.prepareStatement(sql);
+
+		st.setString(1, pet.getName());
+		st.setString(2, pet.getGender()); 
+		st.setString(3,pet.getBirthday());
+		st.setString(4,pet.getPersonality());
+		
+		result = st.executeUpdate(); //executeQuery() : select¹®, executeUpdate():update/delete/insert
+		st.close();
+		con.close();
+		return result;
 	}
 	
 }
