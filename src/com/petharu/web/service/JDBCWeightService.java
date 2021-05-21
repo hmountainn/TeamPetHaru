@@ -47,7 +47,7 @@ public class JDBCWeightService implements WeightService{
 			st.close();
 		
 		} catch (Exception e) {
-			throw new 서비스예외();
+			throw new ServiceException();
 		}
 		return list;
 	}

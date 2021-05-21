@@ -85,11 +85,12 @@ public class JDBCNoticeService implements NoticeService {
 			st.close();
 			con.close();
 		
+			return list;
+
 		} catch (Exception e) {
-			throw new ServiceException;
+			throw new ServiceException();
 		}
 		
-		return list;
 	}
 	
 	@Override
@@ -117,7 +118,7 @@ public class JDBCNoticeService implements NoticeService {
 			con.close();
 			
 		} catch (Exception e) {
-			throw new ServiceException;
+			throw new ServiceException();
 		}
 		
 		return count;
@@ -163,7 +164,7 @@ public class JDBCNoticeService implements NoticeService {
 			return notice;
 			
 		} catch (Exception e) {
-			throw new ServiceException;
+			throw new ServiceException();
 		}
 		
 	}
@@ -189,7 +190,7 @@ public class JDBCNoticeService implements NoticeService {
 			con.close();
 			
 		} catch (Exception e) {
-			throw new ServiceException;
+			throw new ServiceException();
 		}
 		
 		return result;
@@ -217,7 +218,7 @@ public class JDBCNoticeService implements NoticeService {
 			st.close();
 			con.close();
 		} catch (Exception e) {
-			throw new ServiceException;
+			throw new ServiceException();
 		}
 		
 		return result;
@@ -246,7 +247,7 @@ public class JDBCNoticeService implements NoticeService {
 			st.close();
 			con.close();
 		} catch (Exception e) {
-			throw new ServiceException;
+			throw new ServiceException();
 		}
 		
 		return result;
