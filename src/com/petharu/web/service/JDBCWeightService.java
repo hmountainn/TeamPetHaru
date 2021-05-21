@@ -19,7 +19,8 @@ public class JDBCWeightService implements WeightService {
 		List<Weight> list = new ArrayList<>();
 		
 		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
-		String sql = "SELECT * FROM WEIGHT";
+//		String sql = "SELECT * FROM WEIGHT";
+		String sql = "SELECT W.*,SUBSTR(MEASURE_DATETIME,0,10) DA FROM WEIGHT W ORDER BY DA";
 		
 		
 		try {

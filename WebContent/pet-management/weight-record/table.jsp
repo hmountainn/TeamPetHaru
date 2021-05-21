@@ -102,7 +102,7 @@
                                     	if(Integer.parseInt(hour)>12){ %>
                                     		<td class="pm"><%=Integer.parseInt(hour)-12%>:<%=minute%> PM</td>
                                     	<%} else{ %>
-                                    		<td class="am"><%=hour%>:<%=minute%> AM</td>
+                                    		<td class="am"><%=Integer.parseInt(hour)%>:<%=minute%> AM</td>
                                     	<%}%>
                                     <td><%=n.getKg()%> KG</td>
                                 </tr>
