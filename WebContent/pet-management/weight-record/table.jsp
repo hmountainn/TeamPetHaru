@@ -19,7 +19,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="table-style.css" type="text/css" rel="stylesheet">
-    <script src="table.js"></script>
+<!--     <script src="table.js"></script> -->
 </head>
 <body>
     <div id="root">
@@ -89,16 +89,20 @@
                             <tbody class="tbody">
                             <%for(Weight n : list){ %>
                                 <tr>
-                                    <td><a href="revise-form.html"><%=n.getMeasureDate() %></a></td>
+                                	<%
+                                		String Datetime = n.getMeasureDatetime();
+                                		String date = Datetime.substring(0,10);
+                                		String time = Datetime.substring(11,16);
+                                		
+                               			String hour = time.substring(0,2);
+                               			String minute = time.substring(3,5);
+                                	%>
+                                    <td><a href="revise-form.jsp?id=<%=n.getId()%>"><%=date %></a></td>
                                     <%	
-                                    	String time;
-                                    	int hour = n.getMeasureTime().getHours();
-                                    	String minute = n.getMeasureTime().toString().substring(3,5);
-                                    	
-                                    	if(hour>12){ %>
-                                    		<td class="pm"><%=Integer.toString(hour-12)%>:<%=minute%> PM</td>
+                                    	if(Integer.parseInt(hour)>12){ %>
+                                    		<td class="pm"><%=Integer.parseInt(hour)-12%>:<%=minute%> PM</td>
                                     	<%} else{ %>
-                                    		<td class="am"><%=Integer.toString(hour)%>:<%=minute%> AM</td>
+                                    		<td class="am"><%=Integer.parseInt(hour)%>:<%=minute%> AM</td>
                                     	<%}%>
                                     <td><%=n.getKg()%> KG</td>
                                 </tr>
