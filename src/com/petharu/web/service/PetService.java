@@ -6,7 +6,7 @@ import java.util.List;
 import com.petharu.web.entity.Pet;
 
 public interface PetService {
-	public List<Pet> getPetList() throws ClassNotFoundException, SQLException;	
+	public List<Pet> getPetList();	
 	
 	public List<Pet> getPetList(int memberId) throws ClassNotFoundException, SQLException;
 

@@ -13,51 +13,50 @@ import com.petharu.web.entity.Pet;
 
 public class JdbcPetService implements PetService{
 
-	public List<Pet> getPetList() throws ClassNotFoundException, SQLException{
-		
-		return getPetList(1);
-		
-	}
-
-	public List<Pet> getPetList(int memberId) throws ClassNotFoundException, SQLException {
+	public List<Pet> getPetList(int memberId) {
 		List<Pet> list = new ArrayList<>();
 		
 		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
-//		String sql = "SELECT * FROM PET";
+
 		String sql = "SELECT P.*,B.NAME BREED,TO_CHAR(SYSDATE,'YYYY')-TO_CHAR(BIRTHDAY, 'YYYY')+1 AGE \r\n"
 				+ "FROM PET P \r\n"
 				+ "LEFT JOIN BREED B ON B.ID = p.breed_id WHERE MEMBER_ID = "+memberId;
 		
-		Class.forName("oracle.jdbc.OracleDriver");
-		Connection con = DriverManager.getConnection(url, "PETHARU", "1357");
-		
-		Statement st = con.createStatement();
-		ResultSet rs = st.executeQuery(sql);
-		
-		while(rs.next()) {
+		try {
+			Class.forName("oracle.jdbc.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "PETHARU", "1357");
 			
-			int id = rs.getInt("id");
-			String name = rs.getString("name");
-			String gender = rs.getString("gender");
-			int age = rs.getInt("age");
-			String breed = rs.getString("breed");
-			String personality = rs.getString("personality");
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
 			
-			Pet pet = new Pet();
-			pet.setId(id);
-			pet.setName(name);
-			pet.setGender(gender);
-			pet.setAge(age);
-			pet.setBreed(breed);
-			pet.setPersonality(personality);
+			while(rs.next()) {
+				
+				int id = rs.getInt("id");
+				String name = rs.getString("name");
+				String gender = rs.getString("gender");
+				int age = rs.getInt("age");
+				String breed = rs.getString("breed");
+				String personality = rs.getString("personality");
+				
+				Pet pet = new Pet();
+				pet.setId(id);
+				pet.setName(name);
+				pet.setGender(gender);
+				pet.setAge(age);
+				pet.setBreed(breed);
+				pet.setPersonality(personality);
+				
+				list.add(pet);
+				
+				
+			}
+			rs.close();
+			st.close();
+			con.close();
 			
-			list.add(pet);
-			
-			
+		} catch (Exception e) {
+			throw new 서비스예외();
 		}
-		rs.close();
-		st.close();
-		con.close();
 		
 		return list;
 	}
@@ -96,5 +95,13 @@ public class JdbcPetService implements PetService{
 	public int deletePetProfile(int id) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+
+
+	@Override
+	public List<Pet> getPetList() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
