@@ -20,6 +20,7 @@ public class RegScheduleController extends HttpServlet{
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
 		String datetime = req.getParameter("datetime");		
+		
 		try {
 			ScheduleService scheduleservice = new JDBCScheduleService();		
 			Schedule schedule = new Schedule();

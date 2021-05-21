@@ -47,7 +47,7 @@ public class NoticeList extends HttpServlet {
 			if (q != null && !q.equals("")) {
 				query = q;
 			}
-			
+
 			NoticeService noticeService = new JDBCNoticeService();
 			List<Notice> list = noticeService.getList(page, field, query);
 
