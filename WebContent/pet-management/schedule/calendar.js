@@ -4,7 +4,7 @@ window.addEventListener("load",function(){
     detailSchedule();
 	
 });
-
+/*
 function getSchedule(){
 	
 	var request = new XMLHttpRequest();
@@ -27,7 +27,7 @@ function getSchedule(){
 		//parameter로 month줘야함 user_id도...
 		request.open("GET",`../api/schedule/list`,true); //false면 동기, true면 비동기
         request.send(null);		
-}
+}*/
 
 function makeCalendar(){
     calendar = document.querySelector(".calendar");
@@ -92,7 +92,7 @@ function makeCalendar(){
         }
         
     }
-	getSchedule();
+	//getSchedule();
 }
 /*
 window.addEventListener("load",function(){//오늘날짜표시
@@ -187,7 +187,7 @@ function detailSchedule(){
     //console.log(scheduleDetail);
     calendar.onclick = function(e){
         var target = e.target;
-        //console.log(target);
+        console.log(target);
         if(target.classList.contains("schedule")){
             scheduleDetail.classList.toggle("d-none");
 

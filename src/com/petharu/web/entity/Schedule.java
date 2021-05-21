@@ -5,31 +5,24 @@ import java.util.Date;
 //Ä¿¹Ô¿¬½À
 public class Schedule {
 	private int id;
-	private String memberId;
+	private int memberId;
 	private String title;
 	private String content;
 	private String scheduleTypeName;
-	private Date registeredDate;
-	private Time registeredTime;
+	private String dateTime;
 	
 	public Schedule() {	
 	}
-	
-	
 
-	public Schedule(int id, String memberId, String title, String content, String scheduleTypeName, Date registeredDate,
-			Time registeredTime) {
+	public Schedule(int id, int memberId, String title, String content, String scheduleTypeName, String dateTime) {
 		super();
 		this.id = id;
 		this.memberId = memberId;
 		this.title = title;
 		this.content = content;
 		this.scheduleTypeName = scheduleTypeName;
-		this.registeredDate = registeredDate;
-		this.registeredTime = registeredTime;
+		this.dateTime = dateTime;
 	}
-
-
 
 	public int getId() {
 		return id;
@@ -39,11 +32,11 @@ public class Schedule {
 		this.id = id;
 	}
 
-	public String getMemberId() {
+	public int getMemberId() {
 		return memberId;
 	}
 
-	public void setMemberId(String memberId) {
+	public void setMemberId(int memberId) {
 		this.memberId = memberId;
 	}
 
@@ -63,38 +56,25 @@ public class Schedule {
 		this.content = content;
 	}
 
-	public String getscheduleTypeName() {
+	public String getScheduleTypeName() {
 		return scheduleTypeName;
 	}
 
-	public void setscheduleTypeName(String scheduleTypeName) {
+	public void setScheduleTypeName(String scheduleTypeName) {
 		this.scheduleTypeName = scheduleTypeName;
 	}
 
-	public Date getRegisteredDate() {
-		return registeredDate;
+	public String getDateTime() {
+		return dateTime;
 	}
 
-	public void setRegisteredDate(Date registeredDate) {
-		this.registeredDate = registeredDate;
+	public void setDateTime(String dateTime) {
+		this.dateTime = dateTime;
 	}
+	
+	
 
-	public Time getRegisteredTime() {
-		return registeredTime;
-	}
-
-	public void setRegisteredTime(Time registeredTime) {
-		this.registeredTime = registeredTime;
-	}
-
-
-
-	@Override
-	public String toString() {
-		return "Schedule [id=" + id + ", memberId=" + memberId + ", title=" + title + ", content=" + content
-				+ ", scheduleTypeName=" + scheduleTypeName + ", registeredDate=" + registeredDate + ", registeredTime="
-				+ registeredTime + "]";
-	}
+	
 
 	
 

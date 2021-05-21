@@ -93,19 +93,20 @@
                                 <div class="add-schedule-form">
     
                                     <h1 class="d-none">일정추가</h1>                                   
-                                    <form action="">
+                                    <form action="reg" method="post">
                                         <div class="schedule-input-container title-container">
                                             <label class="schedule-lable title-lable d-none" for="">제목</label>
-                                            <input class="title-input" type="text" placeholder="제목">
+                                            <input class="title-input" type="text" placeholder="제목" name="title">
                                         </div>
                                         <div class="schedule-input-container date-time-container">
                                             <label class="schedule-lable  date-time-lable btn" for="">일시</label>
-                                            <input class="date-input" type="date">
-                                            <input class="time-input" type="time">
+                                           
+                                            <input type = "datetime-local" name = "datetime" >
+
                                         </div>
                                         <div class="schedule-input-container content-container">
                                             <label class="schedule-lable content-lable btn" for="">내용</label>
-                                            <textarea class="content-input" name="" id="" cols="40" rows="7" placeholder="내용"></textarea>
+                                            <textarea class="content-input" name="" id="" cols="40" rows="7" placeholder="내용" name="content"></textarea>
                                         </div>
                                         
                                         
