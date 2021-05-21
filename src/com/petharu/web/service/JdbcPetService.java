@@ -63,17 +63,6 @@ public class JdbcPetService implements PetService{
 	}
 	
 
-	@Override
-	public int updatePetProfile(int id) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int deletePetProfile(int id) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	@Override
 	public int insertPetProfile(Pet pet) throws SQLException, ClassNotFoundException {
@@ -97,4 +86,15 @@ public class JdbcPetService implements PetService{
 		return result;
 	}
 	
+	@Override
+	public int updatePetProfile(int id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	@Override
+	public int deletePetProfile(int id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

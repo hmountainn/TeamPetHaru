@@ -29,9 +29,9 @@ public class PetList extends HttpServlet {
 			if (req.getParameter("id") != null) {
 				Integer.parseInt(req.getParameter("id"));				
 			}
-			String name = req.getParameter("name");
-			System.out.println(name);
-			String breed = req.getParameter("breed");			
+//			String name = req.getParameter("name");
+//			System.out.println(name);
+//			String breed = req.getParameter("breed");			
 			System.out.println(id_);
 			
 			PetService petService = new JdbcPetService();
