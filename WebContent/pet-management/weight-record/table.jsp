@@ -1,3 +1,16 @@
+<%@page import="com.petharu.web.entity.Weight"%>
+<%@page import="com.petharu.web.service.JDBCWeightService"%>
+<%@page import="java.util.List" %>
+<%@page import="java.sql.Time" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+<%
+    JDBCWeightService weightservice = new JDBCWeightService();
+    List<Weight> list = weightservice.getList();
+%>
+    
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,10 +32,10 @@
                     <nav class="main-menu">   
                             <h1 class="d-none">메인메뉴</h1>
                             <ul>
-                                <li><a href="../../myhome/list.html">우리집</a></li>
-                                <li><a href="../../friends/list.html">이웃집</a></li>
-                                <li><a href="../mypet/list.html">내 동물관리</a></li>
-                                <li><a href="../../community/knowhow/list.html">커뮤니티</a></li>
+                                <li><a>우리집</a></li>
+                                <li><a>이웃집</a></li>
+                                <li><a>내 동물관리</a></li>
+                                <li><a>커뮤니티</a></li>
                             </ul>
                     </nav>
                 </div>
@@ -44,9 +57,9 @@
                     <nav class="aside-menu">
                         <h1 class="d-none">동물관리메뉴</h1>
                         <ul>
-                            <li><a href="../mypet/list.html">동물 관리</a></li>
+                            <li><a href="../mypet/mypet-list.html">동물 관리</a></li>
                             <li><a class="current-page" href="form.html">체중 관리</a></li>
-                            <li><a href="../schedule/calendar.html">일정 관리</a></li>                         
+                            <li><a href="../calendar/calendar.html">일정 관리</a></li>                       
                         </ul>
                     </nav>
                 </aside>
@@ -74,12 +87,23 @@
                                 </tr>
                             </thead>
                             <tbody class="tbody">
+                            <%for(Weight n : list){ %>
                                 <tr>
-                                    <td><a href="revise-form.html">2021-01-02</a></td>
-                                    <td class="am">8:56 AM</td>
-                                    <td>5.03 KG</td>
+                                    <td><a href="revise-form.html"><%=n.getMeasureDate() %></a></td>
+                                    <%	
+                                    	String time;
+                                    	int hour = n.getMeasureTime().getHours();
+                                    	String minute = n.getMeasureTime().toString().substring(3,5);
+                                    	
+                                    	if(hour>12){ %>
+                                    		<td class="pm"><%=Integer.toString(hour-12)%>:<%=minute%> PM</td>
+                                    	<%} else{ %>
+                                    		<td class="am"><%=Integer.toString(hour)%>:<%=minute%> AM</td>
+                                    	<%}%>
+                                    <td><%=n.getKg()%> KG</td>
                                 </tr>
-                                <tr>
+                            <%} %>
+<!--                                 <tr>
                                     <td><a href="revise-form.html">2021-01-02</a></td>
                                     <td class="pm">5:32 PM</td>
                                     <td>5.05 KG</td>
@@ -138,7 +162,7 @@
                                     <td><a href="">2021-01-06</a></td>
                                     <td class="am">8:50 AM</td>
                                     <td>5.13 KG</td>
-                                </tr>
+                                </tr> -->
                             </tbody>
                         </table>
                     </div>
@@ -146,7 +170,7 @@
             </div>
         </div>
 
-        <footer id="footer">footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer</footer>
+        <!-- <footer id="footer">footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer</footer> -->
 
 
     </div>

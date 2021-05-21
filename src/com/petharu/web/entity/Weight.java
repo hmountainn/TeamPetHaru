@@ -1,28 +1,29 @@
 package com.petharu.web.entity;
 
+import java.sql.Time;
 import java.util.Date;
 
 public class Weight {
 	private int id;
-	private int pet_id;
-	private Date measure_time;
-	private float number;
+	private int petId;
+	private Date measureDate;
+	private Time measureTime;
+	private float kg;
 	
 	public Weight() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	
 
-	public Weight(int id, int pet_id, Date measure_time, float number) {
-		super();
+
+	public Weight(int id, int petId, Date measureDate, Time measureTime, float kg) {
+
 		this.id = id;
-		this.pet_id = pet_id;
-		this.measure_time = measure_time;
-		this.number = number;
+		this.petId = petId;
+		this.measureDate = measureDate;
+		this.measureTime = measureTime;
+		this.kg = kg;
+
 	}
-
-
 
 	public int getId() {
 		return id;
@@ -31,38 +32,42 @@ public class Weight {
 	public void setId(int id) {
 		this.id = id;
 	}
-
-	public int getPet_id() {
-		return pet_id;
-	}
-
-	public void setPet_id(int pet_id) {
-		this.pet_id = pet_id;
-	}
-
-	public Date getMeasure_time() {
-		return measure_time;
-	}
-
-	public void setMeasure_time(Date measure_time) {
-		this.measure_time = measure_time;
-	}
-
-	public float getNumber() {
-		return number;
-	}
-
-	public void setNumber(float number) {
-		this.number = number;
+	
+	public int getPetId() {
+		return petId;
 	}
 
 
+	public void setPetId(int petId) {
+		this.petId = petId;
+	}
+	public Date getMeasureDate() {
+		return measureDate;
+	}
+
+	public void setMeasureDate(Date measureDate) {
+		this.measureDate = measureDate;
+	}
+
+	public Time getMeasureTime() {
+		return measureTime;
+	}
+
+	public void setMeasureTime(Time measureTime) {
+		this.measureTime = measureTime;
+	}
+
+	public float getKg() {
+		return kg;
+	}
+
+	public void setKg(float kg) {
+		this.kg = kg;
+	}
 
 	@Override
 	public String toString() {
-		return "Weight [id=" + id + ", pet_id=" + pet_id + ", measure_time=" + measure_time + ", number=" + number
-				+ "]";
+		return "Weight [id=" + id + ", petId=" + petId + ", measureDate=" + measureDate + ", measureTime=" + measureTime
+				+ ", kg=" + kg + "]";
 	}
-	
-	
 }

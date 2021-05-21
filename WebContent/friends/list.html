@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>이웃집-친구피드조회</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
-    <link href="list.css" type="text/css" rel="stylesheet">
+    <link href="friend-list.css" type="text/css" rel="stylesheet">
+    <script defer src="list.js"></script>
 </head>
 <body>
     <div id="root">
@@ -14,14 +15,14 @@
             <div class="float-content">
                 <div class="flex align-center">
                     <a href="" class="logo-title-container">
-                        <img src="../../images/logo.png" alt="">
+                        <img src="../images/logo.png" alt="">
                     </a>
                     <nav class="main-menu">   
                             <h1 class="d-none">메인메뉴</h1>
                             <ul>
                               <li><a href="../../myhome/list.html">우리집</a></li>
                               <li><a href="list.html">이웃집</a></li>
-                              <li><a href="../../pet-management/mypet/list.html">내 동물관리</a></li>
+                              <li><a href="../pet-management/mypet/list.html">내 동물관리</a></li>
                               <li><a href="../../community/notice/list.html">커뮤니티</a></li>
                           </ul>
                     </nav>
@@ -45,126 +46,961 @@
                 <main id="main">
                     
                   <h1 class="d-none">친구피드조회</h1>
-                  <div id="content">
- 
-                     <div class="mypet-section">
-                         <div class="inner-width">
-                           <h1>친구피드조회</h1>
-                           <div class="pets">                              
-                             
-                            <div class="friends">
-                              <h3 class="d-none">친구관리</h1>
-                               <table class="table">
-                                 <thead>
-                                     <tr class="total">
-                                     <td><a href="followers.html">7</a></td>
-                                     <td><a href="following-list.html">7</a></td>
-                                     <td><a href=""><img src="../../images/picture.png"></a></td>
-                                     </tr>
-                                 </thead>
-                                 <tbody class="table-body">
-                                   <tr>
-                                     <td>
-                                     <a href="followers.html">팔로워</a>
-                                     </td>
-                                     <td>
-                                     <a href="following-list.html">팔로잉</a>
-                                     </td>
-                                     <td>
-                                       <a href="">둘러보기</a>
-                                     </td>
-                                   </tr>
-                                 </tbody>
-                               </table>
+
+                  <div class="outline">
+
+                    <div class="page-description"><h3>이웃집의 반려동물 소식을 알려드려요!</h3></div>
+                    <div class="subject"><h1>이웃집</h1><span class="recommend"><a href="">둘러보기</a></span></div>
+                   
+                    <div class="follow-menu-outline">
+                    <div class="friends">
+                      <h3 class="d-none">친구관리</h1>
+                       <table class="table">
+                         <thead class="table-head">
+                             <tr class="total">
+                                <td class="requests">2</td>  
+                                <td class="followers">7</td>
+                                <td class="following">7</td>
+                             </tr>
+                         </thead>
+                         <tbody class="table-body">
+                           <tr>
+                            <td class="requests">Requests</td>
+                            <td class="followers">Followers</td>
+                            <td class="">Following</td>
+                           </tr>
+                         </tbody>
+                       </table>
+                    </div>
+
+                        <div class="search-form-outline">
+                            <div class='search-form'>
+                            <input type='search' class='input_search' value="친구 검색"/>
+                            <div class="autocom-box">
+                                <!-- here list are inserted from javascript -->
+                              </div>
+                            <button type='submit' class='sch_smit'><i class="fas fa-search"></i></button>
                             </div>
+                        </div><!--search-form-outline-->                        
+                    </div><!--follow-menu-outline-->
 
-                            <div class="search-form-outline">
-                            <span class='search-form'>
-                              <input type='text' class='input_text' value="Search friends.."/>
-                              </span>
-                              <button type='submit' class='sch_smit'>검색</button>
+
+                    <div class=container><!--container : box list-->
+                      
+                    <div class="big-box">
+                        <div class="box">
+                            <div class="img-box"><img class="diary-img" src="https://images.unsplash.com/photo-1562714529-94d65989df68?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=701&q=80"></div>
+                        <div class="user"><a class="userinfo" href=""><img src="https://t3.ftcdn.net/jpg/02/92/94/20/240_F_292942036_FoCWnPBmDkeJaK2rvc7K6R9FctFfnTJs.jpg" alt="">
+                            <span>id000000</span></a><img class="heart"src="../images/heart.png"><span class="sub-info"> 114</span>                        
+                        </div>
+                        <div class="diary-content">
+                            <a class="diary-content-link" href="">
+                            <p>Sed viverra erat arcu, nec vulputate augue efficitur non</p></a>
+                        </div>
+
+                        <div class="showDiary">
+                          <div class="overlay"></div>
+                          <div class="content">
+                              <div class="content-box-img">
+                                  <img class="img" src="https://images.unsplash.com/photo-1562714529-94d65989df68?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=701&q=80" alt="">
+                              </div>
+                              <div class="close-btn">x</div>
+                              <div class="main-box">
+                                  <div class="main-box-title">
+                                      <span>Lorem ipsum dolor sit</span>    
+                                  </div>
+                                  
+                                  <div class="main-box-content">
+                                      <div class="user-img-box">
+                                          <img class="user-img" src="https://images.unsplash.com/photo-1592817797597-392e3b878e1c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="">
+                                      </div>
+                                      <div>
+                                        <span class="user-id">h.mountainn</span>
+                                        <span>
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                        </span>
+                                    </div>
+                                  </div>
+                                  <div class="comment-box">
+                                      <div class="main-box-comment">
+                                          <div class="user-img-box">
+                                              <img class="user-img" src="https://images.unsplash.com/photo-1561312176-5aedf7172115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=633&q=80" alt="">
+                                          </div>
+                                          <div>
+                                              <span class="user-id">its_nawon</span>
+                                              <span>
+                                                  강아지가 너무 귀여워요~
+                                              </span>
+                                          </div>
+                                      </div>
+                                      <div class="main-box-comment">
+                                        <div class="user-img-box">
+                                            <img class="user-img" src="https://images.unsplash.com/photo-1561312176-5aedf7172115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=633&q=80" alt="">
+                                        </div>
+                                        <div>
+                                            <span class="user-id">its_nawon</span>
+                                            <span>
+                                                강아지가 너무 귀여워요~
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="main-box-comment">
+                                      <div class="user-img-box">
+                                          <img class="user-img" src="https://images.unsplash.com/photo-1561312176-5aedf7172115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=633&q=80" alt="">
+                                      </div>
+                                      <div>
+                                          <span class="user-id">its_nawon</span>
+                                          <span>
+                                              강아지가 너무 귀여워요~
+                                          </span>
+                                      </div>
+                                  </div>
+                                  <div class="main-box-comment">
+                                    <div class="user-img-box">
+                                        <img class="user-img" src="https://images.unsplash.com/photo-1561312176-5aedf7172115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=633&q=80" alt="">
+                                    </div>
+                                    <div>
+                                        <span class="user-id">its_nawon</span>
+                                        <span>
+                                            강아지가 너무 귀여워요~
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="main-box-comment">
+                                  <div class="user-img-box">
+                                      <img class="user-img" src="https://images.unsplash.com/photo-1561312176-5aedf7172115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=633&q=80" alt="">
+                                  </div>
+                                  <div>
+                                      <span class="user-id">its_nawon</span>
+                                      <span>
+                                          강아지가 너무 귀여워요~
+                                      </span>
+                                  </div>
+                              </div>
+                              <div class="main-box-comment">
+                                <div class="user-img-box">
+                                    <img class="user-img" src="https://images.unsplash.com/photo-1561312176-5aedf7172115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=633&q=80" alt="">
+                                </div>
+                                <div>
+                                    <span class="user-id">its_nawon</span>
+                                    <span>
+                                        강아지가 너무 귀여워요~
+                                    </span>
+                                </div>
                             </div>
-
-                                                      
-                            <div class="diary-box">
-
-                              <div class="pet">
-                                <a href=""><img class="diary-pic"src="../images/cat.jpg" alt=""></a>
-                                <div class="id"><a href="" class="id"><img class="id-pic"src="../images/dog2.jpg"><p>id00000000</p></a></div>
-                                <div class="p-diary"><a href="">일기 작성 내용</a></div>
-                                <div class="p-sm">
-                                  <a href="petdetail2.html" class="button">#키워드</a>
-                                </div>
+                            <div class="main-box-comment">
+                              <div class="user-img-box">
+                                  <img class="user-img" src="https://images.unsplash.com/photo-1561312176-5aedf7172115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=633&q=80" alt="">
                               </div>
-
-                              <div class="pet">
-                                <a href=""><img class="diary-pic"src="../images/birthday.jpg" alt=""></a>
-                                <div class="id"><a href="" class="id"><img class="id-pic"src="../images/dog2.jpg"><p>id00000000</p></a></div>
-                                <div class="p-diary"><a href="">일기 작성 내용</a></div>
-                                <div class="p-sm">
-                                  <a href="petdetail2.html" class="button">#키워드</a>
-                                </div>
+                              <div>
+                                  <span class="user-id">its_nawon</span>
+                                  <span>
+                                      강아지가 너무 귀여워요~
+                                  </span>
                               </div>
-
-                              <div class="pet">
-                                <a href=""><img class="diary-pic"src="../images/golden.jpg" alt=""></a>
-                                <div class="id"><a href="" class="id"><img class="id-pic"src="../images/dog2.jpg"><p>id00000000</p></a></div>
-                                <div class="p-diary"><a href="">일기 작성 내용</a></div>
-                                <div class="p-sm">
-                                  <a href="petdetail2.html" class="button">#키워드</a>
-                                </div>
-                              </div>
-
-                              <div class="pet">
-                                <a href=""><img class="diary-pic"src="../images/dog.jpeg" alt=""></a>
-                                <div class="id"><a href="" class="id"><img class="id-pic"src="../images/dog2.jpg"><p>id00000000</p></a></div>
-                                <div class="p-diary"><a href="">일기 작성 내용</a></div>
-                                <div class="p-sm">
-                                  <a href="petdetail2.html" class="button">#키워드</a>
-                                </div>
-                              </div>
-
-                              <div class="pet">
-                                <a href=""><img class="diary-pic"src="../images/dog.jpeg" alt=""></a>
-                                <div class="id"><a href="" class="id"><img class="id-pic"src="../images/dog2.jpg"><p>id00000000</p></a></div>
-                                <div class="p-diary"><a href="">일기 작성 내용</a></div>
-                                <div class="p-sm">
-                                  <a href="petdetail2.html" class="button">#키워드</a>
-                                </div>
-                              </div>
-
-                              <div class="pet">
-                                <a href=""><img class="diary-pic"src="../images/dog.jpeg" alt=""></a>
-                                <div class="id"><a href="" class="id"><img class="id-pic"src="../images/dog2.jpg"><p>id00000000</p></a></div>
-                                <div class="p-diary"><a href="">일기 작성 내용</a></div>
-                                <div class="p-sm">
-                                  <a href="petdetail2.html" class="button">#키워드</a>
-                                </div>
-                              </div>
-
-                              <div class="pet">
-                                <a href=""><img class="diary-pic"src="../images/dog.jpeg" alt=""></a>
-                                <div class="id"><a href="" class="id"><img class="id-pic"src="../images/dog2.jpg"><p>id00000000</p></a></div>
-                                <div class="p-diary"><a href="">일기 작성 내용</a></div>
-                                <div class="p-sm">
-                                  <a href="petdetail2.html" class="button">#키워드</a>
-                                </div>
-                              </div>
-
-                              
-
                           </div>
-                                                 
-                           </div><!--pets--> 
- 
-                           
-                         </div><!--inner-width-->
-                       </div><!--mypet-section-->
- 
-                 </div>
-                 <!-- content -->    
+
+                                  </div>
+
+                                  <div class="comment-record">
+                                      <form class="comment-form">
+                                          <input class="input-comment" type="text" placeholder="댓글 달기...">
+                                          <input class="submit-comment" type="submit" value="게시">
+                                      </form>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+
+                        </div><!--box-->
+
+                        <div class="box">
+                            <div class="img-box"><img class="diary-img" src="https://images.unsplash.com/photo-1562714529-94d65989df68?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=701&q=80"></div>
+                        <div class="user"><a class="userinfo" href=""><img src="https://t3.ftcdn.net/jpg/02/92/94/20/240_F_292942036_FoCWnPBmDkeJaK2rvc7K6R9FctFfnTJs.jpg" alt="">
+                            <span>id000000</span></a><img class="heart"src="../images/heart.png"><span class="sub-info"> 114</span>                        
+                        </div>
+                        <div class="diary-content">
+                            <a class="diary-content-link" href="">
+                            <p>Sed viverra erat arcu, nec vulputate augue efficitur non</p></a>
+                        </div>
+
+                        <div class="showDiary">
+                          <div class="overlay"></div>
+                          <div class="content">
+                              <div class="content-box-img">
+                                  <img class="img" src="https://images.unsplash.com/photo-1562714529-94d65989df68?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=701&q=80" alt="">
+                              </div>
+                              <div class="close-btn">x</div>
+                              <div class="main-box">
+                                  <div class="main-box-title">
+                                      <span>Lorem ipsum dolor sit</span>    
+                                  </div>
+                                  
+                                  <div class="main-box-content">
+                                      <div class="user-img-box">
+                                          <img class="user-img" src="https://images.unsplash.com/photo-1592817797597-392e3b878e1c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="">
+                                      </div>
+                                      <div>
+                                        <span class="user-id">h.mountainn</span>
+                                        <span>
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                        </span>
+                                    </div>
+                                  </div>
+                                  <div class="comment-box">
+                                      <div class="main-box-comment">
+                                          <div class="user-img-box">
+                                              <img class="user-img" src="https://images.unsplash.com/photo-1561312176-5aedf7172115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=633&q=80" alt="">
+                                          </div>
+                                          <div>
+                                              <span class="user-id">its_nawon</span>
+                                              <span>
+                                                  강아지가 너무 귀여워요~
+                                              </span>
+                                          </div>
+                                      </div>
+                                      <div class="main-box-comment">
+                                        <div class="user-img-box">
+                                            <img class="user-img" src="https://images.unsplash.com/photo-1561312176-5aedf7172115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=633&q=80" alt="">
+                                        </div>
+                                        <div>
+                                            <span class="user-id">its_nawon</span>
+                                            <span>
+                                                강아지가 너무 귀여워요~
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="main-box-comment">
+                                      <div class="user-img-box">
+                                          <img class="user-img" src="https://images.unsplash.com/photo-1561312176-5aedf7172115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=633&q=80" alt="">
+                                      </div>
+                                      <div>
+                                          <span class="user-id">its_nawon</span>
+                                          <span>
+                                              강아지가 너무 귀여워요~
+                                          </span>
+                                      </div>
+                                  </div>
+                                  <div class="main-box-comment">
+                                    <div class="user-img-box">
+                                        <img class="user-img" src="https://images.unsplash.com/photo-1561312176-5aedf7172115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=633&q=80" alt="">
+                                    </div>
+                                    <div>
+                                        <span class="user-id">its_nawon</span>
+                                        <span>
+                                            강아지가 너무 귀여워요~
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="main-box-comment">
+                                  <div class="user-img-box">
+                                      <img class="user-img" src="https://images.unsplash.com/photo-1561312176-5aedf7172115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=633&q=80" alt="">
+                                  </div>
+                                  <div>
+                                      <span class="user-id">its_nawon</span>
+                                      <span>
+                                          강아지가 너무 귀여워요~
+                                      </span>
+                                  </div>
+                              </div>
+                              <div class="main-box-comment">
+                                <div class="user-img-box">
+                                    <img class="user-img" src="https://images.unsplash.com/photo-1561312176-5aedf7172115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=633&q=80" alt="">
+                                </div>
+                                <div>
+                                    <span class="user-id">its_nawon</span>
+                                    <span>
+                                        강아지가 너무 귀여워요~
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="main-box-comment">
+                              <div class="user-img-box">
+                                  <img class="user-img" src="https://images.unsplash.com/photo-1561312176-5aedf7172115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=633&q=80" alt="">
+                              </div>
+                              <div>
+                                  <span class="user-id">its_nawon</span>
+                                  <span>
+                                      강아지가 너무 귀여워요~
+                                  </span>
+                              </div>
+                          </div>
+
+                                  </div>
+
+                                  <div class="comment-record">
+                                      <form class="comment-form">
+                                          <input class="input-comment" type="text" placeholder="댓글 달기...">
+                                          <input class="submit-comment" type="submit" value="게시">
+                                      </form>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+
+                        </div><!--box-->
+
+                        <div class="box">
+                            <div class="img-box"><img class="diary-img" src="https://images.unsplash.com/photo-1562714529-94d65989df68?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=701&q=80"></div>
+                        <div class="user"><a class="userinfo" href=""><img src="https://t3.ftcdn.net/jpg/02/92/94/20/240_F_292942036_FoCWnPBmDkeJaK2rvc7K6R9FctFfnTJs.jpg" alt="">
+                            <span>id000000</span></a><img class="heart"src="../images/heart.png"><span class="sub-info"> 114</span>                        
+                        </div>
+                        <div class="diary-content">
+                            <a class="diary-content-link" href="">
+                            <p>Sed viverra erat arcu, nec vulputate augue efficitur non</p></a>
+                        </div>
+
+                        <div class="showDiary">
+                          <div class="overlay"></div>
+                          <div class="content">
+                              <div class="content-box-img">
+                                  <img class="img" src="https://images.unsplash.com/photo-1562714529-94d65989df68?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=701&q=80" alt="">
+                              </div>
+                              <div class="close-btn">x</div>
+                              <div class="main-box">
+                                  <div class="main-box-title">
+                                      <span>Lorem ipsum dolor sit</span>    
+                                  </div>
+                                  
+                                  <div class="main-box-content">
+                                      <div class="user-img-box">
+                                          <img class="user-img" src="https://images.unsplash.com/photo-1592817797597-392e3b878e1c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="">
+                                      </div>
+                                      <div>
+                                        <span class="user-id">h.mountainn</span>
+                                        <span>
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                        </span>
+                                    </div>
+                                  </div>
+                                  <div class="comment-box">
+                                      <div class="main-box-comment">
+                                          <div class="user-img-box">
+                                              <img class="user-img" src="https://images.unsplash.com/photo-1561312176-5aedf7172115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=633&q=80" alt="">
+                                          </div>
+                                          <div>
+                                              <span class="user-id">its_nawon</span>
+                                              <span>
+                                                  강아지가 너무 귀여워요~
+                                              </span>
+                                          </div>
+                                      </div>
+                                      <div class="main-box-comment">
+                                        <div class="user-img-box">
+                                            <img class="user-img" src="https://images.unsplash.com/photo-1561312176-5aedf7172115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=633&q=80" alt="">
+                                        </div>
+                                        <div>
+                                            <span class="user-id">its_nawon</span>
+                                            <span>
+                                                강아지가 너무 귀여워요~
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="main-box-comment">
+                                      <div class="user-img-box">
+                                          <img class="user-img" src="https://images.unsplash.com/photo-1561312176-5aedf7172115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=633&q=80" alt="">
+                                      </div>
+                                      <div>
+                                          <span class="user-id">its_nawon</span>
+                                          <span>
+                                              강아지가 너무 귀여워요~
+                                          </span>
+                                      </div>
+                                  </div>
+                                  <div class="main-box-comment">
+                                    <div class="user-img-box">
+                                        <img class="user-img" src="https://images.unsplash.com/photo-1561312176-5aedf7172115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=633&q=80" alt="">
+                                    </div>
+                                    <div>
+                                        <span class="user-id">its_nawon</span>
+                                        <span>
+                                            강아지가 너무 귀여워요~
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="main-box-comment">
+                                  <div class="user-img-box">
+                                      <img class="user-img" src="https://images.unsplash.com/photo-1561312176-5aedf7172115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=633&q=80" alt="">
+                                  </div>
+                                  <div>
+                                      <span class="user-id">its_nawon</span>
+                                      <span>
+                                          강아지가 너무 귀여워요~
+                                      </span>
+                                  </div>
+                              </div>
+                              <div class="main-box-comment">
+                                <div class="user-img-box">
+                                    <img class="user-img" src="https://images.unsplash.com/photo-1561312176-5aedf7172115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=633&q=80" alt="">
+                                </div>
+                                <div>
+                                    <span class="user-id">its_nawon</span>
+                                    <span>
+                                        강아지가 너무 귀여워요~
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="main-box-comment">
+                              <div class="user-img-box">
+                                  <img class="user-img" src="https://images.unsplash.com/photo-1561312176-5aedf7172115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=633&q=80" alt="">
+                              </div>
+                              <div>
+                                  <span class="user-id">its_nawon</span>
+                                  <span>
+                                      강아지가 너무 귀여워요~
+                                  </span>
+                              </div>
+                          </div>
+
+                                  </div>
+
+                                  <div class="comment-record">
+                                      <form class="comment-form">
+                                          <input class="input-comment" type="text" placeholder="댓글 달기...">
+                                          <input class="submit-comment" type="submit" value="게시">
+                                      </form>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+
+                        </div><!--box-->
+
+                        <div class="box">
+                            <div class="img-box"><img class="diary-img" src="https://images.unsplash.com/photo-1562714529-94d65989df68?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=701&q=80"></div>
+                        <div class="user"><a class="userinfo" href=""><img src="https://t3.ftcdn.net/jpg/02/92/94/20/240_F_292942036_FoCWnPBmDkeJaK2rvc7K6R9FctFfnTJs.jpg" alt="">
+                            <span>id000000</span></a><img class="heart"src="../images/heart.png"><span class="sub-info"> 114</span>                        
+                        </div>
+                        <div class="diary-content">
+                            <a class="diary-content-link" href="">
+                            <p>Sed viverra erat arcu, nec vulputate augue efficitur non</p></a>
+                        </div>
+
+                        <div class="showDiary">
+                          <div class="overlay"></div>
+                          <div class="content">
+                              <div class="content-box-img">
+                                  <img class="img" src="https://images.unsplash.com/photo-1562714529-94d65989df68?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=701&q=80" alt="">
+                              </div>
+                              <div class="close-btn">x</div>
+                              <div class="main-box">
+                                  <div class="main-box-title">
+                                      <span>Lorem ipsum dolor sit</span>    
+                                  </div>
+                                  
+                                  <div class="main-box-content">
+                                      <div class="user-img-box">
+                                          <img class="user-img" src="https://images.unsplash.com/photo-1592817797597-392e3b878e1c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="">
+                                      </div>
+                                      <div>
+                                        <span class="user-id">h.mountainn</span>
+                                        <span>
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                        </span>
+                                    </div>
+                                  </div>
+                                  <div class="comment-box">
+                                      <div class="main-box-comment">
+                                          <div class="user-img-box">
+                                              <img class="user-img" src="https://images.unsplash.com/photo-1561312176-5aedf7172115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=633&q=80" alt="">
+                                          </div>
+                                          <div>
+                                              <span class="user-id">its_nawon</span>
+                                              <span>
+                                                  강아지가 너무 귀여워요~
+                                              </span>
+                                          </div>
+                                      </div>
+                                      <div class="main-box-comment">
+                                        <div class="user-img-box">
+                                            <img class="user-img" src="https://images.unsplash.com/photo-1561312176-5aedf7172115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=633&q=80" alt="">
+                                        </div>
+                                        <div>
+                                            <span class="user-id">its_nawon</span>
+                                            <span>
+                                                강아지가 너무 귀여워요~
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="main-box-comment">
+                                      <div class="user-img-box">
+                                          <img class="user-img" src="https://images.unsplash.com/photo-1561312176-5aedf7172115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=633&q=80" alt="">
+                                      </div>
+                                      <div>
+                                          <span class="user-id">its_nawon</span>
+                                          <span>
+                                              강아지가 너무 귀여워요~
+                                          </span>
+                                      </div>
+                                  </div>
+                                  <div class="main-box-comment">
+                                    <div class="user-img-box">
+                                        <img class="user-img" src="https://images.unsplash.com/photo-1561312176-5aedf7172115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=633&q=80" alt="">
+                                    </div>
+                                    <div>
+                                        <span class="user-id">its_nawon</span>
+                                        <span>
+                                            강아지가 너무 귀여워요~
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="main-box-comment">
+                                  <div class="user-img-box">
+                                      <img class="user-img" src="https://images.unsplash.com/photo-1561312176-5aedf7172115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=633&q=80" alt="">
+                                  </div>
+                                  <div>
+                                      <span class="user-id">its_nawon</span>
+                                      <span>
+                                          강아지가 너무 귀여워요~
+                                      </span>
+                                  </div>
+                              </div>
+                              <div class="main-box-comment">
+                                <div class="user-img-box">
+                                    <img class="user-img" src="https://images.unsplash.com/photo-1561312176-5aedf7172115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=633&q=80" alt="">
+                                </div>
+                                <div>
+                                    <span class="user-id">its_nawon</span>
+                                    <span>
+                                        강아지가 너무 귀여워요~
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="main-box-comment">
+                              <div class="user-img-box">
+                                  <img class="user-img" src="https://images.unsplash.com/photo-1561312176-5aedf7172115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=633&q=80" alt="">
+                              </div>
+                              <div>
+                                  <span class="user-id">its_nawon</span>
+                                  <span>
+                                      강아지가 너무 귀여워요~
+                                  </span>
+                              </div>
+                          </div>
+
+                                  </div>
+
+                                  <div class="comment-record">
+                                      <form class="comment-form">
+                                          <input class="input-comment" type="text" placeholder="댓글 달기...">
+                                          <input class="submit-comment" type="submit" value="게시">
+                                      </form>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+
+                        </div><!--box-->
+
+                        <div class="box">
+                            <div class="img-box"><img class="diary-img" src="https://images.unsplash.com/photo-1562714529-94d65989df68?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=701&q=80"></div>
+                        <div class="user"><a class="userinfo" href=""><img src="https://t3.ftcdn.net/jpg/02/92/94/20/240_F_292942036_FoCWnPBmDkeJaK2rvc7K6R9FctFfnTJs.jpg" alt="">
+                            <span>id000000</span></a><img class="heart"src="../images/heart.png"><span class="sub-info"> 114</span>                        
+                        </div>
+                        <div class="diary-content">
+                            <a class="diary-content-link" href="">
+                            <p>Sed viverra erat arcu, nec vulputate augue efficitur non</p></a>
+                        </div>
+
+                        <div class="showDiary">
+                          <div class="overlay"></div>
+                          <div class="content">
+                              <div class="content-box-img">
+                                  <img class="img" src="https://images.unsplash.com/photo-1562714529-94d65989df68?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=701&q=80" alt="">
+                              </div>
+                              <div class="close-btn">x</div>
+                              <div class="main-box">
+                                  <div class="main-box-title">
+                                      <span>Lorem ipsum dolor sit</span>    
+                                  </div>
+                                  
+                                  <div class="main-box-content">
+                                      <div class="user-img-box">
+                                          <img class="user-img" src="https://images.unsplash.com/photo-1592817797597-392e3b878e1c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="">
+                                      </div>
+                                      <div>
+                                        <span class="user-id">h.mountainn</span>
+                                        <span>
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                        </span>
+                                    </div>
+                                  </div>
+                                  <div class="comment-box">
+                                      <div class="main-box-comment">
+                                          <div class="user-img-box">
+                                              <img class="user-img" src="https://images.unsplash.com/photo-1561312176-5aedf7172115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=633&q=80" alt="">
+                                          </div>
+                                          <div>
+                                              <span class="user-id">its_nawon</span>
+                                              <span>
+                                                  강아지가 너무 귀여워요~
+                                              </span>
+                                          </div>
+                                      </div>
+                                      <div class="main-box-comment">
+                                        <div class="user-img-box">
+                                            <img class="user-img" src="https://images.unsplash.com/photo-1561312176-5aedf7172115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=633&q=80" alt="">
+                                        </div>
+                                        <div>
+                                            <span class="user-id">its_nawon</span>
+                                            <span>
+                                                강아지가 너무 귀여워요~
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="main-box-comment">
+                                      <div class="user-img-box">
+                                          <img class="user-img" src="https://images.unsplash.com/photo-1561312176-5aedf7172115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=633&q=80" alt="">
+                                      </div>
+                                      <div>
+                                          <span class="user-id">its_nawon</span>
+                                          <span>
+                                              강아지가 너무 귀여워요~
+                                          </span>
+                                      </div>
+                                  </div>
+                                  <div class="main-box-comment">
+                                    <div class="user-img-box">
+                                        <img class="user-img" src="https://images.unsplash.com/photo-1561312176-5aedf7172115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=633&q=80" alt="">
+                                    </div>
+                                    <div>
+                                        <span class="user-id">its_nawon</span>
+                                        <span>
+                                            강아지가 너무 귀여워요~
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="main-box-comment">
+                                  <div class="user-img-box">
+                                      <img class="user-img" src="https://images.unsplash.com/photo-1561312176-5aedf7172115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=633&q=80" alt="">
+                                  </div>
+                                  <div>
+                                      <span class="user-id">its_nawon</span>
+                                      <span>
+                                          강아지가 너무 귀여워요~
+                                      </span>
+                                  </div>
+                              </div>
+                              <div class="main-box-comment">
+                                <div class="user-img-box">
+                                    <img class="user-img" src="https://images.unsplash.com/photo-1561312176-5aedf7172115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=633&q=80" alt="">
+                                </div>
+                                <div>
+                                    <span class="user-id">its_nawon</span>
+                                    <span>
+                                        강아지가 너무 귀여워요~
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="main-box-comment">
+                              <div class="user-img-box">
+                                  <img class="user-img" src="https://images.unsplash.com/photo-1561312176-5aedf7172115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=633&q=80" alt="">
+                              </div>
+                              <div>
+                                  <span class="user-id">its_nawon</span>
+                                  <span>
+                                      강아지가 너무 귀여워요~
+                                  </span>
+                              </div>
+                          </div>
+
+                                  </div>
+
+                                  <div class="comment-record">
+                                      <form class="comment-form">
+                                          <input class="input-comment" type="text" placeholder="댓글 달기...">
+                                          <input class="submit-comment" type="submit" value="게시">
+                                      </form>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+
+                        </div><!--box-->
+
+                        <div class="box">
+                            <div class="img-box"><img class="diary-img" src="https://images.unsplash.com/photo-1577611612331-845d0e3d77af?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=700&q=80"></div>
+                        <div class="user"><a class="userinfo" href=""><img src="https://t3.ftcdn.net/jpg/02/92/94/20/240_F_292942036_FoCWnPBmDkeJaK2rvc7K6R9FctFfnTJs.jpg" alt="">
+                            <span>id000000</span></a><div class="sub-info"><span class="date">2021년 04월 28일</span></div>                        
+                        </div>
+                        <div class="diary-content">
+                            <a class="diary-content-link" href="">
+                            <p>Sed viverra erat arcu, nec vulputate augue efficitur non</p></a>
+                        </div>
+
+                        <div class="showDiary">
+                        <div class="overlay"></div>
+                        <div class="content">
+                            <div class="content-box-img">
+                                <img class="img" src="https://images.unsplash.com/photo-1577611612331-845d0e3d77af?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=700&q=80" alt="">
+                            </div>
+                            <div class="close-btn">x</div>
+                            <div class="main-box">
+                                <div class="main-box-title">
+                                    <span>Lorem ipsum dolor sit</span>    
+                                </div>
+                                
+                                <div class="main-box-content">
+                                    <div class="user-img-box">
+                                        <img class="user-img" src="https://images.unsplash.com/photo-1592817797597-392e3b878e1c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="">
+                                    </div>
+                                    <div>
+                                        <span class="user-id">h.mountainn</span>
+                                        <span>
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="comment-box">
+                                    <div class="main-box-comment">
+                                        <div class="user-img-box">
+                                            <img class="user-img" src="https://images.unsplash.com/photo-1561312176-5aedf7172115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=633&q=80" alt="">
+                                        </div>
+                                        <div>
+                                            <span class="user-id">its_nawon</span>
+                                            <span>
+                                                강아지가 너무 귀여워요~
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="main-box-comment">
+                                        <div class="user-img-box">
+                                            <img class="user-img" src="https://images.unsplash.com/photo-1561312176-5aedf7172115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=633&q=80" alt="">
+                                        </div>
+                                        <div>
+                                            <span class="user-id">its_nawon</span>
+                                            <span>
+                                                강아지가 너무 귀여워요~
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="main-box-comment">
+                                    <div class="user-img-box">
+                                        <img class="user-img" src="https://images.unsplash.com/photo-1561312176-5aedf7172115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=633&q=80" alt="">
+                                    </div>
+                                    <div>
+                                        <span class="user-id">its_nawon</span>
+                                        <span>
+                                            강아지가 너무 귀여워요~
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="main-box-comment">
+                                    <div class="user-img-box">
+                                        <img class="user-img" src="https://images.unsplash.com/photo-1561312176-5aedf7172115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=633&q=80" alt="">
+                                    </div>
+                                    <div>
+                                        <span class="user-id">its_nawon</span>
+                                        <span>
+                                            강아지가 너무 귀여워요~
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="main-box-comment">
+                                <div class="user-img-box">
+                                    <img class="user-img" src="https://images.unsplash.com/photo-1561312176-5aedf7172115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=633&q=80" alt="">
+                                </div>
+                                <div>
+                                    <span class="user-id">its_nawon</span>
+                                    <span>
+                                        강아지가 너무 귀여워요~
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="main-box-comment">
+                                <div class="user-img-box">
+                                    <img class="user-img" src="https://images.unsplash.com/photo-1561312176-5aedf7172115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=633&q=80" alt="">
+                                </div>
+                                <div>
+                                    <span class="user-id">its_nawon</span>
+                                    <span>
+                                        강아지가 너무 귀여워요~
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="main-box-comment">
+                            <div class="user-img-box">
+                                <img class="user-img" src="https://images.unsplash.com/photo-1561312176-5aedf7172115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=633&q=80" alt="">
+                            </div>
+                            <div>
+                                <span class="user-id">its_nawon</span>
+                                <span>
+                                    강아지가 너무 귀여워요~
+                                </span>
+                            </div>
+                        </div>
+
+                                </div>
+
+                                <div class="comment-record">
+                                    <form class="comment-form">
+                                        <input class="input-comment" type="text" placeholder="댓글 달기...">
+                                        <input class="submit-comment" type="submit" value="게시">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+
+                        </div><!--box-->
+
+
+
+                    </div><!--big box-->
+
+
+                       
+                      </div><!--container-->
+                </div>
+
+                <div class="outline-popup">
+
+                    <div class="popup" id="popup-3">
+                        <div class="overlay"></div>
+                        <div class="content">
+                          <div class="close-btn">&times;</div>
+                          <div class="list-box">
+                            <div class="total">
+                              <h4>Friend Requests ( <span class="num">2</span> )</h4>
+                              
+                            </div>
                     
+                           <section class="request-content">
+                               <ul>
+                                   <li class="request-box">
+                                       <div class="name"><a href="">id00000000</a></div>
+                                       <img class="request-img"src="https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=660&q=80" alt="">
+                                       <!-- <span calss="date">2021-05-18</span>  -->
+                                       <span class="sub"></span>
+                                         <span class="accept" id="button">Accept</span>
+                                         <span class="decline">Decline</span>
+                                   </li>
+                               </ul>
+                           </section>
+
+                           <section class="request-content">
+                            <ul>
+                                <li class="request-box">
+                                    <div class="name"><a href="">id00000000</a></div>
+                                    <img class="request-img"src="https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=660&q=80" alt="">
+                                    <span calss="date">2021-05-18</span> 
+                                      <span class="accept" id="button">Accept</span>
+                                      <span class="decline">Decline</span>
+                                </li>
+                            </ul>
+                        </section>
+
+
+
                     
+                          </div><!--list box-->
+                        </div>
+                        </div><!--friend Request popup-->
+
+                    <div class="popup" id="popup-1">
+                    <div class="overlay"></div>
+                    <div class="content">
+                      <div class="close-btn">&times;</div>
+                      <div class="list-box">
+                        <div class="total">
+                          <h4>Followers ( <span class="num">7</span> )</h4>
+                        </div>
+                
+                        <div class="follow-info">
+                            <img src="../images/dog.jpg" alt="">
+                            <div class="f-name"><a href="">id00000000</a></div>
+                            <div class="f-status">
+                              <span class="button">Following</span>
+                            </div>
+                          </div>
+                
+                       <div class="follow-info">
+                         <img src="../images/dog.jpg" alt="">
+                         <div class="f-name"><a href="">id00000000</a></div>
+                         <div class="f-status">
+                           <span class="button">Following</span>
+                         </div>
+                       </div>
+                
+        
+                
+                      </div><!--list box-->
+                    </div>
+                    </div><!--followers popup-->
+                    
+                    <div class="popup" id="popup-2">
+                        <div class="overlay"></div>
+                        <div class="content">
+                        <div class="close-btn">&times;</div>
+                        
+                        <div class="list-box">
+                    
+                            <div class="total">
+                                <h4>Following ( <span class="num">7</span> )</h4>
+                            </div>
+                    
+                        <div class="follow-info">
+                            <img src="../images/dog.jpg" alt="">
+                            <div class="f-name"><a href="">id00000000</a></div>
+                            <div class="f-status"><span class="button">Following</span></div>
+                        </div>
+                    
+                        <div class="follow-info">
+                            <img src="../images/dog.jpg" alt="">
+                            <div class="f-name"><a href="">id00000000</a></div>
+                            <div class="f-status">
+                            <span class="button">Following</span>
+                            </div>
+                        </div>
+                    
+                        <div class="follow-info">
+                            <img src="../images/dog.jpg" alt="">
+                            <div class="f-name"><a href="">id00000000</a></div>
+                            <div class="f-status">
+                            <span class="button">Following</span>
+                            </div>
+                        </div>
+                    
+                        <div class="follow-info">
+                            <img src="../images/dog.jpg" alt="">
+                            <div class="f-name"><a href="">id00000000</a></div>
+                            <div class="f-status">
+                            <span class="button">Following</span>
+                            </div>
+                        </div>
+                    
+                        <div class="follow-info">
+                            <img src="../images/dog.jpg" alt="">
+                            <div class="f-name"><a href="">id00000000</a></div>
+                            <div class="f-status">
+                            <span class="button">Following</span>
+                            </div>
+                        </div>
+                    
+                        <div class="follow-info">
+                            <img src="../images/dog.jpg" alt="">
+                            <div class="f-name"><a href="">id00000000</a></div>
+                            <div class="f-status">
+                            <span class="button">Following</span>
+                            </div>
+                        </div>
+                    
+                        <div class="follow-info">
+                            <img src="../images/dog.jpg" alt="">
+                            <div class="f-name"><a href="">id00000000</a></div>
+                            <div class="f-status">
+                            <span class="button">Following</span>
+                            </div>
+                        </div>
+                    
+                        </div><!--list-box-->
+                    
+                        </div>
+                    </div><!--following popup-->
+
+                    
+                </div><!--outline-popup-->
+
                 </main>
             </div>
         </div>

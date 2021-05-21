@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="detail-admin.css" type="text/css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+    <script src="detail-admin.js"></script>
+</head>
+<body>
+    <div id="root">
+        <header id="header">
+            <div class="float-content">
+                <div class="flex align-center">
+                    <a href="" class="logo-title-container">
+                        <img src="../../images/logo.png">
+                    </a>
+                    <nav class="main-menu">   
+                            <h1 class="d-none">메인메뉴</h1>
+                            <ul>
+                                <li><a href="../../myhome/list.html">우리집</a></li>
+                                <li><a href="../../friends/list.html">이웃집</a></li>
+                                <li><a href="../../pet-management/mypet/list.html">내 동물 관리</a></li>
+                                <li><a href="../notice/list.html">커뮤니티</a></li>
+                            </ul>
+                    </nav>
+                </div>
+                <nav class="member-menu">
+                    <h1 class="d-none">회원메뉴</h1>
+                    <ul>
+                        <li><a href="../../member/profile-edit.html">MyPage</a></li>
+                        <li><a href="../../../login.html">LogOut</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <div id="body">
+            <div class="float-content">
+                <aside id="aside">
+                    <nav class="aside-menu">
+                        <h1 class="d-none">커뮤니티 메뉴</h1>
+                        <ul>
+                            <li><a href="../notice/list.html">공지사항</a></li>
+                            <li><a class="current-page" href="list.html">노하우</a></li>
+                        </ul>
+                    </nav>
+                </aside>
+                <main id="main">
+                    <h1 class="title">고양이 알약 먹이는 꿀팁!</h1>
+                    <section class="margin flex">
+                        <section class="member-info flex">
+                            <h1 class="d-none">회원 정보</h1>
+                            <div class="img-member"></div>
+                            <span class="id">id1</span>
+                        </section>
+                        <section class="pet-selecting-btn">
+                            <button class="pet-btn font">강아지</button>
+                            <button class="pet-select pet-btn font">고양이</button>
+                        </section>
+                    </section>
+                    <section>
+                        <div class="img-area">
+                            <img class="img-pet" src="../../images/cat-pill.jpg">
+                        </div>
+                        <div class="write-content">
+                            <textarea class="text-area font" name="" >
+STEP 1. 고양이의 양쪽 송곳니 부분을 잡는다.
+STEP 2. 베라스푼에 물을 살짝 담아서 알약을 그 위에 올린다.
+STEP 3. 목구멍으로 약을 쏟아 넣는다.
+                            </textarea>
+                        </div>
+                    </section>
+                    <hr>
+                    <section class="button-menu">
+                        <h1 class="d-none">버튼</h1>
+                        <button class="delete-btn btn font">삭제하기</button>
+                    </section>
+                </main>
+            </div>
+        </div>
+
+        <footer id="footer"></footer>
+
+        <div class="modal-section">
+            <div class="black-bg d-none"></div>
+            <div class="modal d-none">
+                <div class="modal-content">
+                    게시글을 삭제하시겠습니까?
+                </div>
+                <section class="modal-button-menu">
+                    <h1 class="d-none">모달창 버튼</h1>
+                    <button class="modal-btn modal-close">취소</button>
+                    <button class="modal-btn">확인</button>
+                </section>
+                <div>
+                    <a class="modal-close" href="#"><img class="close-btn" src="../images/close-button.png" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </div>        
+</body>
+</html>

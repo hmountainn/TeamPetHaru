@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.petharu.web.service.NoticeService;
+import com.petharu.web.service.JDBCNoticeService;
 
 
 @WebServlet("/community/notice/delete")
@@ -25,7 +25,7 @@ public class NoticeDelete extends HttpServlet {
 		
 		int id = Integer.parseInt(req.getParameter("id"));
 
-		NoticeService noticeService = new NoticeService();
+		JDBCNoticeService noticeService = new JDBCNoticeService();
 		
 		try {
 			noticeService.delete(id);

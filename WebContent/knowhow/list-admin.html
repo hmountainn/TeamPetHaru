@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="list-admin.css" type="text/css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="root">
+        <header id="header">
+            <div class="float-content">
+                <div class="flex align-center">
+                    <a href="" class="logo-title-container">
+                        <img src="../images/logo.png">
+                    </a>
+                    <nav class="main-menu">   
+                            <h1 class="d-none">메인메뉴</h1>
+                            <ul>
+                                <li><a href="../../myhome/list.html">우리집</a></li>
+                                <li><a href="../../friends/list.html">이웃집</a></li>
+                                <li><a href="../../pet-management/mypet/list.html">내 동물 관리</a></li>
+                                <li><a href="../notice/list.html">커뮤니티</a></li>
+                            </ul>
+                    </nav>
+                </div>
+                <nav class="member-menu">
+                    <h1 class="d-none">회원메뉴</h1>
+                    <ul>
+                        <li><a href="../../member/profile-edit.html">MyPage</a></li>
+                        <li><a href="../../../login.html">LogOut</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <div id="body">
+            <div class="float-content">
+                <aside id="aside">
+                    <nav class="aside-menu">
+                        <h1 class="d-none">커뮤니티 메뉴</h1>
+                        <ul>
+                            <li><a href="../notice/list.html">공지사항</a></li>
+                            <li><a class="current-page" href="list.html">노하우</a></li>
+                        </ul>
+                    </nav>
+                </aside>
+                <main id="main">
+                    <section>
+                        <h1>노하우 게시글 목록</h1>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td class="w-0">번호</td>
+                                    <td class="w-1">아이디</td>
+                                    <td class="overflow">제목</td>
+                                    <td class="w-1">작성 날짜</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="w-0">10</td>
+                                    <td class="w-1">id1</td>
+                                    <td class="overflow diary-content">고양이 알약 먹이는 꿀팁!dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</td>
+                                    <td class="w-2">2021.04.30</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-0">9</td>
+                                    <td class="w-1">id1</td>
+                                    <td class="overflow diary-content">고양이 알약 먹이는 꿀팁!dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</td>
+                                    <td class="w-2">2021.04.26</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-0">8</td>
+                                    <td class="w-1">id1</td>
+                                    <td class="overflow diary-content">고양이 알약 먹이는 꿀팁!dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</td>
+                                    <td class="w-2">2021.04.11</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-0">7</td>
+                                    <td class="w-0">id2</td>
+                                    <td class="overflow diary-content">고양이 알약 먹이는 꿀팁!</td>
+                                    <td class="w-2">2021.04.10</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-0">6</td>
+                                    <td class="w-1">id3</td>
+                                    <td class="overflow diary-content">고양이 알약 먹이는 꿀팁!</td>
+                                    <td class="w-2">2021.04.06</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-0">5</td>
+                                    <td class="w-1">id4</td>
+                                    <td class="overflow diary-content">노하우4</td>
+                                    <td class="w-2">2021.04.04</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-0">4</td>
+                                    <td class="w-1">id1</td>
+                                    <td class="overflow diary-content">노하우1</td>
+                                    <td class="w-2">2021.04.02</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-0">3</td>
+                                    <td class="w-1">id2</td>
+                                    <td class="overflow diary-content">노하우2</td>
+                                    <td class="w-2">2021.04.02</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-0">2</td>
+                                    <td class="w-1">id3</td>
+                                    <td class="truncate diary-content">노하우3</td>
+                                    <td class="w-2">2021.04.01</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-0">1</td>
+                                    <td class="w-1">id3</td>
+                                    <td class="truncate diary-content">노하우3</td>
+                                    <td class="w-2">2021.04.01</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <nav class="pager">
+                            <h1 class="d-none">페이저</h1>
+                            <a href=""><img class="prev" src="../images/prev.png" alt=""></a>
+                            <ul>
+                                <li><a href="">1</a></li>
+                                <li><a href="">2</a></li>
+                                <li><a href="">3</a></li>
+                                <li><a href="">4</a></li>
+                            </ul>
+                            <a href=""><img class="next" src="../images/next.png" alt=""></a>
+                        </nav>
+                    </section>
+                </main>
+            </div>
+        </div>
+
+        <footer id="footer"></footer>
+    </div>        
+</body>
+</html>

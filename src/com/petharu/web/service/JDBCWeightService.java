@@ -11,11 +11,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.petharu.web.entity.Table;
+import com.petharu.web.entity.Weight;
 
-public class TableService {
-	public List<Table> getList() throws ClassNotFoundException, SQLException{
-		List<Table> list = new ArrayList<>();
+public class JDBCWeightService {
+	public List<Weight> getList() throws ClassNotFoundException, SQLException{
+		List<Weight> list = new ArrayList<>();
 		
 		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
 		String sql = "SELECT * FROM WEIGHT";
@@ -28,18 +28,18 @@ public class TableService {
 		while(rs.next()) {
 			int id = rs.getInt("ID");
 			int petId = rs.getInt("PET_ID");
-			Date measureDate = rs.getDate("MEASURE_TIME");
+			Date measureDate = rs.getDate("MEASURE_DATE");
 			Time measureTime = rs.getTime("MEASURE_TIME");
 			float kg = rs.getFloat("KG");
 			
-			Table table = new Table();
-			table.setId(id);
-			table.setPetId(petId);
-			table.setMeasureDate(measureDate);
-			table.setMeasureTime(measureTime);
-			table.setKg(kg);
+			Weight weight = new Weight();
+			weight.setId(id);
+			weight.setPetId(petId);
+			weight.setMeasureDate(measureDate);
+			weight.setMeasureTime(measureTime);
+			weight.setKg(kg);
 			
-			list.add(table);
+			list.add(weight);
 		}
 		
 		rs.close();
