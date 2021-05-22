@@ -51,7 +51,7 @@ public class PetRegController extends HttpServlet{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		resp.sendRedirect("/pet-management/mypet/list.html");
+		resp.sendRedirect("/pet-management/mypet/list.jsp");
 //		req.setAttribute("pet", pet);
 //		req.getRequestDispatcher("/pet-management/mypet/list.jsp").forward(req, resp);
 

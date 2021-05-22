@@ -7,6 +7,7 @@
 	pageEncoding="UTF-8"%>
 
 <%
+
 PetService petService = new JdbcPetService();
 List<Pet> list = petService.getPetList(1);
 System.out.println(list);
@@ -251,8 +252,8 @@ System.out.println(list);
 												<div class="option-btn">
 													<div class="cancel" onclick="confirmPopup(<%=p.getId()%>)">취소</div>
 													<!-- <div class="cancel"onclick="confirmPopup()">취소</div> -->
-													<div class="delete-btn"
-														onclick="resultPopup(<%=p.getId()%>)">삭제</div>
+													<a href="del?id=<%=p.getId()%>" class="delete-btn"
+														onclick="resultPopup(<%=p.getId()%>)">삭제</a>
 												</div>
 											</div>
 											<!--dog-info-->
