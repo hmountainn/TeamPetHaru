@@ -21,7 +21,7 @@ import com.petharu.web.service.PetService;
 public class RegPetController extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		PrintWriter out = resp.getWriter();
-		resp.setCharacterEncoding("UTF-8");
+		req.setCharacterEncoding("UTF-8");
 
 		resp.setCharacterEncoding("UTF-8");		
 		resp.setContentType("text/html; charset=UTF-8");
@@ -51,7 +51,7 @@ public class RegPetController extends HttpServlet{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		resp.sendRedirect("/pet-management/mypet/list.jsp");
+		resp.sendRedirect("/pet-management/mypet/list.html");
 //		req.setAttribute("pet", pet);
 //		req.getRequestDispatcher("/pet-management/mypet/list.jsp").forward(req, resp);
 

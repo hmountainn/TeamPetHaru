@@ -328,7 +328,7 @@ System.out.println(list);
 
 								<div class="dog_personality add-container">
 									<label class="dog_personality">특징</label>
-									<textarea class="add-input-personality" cols="10" rows="3"
+									<textarea class="add-input-personality" name="personality"cols="10" rows="3"
 										placeholder="반려동물 특징(50자 이내)"></textarea>
 								</div>
 

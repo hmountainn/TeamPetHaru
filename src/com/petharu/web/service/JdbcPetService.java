@@ -99,6 +99,7 @@ public class JdbcPetService implements PetService {
 	@Override
 	public int insertPetProfile(Pet pet) throws SQLException, ClassNotFoundException {
 		int result = 0;
+		System.out.println(pet);
 
 		String sql = "INSERT INTO PET(NAME,GENDER,BIRTHDAY,PERSONALITY) VALUES(?,?,?,?)";
 
@@ -108,12 +109,11 @@ public class JdbcPetService implements PetService {
 		
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, pet.getName());
-		System.out.println(pet.getName());
 		st.setString(2, pet.getGender());
 		st.setString(3, pet.getBirthday());
 		st.setString(4, pet.getPersonality());
 		
-		result = st.executeUpdate();//sql�������� ex.executeQuery(sql):Select, ex, Update:
+		result = st.executeUpdate();
 		
 		st.close();
 		con.close();
