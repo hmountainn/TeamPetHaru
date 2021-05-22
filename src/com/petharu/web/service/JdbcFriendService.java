@@ -23,7 +23,7 @@ public class JdbcFriendService implements FriendService {
 		List<Diary> list = new ArrayList<>();
 		
 		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
-		String sql = "SELECT D.*,M.USER_ID NAME FROM DIARY D "
+		String sql = "SELECT D.*,M.USER_ID FROM DIARY D "
 				+ "LEFT JOIN MEMBER M ON M.ID = D.MEMBER_ID WHERE MEMBER_ID = "+memberId;
 		
 		Class.forName("oracle.jdbc.OracleDriver");
@@ -38,14 +38,14 @@ public class JdbcFriendService implements FriendService {
 			String keyword = rs.getString("keyword");
 			String content = rs.getString("content");
 			java.sql.Date regDate = rs.getDate("regdate");
-			String userId = rs.getString("name");
+			String userId = rs.getString("user_id");
 			
 			Diary diary = new Diary();
 			diary.setId(id);
 			diary.setKeyword(keyword);
 			diary.setContent(content);
 			diary.setRegDate(regDate);
-			diary.setUerId(userId);
+			diary.setUserId(userId);
 
 			
 			list.add(diary);
@@ -82,8 +82,8 @@ public class JdbcFriendService implements FriendService {
 			DiaryComment diary = new DiaryComment();
 			diary.setId(id);
 			diary.setContent(content);
-			diary.setRegDate(regDate);
-			diary.setUerId(userId);
+			diary.setRegdate(regDate);
+			diary.setUserId(userId);
 
 			
 			list.add(diary);
