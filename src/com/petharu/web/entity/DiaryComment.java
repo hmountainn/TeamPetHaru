@@ -6,34 +6,23 @@ public class DiaryComment {
 
 	private int id;
 	private String content;
-	private Date regDate;
+	private Date regdate;
 	private int memberId;
+	private String userId;
 	private int diaryId;
-	private String uerId;
 	
 	public DiaryComment() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public DiaryComment(int id, String content, Date regDate, int memberId, int diaryId) {
+	public DiaryComment(int id, String content, Date regdate, int memberId, String userId, int diaryId) {
 		super();
 		this.id = id;
 		this.content = content;
-		this.regDate = regDate;
+		this.regdate = regdate;
 		this.memberId = memberId;
+		this.userId = userId;
 		this.diaryId = diaryId;
-	}
-	
-	
-
-	public DiaryComment(int id, String content, Date regDate, int memberId, int diaryId, String uerId) {
-		super();
-		this.id = id;
-		this.content = content;
-		this.regDate = regDate;
-		this.memberId = memberId;
-		this.diaryId = diaryId;
-		this.uerId = uerId;
 	}
 
 	public int getId() {
@@ -52,12 +41,12 @@ public class DiaryComment {
 		this.content = content;
 	}
 
-	public Date getRegDate() {
-		return regDate;
+	public Date getRegdate() {
+		return regdate;
 	}
 
-	public void setRegDate(Date regDate) {
-		this.regDate = regDate;
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
 	}
 
 	public int getMemberId() {
@@ -68,6 +57,14 @@ public class DiaryComment {
 		this.memberId = memberId;
 	}
 
+	public String getUserId() {
+		return userId;
+	}
+	
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
 	public int getDiaryId() {
 		return diaryId;
 	}
@@ -75,25 +72,14 @@ public class DiaryComment {
 	public void setDiaryId(int diaryId) {
 		this.diaryId = diaryId;
 	}
-	
-	
-
-	public String getUerId() {
-		return uerId;
-	}
-
-	public void setUerId(String uerId) {
-		this.uerId = uerId;
-	}
 
 	@Override
 	public String toString() {
 		return "{\"id\":" + id
 				+ ", \"content\":\"" + content
-				+ "\", \"regDate\":\"" + regDate
+				+ "\", \"regdate\":\"" + regdate
 				+ "\", \"memberId\":" + memberId
-				+ ", \"diaryId\":" + diaryId 
-				+ ", \"userId\"}";
+				+ ", \"diaryId\":" + diaryId + "}";
 	}
 	
 }

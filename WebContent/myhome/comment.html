@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="./comment.css" type="text/css" rel="stylesheet">
+    <script src="./comment.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="root">
+        <header id="header">
+            <div class="float-content">
+                <div class="flex align-center">
+                    <a href="" class="logo-title-container">
+                        <img src="../images/logo.png">
+                    </a>
+                    <nav class="main-menu">   
+                            <h1 class="d-none">메인메뉴</h1>
+                            <ul>
+                                <li><a href="list.html">우리집</a></li>
+                                <li><a href="../friends/friend-diary.html">이웃집</a></li>
+                                <li><a href="../pet-management/mypet/mypet-list.html">내 동물 관리</a></li>
+                                <li><a href="../community/notice/notice-list.html">커뮤니티</a></li>
+                            </ul>
+                    </nav>
+                </div>
+                <nav class="member-menu">
+                    <h1 class="d-none">회원메뉴</h1>
+                    <ul>
+                        <li><a href="../mypage/profile/profile-edit.html">MyPage</a></li>
+                        <li><a href="../../../login.html">LogOut</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <div id="body">
+            <div class="float-content">
+                <main id="main">
+                    <section>
+                        <div class="img-area">
+                            <img class="img-pet" src="../images/puppy1.jpg">
+                        </div>
+                        <div>
+                            <section class="descrp">
+                                <h1 class="d-none">일기</h1>
+                                <section class="member-info">
+                                    <h1 class="d-none">회원 정보</h1>
+                                    <div class="img-member"></div>
+                                    <span class="id">id1</span>
+                                    <div class="friend-info">
+                                        <span class="follower font">팔로워</span> 
+                                        <button class="follower-num font">20</button>
+                                        <span class="follow font">팔로우</span> 
+                                        <button class="follow-num font">10</button>
+                                    </div>
+                                </section>
+                                <section>
+                                    <h1 class="d-none">일기 내용</h1>
+                                    <hr>
+                                    <div class="text-area">
+                                        <div class="diary-content">뽀삐와 산책한 날<br>오늘따라 더 신난 뽀삐</div>
+                                        <div class="keyword">
+                                            <span>#뽀삐</span>
+                                            <span>#산책</span>
+                                        </div>
+                                    </div>
+                                    <div class="upload-date">2021-04-11</div>
+                                    <section class="button-menu">
+                                        <h1 class="d-none">버튼</h1>
+                                        <button class="btn">수정</button>
+                                        <button class="btn">삭제</button>
+                                    </section>
+                                    <hr>
+                                </section>
+                            </section>
+
+
+                            <!-- 일기 댓글창 -->
+                            <section id="diary-comment-sctn">
+                                <h1 class="d-none">일기 댓글창</h1>
+                                
+                                <input type="hidden" value="1">
+
+								<section class="diary-comment-write">
+                                    <h1 class="d-none">일기 댓글 작성</h1>
+                                    <textarea name="content" id="diary-comment-writing" cols="50" rows="3" placeholder="댓글을 작성해주세요."></textarea>
+                                    <button class="button-2"><a href="./detail.html">등록</a></button>
+                                </section>
+
+								<!-- 내가 작성(답댓글, 수정, 삭제) -->
+                                <section class="diary-comment">
+                                    <h1 class="d-none">일기 개별댓글</h1>
+                                    <section class="comment-info">
+                                        <h1 class="d-none">댓글 작성자 프로필</h1>
+                                        <img src="../images/user.png" alt="profile">
+                                        <span class="comment-member-id"><a href="./list.html">id1</a></span>
+                                        <span>2일 전</span>
+                                    </section>
+                                    <section class="comment-content">
+                                        <h1 class="d-none">댓글 내용</h1>
+                                        <span>우리 뽀삐 너무 귀엽지 않나요?</span>
+                                    </section>
+                                    <div class="comment-writer-button comment-button">
+                                        <span class="reply-btn">답댓글</span>
+                                        <span class="update-btn">수정</span>
+                                        <span class="del-btn">삭제</span>
+                                        <span class="post-cmt-btn d-none">등록</span>
+                                        <span class="cancle-cmt-btn d-none">취소</span>
+                                    </div>
+                                </section>
+                            
+                            	<!-- 다른 회원이 작성(답댓글) -->
+                                <section class="diary-comment">
+                                    <h1 class="d-none">일기 개별댓글</h1>
+                                    <section class="comment-info">
+                                        <h1 class="d-none">댓글 작성자 프로필</h1>
+                                        <img src="../images/user.png" alt="profile">
+                                        <span class="comment-member-id">ab456</span>
+                                        <span>1일 전</span>
+                                    </section>
+                                    <section class="comment-content">
+                                        <h1 class="d-none">댓글 내용</h1>
+                                        <span>귀여워요~~~</span>
+                                    </section>
+                                    <div class="comment-button">
+                                        <span class="reply-btn">답댓글</span>
+                                        <span class="post-cmt-btn d-none">등록</span>
+                                        <span class="cancle-cmt-btn d-none">취소</span>
+                                    </div>
+                                </section>
+
+                            </section>
+                            <!-- 일기 댓글창 종료 -->
+
+                        </div>
+
+
+                    </section>
+                </main>
+            </div>
+        </div>
+
+        <footer id="footer"></footer>
+    </div>        
+</body>
+</html>
