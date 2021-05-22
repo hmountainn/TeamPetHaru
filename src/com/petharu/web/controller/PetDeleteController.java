@@ -24,7 +24,7 @@ public class PetDeleteController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		int id = Integer.parseInt(req.getParameter("id"));
-		id=23;
+
 		PetService noticeService = new JdbcPetService();
 		
 		try {
