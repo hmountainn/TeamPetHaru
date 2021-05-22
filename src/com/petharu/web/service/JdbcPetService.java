@@ -15,10 +15,9 @@ public class JdbcPetService implements PetService {
 
 	public List<Pet> getPetList(int memberId) {
 		List<Pet> list = new ArrayList<>();
-
+		memberId = 1;
 		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
-		String sql = "SELECT P.*,B.NAME BREED,TO_CHAR(SYSDATE,'YYYY')-TO_CHAR(BIRTHDAY, 'YYYY')+1 AGE \r\n"
-				+ "FROM PET P \r\n" + "LEFT JOIN BREED B ON B.ID = p.breed_id WHERE MEMBER_ID = " + memberId;
+		String sql = "SELECT P.*,B.NAME BREED,TO_CHAR(SYSDATE,'YYYY')-TO_CHAR(BIRTHDAY, 'YYYY')+1 AGE FROM PET P LEFT JOIN BREED B ON B.ID = p.breed_id WHERE MEMBER_ID = "+ memberId;
 
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
@@ -61,9 +60,34 @@ public class JdbcPetService implements PetService {
 	}
 
 	@Override
-	public int updatePetProfile(int id) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int updatePetProfile(Pet pet) {
+
+		int result = 0;
+
+		String sql = "UPDATE PET SET NAME=?, GENDER=?, BIRTHDAY=?, PERSONALITY=? ";
+
+		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
+		try {
+			Class.forName("oracle.jdbc.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "PETHARU", "1357");
+			
+			PreparedStatement st = con.prepareStatement(sql);
+			st.setString(1, pet.getName());
+			st.setString(2, pet.getGender());
+			st.setString(3, pet.getBirthday());
+			st.setString(4, pet.getPersonality());
+			
+			
+			result = st.executeUpdate();
+			
+			st.close();
+			con.close();
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return result;
 	}
 
 	@Override
@@ -74,24 +98,22 @@ public class JdbcPetService implements PetService {
 
 	@Override
 	public int insertPetProfile(Pet pet) throws SQLException, ClassNotFoundException {
-		//Á¶È¸¼ö,°ø°³ºñ°ø°³ µî ¾÷µ¥ÀÌÆ®°æ¿ì°¡ ¸¹´Ù.
 		int result = 0;
 
-		//¸ðµç¾÷µ¥ÀÌÆ® ½Ã ÇÏ³ªÀÇ Äõ¸®¹®ÀÌ¿ë//µ¥ÀÌÅÍ²ÈÀ»°ø°£¿¡ ?³Ö±â
-		String sql = "INSERT INTO PET(NAME,GENDER,BIRTHDAY,PERSONALITY)"
-				+ "VALUES(?,?,?,?)";
+		String sql = "INSERT INTO PET(NAME,GENDER,BIRTHDAY,PERSONALITY) VALUES(?,?,?,?)";
 
 		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
 		Class.forName("oracle.jdbc.OracleDriver");
 		Connection con = DriverManager.getConnection(url, "PETHARU", "1357");
 		
 		PreparedStatement st = con.prepareStatement(sql);
-		st.setString(1, pet.getName());//¼ø¼­´ë·Î
+		st.setString(1, pet.getName());
+		System.out.println(pet.getName());
 		st.setString(2, pet.getGender());
 		st.setString(3, pet.getBirthday());
 		st.setString(4, pet.getPersonality());
 		
-		result = st.executeUpdate();//sql³ÖÁö¸»°Í ex.executeQuery(sql):Select, ex, Update:
+		result = st.executeUpdate();//sqlï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ex.executeQuery(sql):Select, ex, Update:
 		
 		st.close();
 		con.close();

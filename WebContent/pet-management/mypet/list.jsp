@@ -293,7 +293,7 @@ System.out.println(list);
 						<!--mypet-section-->
 					</div>
 					<!-- content -->
-
+					
 					<div class="add-mypet" id="popup-3">
 						<div class="popup-content">
 							<div class="close-btn" onclick="addPopup()">×</div>
@@ -305,17 +305,17 @@ System.out.println(list);
 							<form action="reg" method="post">
 								<div class="dog_name add-container">
 									<label class="add-label">이름<span class="necessary">*</span></label>
-									<input class="add-input" type="text" placeholder="반려동물 이름">
+									<input class="add-input"type="text" name="name" placeholder="반려동물 이름">
 								</div>
 
 								<div class="dog_breed add-container">
 									<label class="add-label">품종<span class="necessary">*</span></label>
-									<input class="add-input" type="text" placeholder="반려동물 품종">
+									<input class="add-input" type="text" name="breed"placeholder="반려동물 품종">
 								</div>
 
 								<div class="dog_birth add-container">
 									<label class="add-label">생년월일<span class="necessary">*</span></label>
-									</th> <input class="add-input" type="date" placeholder="반려동물 생일">
+									</th> <input class="add-input" type="date" name="birthday"placeholder="반려동물 생일">
 								</div>
 
 								<div class="dog_gender add-container">
@@ -338,7 +338,7 @@ System.out.println(list);
 								</div>
 								</form>
 							</div><!--add-dog-info  -->
-
+							
 						</div>
 						<!--popup-content-->
 					</div>
