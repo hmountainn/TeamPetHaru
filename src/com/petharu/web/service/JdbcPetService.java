@@ -60,11 +60,11 @@ public class JdbcPetService implements PetService {
 	}
 
 	@Override
-	public int updatePetProfile(Pet pet) {
-
+	public int updatePetProfile(Pet pet) throws SQLException, ClassNotFoundException{
+		System.out.println(pet);
 		int result = 0;
 
-		String sql = "UPDATE PET SET NAME=?, GENDER=?, BIRTHDAY=?, PERSONALITY=? ";
+		String sql = "UPDATE PET SET NAME=?, GENDER=?, BIRTHDAY=?, PERSONALITY=? WHERE ID=?";
 
 		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
 		try {
@@ -76,7 +76,7 @@ public class JdbcPetService implements PetService {
 			st.setString(2, pet.getGender());
 			st.setString(3, pet.getBirthday());
 			st.setString(4, pet.getPersonality());
-			
+			st.setInt(5, pet.getId());			
 			
 			result = st.executeUpdate();
 			
@@ -92,8 +92,29 @@ public class JdbcPetService implements PetService {
 
 	@Override
 	public int deletePetProfile(int id) {
-		// TODO Auto-generated method stub
-		return 0;
+
+		int result = 0;
+		
+		String sql = "DELETE FROM PET WHERE ID=?";
+		
+		try {
+			String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
+			Class.forName("oracle.jdbc.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "PETHARU", "1357");
+			
+			PreparedStatement st = con.prepareStatement(sql);
+			st.setInt(1, id);
+			
+			result = st.executeUpdate();
+			
+			st.close();
+			con.close();
+			
+		} catch (Exception e) {
+			throw new ServiceException();
+		}
+		
+		return result;
 	}
 
 	@Override

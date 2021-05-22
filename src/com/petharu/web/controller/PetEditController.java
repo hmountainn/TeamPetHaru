@@ -17,8 +17,8 @@ import com.petharu.web.entity.Pet;
 import com.petharu.web.service.JdbcPetService;
 import com.petharu.web.service.PetService;
 
-@WebServlet("/pet-management/mypet/reg")
-public class RegPetController extends HttpServlet{
+@WebServlet("/pet-management/mypet/edit")
+public class PetEditController extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		PrintWriter out = resp.getWriter();
 		req.setCharacterEncoding("UTF-8");
@@ -30,7 +30,6 @@ public class RegPetController extends HttpServlet{
 			Integer.parseInt(req.getParameter("id"));
 		}
 			String name = req.getParameter("name");
-			System.out.println(name);
 			String gender = req.getParameter("gender");	
 			String birthday = req.getParameter("birthday");	
 			String personality = req.getParameter("personality");	
@@ -45,8 +44,8 @@ public class RegPetController extends HttpServlet{
 			pet.setGender(gender);
 			pet.setBirthday(birthday);
 			pet.setPersonality(personality);
-			pet.setMemberId(id_);
-			petService.insertPetProfile(pet);
+			pet.setId(id_);
+			petService.updatePetProfile(pet);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

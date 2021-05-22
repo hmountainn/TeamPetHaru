@@ -115,7 +115,7 @@
     
     }
 
-/*--------¼öÁ¤ÇÏ±â--------------*/    
+/*--------ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½--------------*/    
 .update-profile-box .img-box,
 .add-mypet .img-box {
     width: 50%;
@@ -154,12 +154,17 @@ outline:none;
   }
 .add-button,
 .update-button{
-    margin-top: 20px;
+    margin-top: 10px;
      }
 .add-button a,
 .update-button a{
     width: 65%;
 }
+.add-button input[type=submit],
+.update-button input[type=submit]{
+      	width: 100%;
+    	height: 39px;
+    }
 .add-container{
     display: flex;
     align-items: center;
