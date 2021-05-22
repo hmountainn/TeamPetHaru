@@ -17,10 +17,11 @@ public interface KnowhowService {
 	List<Knowhow> getList() throws ClassNotFoundException, SQLException;
 	List<Knowhow> getList(int page, String pet) throws ClassNotFoundException, SQLException;
 
-	/*
 	Knowhow get(int id);
 	int insert(Knowhow knowhow);
 	int update(Knowhow knowhow);
-	int delete(Knowhow knowhow);
-	*/
+	int delete(int id);
+	
+	int hitUp(Knowhow knowhow);
+	
 }

@@ -1,25 +1,34 @@
 window.addEventListener("load", function() {
 	
-	let dogBtn = document.querySelectorAll(".pet-selecting-btn>button")[0];
-	let catBtn = document.querySelectorAll(".pet-selecting-btn>button")[1];
+	let knowhowList = document.querySelector(".knowhow-list");
+	let dogBtn = document.querySelectorAll(".pet-selecting-btn>a")[0];
+	let dogBtnText = document.querySelectorAll(".pet-btn-text")[0];
+	let catBtn = document.querySelectorAll(".pet-selecting-btn>a")[1];
+	let catBtnText = document.querySelectorAll(".pet-btn-text")[1];
+
 
 	// 클릭한 버튼에 스타일 입히기
 	dogBtn.onclick = function(e) {
-		catBtn.classList.remove("select");		
-		dogBtn.classList.add("select");	
+		catBtn.classList.remove("select-bg");		
+		catBtnText.classList.remove("select-t")
+		dogBtn.classList.add("select-bg");	
+		dogBtnText.classList.add("select-t")
 	}
 	
 	catBtn.onclick = function(e) {
-		dogBtn.classList.remove("select");		
-		catBtn.classList.add("select");	
+		dogBtn.classList.remove("select-bg");	
+		dogBtnText.classList.remove("select-t")	
+		catBtn.classList.add("select-bg");
+		catBtnText.classList.add("select-t")
 	}
 	
+	
+	
 	// 목록 데이터 불러오기
-	/*var knowhowList = document.querySelector(".knowhow-list");
+/*	bind("http://localhost:8080/api/knowhow/list");
+*/	
 	
-	bind("http://localhost:8080/PetharuPrj/api/knowhow/list");
-	
-	function bind(url) {
+	/*function bind(url) {
 		var request = new XMLHttpRequest();
 		
 		request.onload = function() {
@@ -43,7 +52,7 @@ window.addEventListener("load", function() {
                         			</li>
                         			<li>
                         				<img src="../images/heart.png">
-                        				<span>${list[i].like}</span>
+                        				<span>7</span>
                         			</li>
                         			<li>
                         				<img src="../images/comment.png">
@@ -54,7 +63,7 @@ window.addEventListener("load", function() {
                             <div class="knowhow-title"><a href="detail.html?id=${list[i].id}">${list[i].title}</a></div>
                             <section class="flex">
                                 <div class="img-member"></div>
-                                <span class="id">${list[i].userId}</span>
+                                <span class="id">${list[i].memberId}</span>
                             </section>
                         </div>
                      </div>`;
@@ -66,7 +75,6 @@ window.addEventListener("load", function() {
 		
 		request.open("GET", url, true);
 		request.send(null);
-        
 	}*/
 	
 });
