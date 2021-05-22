@@ -7,6 +7,7 @@
 	pageEncoding="UTF-8"%>
 
 <%
+
 PetService petService = new JdbcPetService();
 List<Pet> list = petService.getPetList(1);
 System.out.println(list);
@@ -191,23 +192,23 @@ System.out.println(list);
 												</div>
 
 												<div class="update-dog-info">
-
+												<form action="edit" method="post">
 													<div class="dog_name add-container">
 														<label class="add-label">이름<span class="necessary">*</span></label>
-														<input class="add-input" type="text"
+														<input class="add-input" type="text" name="name"
 															placeholder="<%=p.getName() %>">
 													</div>
 
 													<div class="dog_breed add-container">
 														<label class="add-label">품종<span class="necessary">*</span></label>
-														<input class="add-input" type="text"
+														<input class="add-input" type="text" name="breed"
 															placeholder="<%=p.getBreed() %>">
 													</div>
 
 													<div class="dog_birth add-container">
 														<label class="add-label">생년월일<span
 															class="necessary">*</span></label>
-														</th> <input class="add-input" type="date"
+														</th> <input class="add-input" type="date" name="birthday"
 															placeholder="<%=p.getBirthday()%>">
 													</div>
 
@@ -221,14 +222,16 @@ System.out.println(list);
 
 													<div class="dog_personality add-container">
 														<label class="dog_personality">특징</label>
-														<textarea class="add-input-personality" cols="10" rows="3"
+														<textarea class="add-input-personality" name="personality"cols="10" rows="3"
 															placeholder="반려동물 특징(50자 이내)"></textarea>
 													</div>
 
 													<div class="update-button">
-														<a href="" class="button">수정하기</a>
+														<!-- <a href="" class="button">수정하기</a> -->
+														<input type="submit" class="button" value="수정하기">
 													</div>
 													<!--수정하기버튼-->
+												</form>
 												</div>
 												<!--update dog info-->
 
@@ -249,8 +252,8 @@ System.out.println(list);
 												<div class="option-btn">
 													<div class="cancel" onclick="confirmPopup(<%=p.getId()%>)">취소</div>
 													<!-- <div class="cancel"onclick="confirmPopup()">취소</div> -->
-													<div class="delete-btn"
-														onclick="resultPopup(<%=p.getId()%>)">삭제</div>
+													<a href="del?id=<%=p.getId()%>" class="delete-btn"
+														onclick="resultPopup(<%=p.getId()%>)">삭제</a>
 												</div>
 											</div>
 											<!--dog-info-->
@@ -293,7 +296,7 @@ System.out.println(list);
 						<!--mypet-section-->
 					</div>
 					<!-- content -->
-
+					
 					<div class="add-mypet" id="popup-3">
 						<div class="popup-content">
 							<div class="close-btn" onclick="addPopup()">×</div>
@@ -305,17 +308,17 @@ System.out.println(list);
 							<form action="reg" method="post">
 								<div class="dog_name add-container">
 									<label class="add-label">이름<span class="necessary">*</span></label>
-									<input class="add-input" type="text" placeholder="반려동물 이름">
+									<input class="add-input"type="text" name="name" placeholder="반려동물 이름">
 								</div>
 
 								<div class="dog_breed add-container">
 									<label class="add-label">품종<span class="necessary">*</span></label>
-									<input class="add-input" type="text" placeholder="반려동물 품종">
+									<input class="add-input" type="text" name="breed"placeholder="반려동물 품종">
 								</div>
 
 								<div class="dog_birth add-container">
 									<label class="add-label">생년월일<span class="necessary">*</span></label>
-									</th> <input class="add-input" type="date" placeholder="반려동물 생일">
+									</th> <input class="add-input" type="date" name="birthday"placeholder="반려동물 생일">
 								</div>
 
 								<div class="dog_gender add-container">
@@ -328,17 +331,17 @@ System.out.println(list);
 
 								<div class="dog_personality add-container">
 									<label class="dog_personality">특징</label>
-									<textarea class="add-input-personality" cols="10" rows="3"
+									<textarea class="add-input-personality" name="personality"cols="10" rows="3"
 										placeholder="반려동물 특징(50자 이내)"></textarea>
 								</div>
 
 								<div class="add-button">
 									<!-- <a href="list.html" class="button">저장하기</a> -->
-									<input type="submit" class="button">저장하기
+									<input type="submit" class="button" value="저장하기">
 								</div>
 								</form>
 							</div><!--add-dog-info  -->
-
+							
 						</div>
 						<!--popup-content-->
 					</div>

@@ -15,10 +15,11 @@ public class JdbcPetService implements PetService {
 
 	public List<Pet> getPetList(int memberId) {
 		List<Pet> list = new ArrayList<>();
-
+		memberId = 1;
 		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
-		String sql = "SELECT P.*,B.NAME BREED,TO_CHAR(SYSDATE,'YYYY')-TO_CHAR(BIRTHDAY, 'YYYY')+1 AGE \r\n"
-				+ "FROM PET P \r\n" + "LEFT JOIN BREED B ON B.ID = p.breed_id WHERE MEMBER_ID = " + memberId;
+		String sql = "SELECT P.*,B.NAME BREED,TO_CHAR(SYSDATE,'YYYY')-TO_CHAR(BIRTHDAY, 'YYYY')+1 AGE "
+		+"FROM PET P LEFT JOIN BREED B ON B.ID = p.breed_id WHERE MEMBER_ID = "+ memberId
+		+" ORDER BY P.ID";
 
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
@@ -49,52 +50,98 @@ public class JdbcPetService implements PetService {
 			rs.close();
 			st.close();
 			con.close();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (Exception e) {
+			throw new ServiceException();
 		}
 
 		return list;
+
 	}
 
 	@Override
-	public int updatePetProfile(int id) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int updatePetProfile(Pet pet){
+		System.out.println(pet);
+		int result = 0;
+
+		String sql = "UPDATE PET SET NAME=?, GENDER=?, BIRTHDAY=?, PERSONALITY=? WHERE ID=?";
+
+		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
+		
+		try {
+			Class.forName("oracle.jdbc.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "PETHARU", "1357");
+			
+			PreparedStatement st = con.prepareStatement(sql);
+			st.setString(1, pet.getName());
+			st.setString(2, pet.getGender());
+			st.setString(3, pet.getBirthday());
+			st.setString(4, pet.getPersonality());
+			st.setInt(5, pet.getId());			
+			
+			result = st.executeUpdate();
+			
+			st.close();
+			con.close();
+		}catch (Exception e) {
+			throw new ServiceException();
+		}
+		
+		return result;
 	}
 
 	@Override
 	public int deletePetProfile(int id) {
-		// TODO Auto-generated method stub
-		return 0;
+
+		int result = 0;
+		
+		String sql = "DELETE FROM PET WHERE ID=?";
+		
+		try {
+			String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
+			Class.forName("oracle.jdbc.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "PETHARU", "1357");
+			
+			PreparedStatement st = con.prepareStatement(sql);
+			st.setInt(1, id);
+			
+			result = st.executeUpdate();
+			
+			st.close();
+			con.close();
+			
+		} catch (Exception e) {
+			throw new ServiceException();
+		}
+		
+		return result;
 	}
 
 	@Override
-	public int insertPetProfile(Pet pet) throws SQLException, ClassNotFoundException {
-		//¡∂»∏ºˆ,∞¯∞≥∫Ò∞¯∞≥ µÓ æ˜µ•¿Ã∆Æ∞ÊøÏ∞° ∏π¥Ÿ.
+	public int insertPetProfile(Pet pet){
 		int result = 0;
+		System.out.println(pet);
+//Î©§Î≤ÑÏïÑÏù¥ÎîîÏàòÏ†ïÌï†Í≤É
+		String sql = "INSERT INTO PET(NAME,GENDER,BIRTHDAY,PERSONALITY) VALUES(?,?,?,?) WHERE MEMBER_ID=1";
 
-		//∏µÁæ˜µ•¿Ã∆Æ Ω√ «œ≥™¿« ƒı∏ÆπÆ¿ÃøÎ//µ•¿Ã≈Õ≤»¿ª∞¯∞£ø° ?≥÷±‚
-		String sql = "INSERT INTO PET(NAME,GENDER,BIRTHDAY,PERSONALITY)"
-				+ "VALUES(?,?,?,?)";
-
-		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
-		Class.forName("oracle.jdbc.OracleDriver");
-		Connection con = DriverManager.getConnection(url, "PETHARU", "1357");
-		
-		PreparedStatement st = con.prepareStatement(sql);
-		st.setString(1, pet.getName());//º¯º≠¥Î∑Œ
-		st.setString(2, pet.getGender());
-		st.setString(3, pet.getBirthday());
-		st.setString(4, pet.getPersonality());
-		
-		result = st.executeUpdate();//sql≥÷¡ˆ∏ª∞Õ ex.executeQuery(sql):Select, ex, Update:
-		
-		st.close();
-		con.close();
+		try {
+			String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
+			Class.forName("oracle.jdbc.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "PETHARU", "1357");
+			
+			PreparedStatement st = con.prepareStatement(sql);
+			st.setString(1, pet.getName());
+			st.setString(2, pet.getGender());
+			st.setString(3, pet.getBirthday());
+			st.setString(4, pet.getPersonality());
+			
+			result = st.executeUpdate();
+			
+			st.close();
+			con.close();
+			
+		} catch (Exception e) {
+			throw new ServiceException();
+		}
 		
 		return result;
 	}

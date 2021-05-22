@@ -16,9 +16,9 @@ import com.petharu.web.entity.Pet;
 import com.petharu.web.service.JdbcPetService;
 import com.petharu.web.service.PetService;
 
-@WebServlet("/api/pet-management/mypet/list")
+//@WebServlet("/api/pet-management/mypet/list")
 public class PetList extends HttpServlet {
-	//¸ñ·Ï
+	//ï¿½ï¿½ï¿½
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		PrintWriter out = resp.getWriter();

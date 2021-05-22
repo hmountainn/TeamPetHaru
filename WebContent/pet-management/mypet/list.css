@@ -357,6 +357,7 @@ header .float-content{
         padding: 5px 30px;
         text-decoration: none;
         transition: 200ms ease-in-out;
+        background-color: white;
     
       }
     
