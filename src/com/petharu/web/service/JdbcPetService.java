@@ -36,6 +36,7 @@ public class JdbcPetService implements PetService {
 				String gender = rs.getString("gender");
 				int age = rs.getInt("age");
 				String personality = rs.getString("personality");
+				String breed = rs.getString("breed");
 				int breedid = rs.getInt("breed_id");
 
 				Pet pet = new Pet();
@@ -44,6 +45,7 @@ public class JdbcPetService implements PetService {
 				pet.setGender(gender);
 				pet.setAge(age);
 				pet.setPersonality(personality);
+				pet.setBreed(breed);
 				pet.setBreedId(breedid);
 
 				list.add(pet);
@@ -62,7 +64,8 @@ public class JdbcPetService implements PetService {
 	
 	@Override
 	public Pet get(int id) {
-		String sql = String.format("SELECT * FROM PET WHERE PET.ID=%d", id);
+//		String sql = String.format("SELECT * FROM PET WHERE PET.ID=%d", id);
+		String sql = String.format("SELECT P.*,B.NAME BREED,TO_CHAR(SYSDATE,'YYYY')-TO_CHAR(BIRTHDAY, 'YYYY')+1 AGE FROM PET P LEFT JOIN BREED B ON B.ID = p.breed_id WHERE P.ID =%d", id);
 		
 		try {
 
@@ -76,24 +79,23 @@ public class JdbcPetService implements PetService {
 	
 			String name = rs.getString("name");
 			String gender = rs.getString("gender");
-			String breed = rs.getString("breed");
+//			String breed = rs.getString("breed");
 			String birthday = rs.getString("birthday");
 			String personality = rs.getString("personality");
 			int age = rs.getInt("age");
-			int memberId = rs.getInt("memberId");
-			int breedId = rs.getInt("breedId");
-			
+//			int memberId = rs.getInt("memberId"); 회원이 회원ID를 입력하지않으므로 오류인가 ?  
+//			int breedId = rs.getInt("breedId");
+//			
 			
 			Pet pet = new Pet();
-//			pet.setId(id);
 			pet.setName(name);
 			pet.setGender(gender);
-			pet.setBreed(breed);
+//			pet.setBreed(breed);
 			pet.setBirthday(birthday);
 			pet.setPersonality(personality);
 			pet.setAge(age);
-			pet.setMemberId(memberId);
-			pet.setBreedId(breedId);			
+//			pet.setMemberId(memberId);
+//			pet.setBreedId(breedId);			
 			
 			rs.close();
 			st.close();
@@ -102,6 +104,7 @@ public class JdbcPetService implements PetService {
 			return pet;
 			
 		} catch (Exception e) {
+			e.printStackTrace();
 			throw new ServiceException();
 		}
 	}
@@ -173,6 +176,7 @@ public class JdbcPetService implements PetService {
 
 	@Override
 	public int updatePetProfile(Pet pet){
+		System.out.println("test");
 		System.out.println(pet);
 		int result = 0;
 		

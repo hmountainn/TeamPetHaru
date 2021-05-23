@@ -7,13 +7,9 @@
 	pageEncoding="UTF-8"%>
 
 <%
-int breedId = 0;
-if (request.getParameter("id") != null) {
-	Integer.parseInt(request.getParameter("breed_id"));
-
-}
+int memberId = 1;
 PetService petService = new JdbcPetService();
-List<Pet> list = petService.getPetList(1);
+List<Pet> list = petService.getPetList(memberId);
 System.out.println(list);
 %>
 <!DOCTYPE html>
@@ -197,6 +193,7 @@ System.out.println(list);
 
 												<div class="update-dog-info">
 													<form action="edit" method="post">
+														<input type="hidden" name="id" value="<%=p.getId()%>" class="hiddenId">
 														<div class="dog_name add-container">
 															<label class="add-label">이름<span
 																class="necessary">*</span></label> <input class="add-input"
