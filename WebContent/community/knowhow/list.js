@@ -21,8 +21,7 @@ window.addEventListener("load", function() {
 		catBtn.classList.add("select-bg");
 		catBtnText.classList.add("select-t")
 	}
-	
-	
+		
 	
 	// 목록 데이터 불러오기
 /*	bind("http://localhost:8080/api/knowhow/list");
