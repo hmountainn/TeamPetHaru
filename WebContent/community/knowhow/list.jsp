@@ -9,8 +9,8 @@
 	String p = request.getParameter("p");
 	String p_ = request.getParameter("p_");
 	
-	System.out.println(p);
-	System.out.println(p_);
+/* 	System.out.println(p);
+	System.out.println(p_); */
 	
 	// 변수 초기화
 	int page_ = 1;
@@ -85,22 +85,21 @@
                         <section class="pet-selecting-btn">
                         	<h1 class="d-none">반려동물 선택</h1>   
                         	<%             
-                        		System.out.println("pet : " + pet);
                         		String dogBg = "";
                     			String dogT = "";
                     			String catBg = "";
                     			String catT = "";
                     			
                     			if(pet != null && !pet.equals("")) {
-                           			System.out.println("haha");
                     				
 	                           		if(pet.equals("강아지")) {
-	                           			System.out.println("haha");
+	                           			System.out.println("dog");
 	                           			dogBg = "select-bg";
 	                        			dogT = "select-t";	                           			
 	                           		}
 	                           		
 	                           		if(pet.equals("고양이")) {
+	                           			System.out.println("cat");
 	                           			catBg = "select-bg";
 	                    				catT = "select-t";			                           			
 	                           		}
