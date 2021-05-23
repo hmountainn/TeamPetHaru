@@ -150,6 +150,33 @@ public class JDBCWeightService implements WeightService {
 		return result;
 		
 	}
+
+	@Override
+	public int delete(int id) {
+		int result = 0;
+		
+		String sql = "DELETE FROM WEIGHT WHERE ID=?";
+		
+		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
+		
+		try {
+			Class.forName("oracle.jdbc.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "PETHARU","1357"); //드라이버 로드
+		
+			PreparedStatement st = con.prepareStatement(sql);
+			st.setInt(1, id);
+			
+			result = st.executeUpdate(); 
+			
+			st.close();
+			con.close();
+		
+		} catch (Exception e) {
+			throw new ServiceException();
+		}
+		
+		return result;
+	}
 	
 	
 }

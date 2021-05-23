@@ -14,65 +14,27 @@ import com.petharu.web.entity.Friend;
 
 public class JDBCMyhomeService implements MyhomeService {
 
+	@Override
 	public List<Diary> getList() throws ClassNotFoundException, SQLException {
 		
-		List<Diary> list = new ArrayList<>();
-
-		String sql = "SELECT * FROM ("
-				+ "    SELECT ROWNUM NUM, D.* FROM ("
-				+ "        SELECT * FROM DIARY"
-				+ "        ORDER BY REGDATE DESC"
-				+ "    ) D"
-				+ ") WHERE NUM BETWEEN 1 AND 9";
-		
-		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
-		Class.forName("oracle.jdbc.OracleDriver"); 
-		Connection con = DriverManager.getConnection(url, "PETHARU", "1357");
-		Statement st = con.createStatement();
-		ResultSet rs = st.executeQuery(sql);
-
-		while(rs.next()) {
-			
-			// Diary 데이터
-			int id = rs.getInt("id");
-			int memberId = rs.getInt("member_id");
-			String keyword = rs.getString("keyword");
-			String content = rs.getString("content");
-			Date regDate = rs.getDate("regDate");
-
-			// list에 담아주기
-			Diary diary = new Diary();
-			diary.setId(id);
-			diary.setMemberId(memberId);
-			diary.setKeyword(keyword);
-			diary.setContent(content);
-			diary.setRegDate(regDate);
-			
-			list.add(diary);
-		}
-		
-		rs.close();
-		st.close();
-		con.close();
-		
-		return list;
-		
-	};
+		return getList(1, 1);
+	}
 	
-	public List<Diary> getList(int memberId, int page) throws ClassNotFoundException, SQLException {
+	@Override
+	public List<Diary> getList(int page, int memberId) throws ClassNotFoundException, SQLException {
 		
 		List<Diary> list = new ArrayList<>();
 		int size = 9;
-		int startNum = 1+(page-1)*size;
-		int endNum = page*size;
+		int startNum = 1 + (page-1) * size;
+		int endNum = page * size;
 
 		String sql = "SELECT * FROM ("
 				+ "    SELECT ROWNUM NUM, D.* FROM ("
 				+ "        SELECT * FROM DIARY"
 				+ "        ORDER BY REGDATE DESC"
 				+ "    ) D"
-				+ ") WHERE NUM BETWEEN "+startNum+" AND "+endNum
-				+ " AND MEMBER_ID =" + memberId;
+				+ ") WHERE NUM BETWEEN " + startNum + " AND " + endNum
+				+ " AND MEMBER_ID = " + memberId;
 		
 		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
 		Class.forName("oracle.jdbc.OracleDriver"); 
@@ -104,8 +66,9 @@ public class JDBCMyhomeService implements MyhomeService {
 		con.close();
 		
 		return list;		
-	};
+	}
 	
+	@Override
 	public List<Friend> getFollowerList(int memberId) throws ClassNotFoundException, SQLException {
 		
 		List<Friend> list = new ArrayList<>();
@@ -135,8 +98,9 @@ public class JDBCMyhomeService implements MyhomeService {
 		con.close();
 		
 		return list;
-	};
+	}
 	
+	@Override
 	public List<Friend> getFollowList(int memberId) throws ClassNotFoundException, SQLException {
 		
 		List<Friend> list = new ArrayList<>();
@@ -168,16 +132,40 @@ public class JDBCMyhomeService implements MyhomeService {
 		return list;
 	};
 	
+	@Override
+	public Diary get(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int insert(Diary diary) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int update(Diary diary) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int delete(Diary diary) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
 	public int getFollowerCount(int memberId) {
-		int followerNum = 0;
-		
-		return followerNum;
-	};
-	
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
 	public int getFollowCount(int memberId) {
-		int followNum = 0;
-		
-		return followNum;
-	};
-	
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

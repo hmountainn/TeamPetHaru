@@ -8,15 +8,15 @@ window.addEventListener("load", function() {
 	dogBtn.onclick = function(e) {
 		catBtn.classList.remove("select");		
 		dogBtn.classList.add("select");	
-		petInput.removeAttribute('value', 'cat');
-		petInput.setAttribute('value', 'dog');
+		petInput.removeAttribute('value', '고양이');
+		petInput.setAttribute('value', '강아지');
 	}
 	
 	catBtn.onclick = function(e) {
 		dogBtn.classList.remove("select");		
 		catBtn.classList.add("select");	
-		petInput.removeAttribute('value', 'dog');
-		petInput.setAttribute('value', 'cat');
+		petInput.removeAttribute('value', '강아지');
+		petInput.setAttribute('value', '고양이');
 	}
 	
 });

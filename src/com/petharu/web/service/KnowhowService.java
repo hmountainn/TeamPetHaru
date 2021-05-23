@@ -17,8 +17,8 @@ public interface KnowhowService {
 	List<Knowhow> getList() throws ClassNotFoundException, SQLException;
 	List<Knowhow> getList(int page, String pet) throws ClassNotFoundException, SQLException;
 
-	Knowhow get(int id);
-	int insert(Knowhow knowhow);
+	Knowhow get(int id) throws ClassNotFoundException, SQLException;
+	int insert(Knowhow knowhow) throws ClassNotFoundException, SQLException;
 	int update(Knowhow knowhow);
 	int delete(int id);
 	

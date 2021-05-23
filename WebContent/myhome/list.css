@@ -44,6 +44,11 @@ button {
     font-size: 15px;
 }
 
+.text-strong {
+	font-weight: bold;
+	color: rgb(250, 195, 43);
+}
+
 :root {
     --shadow : 0 1px 2px rgba(0,0,0,0.05),0 1px 4px rgba(0,0,0,0.05),0 2px 8px rgba(0,0,0,0.05);
 }
@@ -244,14 +249,14 @@ button {
     .diary-list {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-around;
+        justify-content: center;
         margin: 20px 90px;
     }
 
         .diary-list>div {
             border-radius: 5px;
             width: 290px;
-            margin-bottom: 40px;
+            margin: 0 30px 30px 0;
             transition: box-shadow 0.1s ease-in 0s, transform 0.1s ease-in 0s;
             box-shadow: 0 0 6px rgb(206 206 206 / 40%);
         }
@@ -272,7 +277,6 @@ button {
         .diary-list .text-area {
             background-color: #fff;
             padding: 20px 20px 7px;
-            height: 70px;
         }  
 
         .text-area {
@@ -288,6 +292,7 @@ button {
 
             .keyword {
                 font-size: 13px;
+                margin-bottom: 15px;
             }
             
             .keyword>span {
@@ -295,10 +300,37 @@ button {
                 padding: 5px 10px;
                 border-radius: 15px;
             }
+        
+	.pager {
+        display: flex;
+        justify-content: center;
+        margin: 20px;
+        height: 24px;
+        line-height: 24px;
+    }
+    
+    	.pager>a {
+    		display: flex;
+        	align-items: center;
+    	}
 
-        .diary-list>:nth-child(4) {
-                margin-right: 0;
+        .pager>ul {
+            display: flex;
+            margin: 0 30px;
         }
+
+        .pager li {
+            margin-right: 30px;
+        }
+
+        .pager li:nth-child(5) {
+            margin-right: 0;
+        }
+
+        .prev, .next {
+            width: 15px;
+            height: 15px;
+        }        
         
         
 .detail-section {

@@ -9,7 +9,6 @@ public class Diary {
 	private String keyword;
 	private String content;
 	private Date regDate;
-	private String userId;
 	
 	public Diary() {
 		// TODO Auto-generated constructor stub
@@ -22,17 +21,6 @@ public class Diary {
 		this.keyword = keyword;
 		this.content = content;
 		this.regDate = regDate;
-	}
-	
-
-	public Diary(int id, int memberId, String keyword, String content, Date regDate, String userId) {
-		super();
-		this.id = id;
-		this.memberId = memberId;
-		this.keyword = keyword;
-		this.content = content;
-		this.regDate = regDate;
-		this.userId = userId;
 	}
 
 	public int getId() {
@@ -75,19 +63,10 @@ public class Diary {
 		this.regDate = regDate;
 	}
 
-	
-	public String getUserId() {
-		return userId;
-	}
-
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-
 	@Override
 	public String toString() {
 		return "Diary [id=" + id + ", memberId=" + memberId + ", keyword=" + keyword + ", content=" + content
-				+ ", regDate=" + regDate + ", userId=" + userId + "]";
+				+ ", regDate=" + regDate + "]";
 	}
 
 	
