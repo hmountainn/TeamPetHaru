@@ -4,7 +4,7 @@ window.addEventListener("load",function(){
     detailSchedule();
 	
 });
-/*
+
 function getSchedule(){
 	
 	var request = new XMLHttpRequest();
@@ -25,9 +25,15 @@ function getSchedule(){
 			}
 		}
 		//parameter로 month줘야함 user_id도...
-		request.open("GET",`../api/schedule/list`,true); //false면 동기, true면 비동기
+		let month = document.querySelector(".current-year-month");
+		month = month.innerText;
+		month = month.substring(5,month.length);
+		month = Number(month);
+		console.log("month:"+month);
+		let memberId=1;
+		request.open("GET",`../api/schedule/list?m=${month}&member=${memberId}`,true); //false면 동기, true면 비동기
         request.send(null);		
-}*/
+}
 
 function makeCalendar(){
     calendar = document.querySelector(".calendar");
@@ -38,7 +44,7 @@ function makeCalendar(){
 		//calendar에 행을 추가해준다.
 		//변수명(row)을 지정해주는 이유 : 후에 cell이 추가될 자리를 알려주기 위해
 	for(i=0; i<firstDay; i++){
-		//first_day에 해당하는 요일까지 열을 만든다.
+		//first_day에 해당하는 요일까지 열을 만든다.	
 		//요일은 0부터 시작하기 때문에 i값도 0에서 시작한다.
 		cell = row.insertCell();
         // cell.innerHTML = "HI";
@@ -66,7 +72,7 @@ function makeCalendar(){
             //행을 하나 추가
             cell = row.insertCell();
             cell.setAttribute('id', [i]);
-            cell.innerHTML = [i];
+            cell.innerHTML = "<div class=\"number\">"+[i]+"</div>";
             //세줄은 위와 같음
             firstDay = firstDay - 6;
             //6을 빼는 이유는 매번 7에서 else문으로 넘어오고, if문이 6번만 하면 되기때문이다.
@@ -82,17 +88,22 @@ function makeCalendar(){
     // console.log(todayYM);
     // console.log(currentYM.innerText);
     
-    
+    lastDate = new Date(year,month+1,0,0,0,0,0).getDate();//이번달의 마지막날
+	//console.log("lastdate"+lastDate);
     for(i=1; i<=lastDate; i++){
+		//console.log(i);
         var date = document.getElementById([i]);
+		//console.log("date:"+date);
         if(todayDate == date.getAttribute("id") && todayYM==currentYM.innerText){
             datediv = date.querySelector("div");
+			//console.log("datediv:"+datediv);
             datediv.classList.add("today");
             //console.log("hi");
         }
         
     }
-	//getSchedule();
+
+	getSchedule();
 }
 /*
 window.addEventListener("load",function(){//오늘날짜표시
@@ -187,7 +198,7 @@ function detailSchedule(){
     //console.log(scheduleDetail);
     calendar.onclick = function(e){
         var target = e.target;
-        console.log(target);
+        //console.log(target);
         if(target.classList.contains("schedule")){
             scheduleDetail.classList.toggle("d-none");
 
