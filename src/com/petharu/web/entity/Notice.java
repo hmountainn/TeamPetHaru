@@ -13,12 +13,18 @@ public class Notice {
 	private int hit;
 	private String content;
 	private String files;
+	private String upTitle;
+	private int upId;
+	private String downTitle;
+	private int downId;
 	
 	public Notice() {
 		
 	}
 
-	public Notice(int id, String title, int adminId, String userId, Date regdate, int hit, String content, String files) {
+	public Notice(int id, String title, int adminId, String userId, 
+			Date regdate, int hit, String content, String files, 
+			String upTitle, int upId, String downTitle, int downId) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -28,6 +34,10 @@ public class Notice {
 		this.hit = hit;
 		this.content = content;
 		this.files = files;
+		this.upTitle = upTitle;
+		this.downTitle = downTitle;
+		this.upId = upId;
+		this.downId = downId;
 	}
 
 	public int getId() {
@@ -94,6 +104,38 @@ public class Notice {
 		this.files = files;
 	}
 
+	public String getUpTitle() {
+		return upTitle;
+	}
+
+	public void setUpTitle(String upTitle) {
+		this.upTitle = upTitle;
+	}
+
+	public int getUpId() {
+		return upId;
+	}
+
+	public void setUpId(int upId) {
+		this.upId = upId;
+	}
+
+	public String getDownTitle() {
+		return downTitle;
+	}
+
+	public void setDownTitle(String downTitle) {
+		this.downTitle = downTitle;
+	}
+	
+	public int getDownId() {
+		return downId;
+	}
+	
+	public void setDownId(int downId) {
+		this.downId = downId;
+	}
+
 	@Override
 	public String toString() {
 		return "{\"id\":" + id
@@ -103,7 +145,12 @@ public class Notice {
 				+ ", \"regdate\":\"" + regdate
 				+ "\", \"hit\":" + hit
 				+ ", \"content\":\"" + content
-				+ "\", \"files\":\"" + files + "\"}";
+				+ "\", \"files\":\"" + files 
+				+ "\", \"upTitle\":\"" + upTitle
+				+ "\", \"upId\":" + upId
+				+ ", \"downTitle\":\"" + downTitle
+				+ "\", \"downId\":" + downId
+				+ "}";
 	}
 
 	

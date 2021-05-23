@@ -16,44 +16,33 @@ import com.petharu.web.entity.Pet;
 import com.petharu.web.service.JdbcPetService;
 import com.petharu.web.service.PetService;
 
-@WebServlet("/api/pet-management/mypet/list")
+//@WebServlet("/api/pet-management/mypet/list")
 public class PetList extends HttpServlet {
-	//¸ñ·Ï
+	//ï¿½ï¿½ï¿½
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		PrintWriter out = resp.getWriter();
 		
 
-		try {		
-			int id_ = 1;
-			if (req.getParameter("id") != null) {
-				Integer.parseInt(req.getParameter("id"));				
-			}
-			String name = req.getParameter("name");
-			System.out.println(name);
-			String breed = req.getParameter("breed");			
-			System.out.println(id_);
-			
-			PetService petService = new JdbcPetService();
-			List<Pet> list = petService.getPetList(id_);
-
-//			List<Pet> list = petService.getList();
-			
-			Gson gson = new Gson();				
-			String json = gson.toJson(list);
-			System.out.println(json.toString());
-			
-			out.println(json);
-						
-		System.out.println("list");
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		int id_ = 1;
+		if (req.getParameter("id") != null) {
+			Integer.parseInt(req.getParameter("id"));				
 		}
+//			String name = req.getParameter("name");
+//			System.out.println(name);
+//			String breed = req.getParameter("breed");			
+		System.out.println(id_);
+		
+		PetService petService = new JdbcPetService();
+		List<Pet> list = petService.getPetList(id_);
+		
+		Gson gson = new Gson();				
+		String json = gson.toJson(list);
+		System.out.println(json.toString());
+		
+		out.println(json);
+					
+System.out.println("list");
 		
 	}
 

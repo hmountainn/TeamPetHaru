@@ -6,4 +6,8 @@ import com.petharu.web.entity.Weight;
 
 public interface WeightService {
 	List<Weight> getList();
+	int insert(Weight weight);
+	Weight get(int id);
+	int update(Weight weight);
+	
 }

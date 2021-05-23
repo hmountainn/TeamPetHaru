@@ -6,7 +6,7 @@ public class Knowhow {
 
 	private int id;
 	private int memberId;
-	private int knowhowTypeId;
+	private String knowhowTypeName;
 	private String title;
 	private String content;
 	private Date regDate;
@@ -16,10 +16,11 @@ public class Knowhow {
 		
 	}
 
-	public Knowhow(int id, int memberId, int knowhowTypeId, String title, String content, Date regDate, int hit) {
+	public Knowhow(int id, int memberId, String knowhowTypeName, String title, String content, Date regDate, int hit) {
+		super();
 		this.id = id;
 		this.memberId = memberId;
-		this.knowhowTypeId = knowhowTypeId;
+		this.knowhowTypeName = knowhowTypeName;
 		this.title = title;
 		this.content = content;
 		this.regDate = regDate;
@@ -42,12 +43,12 @@ public class Knowhow {
 		this.memberId = memberId;
 	}
 
-	public int getKnowhowTypeId() {
-		return knowhowTypeId;
+	public String getKnowhowTypeName() {
+		return knowhowTypeName;
 	}
 
-	public void setKnowhowTypeId(int knowhowTypeId) {
-		this.knowhowTypeId = knowhowTypeId;
+	public void setKnowhowTypeName(String knowhowTypeName) {
+		this.knowhowTypeName = knowhowTypeName;
 	}
 
 	public String getTitle() {
@@ -84,8 +85,8 @@ public class Knowhow {
 
 	@Override
 	public String toString() {
-		return "Knowhow [id=" + id + ", memberId=" + memberId + ", knowhowTypeId=" + knowhowTypeId + ", title=" + title
-				+ ", content=" + content + ", regDate=" + regDate + ", hit=" + hit + "]";
+		return "Knowhow [id=" + id + ", memberId=" + memberId + ", knowhowTypeName=" + knowhowTypeName + ", title="
+				+ title + ", content=" + content + ", regDate=" + regDate + ", hit=" + hit + "]";
 	}
 	
 }

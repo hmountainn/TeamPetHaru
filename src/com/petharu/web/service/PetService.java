@@ -6,12 +6,12 @@ import java.util.List;
 import com.petharu.web.entity.Pet;
 
 public interface PetService {
-	public List<Pet> getPetList() throws ClassNotFoundException, SQLException;	
 	
-	public List<Pet> getPetList(int memberId) throws ClassNotFoundException, SQLException;
+	public List<Pet> getPetList(int memberId);
 
-	int updatePetProfile(int id)throws ClassNotFoundException, SQLException;
-	int deletePetProfile(int id)throws ClassNotFoundException, SQLException;
-	int insertPetProfile(int id)throws ClassNotFoundException, SQLException;
+	int updatePetProfile(Pet pet);
+	int deletePetProfile(int id);
+	int insertPetProfile(Pet pet);
+
 
 }

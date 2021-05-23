@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.petharu.web.entity.Notice;
 import com.petharu.web.service.JDBCNoticeService;
 import com.petharu.web.service.NoticeService;
@@ -55,10 +56,8 @@ public class NoticeList extends HttpServlet {
 			String json = gson.toJson(list);
 			out.println(json);
 			
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} catch (Exception e) {
+			resp.sendRedirect("/community/notice/exception.html");
 		}
 		
 	}
