@@ -8,10 +8,13 @@ import com.petharu.web.entity.Pet;
 public interface PetService {
 	
 	public List<Pet> getPetList(int memberId);
+	
+	Pet get(int id);
 
 	int updatePetProfile(Pet pet);
 	int deletePetProfile(int id);
 	int insertPetProfile(Pet pet);
+	
 
 
 }

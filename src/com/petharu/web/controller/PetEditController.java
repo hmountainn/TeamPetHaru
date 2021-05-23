@@ -19,6 +19,7 @@ import com.petharu.web.service.PetService;
 
 @WebServlet("/pet-management/mypet/edit")
 public class PetEditController extends HttpServlet{
+	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		PrintWriter out = resp.getWriter();
 		req.setCharacterEncoding("UTF-8");
@@ -29,28 +30,35 @@ public class PetEditController extends HttpServlet{
 		if (req.getParameter("id") != null) {
 			Integer.parseInt(req.getParameter("id"));
 		}
+		int breedId =1;
+		if (req.getParameter("breed_id") != null) {
+			breedId = Integer.parseInt(req.getParameter("breed_id"));
+
+		}
 			String name = req.getParameter("name");
+			System.out.println("Edit controller 실행 name : "+name);
 			String gender = req.getParameter("gender");	
 			String birthday = req.getParameter("birthday");	
 			String personality = req.getParameter("personality");	
-			System.out.println(name);
+			System.out.println("Edit controller 실행 breedId: "+breedId);
 
 		PetService petService = new JdbcPetService();
-		List<Pet> list = petService.getPetList(id_);
-		Pet pet = new Pet();
+		Pet pet;
 
 		try {
+			pet = petService.get(id_);
 			pet.setName(name);
 			pet.setGender(gender);
 			pet.setBirthday(birthday);
 			pet.setPersonality(personality);
-			pet.setId(id_);
+			pet.setMemberId(id_);
+			pet.setBreedId(breedId);
 			petService.updatePetProfile(pet);
+			resp.sendRedirect("/pet-management/mypet/list.jsp");
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			resp.sendRedirect("exception.html");
 		}
-		resp.sendRedirect("/pet-management/mypet/list.jsp");
 //		req.setAttribute("pet", pet);
 //		req.getRequestDispatcher("/pet-management/mypet/list.jsp").forward(req, resp);
 
