@@ -141,8 +141,6 @@ public class JDBCKnowhowService implements KnowhowService {
 	@Override
 	public int insert(Knowhow knowhow) throws ClassNotFoundException, SQLException {
 		
-		System.out.println(knowhow);
-
 		int result = 0;
 		  
 		String sql = "INSERT INTO KNOWHOW(MEMBER_ID, KNOWHOW_TYPE_NAME, TITLE, CONTENT) VALUES(?, ?, ?, ?)";
@@ -172,14 +170,15 @@ public class JDBCKnowhowService implements KnowhowService {
 	}
 	
 	@Override
-	public int update(Knowhow knowhow) throws ClassNotFoundException, SQLException {
+	public int update(Knowhow knowhow) {
+		System.out.println(knowhow);
 		
 		int result = 0;
 		  
 		String sql = "UPDATE KNOWHOW SET MEMBER_ID=?, KNOWHOW_TYPE_NAME=?, TITLE=?, CONTENT=? WHERE ID=?";
 		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
 		  
-		//try {
+		try {
 			Class.forName("oracle.jdbc.OracleDriver");
 			Connection con = DriverManager.getConnection(url, "PETHARU", "1357");
 			
@@ -197,9 +196,9 @@ public class JDBCKnowhowService implements KnowhowService {
 			
 			return result;
 			
-		//} catch (Exception e) {
-		//	throw new ServiceException();
-		//} 
+		} catch (Exception e) {
+			throw new ServiceException();
+		} 
 	}
 	
 	@Override
@@ -208,7 +207,6 @@ public class JDBCKnowhowService implements KnowhowService {
 		int result = 0;
 
 		String sql = "DELETE KNOWHOW WHERE ID=?";
-
 		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
 		
 		try {
@@ -217,7 +215,6 @@ public class JDBCKnowhowService implements KnowhowService {
 			
 			PreparedStatement st = con.prepareStatement(sql);
 			st.setInt(1, id);
-			
 			result = st.executeUpdate();
 			
 			st.close();
