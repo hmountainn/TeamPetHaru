@@ -168,7 +168,6 @@ button {
     .logo-title-container>img {
         width: 120px;
         height: auto;
-        margin-top: 7px;
         /* margin-bottom: auto; */
     }
 
@@ -328,7 +327,7 @@ button {
     .img-pet {
         display: block;
         width: 470px;
-        height: 380px;
+        height: 435px;
         border-radius: 10px;
         margin: 40px auto;
     }

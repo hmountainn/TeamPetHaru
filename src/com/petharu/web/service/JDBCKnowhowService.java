@@ -64,7 +64,7 @@ public class JDBCKnowhowService implements KnowhowService {
 				String knowhowTypeName = rs.getString("knowhow_type_name");
 				String title = rs.getString("title");
 				String content = rs.getString("content");
-				Date regDate = rs.getDate("regDate");
+				Date regDate = rs.getDate("regdate");
 				int hit = rs.getInt("hit");
 
 				// list에 담아주기
@@ -93,12 +93,12 @@ public class JDBCKnowhowService implements KnowhowService {
 	}
 
 	@Override
-	public Knowhow get(int id) {
+	public Knowhow get(int id) throws ClassNotFoundException, SQLException {
 
-		String sql = "SELECT * FROM KNOWHOW WHERE ID =" + id;
+		String sql = "SELECT * FROM KNOWHOW WHERE ID = " + id;
 		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
 
-		try {
+		//try {
 			Class.forName("oracle.jdbc.OracleDriver");
 			Connection con = DriverManager.getConnection(url, "PETHARU", "1357");
 			Statement st = con.createStatement();
@@ -110,17 +110,17 @@ public class JDBCKnowhowService implements KnowhowService {
 
 				// Knowhow 데이터
 				int memberId = rs.getInt("member_id");
-				String pet = rs.getString("pet");
+				String knowhowTypeName = rs.getString("knowhow_type_name");
 				String title = rs.getString("title");
 				String content = rs.getString("content");
 				Date regDate = rs.getDate("regdate");
 				int hit = rs.getInt("hit");
-				int like = rs.getInt("like");
 
 				// list에 담아주기
 				knowhow = new Knowhow();
 				knowhow.setId(id);
 				knowhow.setMemberId(memberId);
+				knowhow.setKnowhowTypeName(knowhowTypeName);
 				knowhow.setTitle(title);
 				knowhow.setContent(content);
 				knowhow.setRegDate(regDate);
@@ -133,20 +133,20 @@ public class JDBCKnowhowService implements KnowhowService {
 
 			return knowhow;
 
-		} catch (Exception e) {
-			throw new ServiceException();
-		}
+		//} catch (Exception e) {
+		//	throw new ServiceException();
+		//}
 	}
 
 	@Override
-	public int insert(Knowhow knowhow) {
+	public int insert(Knowhow knowhow) throws ClassNotFoundException, SQLException {
 		
 		int result = 0;
 		  
 		String sql = "INSERT INTO KNOWHOW(MEMBER_ID, KNOWHOW_TYPE_NAME, TITLE, CONTENT) VALUES(?, ?, ?, ?)";
 		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
 		
-		try {
+		//try {
 			Class.forName("oracle.jdbc.OracleDriver");
 			Connection con = DriverManager.getConnection(url, "PETHARU", "1357");
 			
@@ -163,13 +163,15 @@ public class JDBCKnowhowService implements KnowhowService {
 			
 			return result; 
 			
-		} catch (Exception e) {
-			throw new ServiceException();
-		} 
+		//} catch (Exception e) {
+		//	throw new ServiceException();
+		//} 
+			
 	}
 	
 	@Override
 	public int update(Knowhow knowhow) {
+		System.out.println(knowhow);
 		
 		int result = 0;
 		  
@@ -205,7 +207,6 @@ public class JDBCKnowhowService implements KnowhowService {
 		int result = 0;
 
 		String sql = "DELETE KNOWHOW WHERE ID=?";
-
 		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
 		
 		try {
@@ -214,7 +215,6 @@ public class JDBCKnowhowService implements KnowhowService {
 			
 			PreparedStatement st = con.prepareStatement(sql);
 			st.setInt(1, id);
-			
 			result = st.executeUpdate();
 			
 			st.close();

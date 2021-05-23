@@ -272,7 +272,6 @@ button {
         .diary-list .text-area {
             background-color: #fff;
             padding: 20px 20px 7px;
-            height: 70px;
         }  
 
         .text-area {
@@ -288,6 +287,7 @@ button {
 
             .keyword {
                 font-size: 13px;
+                margin-bottom: 15px;
             }
             
             .keyword>span {

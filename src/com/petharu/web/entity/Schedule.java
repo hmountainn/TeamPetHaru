@@ -71,6 +71,12 @@ public class Schedule {
 	public void setDateTime(String dateTime) {
 		this.dateTime = dateTime;
 	}
+
+	@Override
+	public String toString() {
+		return "Schedule [id=" + id + ", memberId=" + memberId + ", title=" + title + ", content=" + content
+				+ ", scheduleTypeName=" + scheduleTypeName + ", dateTime=" + dateTime + "]";
+	}
 	
 	
 

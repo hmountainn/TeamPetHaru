@@ -19,7 +19,7 @@
             <div class="float-content">
                 <div class="flex align-center">
                     <a href="" class="logo-title-container">
-                        <img src="../images/logo.png">
+                        <img src="../../images/logo.png">
                     </a>
                     <nav class="main-menu">   
                             <h1 class="d-none">메인메뉴</h1>
@@ -60,7 +60,7 @@
 	                            <h1 class="sub-title">반려동물 선택</h1>
 	                            <span class="required">*</span>
 	                            <section class="pet-selecting-btn">
-	                          		<input type="hidden" name="pet">
+	                          		<input type="hidden" name="pet" value="강아지">
 	                                <span class="select center font">강아지</span>
 	                                <span class="center font">고양이</span>
 	                            </section>
@@ -73,7 +73,10 @@
 	                        <section class="write-content">
 	                            <h1 class="sub-title">글 작성</h1>
 	                            <span class="required">*</span>
-	                            <div class="img-upload-btn center font">이미지 업로드</div>
+	                            <div class="img-upload-box">
+						            <div class="upload-btn btn-sel center font">이미지 업로드</div> <!--.btn-file의 이벤트를 .btn-sel로 견인하는 방식(트리거)으로 사용-->
+						            <input class="btn-file d-none" type="file"> <!--사용자가 파일에 직접 접근할 수 있게 해야 함-->
+						        </div>
 	                            <textarea class="input font" name="content" placeholder="내용을 입력해주세요"></textarea>
 	                        </section>
 	                        <hr class="line">

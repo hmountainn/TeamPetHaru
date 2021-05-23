@@ -1,4 +1,5 @@
-<%-- <%@page import="com.petharu.web.entity.Knowhow"%>
+<%@page import="com.petharu.web.service.JDBCKnowhowService"%>
+<%@page import="com.petharu.web.entity.Knowhow"%>
 <%@page import="com.petharu.web.service.KnowhowService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -7,7 +8,7 @@
 	String id_ = request.getParameter("id");
 	int id = Integer.parseInt(id_);
 	
-	KnowhowService knowhowService = new KnowhowService();
+	KnowhowService knowhowService = new JDBCKnowhowService();
 	Knowhow knowhow = knowhowService.get(id);
 %>
 
@@ -29,7 +30,7 @@
             <div class="float-content">
                 <div class="flex align-center">
                     <a href="" class="logo-title-container">
-                        <img src="../images/logo.png">
+                        <img src="../../images/logo.png">
                     </a>
                     <nav class="main-menu">   
                             <h1 class="d-none">메인메뉴</h1>
@@ -71,22 +72,18 @@
 	                            <span class="required">*</span>
 	                            <section class="pet-selecting-btn">
 	                            	<%
-		                        		String pet = knowhow.getPet();
+		                        		String pet = knowhow.getKnowhowTypeName();
 		                        		String dog = "";
 		                        		String cat = "";
-		                        		String value = "";
 		                        		
-		                        		if(pet.equals("dog"))
-		                        			dog = "select";
-		                        			value = "dog";
+		                        		if(pet.equals("강아지"))
+		                        			dog = "select";		                        		
 		                        		
-		                        		
-		                        		if(pet.equals("cat"))
+		                        		if(pet.equals("고양이"))
 		                        			cat = "select";
-		                        			value = "cat";
 		                        	%>
 	                            
-	                          		<input type="hidden" name="pet" value="<%=value%>">
+	                          		<input type="hidden" name="pet"">
 	                          		<!-- 등록 시 선택한 동물의 종류를 수정 페이지에서도 동일하게 출력 -->
 	                                <span class="<%=dog %> center font">강아지</span>
 	                                <span class="<%=cat %> center font">고양이</span>
@@ -119,4 +116,4 @@
         <footer id="footer"></footer>
     </div>        
 </body>
-</html> --%>
+</html>
