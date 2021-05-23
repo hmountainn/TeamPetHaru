@@ -38,14 +38,14 @@ public class JdbcFriendService implements FriendService {
 			String keyword = rs.getString("keyword");
 			String content = rs.getString("content");
 			java.sql.Date regDate = rs.getDate("regdate");
-			String userId = rs.getString("user_id");
+//			int memberId = rs.getInt("member_id");
 			
 			Diary diary = new Diary();
 			diary.setId(id);
 			diary.setKeyword(keyword);
 			diary.setContent(content);
 			diary.setRegDate(regDate);
-			diary.setUserId(userId);
+//			diary.setMemberId(memberId);
 
 			
 			list.add(diary);
