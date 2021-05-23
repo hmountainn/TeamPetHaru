@@ -75,19 +75,15 @@
 		                        		String pet = knowhow.getKnowhowTypeName();
 		                        		String dog = "";
 		                        		String cat = "";
-		                        		String value = "";
 		                        		
 		                        		if(pet.equals("강아지"))
-		                        			dog = "select";
-		                        			value = "강아지";
-		                        		
+		                        			dog = "select";		                        		
 		                        		
 		                        		if(pet.equals("고양이"))
 		                        			cat = "select";
-		                        			value = "고양이";
 		                        	%>
 	                            
-	                          		<input type="hidden" name="pet" value="<%=value%>">
+	                          		<input type="hidden" name="pet"">
 	                          		<!-- 등록 시 선택한 동물의 종류를 수정 페이지에서도 동일하게 출력 -->
 	                                <span class="<%=dog %> center font">강아지</span>
 	                                <span class="<%=cat %> center font">고양이</span>

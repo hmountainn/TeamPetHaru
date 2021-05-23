@@ -60,7 +60,7 @@
 	                            <h1 class="sub-title">반려동물 선택</h1>
 	                            <span class="required">*</span>
 	                            <section class="pet-selecting-btn">
-	                          		<input type="hidden" name="pet">
+	                          		<input type="hidden" name="pet" value="강아지">
 	                                <span class="select center font">강아지</span>
 	                                <span class="center font">고양이</span>
 	                            </section>

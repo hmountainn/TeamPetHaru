@@ -33,18 +33,15 @@ public class KnowhowEditController extends HttpServlet {
 		Knowhow knowhow;
 		
 		try {
-			
 			knowhow = service.get(id);
 			knowhow.setKnowhowTypeName(pet);
 			knowhow.setTitle(title);
 			knowhow.setContent(content);
 			service.update(knowhow);
 			
-		} catch (ClassNotFoundException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		} 
 		
 		resp.sendRedirect("detail.jsp?id="+id);
 	
