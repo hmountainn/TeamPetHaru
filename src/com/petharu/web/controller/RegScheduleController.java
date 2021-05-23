@@ -17,9 +17,15 @@ import com.petharu.web.service.ScheduleService;
 public class RegScheduleController extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
+		
+		resp.setCharacterEncoding("UTF-8");
+		resp.setContentType("text/html; charset=UTF-8");
+		
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
 		String datetime = req.getParameter("datetime");		
+		String scheduleType = req.getParameter("scheduleType");
 		
 		try {
 			ScheduleService scheduleservice = new JDBCScheduleService();		
@@ -27,6 +33,7 @@ public class RegScheduleController extends HttpServlet{
 			schedule.setTitle(title);
 			schedule.setContent(content);
 			schedule.setDateTime(datetime);
+			schedule.setScheduleTypeName(scheduleType);
 			schedule.setMemberId(1);
 			scheduleservice.insert(schedule);
 		} catch (ClassNotFoundException | SQLException e) {
@@ -34,7 +41,7 @@ public class RegScheduleController extends HttpServlet{
 			e.printStackTrace();
 		}
 		
-		resp.sendRedirect("/pet-management/schedule");
+		resp.sendRedirect("/pet-management/schedule/calendar.html");
 		
 		
 	}

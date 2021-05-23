@@ -169,7 +169,6 @@ button {
     .logo-title-container>img {
         width: 120px;
         height: auto;
-        margin-top: 7px;
         /* margin-bottom: auto; */
     }
 
@@ -291,17 +290,29 @@ button {
             font-weight: bold;
         }
     
-    .img-upload-btn {
-        margin: 5px 0 10px;
-        background-color: rgb(172, 172, 169);
-        width: 130px;
-        height: 35px;
-        font-size: 14px;
-        border-radius: 4px;
-        font-weight: bold;
-        color: #fff;
-        cursor: pointer;
+    .img-upload-box {
+    	position: relative;
+   	    background-color: rgb(224, 223, 223);
+	    width: 270px;
+	    height: 270px;
+	    border-radius: 10px;
+		margin-bottom: 10px;
     }
+    
+	    .upload-btn {
+		    position: absolute;
+		    bottom: 15px;
+		    left: 50%;
+		    margin-left: -60px;
+		    width: 120px;
+		    height: 35px;
+		    border-radius: 5px;
+		    background-color: rgb(153, 151, 151);
+		    font-weight: bold;
+	        font-size: 14px;
+		    color: white;
+		    cursor: pointer;
+	    }
 
     .write-content>textarea {
         margin: 7px 0 40px 0;

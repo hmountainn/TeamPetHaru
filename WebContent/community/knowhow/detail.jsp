@@ -1,4 +1,5 @@
-<%-- <%@page import="com.petharu.web.entity.Knowhow"%>
+<%@page import="com.petharu.web.service.JDBCKnowhowService"%>
+<%@page import="com.petharu.web.entity.Knowhow"%>
 <%@page import="com.petharu.web.service.KnowhowService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -7,7 +8,7 @@
 	String id_ = request.getParameter("id");
 	int id = Integer.parseInt(id_);
 	
-	KnowhowService knowhowService = new KnowhowService();
+	KnowhowService knowhowService = new JDBCKnowhowService();
 	Knowhow knowhow = knowhowService.get(id); 
 %>
 
@@ -29,7 +30,7 @@
             <div class="float-content">
                 <div class="flex align-center">
                     <a href="" class="logo-title-container">
-                        <img src="../images/logo.png">
+                        <img src="../../images/logo.png">
                     </a>
                     <nav class="main-menu">   
                             <h1 class="d-none">메인메뉴</h1>
@@ -68,15 +69,15 @@
 	                    <div class="knowhow-info">
 	                  		<ul>
 	                  			<li>
-	                  				<img src="../images/view.png">
+	                  				<img src="../../images/view.png">
 	                  				<span><%= knowhow.getHit() %></span>
 	                  			</li>
 	                  			<li>
-	                  				<img src="../images/heart.png">
+	                  				<img src="../../images/heart.png">
 	                  				<span>3</span>
 	                  			</li>
 	                  			<li>
-	                  				<img src="../images/comment.png">
+	                  				<img src="../../images/comment.png">
 	                  				<span>3</span>
 	                  			</li>
 	                  		</ul>
@@ -90,14 +91,14 @@
                         </section>
                         <section class="pet-selecting-btn">
                         	<%
-                        		String pet = "dog";
+                        		String pet = "고양이";
                         		String dog = "";
                         		String cat = "";
                         		
-                        		if(pet.equals("dog"))
+                        		if(pet.equals("강아지"))
                         			dog = "select";
                         		
-                        		if(pet.equals("cat"))
+                        		if(pet.equals("고양이"))
                         			cat = "select";
                         	%>
                         
@@ -107,7 +108,7 @@
                     </section>
                     <section>
                         <div class="img-area">
-                            <img class="img-pet" src="../images/cat-rest1.jpg">
+                            <img class="img-pet" src="../../images/cat-rest1.jpg">
                         </div>
                         <div class="write-content"> 
                             <div class="text-area font" name="" ><%= knowhow.getContent() %></div>
@@ -137,10 +138,10 @@
                     <button class="modal-btn">확인</button>
                 </section>
                 <div>
-                    <a class="modal-close" href="#"><img class="close-btn" src="../images/close-button.png" alt=""></a>
+                    <a class="modal-close" href="#"><img class="close-btn" src="../../images/close-button.png" alt=""></a>
                 </div>
             </div>
         </div>
     </div>        
 </body>
-</html> --%>
+</html>
