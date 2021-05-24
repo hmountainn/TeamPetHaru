@@ -49,12 +49,15 @@ public class JDBCScheduleService implements ScheduleService {
 				schedule.setScheduleTypeName(scheduleTypeName);
 				schedule.setDateTime(dateTime);
 				list.add(schedule);	
+				rs.close();
+				st.close();
+				con.close();
 			}
 			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} //new같은 동작
+		} 
 		catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -64,9 +67,43 @@ public class JDBCScheduleService implements ScheduleService {
 
 	@Override
 	public Schedule get(int scheduleId) {
-		// TODO Auto-generated method stub
-		return null;
+		Schedule schedule = new Schedule();
+		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
+		String sql = "SELECT * FROM SCHEDULE WHERE ID = "+scheduleId;
+		try {
+			Class.forName("oracle.jdbc.OracleDriver");
+			Connection con = DriverManager.getConnection(url,"PETHARU","1357"); 
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+			if(rs.next()) {
+				int memberId = rs.getInt("member_id");
+				String title = rs.getString("title");
+				String content = rs.getString("content");
+				String scheduleTypeName = rs.getString("schedule_type_name");
+				String dateTime = rs.getString("datetime");
+				
+				schedule.setId(scheduleId);
+				schedule.setMemberId(memberId);
+				schedule.setTitle(title);
+				schedule.setContent(content);
+				schedule.setScheduleTypeName(scheduleTypeName);
+				schedule.setDateTime(dateTime);
+				rs.close();
+				st.close();
+				con.close();
+			}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		
+		return schedule;			
+		
 	}
+	
 	@Override
 	public int insert(Schedule schedule) throws SQLException, ClassNotFoundException {
 		int result = 0;
@@ -86,6 +123,63 @@ public class JDBCScheduleService implements ScheduleService {
 		st.close();
 		con.close();
 		return result;
+	}
+	
+	@Override
+	public int update(Schedule schedule) {
+		int result = 0;
+		String sql = "UPDATE SCHEDULE SET MEMBER_ID=?,TITLE=?,CONTENT=?,SCHEDULE_TYPE_NAME=?,DATETIME=? WHERE ID=?";			
+		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
+		try {
+			Class.forName("oracle.jdbc.OracleDriver");
+			Connection con = DriverManager.getConnection(url,"PETHARU","1357"); 
+			
+			PreparedStatement st = con.prepareStatement(sql);
+			st.setInt(1, schedule.getMemberId());
+			st.setString(2, schedule.getTitle());
+			st.setString(3, schedule.getContent()); 
+			st.setString(4,schedule.getScheduleTypeName());
+			st.setString(5,schedule.getDateTime());
+			st.setInt(6, schedule.getId());
+			result = st.executeUpdate(); //executeQuery() : select문, executeUpdate():update/delete/insert
+			st.close();
+			con.close();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		
+		return result;
+	}
+	
+	@Override
+	public int delete(int scheduleId) {
+		int result = 0;
+		String sql = "DELETE FROM SCHEDULE WHERE ID=?";			
+		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
+		try {
+			Class.forName("oracle.jdbc.OracleDriver");
+			Connection con = DriverManager.getConnection(url,"PETHARU","1357"); 
+			
+			PreparedStatement st = con.prepareStatement(sql);
+			st.setInt(1, scheduleId);
+			
+			result = st.executeUpdate(); //executeQuery() : select문, executeUpdate():update/delete/insert
+			st.close();
+			con.close();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		
+		return result;
+		
 	}
 
 }

@@ -8,28 +8,21 @@ public class Friend {
 	private int responseId;
 	private Date requestDate;
 	private Date responseDate;
-	private String uerId;
+	private String userId;
 	
 	public Friend() {
 		// TODO Auto-generated constructor stub
 	}
 
-	
 
-
-
-	public Friend(int requestId, int responseId, Date requestDate, Date responseDate, String uerId) {
+	public Friend(int requestId, int responseId, Date requestDate, Date responseDate, String userId) {
 		super();
 		this.requestId = requestId;
 		this.responseId = responseId;
 		this.requestDate = requestDate;
 		this.responseDate = responseDate;
-		this.uerId = uerId;
+		this.userId = userId;
 	}
-
-
-
-
 
 	public int getRequestId() {
 		return requestId;
@@ -65,13 +58,13 @@ public class Friend {
 	
 	
 
-	public String getUerId() {
-		return uerId;
+	public String getUserId() {
+		return userId;
 	}
 
 
-	public void setUerId(String uerId) {
-		this.uerId = uerId;
+	public void setUserId(String uerId) {
+		this.userId = uerId;
 	}
 
 
@@ -81,7 +74,7 @@ public class Friend {
 	@Override
 	public String toString() {
 		return "Friend [requestId=" + requestId + ", responseId=" + responseId + ", requestDate=" + requestDate
-				+ ", responseDate=" + responseDate + ", uerId=" + uerId + "]";
+				+ ", responseDate=" + responseDate + ", uerId=" + userId + "]";
 	}
 
 

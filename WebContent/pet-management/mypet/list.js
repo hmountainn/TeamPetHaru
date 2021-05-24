@@ -26,6 +26,12 @@ console.log(petId.value);
 //수정하기  
   function updatePopup(id){
     console.log("update");
+	let inputId = document.querySelector('.hiddenId');
+	
+	console.log(inputId.value);
+	
+	inputId.value=id;
+	
     document.getElementById(`popup-2-${id}`).classList.toggle("active");
     document.getElementById(`popup-1-${id}`).classList.remove("active");
 	/*let petId = document.querySelector('#petId');

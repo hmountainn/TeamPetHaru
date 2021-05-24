@@ -1,5 +1,7 @@
 package com.petharu.web.entity;
 
+import java.util.Date;
+
 public class Pet {
 	
 	private int id;
@@ -167,9 +169,16 @@ public class Pet {
 
 	@Override
 	public String toString() {
-		return "Pet [id=" + id + ", name=" + name + ", gender=" + gender + ", breed=" + breed + ", birthday=" + birthday
-				+ ", personality=" + personality + ", age=" + age + ", memberId=" + memberId + ", breedId=" + breedId
-				+ "]";
+		return "{\"id\":" + id 
+				+ ", \"name\":\"" + name 
+				+ "\", \"gender\":\"" + gender 
+				+ "\", \"breed\":\"" + breed 
+				+ "\", \"birthday\":\"" + birthday
+				+ "\", \"personality\":\"" + personality 
+				+ "\", \"age\":\"" + age 
+				+ "\", \"memberId\":" + memberId 
+				+ ", \"breedId\":" + breedId
+				+ "}";
 	}
 	
 
