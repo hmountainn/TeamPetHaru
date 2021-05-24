@@ -1,8 +1,7 @@
-package com.petharu.web.api;
+package com.petharu.web.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -16,12 +15,15 @@ import com.petharu.web.entity.Pet;
 import com.petharu.web.service.JdbcPetService;
 import com.petharu.web.service.PetService;
 
-//@WebServlet("/api/pet-management/mypet/list")
-public class PetList extends HttpServlet {
+@WebServlet("/pet-management/mypet/list")
+public class PetListController extends HttpServlet {
 	// ���
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
+		response.setHeader("Content-Type", "text/html;charset=utf-8");
+
 		request.setCharacterEncoding("UTF-8");
 
 		response.setCharacterEncoding("UTF-8");
@@ -36,7 +38,7 @@ public class PetList extends HttpServlet {
 //			String breed = req.getParameter("breed");			
 		System.out.println(id_);
 
-		JdbcPetService petService = new JdbcPetService();
+		PetService petService = new JdbcPetService();
 		List<Pet> list = petService.getPetList(id_);
 
 		Gson gson = new Gson();
@@ -49,7 +51,5 @@ public class PetList extends HttpServlet {
 		request.setAttribute("list", list);
 
 		request.getRequestDispatcher("list.jsp").forward(request, response);
-
 	}
-
 }

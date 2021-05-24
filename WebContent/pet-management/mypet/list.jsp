@@ -1,17 +1,9 @@
 
-<%@page import="com.petharu.web.service.JdbcPetService"%>
-<%@page import="com.petharu.web.entity.Pet"%>
-<%@page import="com.petharu.web.service.PetService"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 
-<%
-int memberId = 1;
-PetService petService = new JdbcPetService();
-List<Pet> list = petService.getPetList(memberId);
-System.out.println(list);
-%>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -87,10 +79,10 @@ System.out.println(list);
 
 								<div class=container>
 									<input type="hidden" id="petId" name="petId" value="">
-									<%
+							<%--<%
 									for (Pet p : list) {
-									%>
-
+									%> --%>		
+						<c:forEach var="n" items="${list}">	
 									<div class="pet-list">
 
 										<!-- <div class="none-list empty">
@@ -106,9 +98,9 @@ System.out.println(list);
 												</div>
 											</a>
 											<div class="diary-content">
-												<h4><%=p.getName()%></h4>
+												<h4>${n.name}</h4>
 												<div class="button detail-btn" id="detail-button"
-													onclick="togglePopup(<%=p.getId()%>)">상세보기</div>
+													onclick="togglePopup(${n.id})">상세보기</div>
 											</div>
 											<!--diary-content-->
 										</div>
@@ -117,10 +109,10 @@ System.out.println(list);
 									</div>
 									<!-- pet-list -->
 
-									<div class="profile-popup" id="popup-1-<%=p.getId()%>">
+									<div class="profile-popup" id="popup-1-${n.id}">
 
 										<div class="popup-content">
-											<div class="close-btn" onclick="togglePopup(<%=p.getId()%>)">×</div>
+											<div class="close-btn" onclick="togglePopup(${n.id})">×</div>
 											<div class="profile-box">
 
 												<div class="img-box">
@@ -129,24 +121,24 @@ System.out.println(list);
 												</div>
 												<div class="dog-info">
 													<div class="option">
-														<span onclick="updatePopup(<%=p.getId()%>)"><i
+														<span onclick="updatePopup(${n.id})"><i
 															class="fas fa-pencil-alt"></i>수정</span>
 														<!-- <a onclick="updatePopup()"href=""><i class="fas fa-pencil-alt"></i>수정</a> -->
 														<span class="delete"
-															onclick="confirmPopup(<%=p.getId()%>)"><i
+															onclick="confirmPopup(${n.id})"><i
 															class="far fa-trash-alt"></i>삭제</span>
 														<!-- <a href="" class="delete"><i class="far fa-trash-alt"></i>삭제</a> -->
 													</div>
 													<div class="detail">
-														<div class="pet-id-<%=p.getId()%>">
+														<div class="pet-id-${n.id}">
 															<!-- id 적용 -->
 															<div class="detail-name">
-																<h2><%=p.getName()%></h2>
+																<h2>${n.name}</h2>
 															</div>
 															<div class="dog-breed-gender">
 																<span class="d-none">품종</span>
 																<ul>
-																	<li class="breed"><%=p.getBreed()%></li>
+																	<li class="breed">${n.breed}</li>
 																	<li class="gender"><i class="fas fa-venus"></i> <!-- <i class="fas fa-mars"></i> -->
 																	</li>
 																</ul>
@@ -161,8 +153,8 @@ System.out.println(list);
 																</thead>
 																<tbody>
 																	<tr>
-																		<td><%=p.getAge()%> 살</td>
-																		<td><%=p.getPersonality()%></td>
+																		<td>${n.age} 살</td>
+																		<td>${n.personality}</td>
 																	</tr>
 																</tbody>
 															</table>
@@ -180,9 +172,9 @@ System.out.println(list);
 									</div>
 									<!--profile popup-->
 
-									<div class="update-popup" id="popup-2-<%=p.getId()%>">
+									<div class="update-popup" id="popup-2-${n.id}">
 										<div class="popup-content">
-											<div class="close-btn" onclick="updatePopup(<%=p.getId()%>)">×</div>
+											<div class="close-btn" onclick="updatePopup(${n.id})">×</div>
 
 											<div class="update-profile-box">
 
@@ -193,11 +185,11 @@ System.out.println(list);
 
 												<div class="update-dog-info">
 													<form action="edit" method="post">
-														<input type="hidden" name="id" value="<%=p.getId()%>" class="hiddenId">
+														<input type="hidden" name="id" value="${n.id}" class="hiddenId">
 														<div class="dog_name add-container">
 															<label class="add-label">이름<span
 																class="necessary">*</span></label> <input class="add-input"
-																type="text" name="name" placeholder="<%=p.getName()%>">
+																type="text" name="name" placeholder="${n.name}">
 														</div>
 
 														<div class="dog_breed add-container">
@@ -222,7 +214,7 @@ System.out.println(list);
 															<label class="add-label">생년월일<span
 																class="necessary">*</span></label>
 															</th> <input class="add-input" type="date" name="birthday"
-																placeholder="<%=p.getBirthday()%>">
+																placeholder="${n.birthday}">
 														</div>
 
 														<div class="dog_gender add-container">
@@ -238,7 +230,7 @@ System.out.println(list);
 															<label class="dog_personality">특징</label>
 															<textarea class="add-input-personality"
 																name="personality" cols="10" rows="3"
-																placeholder="반려동물 특징(50자 이내)"></textarea>
+																placeholder="반려동물 특징(50자 이내)">${n.personality}</textarea>
 														</div>
 
 														<div class="update-button">
@@ -258,17 +250,17 @@ System.out.println(list);
 									</div>
 									<!--update popup-->
 
-									<div class="confirm-popup" id="popup-4-<%=p.getId()%>">
+									<div class="confirm-popup" id="popup-4-${n.id}">
 										<div class="popup-content">
-											<div class="close-btn" onclick="confirmPopup(<%=p.getId()%>)">×</div>
+											<div class="close-btn" onclick="confirmPopup(${n.id})">×</div>
 											<div class="confirm-box">
 												<h3>알림</h3>
 												<p>반려동물 정보를 삭제 하시겠습니까?</p>
 												<div class="option-btn">
-													<div class="cancel" onclick="confirmPopup(<%=p.getId()%>)">취소</div>
+													<div class="cancel" onclick="confirmPopup(${n.id})">취소</div>
 													<!-- <div class="cancel"onclick="confirmPopup()">취소</div> -->
-													<a href="del?id=<%=p.getId()%>" class="delete-btn"
-														onclick="resultPopup(<%=p.getId()%>)">삭제</a>
+													<a href="del?id=${n.id}" class="delete-btn"
+														onclick="resultPopup(${n.id})">삭제</a>
 												</div>
 											</div>
 											<!--dog-info-->
@@ -278,15 +270,15 @@ System.out.println(list);
 									</div>
 									<!--confirm popup-->
 
-									<div class="result-popup" id="popup-5-<%=p.getId()%>">
+									<div class="result-popup" id="popup-5-${n.id}">
 										<div class="popup-content">
-											<div class="close-btn" onclick="resultPopup(<%=p.getId()%>)">×</div>
+											<div class="close-btn" onclick="resultPopup(${n.id})">×</div>
 											<div class="confirm-box">
 												<h3>알림</h3>
 												<p>반려동물 정보가 삭제되었습니다.</p>
 												<div class="option-btn">
 													<div class="result-btn"
-														onclick="resultPopup(<%=p.getId()%>)">
+														onclick="resultPopup(${n.id})">
 														<span>확인</span>
 													</div>
 												</div>
@@ -296,9 +288,10 @@ System.out.println(list);
 										<!--content-->
 									</div>
 									<!--result popup-->
-									<%
+									<%--<%
 									}
-									%>
+									--%>
+									</c:forEach>
 								</div>
 								<!--container-->
 							</div>
