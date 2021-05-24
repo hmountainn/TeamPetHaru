@@ -3,14 +3,7 @@
 <%@page import="com.petharu.web.service.KnowhowService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<%
-	String id_ = request.getParameter("id");
-	int id = Integer.parseInt(id_);
-	
-	KnowhowService knowhowService = new JDBCKnowhowService();
-	Knowhow knowhow = knowhowService.get(id); 
-%>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -65,12 +58,12 @@
                 </aside>
                 <main id="main">
                     <section class="knowhow-header"> 
-	                    <h1 class="title"><%= knowhow.getTitle() %></h1>
+	                    <h1 class="title">${knowhow.title}</h1>
 	                    <div class="knowhow-info">
 	                  		<ul>
 	                  			<li>
 	                  				<img src="../../images/view.png">
-	                  				<span><%= knowhow.getHit() %></span>
+	                  				<span>${knowhow.hit}</span>
 	                  			</li>
 	                  			<li>
 	                  				<img src="../../images/heart.png">
@@ -87,11 +80,11 @@
                         <section class="member-info flex"> 
                             <h1 class="d-none">회원 정보</h1>
                             <div class="img-member"></div> 
-                            <span class="id"><%= knowhow.getMemberId() %></span>
+                            <span class="id">${knowhow.memberId}</span>
                         </section>
                         <section class="pet-selecting-btn">
                         	<%
-                        		String pet = knowhow.getKnowhowTypeName();
+                        		String pet = "강아지";/* knowhow.getKnowhowTypeName(); */
                         		String dog = "";
                         		String cat = "";
                         		
@@ -111,12 +104,12 @@
                             <img class="img-pet" src="../../images/cat-rest1.jpg">
                         </div>
                         <div class="write-content"> 
-                            <div class="text-area font" name="" ><%= knowhow.getContent() %></div>
+                            <div class="text-area font" name="" >${knowhow.content}</div>
                         </div>
                     </section>
                     <section class="button-menu margin">
                         <h1 class="d-none">버튼</h1>
-                        <a class="flex-center btn" href="edit.jsp?id=<%=id%>"><span class="font">수정하기</span></a>
+                        <a class="flex-center btn" href="edit.jsp?id=${knowhow.id}"><span class="font">수정하기</span></a>
                         <span class="delete-btn flex-center btn font">삭제하기</span>
                     </section>
                     <hr>
@@ -135,7 +128,7 @@
                 <section class="modal-button-menu">
                     <h1 class="d-none">모달창 버튼</h1>
                     <button class="modal-btn modal-close">취소</button>
-                    <a class="modal-btn flex-center" href="del?id=<%=id%>">확인</a>
+                    <a class="modal-btn flex-center" href="del?id=${knowhow.id}">확인</a>
                </section>
                 <div>
                     <a class="modal-close" href="#"><img class="close-btn" src="../../images/close-button.png" alt=""></a>

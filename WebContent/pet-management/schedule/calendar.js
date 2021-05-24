@@ -32,7 +32,6 @@ function getSchedule(){
 				var div = `<div class="schedule" style="background-color:#9fa6ad">${list[i].title}</div>`	
 				break;
 			}
-		
 			td.insertAdjacentHTML("beforeend",div);
 			}
 		}
@@ -188,7 +187,7 @@ window.addEventListener("load",function(){
 });
 
 
-//스케쥴뿌리는거 지워도될듯?
+
 /*function addSchedule(){
 	
     var calendar = document.querySelector(".calendar");
@@ -213,8 +212,7 @@ function detailSchedule(){
         //console.log(target);
         if(target.classList.contains("schedule")){
             scheduleDetail.classList.toggle("d-none");
-		request.open("GET",`../api/schedule/list?m=${month}&member=${memberId}`,true); //false면 동기, true면 비동기
-        request.send(null);
+	
 
         }else{
             return;
