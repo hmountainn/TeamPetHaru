@@ -73,6 +73,7 @@ window.addEventListener("load", function() {
 		var content = section.querySelector(".diary-comment-write textarea").value;
 		var request = new XMLHttpRequest();
 		request.onload = function() {
+			location.href = "./comment.html";
 		}
 		request.open("POST", `/myhome/comment/create?diary-id=${diaryId}`);
 		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");

@@ -32,7 +32,6 @@ public class DiaryCommentDeleteController extends HttpServlet {
 		} catch(Exception e) {
 			resp.sendRedirect("/myhome/exception.html");
 		}
-		resp.sendRedirect("/myhome/comment.html");
 		
 	}
 	
