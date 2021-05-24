@@ -11,6 +11,7 @@ import java.util.List;
 
 import com.petharu.web.entity.Diary;
 import com.petharu.web.entity.Friend;
+import com.petharu.web.entity.Knowhow;
 
 public class JDBCMyhomeService implements MyhomeService {
 
@@ -133,9 +134,45 @@ public class JDBCMyhomeService implements MyhomeService {
 	};
 	
 	@Override
-	public Diary get(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Diary get(int id) throws ClassNotFoundException, SQLException {
+		
+		String sql = "SELECT * FROM DIARY WHERE ID = " + id;
+		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
+
+		//try {
+			Class.forName("oracle.jdbc.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "PETHARU", "1357");
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+
+			Diary diary = null;
+
+			if (rs.next()) {
+
+				// Diary 데이터
+				int memberId = rs.getInt("member_id");
+				String keyword = rs.getString("keyword");
+				String content = rs.getString("content");
+				Date regDate = rs.getDate("regdate");
+
+				// list에 담아주기
+				diary = new Diary();
+				diary.setId(id);
+				diary.setMemberId(memberId);
+				diary.setKeyword(keyword);
+				diary.setContent(content);
+				diary.setRegDate(regDate);
+			}
+
+			rs.close();
+			st.close();
+			con.close();
+
+			return diary;
+
+		//} catch (Exception e) {
+		//	throw new ServiceException();
+		//}
 	}
 
 	@Override
