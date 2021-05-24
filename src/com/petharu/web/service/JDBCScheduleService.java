@@ -22,13 +22,14 @@ public class JDBCScheduleService implements ScheduleService {
 	@Override
 	public List<Schedule> getList(int month, int memberId) {
 		List<Schedule> list = new ArrayList<>();
-		String Smonth = String.format("%02d", month);
+		String monthString = String.format("%02d", month);
+		
 		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
 		String sql = "SELECT * FROM (   "
 				+ "        SELECT * "
 				+ "		FROM SCHEDULE"
 				+ "        ORDER BY DATETIME ASC)			"
-				+ "WHERE (REGEXP_LIKE(DATETIME, '\\d{4}-"+Smonth+"-\\d{2}T\\d{2}:\\d{2}')) AND (MEMBER_ID = "+memberId+")";
+				+ "WHERE (REGEXP_LIKE(DATETIME, '\\d{4}-"+monthString+"-\\d{2}T\\d{2}:\\d{2}')) AND (MEMBER_ID = "+memberId+")";
 			
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
@@ -62,6 +63,7 @@ public class JDBCScheduleService implements ScheduleService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		return list;
 	}
 

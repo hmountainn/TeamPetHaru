@@ -39,9 +39,6 @@ public class NoticeCreateController extends HttpServlet {
 		} catch (Exception e) {
 			resp.sendRedirect("exception.html");
 		}
-		
-		resp.sendRedirect("list.html");
-		
 	}
 	
 }

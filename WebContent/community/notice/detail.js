@@ -59,6 +59,7 @@ window.addEventListener("load", function() {
 		if(confirm("정말로 삭제하시겠습니까?")) {
 			var request = new XMLHttpRequest();
 			request.onload = function() {
+				location.href = "./list.html";
 			};
 			request.open("GET", `./delete?id=${noticeId}`);
 			request.send(null);
