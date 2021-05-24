@@ -25,9 +25,9 @@ window.addEventListener("load", function() {
 	submitBtn.onclick = function() {
 		var request = new XMLHttpRequest();
 		request.onload = function() {
-			
+			location.href = `./detail.html?id=${noticeId}`;
 		}
-		request.open("GET", `./update?id=${noticeId}`);
+		request.open("POST", `./update?id=${noticeId}`);
 		request.send(null);
 	}
 

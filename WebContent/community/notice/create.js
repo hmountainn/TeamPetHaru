@@ -7,9 +7,9 @@ window.addEventListener("load", function() {
 	submitBtn.onclick = function() {
 		var request = new XMLHttpRequest();
 		request.onload = function() {
-			
+			location.href = "./list.html";
 		}
-		request.open("GET", `./create`);
+		request.open("POST", `./create`);
 		request.send(null);
 	}
 

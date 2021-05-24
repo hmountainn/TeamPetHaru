@@ -33,17 +33,13 @@ public class NoticeUpdateController extends HttpServlet {
 		NoticeService noticeService = new JDBCNoticeService();
 		
 		try {
-			
 			Notice notice = noticeService.get(id);
 			notice.setTitle(title);
 			notice.setContent(content);
-			noticeService.update(notice);
-			resp.sendRedirect("detail.html?id="+id);
-			
+			noticeService.update(notice);			
 		} catch (Exception e) {
 			resp.sendRedirect("exception.html");
 		}
-		
 	}
 	
 }
