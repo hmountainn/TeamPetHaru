@@ -44,10 +44,11 @@ public class PetEditController extends HttpServlet {
 		System.out.println(breedId);
 
 		PetService petService = new JdbcPetService();
-
-		Pet pet = petService.get(id_);//펫id
+		Pet pet ;
 
 		try {
+			pet = petService.get(id_);//펫id
+			pet.setId(id_);
 			pet.setName(name);
 			pet.setGender(gender);
 			pet.setBirthday(birthday);
