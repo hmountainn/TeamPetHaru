@@ -1,6 +1,6 @@
 window.addEventListener("load",function(){
     makeCalendar();
-    addSchedule();
+    //addSchedule();
     detailSchedule();
 	
 });
@@ -15,12 +15,23 @@ function getSchedule(){
 		for(var i=0; i<list.length; i++){
 			var day = list[i].dateTime;
 			day = parseInt(day.substring(8,10));
-			console.log(day);
+			//console.log(day);
 			var td = document.getElementById(day);
 			
-			//background-color를 음........case문으로.....?ㅎㅎㅎㅎㅎ;;;;
-			var div = `<div class="schedule" style="background-color:#F5A9A9">${list[i].title}</div>`	
-			
+			switch(list[i].scheduleTypeName){
+				case "진료":
+				var div = `<div class="schedule" style="background-color:#F5A9A9">${list[i].title}</div>`				
+				break;
+				case "접종":
+				var div = `<div class="schedule" style="background-color:#58ACFA">${list[i].title}</div>`	
+				break;
+				case "미용":
+				var div = `<div class="schedule" style="background-color:#C0CA33">${list[i].title}</div>`				
+				break;
+				case "기타":
+				var div = `<div class="schedule" style="background-color:#9fa6ad">${list[i].title}</div>`	
+				break;
+			}
 			td.insertAdjacentHTML("beforeend",div);
 			}
 		}
@@ -176,8 +187,8 @@ window.addEventListener("load",function(){
 });
 
 
-//스케쥴뿌리는거 지워도될듯?
-function addSchedule(){
+
+/*function addSchedule(){
 	
     var calendar = document.querySelector(".calendar");
     var day = document.getElementById("15");
@@ -187,7 +198,7 @@ function addSchedule(){
     div.innerText = "15:30 진료";
     div.style.backgroundColor="#F5A9A9";
     day.append(div);
-}
+}*/
 
 
 function detailSchedule(){
@@ -201,6 +212,7 @@ function detailSchedule(){
         //console.log(target);
         if(target.classList.contains("schedule")){
             scheduleDetail.classList.toggle("d-none");
+	
 
         }else{
             return;

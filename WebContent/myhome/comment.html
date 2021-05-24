@@ -79,17 +79,19 @@
                                 </section>
                             </section>
 
-
                             <!-- 일기 댓글창 -->
                             <section id="diary-comment-sctn">
                                 <h1 class="d-none">일기 댓글창</h1>
                                 
-                                <input type="hidden" value="1">
 
 								<section class="diary-comment-write">
                                     <h1 class="d-none">일기 댓글 작성</h1>
-                                    <textarea name="content" id="diary-comment-writing" cols="50" rows="3" placeholder="댓글을 작성해주세요."></textarea>
-                                    <button class="button-2"><a href="./detail.html">등록</a></button>
+                                    <form method="post">
+		                               <input type="hidden" name="diary-id" value="1">
+	                                   <input type="hidden" name="comment-member-id" value="1">
+	                                   <textarea name="comment-content" id="diary-comment-writing" cols="50" rows="3" placeholder="댓글을 작성해주세요."></textarea>
+	                                   <button class="button-2" type="submit">등록</button>
+                                    </form>
                                 </section>
 
 								<!-- 내가 작성(답댓글, 수정, 삭제) -->

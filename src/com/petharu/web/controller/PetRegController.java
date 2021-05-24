@@ -29,12 +29,17 @@ public class PetRegController extends HttpServlet{
 		if (req.getParameter("id") != null) {
 			Integer.parseInt(req.getParameter("id"));
 		}
+		int breedId =1;
+		if (req.getParameter("breed_id") != null) {
+			breedId = Integer.parseInt(req.getParameter("breed_id"));
+
+		}
 			String name = req.getParameter("name");
 			System.out.println(name);
 			String gender = req.getParameter("gender");	
 			String birthday = req.getParameter("birthday");	
 			String personality = req.getParameter("personality");	
-			System.out.println(name);
+			System.out.println(breedId);
 
 		PetService petService = new JdbcPetService();
 		List<Pet> list = petService.getPetList(id_);
@@ -46,10 +51,11 @@ public class PetRegController extends HttpServlet{
 			pet.setBirthday(birthday);
 			pet.setPersonality(personality);
 			pet.setMemberId(id_);
+			pet.setBreedId(breedId);
 			petService.insertPetProfile(pet);
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			resp.sendRedirect("exception.html");
 		}
 		resp.sendRedirect("/pet-management/mypet/list.jsp");
 //		req.setAttribute("pet", pet);

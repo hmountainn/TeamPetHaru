@@ -14,4 +14,9 @@ public interface ScheduleService {
 	
 	//insert
 	int insert(Schedule schedule) throws SQLException, ClassNotFoundException;
+
+	int update(Schedule schedule);
+	
+	int delete(int scheduleId);
+	
 }

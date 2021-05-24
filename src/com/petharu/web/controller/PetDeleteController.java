@@ -25,10 +25,10 @@ public class PetDeleteController extends HttpServlet{
 		
 		int id = Integer.parseInt(req.getParameter("id"));
 
-		PetService noticeService = new JdbcPetService();
+		PetService petService = new JdbcPetService();
 		
 		try {
-			noticeService.deletePetProfile(id);
+			petService.deletePetProfile(id);
 			//resp.sendRedirect("list.html");
 		} catch (Exception e) {
 			resp.sendRedirect("/pet-management/mypet/list.jsp");

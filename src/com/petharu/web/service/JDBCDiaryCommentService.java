@@ -2,6 +2,7 @@ package com.petharu.web.service;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -63,31 +64,53 @@ public class JDBCDiaryCommentService implements DiaryCommentService {
 	@Override
 	public int delete(int id) {
 		
-		int count = 0;
+		int result = 0;
 		
-		return count;
+		return result;
 	};
 	
 	@Override
 	public int insert(DiaryComment diaryComment) {
 		
-		int count = 0;
+		int result = 0;
 		
-		return count;
+		String sql = "INSERT INTO DIARY_COMMENT(CONTENT, MEMBER_ID, DIARY_ID) VALUES(?, ?, ?)";
+		
+		try {
+			String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
+			Class.forName("oracle.jdbc.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "PETHARU", "1357");
+			
+			PreparedStatement st = con.prepareStatement(sql);
+			st.setString(1, diaryComment.getContent());
+			st.setInt(2, diaryComment.getMemberId());
+			st.setInt(3, diaryComment.getDiaryId());
+			
+			result = st.executeUpdate();
+			
+			st.close();
+			con.close();
+		} catch (Exception e) {
+			throw new ServiceException();
+		}
+		
+		return result;
 	};
 	
 	@Override
 	public int update(DiaryComment diaryComment) {
 		
-		int count = 0;
+		int result = 0;
 		
-		return count;
+		return result;
 	};
 
 	@Override
 	public int reply(DiaryComment diaryComment) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		int result = 0;
+		
+		return result;
 	}
 	
 }

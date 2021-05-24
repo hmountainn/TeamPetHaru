@@ -16,17 +16,21 @@ import com.petharu.web.entity.Pet;
 import com.petharu.web.service.JdbcPetService;
 import com.petharu.web.service.PetService;
 
-//@WebServlet("/api/pet-management/mypet/list")
+@WebServlet("/api/pet-management/mypet/list")
 public class PetList extends HttpServlet {
 	//���
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		PrintWriter out = resp.getWriter();
+		req.setCharacterEncoding("UTF-8");
+
+		resp.setCharacterEncoding("UTF-8");
+		resp.setContentType("text/html; charset=UTF-8");
 		
 
 		int id_ = 1;
 		if (req.getParameter("id") != null) {
-			Integer.parseInt(req.getParameter("id"));				
+			id_=Integer.parseInt(req.getParameter("id"));				
 		}
 //			String name = req.getParameter("name");
 //			System.out.println(name);
