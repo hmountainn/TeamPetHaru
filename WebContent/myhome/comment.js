@@ -1,6 +1,18 @@
 window.addEventListener("load", function() {
     var section = document.querySelector("#diary-comment-sctn"); //댓글 전체창
 	var diaryId = section.querySelector("input[type=hidden]").value;
+	var newCommentBtn = section.querySelector(".diary-comment-write button");
+	
+	
+	newCommentBtn.onclick = function() {
+		var request = new XMLHttpRequest();
+		request.onload = function() {
+		}
+		request.open("POST", `/myhome/comment/create`);
+		request.send(null);
+	
+	}
+
 
 	var request = new XMLHttpRequest();
 	request.onload = function() {
@@ -30,12 +42,15 @@ window.addEventListener("load", function() {
 	
 				section.insertAdjacentHTML("beforeend", diaryComment);
 			}
-			
 		}
 	};
 	
 	request.open("GET", `/api/myhome/comment/list?diary-id=${diaryId}`);
 	request.send(null);
+	
+	
+
+
 
 
 
