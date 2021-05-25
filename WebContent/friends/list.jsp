@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -62,9 +63,9 @@
                        <table class="table">
                          <thead class="table-head">
                              <tr class="total">
-                                <td class="requests">2</td>  
-                                <td class="followers">7</td>
-                                <td class="following">7</td>
+                                <td class="requests">2</td>                                  
+                                <td class="followers">${followerTotal}</td>
+                                <td class="following">${followingTotal}</td>
                              </tr>
                          </thead>
                          <tbody class="table-body">
@@ -215,19 +216,18 @@
                       <div class="close-btn">&times;</div>
                       <div class="list-box">
                         <div class="total">
-                          <h4>Followers ( <span class="num">${followerCount.followrCnt}</span> )</h4>
+                         <c:set var ="followerTotal" value ="${followerTotal}"/>
+                          <h4>Followers ( <span class="num">${followerTotal}</span> )</h4>
                         </div>
                 <c:forEach var="follower" items="${followerList}">
                         <div class="follow-info">
                             <img src="../images/dog.jpg" alt="">
-                            <div class="f-name"><a href="">${follower.userId}: id00000000</a></div>
+                            <div class="f-name"><a href="">${follower.userId}</a></div>
                             <div class="f-status">
                               <span class="button">Following</span>
                             </div>
                           </div>
-
-                </c:forEach>
-        
+                </c:forEach>        
                 
                       </div><!--list box-->
                     </div>
@@ -241,62 +241,17 @@
                         <div class="list-box">
                     
                             <div class="total">
-                                <h4>Following ( <span class="num">7</span> )</h4>
+                            <c:set var ="followingTotal" value ="${followingTotal}"/>
+                                <h4>Following ( <span class="num">${followingTotal}</span> )</h4>
                             </div>
-                    
+                    <c:forEach var="following" items="${followingList}">
                         <div class="follow-info">
                             <img src="../images/dog.jpg" alt="">
-                            <div class="f-name"><a href="">id00000000</a></div>
+                            <div class="f-name"><a href="">${following.userId}</a></div>
                             <div class="f-status"><span class="button">Following</span></div>
-                        </div>
-                    
-                        <div class="follow-info">
-                            <img src="../images/dog.jpg" alt="">
-                            <div class="f-name"><a href="">id00000000</a></div>
-                            <div class="f-status">
-                            <span class="button">Following</span>
-                            </div>
-                        </div>
-                    
-                        <div class="follow-info">
-                            <img src="../images/dog.jpg" alt="">
-                            <div class="f-name"><a href="">id00000000</a></div>
-                            <div class="f-status">
-                            <span class="button">Following</span>
-                            </div>
-                        </div>
-                    
-                        <div class="follow-info">
-                            <img src="../images/dog.jpg" alt="">
-                            <div class="f-name"><a href="">id00000000</a></div>
-                            <div class="f-status">
-                            <span class="button">Following</span>
-                            </div>
-                        </div>
-                    
-                        <div class="follow-info">
-                            <img src="../images/dog.jpg" alt="">
-                            <div class="f-name"><a href="">id00000000</a></div>
-                            <div class="f-status">
-                            <span class="button">Following</span>
-                            </div>
-                        </div>
-                    
-                        <div class="follow-info">
-                            <img src="../images/dog.jpg" alt="">
-                            <div class="f-name"><a href="">id00000000</a></div>
-                            <div class="f-status">
-                            <span class="button">Following</span>
-                            </div>
-                        </div>
-                    
-                        <div class="follow-info">
-                            <img src="../images/dog.jpg" alt="">
-                            <div class="f-name"><a href="">id00000000</a></div>
-                            <div class="f-status">
-                            <span class="button">Following</span>
-                            </div>
-                        </div>
+                        </div>                    
+					</c:forEach>                 
+
                     
                         </div><!--list-box-->
                     
