@@ -41,6 +41,7 @@ console.log(petId.value);
   }
 //삭제확인팝업
   function confirmPopup(id){
+	event.preventDefault();
     console.log("confirmPopup");
 	console.log(id);
     document.getElementById(`popup-4-${id}`).classList.toggle("active");
@@ -50,6 +51,7 @@ console.log(petId.value);
   //삭제결과팝업
   function resultPopup(id){
     console.log("resultPopup");
+	location.href = `del?id=${n.id}`;
     document.getElementById(`popup-1-${id}`).classList.remove("active");
     document.getElementById(`popup-4-${id}`).classList.remove("active");
     document.getElementById(`popup-5-${id}`).classList.toggle("active");

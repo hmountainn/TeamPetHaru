@@ -17,6 +17,7 @@ import com.petharu.web.entity.Pet;
 import com.petharu.web.service.JdbcPetService;
 import com.petharu.web.service.NoticeService;
 import com.petharu.web.service.PetService;
+import com.petharu.web.service.ServiceException;
 
 @WebServlet("/pet-management/mypet/del")
 public class PetDeleteController extends HttpServlet{
@@ -31,7 +32,8 @@ public class PetDeleteController extends HttpServlet{
 			petService.deletePetProfile(id);
 			//resp.sendRedirect("list.html");
 		} catch (Exception e) {
-			resp.sendRedirect("/pet-management/mypet/list.jsp");
+			throw new ServiceException();
 		}
+		resp.sendRedirect("/pet-management/mypet/list");
 	}
 }
