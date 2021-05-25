@@ -21,8 +21,8 @@ public class PetListController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		response.setContentType("application/x-json; charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		response.setHeader("Content-Type", "text/html;charset=utf-8");
 
 		request.setCharacterEncoding("UTF-8");
 
@@ -36,8 +36,6 @@ public class PetListController extends HttpServlet {
 //			String name = req.getParameter("name");
 //			System.out.println(name);
 //			String breed = req.getParameter("breed");			
-		System.out.println(id_);
-
 		PetService petService = new JdbcPetService();
 		List<Pet> list = petService.getPetList(id_);
 
@@ -47,7 +45,6 @@ public class PetListController extends HttpServlet {
 
 		out.println(json);
 
-		System.out.println(list);
 		request.setAttribute("list", list);
 
 		request.getRequestDispatcher("list.jsp").forward(request, response);

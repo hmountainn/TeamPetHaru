@@ -1,8 +1,6 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
-
+         pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 
 <!DOCTYPE html>
 <html lang="en">
@@ -253,6 +251,7 @@
 									<div class="confirm-popup" id="popup-4-${n.id}">
 										<div class="popup-content">
 											<div class="close-btn" onclick="confirmPopup(${n.id})">×</div>
+											<form action="del" method="get">
 											<div class="confirm-box">
 												<h3>알림</h3>
 												<p>반려동물 정보를 삭제 하시겠습니까?</p>
@@ -261,10 +260,13 @@
 													<!-- <div class="cancel"onclick="confirmPopup()">취소</div> -->
 													<a href="del?id=${n.id}" class="delete-btn"
 														onclick="resultPopup(${n.id})">삭제</a>
+												<!-- <input type="button" name="delete-btn"
+														onclick="resultPopup(${n.id})" value="${n.id}">삭제</input> -->
+														
 												</div>
 											</div>
-											<!--dog-info-->
-
+											<!--confirm box-->
+											</form>
 										</div>
 										<!--content-->
 									</div>

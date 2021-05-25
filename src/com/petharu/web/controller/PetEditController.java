@@ -24,7 +24,7 @@ public class PetEditController extends HttpServlet {
 		PrintWriter out = resp.getWriter();
 		req.setCharacterEncoding("UTF-8");
 
-		resp.setCharacterEncoding("UTF-8");
+		resp.setCharacterEncoding("UTF-8");		
 		resp.setContentType("text/html; charset=UTF-8");
 		int id_ = 0;
 		if (req.getParameter("id") != null) {
@@ -62,9 +62,9 @@ public class PetEditController extends HttpServlet {
 			resp.sendRedirect("exception.html");
 		}
 		
-//		resp.sendRedirect("/pet-management/mypet/list.jsp");
 		req.setAttribute("pet", pet);
-		req.getRequestDispatcher("/pet-management/mypet/list.jsp").forward(req, resp);
+		resp.sendRedirect("/pet-management/mypet/list");
+//		out.println("<script>location.href='/pet-management/mypet/list'</script>");
 
 	}
 }
