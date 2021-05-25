@@ -12,7 +12,7 @@ public interface MyhomeService {
 	List<Diary> getList(int memberId, int page) throws ClassNotFoundException, SQLException;
 	
 	Diary get(int id) throws ClassNotFoundException, SQLException;
-	int insert(Diary diary);
+	int insert(Diary diary) throws ClassNotFoundException, SQLException;
 	int update(Diary diary);
 	int delete(Diary diary);
 	
