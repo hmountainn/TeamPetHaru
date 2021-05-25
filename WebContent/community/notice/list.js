@@ -7,8 +7,22 @@ window.addEventListener("load", function() {
 	var fieldBox = searchForm.querySelector("#select-notice-search");
 	var queryBox = searchForm.querySelector("input[type=text]");
 	var pageElement = pager.querySelector("ul a");
+	var sortingBox = section.querySelector("#select-main-sorting");
+	var sizingBox = section.querySelector("#select-main-sizing");
 	
 	bind(`../../api/notice/list`);
+	
+	sortingBox.onchange = function() {
+		var sort = sortingBox.options[sortingBox.selectedIndex].value;
+		var size = sizingBox.options[sizingBox.selectedIndex].value;
+		bind(`../../api/notice/list?sort=${sort}&size=${size}`);
+	}
+	
+	sizingBox.onchange = function() {
+		var sort = sortingBox.options[sortingBox.selectedIndex].value;
+		var size = sizingBox.options[sizingBox.selectedIndex].value;
+		bind(`../../api/notice/list?sort=${sort}&size=${size}`);
+	}
 
 	pager.onclick = function(e) {
 		e.preventDefault();

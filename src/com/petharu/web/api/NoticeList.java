@@ -2,7 +2,6 @@ package com.petharu.web.api;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -12,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.petharu.web.entity.Notice;
 import com.petharu.web.service.JDBCNoticeService;
 import com.petharu.web.service.NoticeService;
@@ -34,10 +32,14 @@ public class NoticeList extends HttpServlet {
 			String p = req.getParameter("page");
 			String f = req.getParameter("field");
 			String q = req.getParameter("query");
+			String srt = req.getParameter("sort");
+			String sz = req.getParameter("size");
 
 			int page = 1;
 			String field = "title";
 			String query = "";
+			String sort = "desc";
+			int size = 10;
 	
 			if (p != null && !p.equals("")) {
 				page = Integer.parseInt(p);
@@ -48,9 +50,15 @@ public class NoticeList extends HttpServlet {
 			if (q != null && !q.equals("")) {
 				query = q;
 			}
+			if (srt != null && !srt.equals("")) {
+				sort = srt;
+			}
+			if (sz != null && !sz.equals("")) {
+				size = Integer.parseInt(sz);
+			}
 
 			NoticeService noticeService = new JDBCNoticeService();
-			List<Notice> list = noticeService.getList(page, field, query);
+			List<Notice> list = noticeService.getList(page, field, query, sort, size);
 
 			Gson gson = new Gson();
 			String json = gson.toJson(list);

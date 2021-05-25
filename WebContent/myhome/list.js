@@ -4,8 +4,8 @@ window.addEventListener("load", function() {
 	let memberInfo = section.querySelector(".member-info");
 	let diarySection = section.querySelector(".diary-list");
 	let detailSection = document.querySelector(".detail-section");
-/*	let imgArea = detailSection.getElementsByClassName(".img-area");
-	let contentArea = detailSection.getElementsByClassName(".content-area");*/
+	let imgArea = detailSection.getElementsByClassName(".img-area");
+	let contentArea = detailSection.getElementsByClassName(".content-area");
 	let pager = section.querySelector(".pager");
 	let pageNum = pager.querySelector("ul a")
 	let background = document.querySelector(".black-bg");
@@ -15,7 +15,7 @@ window.addEventListener("load", function() {
 	let diaryId;
 	let deleteBtn;
 	
-	
+	// 일기 목록 출력
 	showList(`../../api/diary/list`);
 	
 	pager.onclick = function(e) {	
@@ -25,6 +25,7 @@ window.addEventListener("load", function() {
 			return;
 
 		let page = e.target.innerText;
+		console.log(page);
 		showList(`../../api/diary/list?page=${page}`);
 		
 		pageNum.classList.remove("text-strong");
@@ -38,6 +39,7 @@ window.addEventListener("load", function() {
 		
 		request.onload = function() {
 			let list = JSON.parse(request.responseText);
+			console.log(list);
 			
 			if(list.length > 0) {
 				memberInfo.innerHTML = "";
@@ -58,7 +60,7 @@ window.addEventListener("load", function() {
 				
 				// 일기 목록 보여주기
 				for(let i=0; i<list.length; i++) {
-					let diaryList = 
+					diaryList = 
 					    `<div>
 							<input type="hidden" name="id" value="${list[i].id}">
 	                        <div class="img-area">
@@ -75,8 +77,8 @@ window.addEventListener("load", function() {
 					diarySection.insertAdjacentHTML("beforeend", diaryList);
 				}
 			} else {
-				let empty = `<p>존재하지 않는 페이지입니다<p>`
-				diaryList.innerHTML = empty;
+				let empty = `<p>존재하지 않는 페이지입니다<p>`;
+				diarySection.innerHTML = empty;
 			}
 		}
 		
@@ -86,7 +88,8 @@ window.addEventListener("load", function() {
 	
 	// 일기 클릭 시 일기 세부내용 보여주기
 	diarySection.onclick = function(e) {
-		if(!e.target.classList.contains("img-pet") && !e.target.classList.contains("diary-content"))
+		if(!e.target.classList.contains("img-pet") && !e.target.classList.contains("diary-content") 
+			&& !e.target.classList.contains("close-btn"))
             return;
 
 		background.classList.remove("d-none");
@@ -94,7 +97,6 @@ window.addEventListener("load", function() {
 		
 		// 일기 id 얻어오기
 		diaryId = e.target.parentNode.parentNode.firstElementChild.value;
-		console.log(diaryId);
 		showDetail(`../../diary/detail?id=${diaryId}`);
 	}
 	
@@ -105,10 +107,6 @@ window.addEventListener("load", function() {
 		request.onload = function() {
 			let diary = JSON.parse(request.responseText);
 			console.log(diary);
-			
-			if(diary.length = 1) {
-				console.log("Test");
-			}
 						
 				// 일기 세부내용 보여주기
 				let diaryContent = 
@@ -143,20 +141,23 @@ window.addEventListener("load", function() {
 				detailSection.insertAdjacentHTML("afterbegin", diaryContent);
 			}
 		
-		
-		
 		request.open("GET", url, true);
 		request.send(null);
 	}
 	
-	
+	// 일기 세부내용 창 닫기	
 	closeBtn.onclick = function(e) {
-		e.preventDefault();
 
+		console.log("test");
 		background.classList.add("d-none");
 		detailSection.classList.add("d-none");
+		
+		// 창 닫을 때 일기 세부내용 엘리먼트 지우기
+		detailSection.removeChild(detailSection.firstChild);
+		detailSection.removeChild(detailSection.firstChild.nextSibling); 
 	}
 	
+	// 일기 삭제하기
 	deleteBtn = document.getElementsByClassName(".delete-btn");
     deleteBtn.onclick = function() {
         background.classList.remove("d-none");

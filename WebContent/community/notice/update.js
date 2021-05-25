@@ -21,14 +21,20 @@ window.addEventListener("load", function() {
 	request.send(null);
 	
 	
-	
 	submitBtn.onclick = function() {
-		var request = new XMLHttpRequest();
-		request.onload = function() {
-			location.href = `./detail.html?id=${noticeId}`;
+		var title = titleBox.value;
+		var content = contentBox.value;
+		if (!title || !content) {
+			alert("내용을 입력해주세요.");
+			return false;
+		} else {
+			var request = new XMLHttpRequest();
+			request.onload = function() {
+				location.href = `./detail.html?id=${noticeId}`;
+			}
+			request.open("POST", `./update?id=${noticeId}`);
+			request.send(null);
 		}
-		request.open("POST", `./update?id=${noticeId}`);
-		request.send(null);
 	}
 
 

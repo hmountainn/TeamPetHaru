@@ -8,7 +8,7 @@ import com.petharu.web.entity.Notice;
 public interface NoticeService {
 	
 	List<Notice> getList();
-	List<Notice> getList(int page, String field, String query);
+	List<Notice> getList(int page, String field, String query, String sort, int size);
 
 	int getCount(String field, String query);
 	Notice get(int id);
