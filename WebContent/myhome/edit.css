@@ -136,7 +136,6 @@ button {
     .logo-title-container>img {
         width: 120px;
         height: auto;
-        margin-top: 7px;
         /* margin-bottom: auto; */
     }
 
@@ -306,16 +305,20 @@ button {
             border-radius: 5px;
             cursor: pointer;
         }
-
-        .button-menu>button:nth-child(3) {
-            background-color: rgb(250, 195, 43);
-        }
-
+        
         .button-menu>button>a {
-            color: white;
+        	color: white;
             font-weight: bold;
             font-size: 14px;
         }
+
+        .button-menu>button:nth-child(3) {
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            background-color: rgb(250, 195, 43);
+        }
+
 
         .button-menu>button:nth-child(2) {
             margin-right: 15px;

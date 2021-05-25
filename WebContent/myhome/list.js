@@ -106,7 +106,6 @@ window.addEventListener("load", function() {
 		
 		request.onload = function() {
 			let diary = JSON.parse(request.responseText);
-			console.log(diary);
 						
 				// 일기 세부내용 보여주기
 				let diaryContent = 
@@ -130,8 +129,10 @@ window.addEventListener("load", function() {
 		                    </div>
 		                    <div class="upload-date">${diary.regDate}</div>
 		                    <section class="button-menu">
+								<!-- 일기 아이디 심기 --!>
+								<input type="hidden" name="id" value="${diaryId}">
 		                        <h1 class="d-none">버튼</h1>
-		                        <button class="btn"><a href="edit.html">수정</a></button>
+		                        <a href="edit.html?id=${diaryId}"><button class="btn edit-btn">수정</button></a>
 		                        <button class="btn delete-btn">삭제</button>
 		                    </section>
 		                    <hr>
@@ -147,8 +148,6 @@ window.addEventListener("load", function() {
 	
 	// 일기 세부내용 창 닫기	
 	closeBtn.onclick = function(e) {
-
-		console.log("test");
 		background.classList.add("d-none");
 		detailSection.classList.add("d-none");
 		
@@ -156,6 +155,20 @@ window.addEventListener("load", function() {
 		detailSection.removeChild(detailSection.firstChild);
 		detailSection.removeChild(detailSection.firstChild.nextSibling); 
 	}
+		
+	// 일기 수정하기
+	document.onclick = function(e) {
+		if(!e.target.classList.contains("edit-btn")) 
+			return;
+			
+		// 일기 id 얻어오기
+		diaryId = e.target.parentNode.firstElementChild.value;	
+/*		showEditPage(`../../diary/edit?id=${diaryId}`);
+*/	}
+	
+	// 일기 수정 페이지 출력
+	 
+	
 	
 	// 일기 삭제하기
 	deleteBtn = document.getElementsByClassName(".delete-btn");
