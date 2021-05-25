@@ -15,7 +15,7 @@ import com.google.gson.Gson;
 import com.petharu.web.entity.Diary;
 import com.petharu.web.entity.Pet;
 import com.petharu.web.service.FriendService;
-import com.petharu.web.service.JdbcFriendService;
+import com.petharu.web.service.JdbcFriendDiaryService;
 import com.petharu.web.service.JdbcPetService;
 
 @WebServlet("/api/friends/list")
@@ -36,7 +36,7 @@ public class FriendList extends HttpServlet {
 			String breed = req.getParameter("breed");			
 			System.out.println(id_);
 			
-			FriendService friendService = new JdbcFriendService();
+			FriendService friendService = new JdbcFriendDiaryService();
 			List<Diary> list = friendService.getFriendDiaryList(id_);
 //			List<Pet> list = petService.getList();
 			
