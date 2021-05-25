@@ -12,7 +12,6 @@ window.addEventListener("load", function() {
 	let header = document.querySelector("#header");
     let modal = document.querySelector(".modal");
 	let closeBtn = document.querySelector(".close-btn");
-	let closeBtn2;
 	let diaryId;
 	let deleteBtn;
 	
@@ -26,6 +25,7 @@ window.addEventListener("load", function() {
 			return;
 
 		let page = e.target.innerText;
+		console.log(page);
 		showList(`../../api/diary/list?page=${page}`);
 		
 		pageNum.classList.remove("text-strong");
@@ -39,6 +39,7 @@ window.addEventListener("load", function() {
 		
 		request.onload = function() {
 			let list = JSON.parse(request.responseText);
+			console.log(list);
 			
 			if(list.length > 0) {
 				memberInfo.innerHTML = "";
@@ -59,7 +60,7 @@ window.addEventListener("load", function() {
 				
 				// 일기 목록 보여주기
 				for(let i=0; i<list.length; i++) {
-					let diaryList = 
+					diaryList = 
 					    `<div>
 							<input type="hidden" name="id" value="${list[i].id}">
 	                        <div class="img-area">
@@ -76,8 +77,8 @@ window.addEventListener("load", function() {
 					diarySection.insertAdjacentHTML("beforeend", diaryList);
 				}
 			} else {
-				let empty = `<p>존재하지 않는 페이지입니다<p>`
-				diaryList.innerHTML = empty;
+				let empty = `<p>존재하지 않는 페이지입니다<p>`;
+				diarySection.innerHTML = empty;
 			}
 		}
 		
