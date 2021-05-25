@@ -2,11 +2,21 @@ window.addEventListener("load", function() {
 	let section = document.querySelector("#main");
 	let body = document.querySelector("#body")
 	let memberInfo = section.querySelector(".member-info");
-	let diaryList = section.querySelector(".diary-list");
+	let diarySection = section.querySelector(".diary-list");
+	let detailSection = document.querySelector(".detail-section");
+/*	let imgArea = detailSection.getElementsByClassName(".img-area");
+	let contentArea = detailSection.getElementsByClassName(".content-area");*/
 	let pager = section.querySelector(".pager");
 	let pageNum = pager.querySelector("ul a")
-
-	bind(`../../api/diary/list`);
+	let background = document.querySelector(".black-bg");
+	let header = document.querySelector("#header");
+    let modal = document.querySelector(".modal");
+	let closeBtn = document.querySelector(".close-btn");
+	let diaryId;
+	let deleteBtn;
+	
+	
+	showList(`../../api/diary/list`);
 	
 	pager.onclick = function(e) {	
 		e.preventDefault();
@@ -15,14 +25,15 @@ window.addEventListener("load", function() {
 			return;
 
 		let page = e.target.innerText;
-		bind(`../../api/diary/list?page=${page}`);
+		showList(`../../api/diary/list?page=${page}`);
 		
 		pageNum.classList.remove("text-strong");
 		e.target.classList.add("text-strong");
 		pageNum = e.target;
 	}
 	
-	function bind(url) {
+	// 일기 목록 출력
+	function showList(url) {
 		let request = new XMLHttpRequest();
 		
 		request.onload = function() {
@@ -30,8 +41,9 @@ window.addEventListener("load", function() {
 			
 			if(list.length > 0) {
 				memberInfo.innerHTML = "";
-				diaryList.innerHTML = "";
+				diarySection.innerHTML = "";
 				
+				// 멤버 정보 보여주기
 				let memberContent = 
 				   `<div class="img-member"></div>
 	                <span class="id">${list[0].memberId}</span>
@@ -44,9 +56,11 @@ window.addEventListener("load", function() {
 	
 				memberInfo.insertAdjacentHTML("beforeend", memberContent);
 				
+				// 일기 목록 보여주기
 				for(let i=0; i<list.length; i++) {
-					let diaryContent = 
+					let diaryList = 
 					    `<div>
+							<input type="hidden" name="id" value="${list[i].id}">
 	                        <div class="img-area">
 	                            <img class="img-pet" src="../images/cat-rest.jpg">
 	                        </div>
@@ -58,10 +72,10 @@ window.addEventListener("load", function() {
 	                        </div>
 	                    </div>`;
 					
-					diaryList.insertAdjacentHTML("beforeend", diaryContent);
+					diarySection.insertAdjacentHTML("beforeend", diaryList);
 				}
 			} else {
-				let empty = `<p>검색된 결과가 없습니다<p>`
+				let empty = `<p>존재하지 않는 페이지입니다<p>`
 				diaryList.innerHTML = empty;
 			}
 		}
@@ -70,18 +84,71 @@ window.addEventListener("load", function() {
 		request.send(null);
 	}
 	
-	
-    let background = document.querySelector(".black-bg");
-	let detailSection = document.querySelector(".detail-section");
-	let closeBtn = document.querySelector(".close-btn");
-	
-	diaryList.onclick = function(e) {
+	// 일기 클릭 시 일기 세부내용 보여주기
+	diarySection.onclick = function(e) {
 		if(!e.target.classList.contains("img-pet") && !e.target.classList.contains("diary-content"))
             return;
 
 		background.classList.remove("d-none");
 		detailSection.classList.remove("d-none");
+		
+		// 일기 id 얻어오기
+		diaryId = e.target.parentNode.parentNode.firstElementChild.value;
+		console.log(diaryId);
+		showDetail(`../../diary/detail?id=${diaryId}`);
 	}
+	
+	// 일기 세부내용 출력
+	function showDetail(url) {
+		let request = new XMLHttpRequest();
+		
+		request.onload = function() {
+			let diary = JSON.parse(request.responseText);
+			console.log(diary);
+			
+			if(diary.length = 1) {
+				console.log("Test");
+			}
+						
+				// 일기 세부내용 보여주기
+				let diaryContent = 
+					`<div class="img-area">
+		                <img class="img-pet" src="../images/cat-rest.jpg">
+		            </div>
+		            <div class="content-area">
+		                <section class="member-info">
+		                    <h1 class="d-none">회원 정보</h1>
+		                    <div class="img-member"></div>
+		                    <span class="id">My Diary<!--${diary.memberId}--!></span>
+		                </section>
+		                <section>
+		                    <h1 class="d-none">일기 내용</h1>
+		                    <hr>
+		                    <div class="text-area">
+		                        <div class="diary-content">${diary.content}</div>
+		                        <div class="keyword">
+		                            <span>${diary.keyword}</span>
+		                        </div>
+		                    </div>
+		                    <div class="upload-date">${diary.regDate}</div>
+		                    <section class="button-menu">
+		                        <h1 class="d-none">버튼</h1>
+		                        <button class="btn"><a href="edit.html">수정</a></button>
+		                        <button class="btn delete-btn">삭제</button>
+		                    </section>
+		                    <hr>
+		                </section>
+		            </div>`;
+				
+				detailSection.insertAdjacentHTML("afterbegin", diaryContent);
+			}
+		
+		
+		
+		request.open("GET", url, true);
+		request.send(null);
+	}
+	
 	
 	closeBtn.onclick = function(e) {
 		e.preventDefault();
@@ -89,12 +156,8 @@ window.addEventListener("load", function() {
 		background.classList.add("d-none");
 		detailSection.classList.add("d-none");
 	}
-
 	
-	let header = document.querySelector("#header");
-    let modal = document.querySelector(".modal");
-    let deleteBtn = document.querySelector(".delete-btn");
-
+	deleteBtn = document.getElementsByClassName(".delete-btn");
     deleteBtn.onclick = function() {
         background.classList.remove("d-none");
         modal.classList.remove("d-none");
@@ -114,4 +177,5 @@ window.addEventListener("load", function() {
 		detailSection.style.zIndex = 1000;
         modal.classList.add("d-none");
     }
+
 });

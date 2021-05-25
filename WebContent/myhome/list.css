@@ -260,6 +260,10 @@ button {
             transition: box-shadow 0.1s ease-in 0s, transform 0.1s ease-in 0s;
             box-shadow: 0 0 6px rgb(206 206 206 / 40%);
         }
+        
+        .diary-list>div:nth-child(3n) {
+        	margin: 0 0 30px 0;
+        }
 
         .diary-list>div:hover {
             transform: translateY(-4px);
@@ -502,6 +506,7 @@ button {
             right: -40px;
             width: 28px;
             height: 28px;
+            cursor: pointer;
         }
 
 @media screen and (max-width: 500px) {
