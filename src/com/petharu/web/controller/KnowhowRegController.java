@@ -42,7 +42,7 @@ public class KnowhowRegController extends HttpServlet {
 			e.printStackTrace();
 		} 
 		
-		resp.sendRedirect("list.jsp");
+		resp.sendRedirect("list");
 	};
 	
 }

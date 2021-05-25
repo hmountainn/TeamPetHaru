@@ -43,7 +43,7 @@ public class KnowhowEditController extends HttpServlet {
 			e.printStackTrace();
 		} 
 		
-		resp.sendRedirect("detail.jsp?id="+id);
+		resp.sendRedirect("detail?id="+id);
 	
 	}
 }
