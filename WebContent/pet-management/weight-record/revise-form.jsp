@@ -7,6 +7,9 @@
 	String id_ = request.getParameter("id");
 	int id = Integer.parseInt(id_);
 	
+	String petid_ = request.getParameter("petid");
+	int petid = Integer.parseInt(petid_);
+	
 	JDBCWeightService weightservice = new JDBCWeightService();
 	Weight weight = weightservice.get(id);
 
@@ -109,10 +112,11 @@
                             <div class="button">
                                 <div>
                                 	<input type="hidden" name="id" value="<%=id %>">
+                                	<input type="hidden" name="petid" value="<%=petid %>">
                                     <input class="btn re" type="submit" value="수정">
                                 </div>
                                 <div class="btn delete">
-                                	<a class="link" href="del?id=<%=id %>" onclick="if(!confirm('삭제할겨?')) return false;">삭제</a>
+                                	<a class="link" href="del?petid=<%=petid %>&id=<%=id %>" onclick="if(!confirm('삭제할겨?')) return false;">삭제</a>
                                     <!-- <input class="btn delete" type="submit" value="삭제"> -->
                                 </div>
                             </div>
