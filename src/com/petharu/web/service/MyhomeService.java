@@ -14,7 +14,7 @@ public interface MyhomeService {
 	Diary get(int id) throws ClassNotFoundException, SQLException;
 	int insert(Diary diary) throws ClassNotFoundException, SQLException;
 	int update(Diary diary);
-	int delete(Diary diary);
+	int delete(int id);
 	
 	List<Friend> getFollowerList(int memberId) throws ClassNotFoundException, SQLException;
 	List<Friend> getFollowList(int memberId) throws ClassNotFoundException, SQLException;
