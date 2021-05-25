@@ -170,7 +170,7 @@ public class JDBCKnowhowService implements KnowhowService {
 	}
 	
 	@Override
-	public int update(Knowhow knowhow) {
+	public int update(Knowhow knowhow) throws ClassNotFoundException, SQLException {
 		System.out.println(knowhow);
 		
 		int result = 0;
@@ -178,7 +178,7 @@ public class JDBCKnowhowService implements KnowhowService {
 		String sql = "UPDATE KNOWHOW SET MEMBER_ID=?, KNOWHOW_TYPE_NAME=?, TITLE=?, CONTENT=? WHERE ID=?";
 		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
 		  
-		try {
+		//try {
 			Class.forName("oracle.jdbc.OracleDriver");
 			Connection con = DriverManager.getConnection(url, "PETHARU", "1357");
 			
@@ -196,9 +196,9 @@ public class JDBCKnowhowService implements KnowhowService {
 			
 			return result;
 			
-		} catch (Exception e) {
-			throw new ServiceException();
-		} 
+		//} catch (Exception e) {
+		//	throw new ServiceException();
+		//} 
 	}
 	
 	@Override
