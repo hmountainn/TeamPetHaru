@@ -65,6 +65,7 @@ public class JdbcFriendDiaryService implements FriendService {
 
 	public List<DiaryComment> getFriendDiaryCommentList(int diaryId) throws ClassNotFoundException, SQLException {
 		List<DiaryComment> list = new ArrayList<>();
+		System.out.println("다이어리 댓글:"+list);
 
 		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
 		String sql = "SELECT DIARY_COMMENT.*,MEMBER.USER_ID FROM DIARY_COMMENT LEFT JOIN MEMBER ON MEMBER.ID = diary_comment.member_id WHERE DIARY_ID="
@@ -103,8 +104,8 @@ public class JdbcFriendDiaryService implements FriendService {
 	}
 
 	public int getFollowerCount(int memberId) throws ClassNotFoundException, SQLException {
-		int count = 0;
-		String sql = "SELECT COUNT(FOLLOWER_ID) COUNT followerCnt FROM FRIEND WHERE MEMBER_ID = " + memberId;
+		int followerCnt = 0;
+		String sql = "SELECT COUNT(FOLLOWER_ID) followerCnt FROM FRIEND WHERE MEMBER_ID =" + memberId;
 
 		try {
 			String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
@@ -114,7 +115,7 @@ public class JdbcFriendDiaryService implements FriendService {
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(sql);
 			if (rs.next())
-				count = rs.getInt("COUNT");
+				followerCnt = rs.getInt("followerCnt");
 
 			rs.close();
 			st.close();
@@ -123,15 +124,11 @@ public class JdbcFriendDiaryService implements FriendService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println(count);
-		return count;
+		System.out.println("팔로워 숫자 :"+followerCnt);
+		return followerCnt;
 
 	}
 
-	public List<Friend> getFollowingCount() throws ClassNotFoundException, SQLException {
-		return null;
-
-	}
 
 	public List<Friend> getRequestCount() throws ClassNotFoundException, SQLException {
 		return null;
@@ -141,6 +138,7 @@ public class JdbcFriendDiaryService implements FriendService {
 	@Override
 	public List<Friend> getFollowerList(int memberId) throws ClassNotFoundException, SQLException {
 		List<Friend> list = new ArrayList<>();
+		System.out.println("팔로워리스트 :"+ list);
 
 		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
 		String sql = "SELECT F.*,M.USER_ID FROM FRIEND F LEFT JOIN MEMBER M ON F.MEMBER_ID = M.ID WHERE MEMBER_ID = " + memberId;
@@ -179,5 +177,77 @@ public class JdbcFriendDiaryService implements FriendService {
 		return list;
 	}
 
+	@Override
+	public List<Friend> getFollowingList(int mebmerId) throws ClassNotFoundException, SQLException {
+		List<Friend> list = new ArrayList<>();
+		System.out.println("팔로잉리스트 :"+ list);
 
-}
+		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
+		String sql = "SELECT F.*,M.USER_ID FROM FRIEND F LEFT JOIN MEMBER M ON F.MEMBER_ID = M.ID WHERE FOLLOWER_ID =" + mebmerId;
+
+		try {
+			Class.forName("oracle.jdbc.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "PETHARU", "1357");
+
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+
+			while (rs.next()) {
+
+				int followerId = rs.getInt("follower_id");
+				Date responseDate = rs.getDate("response_date");
+				Date requestDate = rs.getDate("request_date");
+				String userId = rs.getString("user_id");
+		
+
+				Friend friend = new Friend();
+				friend.setFollowrId(followerId);
+				friend.setRequestDate(requestDate);
+				friend.setResponseDate(responseDate);
+				friend.setUserId(userId);
+
+				list.add(friend);
+			}
+			rs.close();
+			st.close();
+			con.close();
+
+		} catch (Exception e) {
+			throw new ServiceException();
+		}
+
+		return list;
+	}
+
+	@Override
+	public int getFollowingCount(int memberId) throws ClassNotFoundException, SQLException {
+		int followingCnt = 0;
+		String sql = "SELECT COUNT(FOLLOWER_ID) followingCnt FROM FRIEND WHERE FOLLOWER_ID = " + memberId;
+
+		try {
+			String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
+			Class.forName("oracle.jdbc.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "PETHARU", "1357");
+
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+			if (rs.next())
+				followingCnt = rs.getInt("followingCnt");
+
+			rs.close();
+			st.close();
+			con.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("팔로잉 숫자 :"+followingCnt);
+		return followingCnt;
+
+	}
+	}
+
+	
+
+	
+	

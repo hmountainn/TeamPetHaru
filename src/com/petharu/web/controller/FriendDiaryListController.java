@@ -24,15 +24,20 @@ public class FriendDiaryListController extends HttpServlet{
 		JdbcFriendDiaryService friendService = new JdbcFriendDiaryService();
 		List<Diary> list = null;
 		List<DiaryComment> diaryCommentslist =null;		
-		int followerCount = 1;
+		int followerTotal = 1;
 		List<Friend> followerList = null;
+		int followingTotal = 1;
+		List<Friend> followingList = null;
+		
 		
 		try {
 			list = friendService.getFriendDiaryList(1);
 			diaryCommentslist = friendService.getFriendDiaryCommentList(1);
-			followerCount = friendService.getFollowerCount(1);
-			System.out.println(followerCount);
+			followerTotal = friendService.getFollowerCount(1);
+			System.out.println("컨트롤러에서 팔로우 수:"+followerTotal);
 			followerList = friendService.getFollowerList(1);
+			followingTotal = friendService.getFollowingCount(followingTotal);
+			followingList = friendService.getFollowingList(1);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -44,8 +49,10 @@ public class FriendDiaryListController extends HttpServlet{
 		System.out.println(list);
 		request.setAttribute("list", list);
 		request.setAttribute("diaryCommentslist", diaryCommentslist);
-		request.setAttribute("followerCount", followerCount);
+		request.setAttribute("followerTotal", followerTotal);
 		request.setAttribute("followerList", followerList);
+		request.setAttribute("followingTotal", followingTotal);
+		request.setAttribute("followingList", followingList);
 		
 		request.getRequestDispatcher("/friends/list.jsp").forward(request, response);//
 	}
