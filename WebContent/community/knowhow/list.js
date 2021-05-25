@@ -8,14 +8,14 @@ window.addEventListener("load", function() {
 
 
 	// 클릭한 버튼에 스타일 입히기
-	dogBtn.onclick = function(e) {
+	dogBtn.onclick = function(e) {		
 		catBtn.classList.remove("select-bg");		
 		catBtnText.classList.remove("select-t")
 		dogBtn.classList.add("select-bg");	
 		dogBtnText.classList.add("select-t")
 	}
 	
-	catBtn.onclick = function(e) {
+	catBtn.onclick = function(e) {		
 		dogBtn.classList.remove("select-bg");	
 		dogBtnText.classList.remove("select-t")	
 		catBtn.classList.add("select-bg");
