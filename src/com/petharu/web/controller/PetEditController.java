@@ -24,7 +24,7 @@ public class PetEditController extends HttpServlet {
 		PrintWriter out = resp.getWriter();
 		req.setCharacterEncoding("UTF-8");
 
-		resp.setCharacterEncoding("UTF-8");
+		resp.setCharacterEncoding("UTF-8");		
 		resp.setContentType("text/html; charset=UTF-8");
 		int id_ = 0;
 		if (req.getParameter("id") != null) {
@@ -44,7 +44,7 @@ public class PetEditController extends HttpServlet {
 		System.out.println(breedId);
 
 		PetService petService = new JdbcPetService();
-		Pet pet ;
+		Pet pet = null;
 
 		try {
 			pet = petService.get(id_);//펫id
@@ -61,9 +61,10 @@ public class PetEditController extends HttpServlet {
 		} catch (Exception e) {
 			resp.sendRedirect("exception.html");
 		}
-		resp.sendRedirect("/pet-management/mypet/list.jsp");
-//		req.setAttribute("pet", pet);
-//		req.getRequestDispatcher("/pet-management/mypet/list.jsp").forward(req, resp);
+		
+		req.setAttribute("pet", pet);
+		resp.sendRedirect("/pet-management/mypet/list");
+//		out.println("<script>location.href='/pet-management/mypet/list'</script>");
 
 	}
 }
