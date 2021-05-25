@@ -12,9 +12,42 @@ import java.util.ArrayList;
 import java.sql.Date;
 import java.util.List;
 
+import com.petharu.web.entity.Pet;
 import com.petharu.web.entity.Weight;
 
 public class JDBCWeightService implements WeightService {
+	public List<Pet> getpetList(int memberid){
+		List<Pet> list = new ArrayList<>();
+		
+		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
+		String sql = "SELECT ID FROM PET WHERE MEMBER_ID="+memberid;
+		
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver"); //드라이버 생성
+			Connection con = DriverManager.getConnection(url, "PETHARU", "1357"); //연결
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+			
+			while(rs.next()) {
+				int id = rs.getInt("ID");
+
+				Pet pet = new Pet();
+				pet.setId(id);
+
+				list.add(pet);
+			}
+			
+			rs.close();
+			st.close();
+		}catch (Exception e) {
+			throw new ServiceException();
+		}
+		return list;
+		
+		
+	}
+	
 	public List<Weight> getList(){
 		List<Weight> list = new ArrayList<>();
 		
@@ -177,6 +210,7 @@ public class JDBCWeightService implements WeightService {
 		
 		return result;
 	}
+	
 	
 	
 }
