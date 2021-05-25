@@ -229,7 +229,6 @@ button {
             }
 
                 .img-upload-btn {
-                    display: inline-block;
                     position: absolute;
                     bottom: 15px;
                     /* margin-left: auto;
@@ -238,11 +237,11 @@ button {
                     margin-left: -60px;
                     width: 120px;
                     height: 35px;
-
                     border-radius: 5px;
                     background-color: rgb(153, 151, 151);
                     font-weight: bold;
                     font-family: 'Nanum Gothic', sans-serif; 
+                    font-size: 14px;
                     color: white;  
                     cursor: pointer;   
                 }
