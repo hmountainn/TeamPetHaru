@@ -1,7 +1,5 @@
-window.addEventListener("load", function() {
-    var section = document.querySelector("#diary-comment-sctn"); //댓글 전체창
-	var diaryId = section.querySelector("input[name=diary-id]").value;
-	var newCommentBtn = section.querySelector(".submit-btn");
+function commentLoad(url) {
+	var section = document.querySelector("#diary-comment-sctn"); //댓글 전체창
 	var memberId = section.querySelector(".diary-comment-write input[name=comment-member-id]").value;
 
 	var request = new XMLHttpRequest();
@@ -58,16 +56,22 @@ window.addEventListener("load", function() {
 		                                    </div>
 		                                </section>`
 		
-					section.insertAdjacentHTML("beforeend", diaryComment);;
+					section.insertAdjacentHTML("beforeend", diaryComment);
 				}
 				
 			}
 		}
 	};
 	
-	request.open("GET", `/api/myhome/comment/list?diary-id=${diaryId}`);
+	request.open("GET", url);
 	request.send(null);
+};
+
 	
+function commentFnctn(diaryId) {
+	var section = document.querySelector("#diary-comment-sctn"); //댓글 전체창
+	var newCommentBtn = section.querySelector(".submit-btn");
+	var memberId = section.querySelector(".diary-comment-write input[name=comment-member-id]").value;
 	
 	newCommentBtn.onclick = function() {
 		var content = section.querySelector(".diary-comment-write textarea").value;
@@ -77,17 +81,15 @@ window.addEventListener("load", function() {
 		} else {
 			var request = new XMLHttpRequest();
 			request.onload = function() {
-				location.href = "./comment.html";
+				location.href = "./list.html";
 			}
 			request.open("POST", `/myhome/comment/create?diary-id=${diaryId}`);
 			request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 			request.send(`comment-content=${content}&comment-member-id=${memberId}`);
 		}
 	}
-
-
+	
 	section.onclick = function(e) {
-		
 		//삭제
 		if (e.target.classList.contains("del-btn")) {
             if(confirm("정말로 삭제하시겠습니까?")) {
@@ -182,7 +184,7 @@ window.addEventListener("load", function() {
 					var replyId = replyIdSpan.innerText; 
 					var request = new XMLHttpRequest();
 					request.onload = function() {
-						location.href = "./comment.html";
+						location.href = "./list.html";
 					};
 					request.open("POST", `/myhome/comment/create?diary-id=${diaryId}`);
 					request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -207,6 +209,4 @@ window.addEventListener("load", function() {
         else
             return;
 	}
-
-
-})
+};
