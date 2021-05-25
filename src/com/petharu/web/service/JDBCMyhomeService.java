@@ -202,8 +202,33 @@ public class JDBCMyhomeService implements MyhomeService {
 
 	@Override
 	public int update(Diary diary) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		int result = 0;
+		  
+		String sql = "UPDATE DIARY SET MEMBER_ID=?, KEYWORD=?, CONTENT=? WHERE ID=?";
+		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
+		  
+		try {
+			
+			Class.forName("oracle.jdbc.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "PETHARU", "1357");
+			
+			PreparedStatement st = con.prepareStatement(sql);
+			st.setInt(1, diary.getMemberId());
+			st.setString(2, diary.getKeyword());
+			st.setString(3, diary.getContent()); 
+			st.setInt(4, diary.getId());
+			
+			result = st.executeUpdate();
+			
+			st.close(); 
+			con.close();
+			
+			return result;
+			
+		} catch (Exception e) {
+			throw new ServiceException();
+		} 
 	}
 
 	@Override

@@ -50,7 +50,7 @@
                         <h1 class="d-none">커뮤니티 메뉴</h1>
                         <ul>
                             <li><a href="../notice/list.html">공지사항</a></li>
-                            <li><a class="current-page" href="list.jsp">노하우</a></li>
+                            <li><a class="current-page" href="list">노하우</a></li>
                         </ul>
                     </nav>
                 </aside>
@@ -92,7 +92,7 @@
                         <c:forEach var="k" items="${list}">
                         	<div>
 	                            <div class="img-area">
-	                                <a href="detail.jsp?id=${k.id}">
+	                                <a href="detail?id=${k.id}">
 	                                <img class="img-pet" src="../../images/cat-rest1.jpg">
 	                                </a>
 	                            </div>
@@ -113,7 +113,7 @@
 	                            			</li>
 	                            		</ul>
 	                            	</div>
-	                                <div class="knowhow-title"><a href="detail.jsp?id=${k.id}">${k.title}</a></div>
+	                                <div class="knowhow-title"><a href="detail?id=${k.id}">${k.title}</a></div>
 	                                <section class="flex">
 	                                    <div class="img-member"></div>
 	                                    <span class="id">${k.memberId}</span>

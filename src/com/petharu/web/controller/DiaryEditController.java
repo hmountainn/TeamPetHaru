@@ -9,12 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.petharu.web.entity.Knowhow;
-import com.petharu.web.service.JDBCKnowhowService;
-import com.petharu.web.service.KnowhowService;
+import com.petharu.web.entity.Diary;
+import com.petharu.web.service.JDBCMyhomeService;
+import com.petharu.web.service.MyhomeService;
 
-@WebServlet("/community/knowhow/edit")
-public class KnowhowEditController extends HttpServlet {
+
+
+@WebServlet("/myhome/edit")
+public class DiaryEditController extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -24,26 +26,25 @@ public class KnowhowEditController extends HttpServlet {
 		resp.setContentType("text/html; charset=UTF-8");
 		
 		int id = Integer.parseInt(req.getParameter("id"));
-		String pet = req.getParameter("pet");
-		String title = req.getParameter("title");
 		String content = req.getParameter("content");
+		String keyword = req.getParameter("keyword");
 	
-		KnowhowService service = new JDBCKnowhowService();
+		MyhomeService myhomeService = new JDBCMyhomeService();
 		
-		Knowhow knowhow;
+		Diary diary;
 		
 		try {
-			knowhow = service.get(id);
-			knowhow.setKnowhowTypeName(pet);
-			knowhow.setTitle(title);
-			knowhow.setContent(content);
-			service.update(knowhow);
+			diary = myhomeService.get(id);
+			diary.setMemberId(1);
+			diary.setKeyword(keyword);
+			diary.setContent(content);
+			myhomeService.update(diary);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 
 		
-		resp.sendRedirect("detail?id="+id);
+		resp.sendRedirect("list.html");
 	
 	}
 }
