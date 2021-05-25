@@ -71,13 +71,18 @@ window.addEventListener("load", function() {
 	
 	newCommentBtn.onclick = function() {
 		var content = section.querySelector(".diary-comment-write textarea").value;
-		var request = new XMLHttpRequest();
-		request.onload = function() {
-			location.href = "./comment.html";
+		if (!content) {
+			alert("내용을 입력해주세요.");
+			return false;
+		} else {
+			var request = new XMLHttpRequest();
+			request.onload = function() {
+				location.href = "./comment.html";
+			}
+			request.open("POST", `/myhome/comment/create?diary-id=${diaryId}`);
+			request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			request.send(`comment-content=${content}&comment-member-id=${memberId}`);
 		}
-		request.open("POST", `/myhome/comment/create?diary-id=${diaryId}`);
-		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-		request.send(`comment-content=${content}&comment-member-id=${memberId}`);
 	}
 
 
@@ -98,7 +103,7 @@ window.addEventListener("load", function() {
         }
 
 		//수정
-		if (e.target.classList.contains("update-btn")) {
+		else if (e.target.classList.contains("update-btn")) {
 			var commentId = e.target.parentElement.parentElement.querySelector("input[name=comment-id]").value;
 			var writerBtns = e.target.parentElement;
             var contentSection = writerBtns.previousElementSibling; //댓글내용.comment-content
@@ -120,116 +125,88 @@ window.addEventListener("load", function() {
 			var postBtn = writerBtns.querySelector(".post-cmt-btn");
             postBtn.onclick = function() {
 				var updateContent = contentSection.querySelector("input").value;
-				var request = new XMLHttpRequest();
-				request.onload = function() {
-					location.reload();
+				if (!updateContent) {
+					alert("내용을 입력해주세요.");
+					return false;
+				} else {
+					var request = new XMLHttpRequest();
+					request.onload = function() {
+						location.reload();
+					}
+					request.open("POST", `/myhome/comment/update?comment-id=${commentId}`);
+					request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+					request.send(`comment-content=${updateContent}`);					
 				}
-				request.open("POST", `/myhome/comment/update?comment-id=${commentId}`);
-				request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-				request.send(`comment-content=${updateContent}`);
 			}
 			
 			//수정 취소
+			var cancleBtn = writerBtns.querySelector(".cancle-cmt-btn");
+            cancleBtn.onclick = function() {
+                var btnList = writerBtns.children;
+                for(var i=0; i<btnList.length; i++) {
+                    btnList[i].classList.toggle("d-none");
+                }
+                var input = contentSection.querySelector("input");
+                contentSection.removeChild(input);
+                contentSection.append(currentContent);
+            };
+		}
+		
+		//답댓글
+		else if (e.target.classList.contains("reply-btn")) {
+			var input = document.createElement("input", "text");
+            input.style.width = "250px";
+            input.style.fontSize = "16px";
+            input.style.marginBottom = "10px";
+
+			var commentBtns = e.target.parentElement;
+            var btnList = commentBtns.children;
+            for(var i=0; i<btnList.length; i++) {
+                btnList[i].classList.toggle("d-none");
+            };
+            commentBtns.insertAdjacentElement("beforebegin", input);
+			
+			//답댓글 등록
+			var postBtn = commentBtns.querySelector(".post-cmt-btn")
+            postBtn.onclick = function() {
+				if (!input.value) {
+					alert("내용을 입력해주세요.");
+					return false;
+				} else {
+	                var eleList = commentBtns.children;
+	                for (var i=0; i<eleList.length; i++) {
+	                    eleList[i].classList.toggle("d-none");
+	                };
+	
+					var replyIdSpan = input.previousElementSibling.previousElementSibling.querySelector(".comment-writer-id");
+					var replyId = replyIdSpan.innerText; 
+					var request = new XMLHttpRequest();
+					request.onload = function() {
+						location.href = "./comment.html";
+					};
+					request.open("POST", `/myhome/comment/create?diary-id=${diaryId}`);
+					request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+					request.send(`comment-content=${'@'+replyId+')'}+${input.value}&comment-member-id=${memberId}`);
+				}
+            };
+
+			//답댓글 취소
+			var cancleBtn = commentBtns.querySelector(".cancle-cmt-btn");
+            cancleBtn.onclick = function(e) {
+				var commentBtns = e.target.parentElement;
+                var btnList = commentBtns.children;
+                for(var i=0; i<btnList.length; i++) {
+                    btnList[i].classList.toggle("d-none");
+                }
+				var input = commentBtns.previousElementSibling;
+                var comment = commentBtns.parentElement;
+				comment.removeChild(input); 
+            };
 		}
 
-        
         else
             return;
 	}
 
-
-    /*section.onclick = function(e) {
-
-        //내가 단 댓글 수정
-        if (e.target.classList.contains("update-btn")) {
-            var writerBtn = e.target.parentElement;
-            var content = writerBtn.previousElementSibling; //댓글내용.comment-content
-            var contentSpan = content.querySelector("span");
-            var contentTxt = contentSpan.innerText;
-            var input = document.createElement("input", "text");
-            var eleList = writerBtn.children;
-
-            input.value = contentTxt;
-            input.style.width = "250px";
-            input.style.fontSize = "16px";
-            content.replaceChild(input, contentSpan);
-
-            for(var i=0; i<eleList.length; i++) {
-                eleList[i].classList.toggle("d-none");
-            };
-
-            //등록
-            var postBtn = writerBtn.querySelector(".post-cmt-btn");
-            postBtn.onclick = function() {
-                var eleList = writerBtn.children;
-                for (var i=0; i<eleList.length; i++) {
-                    eleList[i].classList.toggle("d-none");
-                };
-                var input = content.querySelector("input");
-                contentSpan.innerText = input.value;
-                content.removeChild(input);
-                content.append(contentSpan);
-            };
-
-            //취소
-            var cancleBtn = writerBtn.querySelector(".cancle-cmt-btn")
-            cancleBtn.onclick = function() {
-                var eleList = writerBtn.children;
-                for(var i=0; i<eleList.length; i++) {
-                    eleList[i].classList.toggle("d-none");
-                }
-                var input = content.querySelector("input");
-                content.removeChild(input);
-                content.append(contentSpan);
-            };
-        }
-
-
-        //답댓글
-        else if (e.target.classList.contains("reply-btn")) {
-            var input = document.createElement("input", "text");
-            input.style.width = "250px";
-            input.style.fontSize = "16px";
-            input.style.marginBottom = "10px";
-            
-            var commentBtn = e.target.parentElement;
-            var eleList = commentBtn.children;
-            for(var i=0; i<eleList.length; i++) {
-                eleList[i].classList.toggle("d-none");
-            };
-            commentBtn.insertAdjacentElement("beforebegin", input);
-
-            //등록
-            var postBtn = commentBtn.querySelector(".post-cmt-btn")
-            var comment = commentBtn.parentElement; //개별댓글.diary-comment
-            postBtn.onclick = function() {
-                var eleList = commentBtn.children;
-                for (var i=0; i<eleList.length; i++) {
-                    eleList[i].classList.toggle("d-none");
-                };
-                
-                var replyDiv = `<div style="margin-top:15px; margin-left:25px;">
-                                    <span>${input.value}</span>
-                                </div>`;
-                commentBtn.insertAdjacentHTML("afterend", replyDiv);
-                comment.removeChild(input);
-            };
-
-            //취소
-            var cancleBtn = commentBtn.querySelector(".cancle-cmt-btn");
-            cancleBtn.onclick = function() {
-                var eleList = commentBtn.children;
-                for(var i=0; i<eleList.length; i++) {
-                    eleList[i].classList.toggle("d-none");
-                };
-                comment.removeChild(input);
-            };
-        }
-
-        
-        else
-            return;
-        
-    };*/
 
 })

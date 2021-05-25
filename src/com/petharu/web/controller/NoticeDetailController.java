@@ -40,7 +40,6 @@ public class NoticeDetailController extends HttpServlet {
 			String json = gson.toJson(notice);
 			out.println(json);
 			
-			
 		} catch (Exception e) {
 			resp.sendRedirect("exception.html");
 		}
