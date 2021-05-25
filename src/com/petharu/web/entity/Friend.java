@@ -4,40 +4,41 @@ import java.util.Date;
 
 public class Friend {
 
-	private int requestId;
-	private int responseId;
+	private int followrId;
+	private int memberId;
 	private Date requestDate;
 	private Date responseDate;
 	private String userId;
-	
+	private int followerCnt;
+
 	public Friend() {
 		// TODO Auto-generated constructor stub
 	}
 
-
-	public Friend(int requestId, int responseId, Date requestDate, Date responseDate, String userId) {
+	public Friend(int followrId, int memberId, Date requestDate, Date responseDate, String userId, int followerCnt) {
 		super();
-		this.requestId = requestId;
-		this.responseId = responseId;
+		this.followrId = followrId;
+		this.memberId = memberId;
 		this.requestDate = requestDate;
 		this.responseDate = responseDate;
 		this.userId = userId;
+		this.followerCnt = followerCnt;
 	}
 
-	public int getRequestId() {
-		return requestId;
+	public int getFollowrId() {
+		return followrId;
 	}
 
-	public void setRequestId(int requestId) {
-		this.requestId = requestId;
+	public void setFollowrId(int followrId) {
+		this.followrId = followrId;
 	}
 
-	public int getResponseId() {
-		return responseId;
+	public int getMemberId() {
+		return memberId;
 	}
 
-	public void setResponseId(int responseId) {
-		this.responseId = responseId;
+	public void setMemberId(int memberId) {
+		this.memberId = memberId;
 	}
 
 	public Date getRequestDate() {
@@ -55,30 +56,28 @@ public class Friend {
 	public void setResponseDate(Date responseDate) {
 		this.responseDate = responseDate;
 	}
-	
-	
 
 	public String getUserId() {
 		return userId;
 	}
 
-
-	public void setUserId(String uerId) {
-		this.userId = uerId;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
+	public int getFollowerCnt() {
+		return followerCnt;
+	}
 
-
-
+	public void setFollowerCnt(int followerCnt) {
+		this.followerCnt = followerCnt;
+	}
 
 	@Override
 	public String toString() {
-		return "Friend [requestId=" + requestId + ", responseId=" + responseId + ", requestDate=" + requestDate
-				+ ", responseDate=" + responseDate + ", uerId=" + userId + "]";
+		return "Friend [followrId=" + followrId + ", memberId=" + memberId + ", requestDate=" + requestDate
+				+ ", responseDate=" + responseDate + ", userId=" + userId + ", followerCnt=" + followerCnt + "]";
 	}
-
-
-
 	
-	
+
 }
