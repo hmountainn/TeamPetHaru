@@ -50,10 +50,11 @@ public class JDBCScheduleService implements ScheduleService {
 				schedule.setScheduleTypeName(scheduleTypeName);
 				schedule.setDateTime(dateTime);
 				list.add(schedule);	
-				rs.close();
-				st.close();
-				con.close();
+				
 			}
+			rs.close();
+			st.close();
+			con.close();
 			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -90,10 +91,11 @@ public class JDBCScheduleService implements ScheduleService {
 				schedule.setContent(content);
 				schedule.setScheduleTypeName(scheduleTypeName);
 				schedule.setDateTime(dateTime);
-				rs.close();
-				st.close();
-				con.close();
+				
 			}
+			rs.close();
+			st.close();
+			con.close();
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

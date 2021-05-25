@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -84,8 +86,8 @@
                                 </tr>
                               </thead>
                         </table>
-                        <div class="overlay d-none"></div>
-                        <div class="popup-wrapper d-none">
+                        <div class="overlay"></div>
+                        <div class="popup-wrapper">
                             <div class="add-schedule">
                                 <div class="close-btn">
                                 <img src="../../images/icon-close-btn.png" alt="">
@@ -134,55 +136,6 @@
                             </div>
                         </div>
                         
-                        <div class="overlay2 d-none"></div>
-                        <div class="popup-wrapper2 d-none">
-                            <div class="add-schedule">
-                                <div class="close-btn">
-                                <img src="../../images/icon-close-btn.png" alt="">
-                                    
-                                </div>
-                                <div class="add-schedule-form">
-    
-                                    <h1 class="d-none">일정추가</h1>                                   
-                                    <form action="reg" method="post">
-                                        <div class="schedule-input-container title-container">
-                                            <label class="schedule-lable title-lable d-none" for="">제목</label>
-                                            <input class="title-input" type="text" placeholder="제목" name="title">
-                                        </div>
-                                        <div class="schedule-input-container date-time-container">
-                                            <label class="schedule-lable  date-time-lable btn" for="">일시</label>
-                                           
-                                            <input type = "datetime-local" name = "datetime" >
-
-                                        </div>
-                                        <div class="schedule-input-container content-container">
-                                            <label class="schedule-lable content-lable btn" for="">내용</label>
-                                            <textarea class="content-input"cols="40" rows="7" placeholder="내용" name="content"></textarea>
-                                        </div>
-                                        
-                                        
-                                        <div class="hashtag-container">
-                                            
-                                            <input class="hashtag hashtag1" id="hashtag1" type="radio" name="scheduleType" value="진료">
-  											<label for="hashtag1">#진료</label>
-  											<input class="hashtag hashtag2" id="hashtag2"type="radio" name="scheduleType" value="접종">
-  											<label for="hashtag2">#예방접종</label>
-  											<input class="hashtag hashtag3" id="hashtag3" type="radio" name="scheduleType" value="미용">
-  											<label for="hashtag3">#미용</label>
-  											<input class="hashtag hashtag4" id="hashtag4" type="radio" name="scheduleType" value="기타">
-  											<label for="hashtag4">#기타</label>
-                                             
-                                        </div>
-                                        
-                                        <div class="submit">
-    
-                                            <input class="submit-btn" type="submit" value="수정">
-                                        </div>
-                                    </form>
-                                </div>
-                                
-                            </div>
-                        </div>   
                         
                         <div class="schedule-detail d-none">
                                     
