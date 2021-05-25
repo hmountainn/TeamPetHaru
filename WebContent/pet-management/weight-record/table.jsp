@@ -87,8 +87,8 @@
                             </ol>
                         </div>
     
-                        
-                        <a href="stats.html"><div class="button">통계보기</div></a>
+                        <a href="form.jsp?petid=<%=petid%>"><div class="regbutton">체중등록</div></a>
+                        <a href="stats.html"><div class="statbutton">통계보기</div></a>
                         <table class="record-table">
                             <thead>
                                 <tr>
@@ -118,6 +118,7 @@
                                     <td><%=n.getKg()%> KG</td>
                                 </tr>
                             <%} %>
+
                             </tbody>
                         </table>
                     </div>
