@@ -447,12 +447,13 @@ button {
                 color: white;
             }
 
-        .modal-close img {
+        .modal img {
             position: absolute;
             top: 0px;
             right: -40px;
             width: 28px;
             height: 28px;
+            cursor: pointer;
         }
         
 @media screen and (max-width:500px) {

@@ -174,12 +174,11 @@ public class JDBCKnowhowService implements KnowhowService {
 			
 		//} catch (Exception e) {
 		//	throw new ServiceException();
-		//} 
-			
+		//} 	
 	}
 	
 	@Override
-	public int update(Knowhow knowhow) throws ClassNotFoundException, SQLException {
+	public int update(KnowhowView knowhow) throws ClassNotFoundException, SQLException {
 		System.out.println(knowhow);
 		
 		int result = 0;

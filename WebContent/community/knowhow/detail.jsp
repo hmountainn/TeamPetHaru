@@ -117,7 +117,7 @@
                     <a class="modal-btn flex-center" href="del?id=${knowhow.id}">확인</a>
                </section>
                 <div>
-                    <a class="modal-close" href="#"><img class="close-btn" src="../../images/close-button.png" alt=""></a>
+                    <img class="close-btn" src="../../images/close-button.png" alt="">
                 </div>
             </div>
         </div>

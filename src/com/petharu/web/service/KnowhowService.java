@@ -20,7 +20,7 @@ public interface KnowhowService {
 	
 	KnowhowView get(int id) throws ClassNotFoundException, SQLException;
 	int insert(Knowhow knowhow) throws ClassNotFoundException, SQLException;
-	int update(Knowhow knowhow) throws ClassNotFoundException, SQLException;
+	int update(KnowhowView knowhow) throws ClassNotFoundException, SQLException;
 	int delete(int id);
 	
 	int hitUp(Knowhow knowhow);
