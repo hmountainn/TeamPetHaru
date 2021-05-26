@@ -220,13 +220,13 @@ ul,ol{
         border: none;
         padding: 0;
         height: 70vh;
-        width: 110vh;
+        width: 100vh;
         
         display: flex;
         position: relative;
     }
 
-        .petphoto{
+/*         .petphoto{
             display: flex;
             position: absolute;
         }
@@ -280,7 +280,7 @@ ul,ol{
         .pet4{
             background-image: url("../../images/pet4.jpg");
             background-size: cover;
-        }
+        } */
 
         .record-title{
             padding: 7px 7px 7px 7px;

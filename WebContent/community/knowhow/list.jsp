@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -105,23 +106,28 @@
 	                            			</li>
 	                            			<li>
 	                            				<img src="../../images/heart.png">
-	                            				<span>3</span>
+	                            				<span>${k.likeCount}</span>
 	                            			</li>
 	                            			<li>
 	                            				<img src="../../images/comment.png">
-	                            				<span>2</span>
+	                            				<span>${k.commentCount }</span>
 	                            			</li>
 	                            		</ul>
 	                            	</div>
 	                                <div class="knowhow-title"><a href="detail?id=${k.id}">${k.title}</a></div>
 	                                <section class="flex">
 	                                    <div class="img-member"></div>
-	                                    <span class="id">${k.memberId}</span>
+	                                    <span class="id">${k.userId}</span>
 	                                </section>
 	                            </div>
 	                        </div>	
                         </c:forEach>
                     </div>
+                
+                    <c:if test="${fn:length(list) == 0 }">
+                    	<p class="non-page">존재하지 않는 페이지입니다</p>
+                    </c:if>
+                    
                     <nav class="pager">
                         <h1 class="d-none">현재 페이지 정보</h1>
                         <a href=""><img class="prev" src="../../images/left-arrow.png" alt=""></a>
