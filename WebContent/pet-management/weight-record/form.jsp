@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%-- <%
-	String id_ = request.getParameter("petid");
-	int petid = Integer.parseInt(id_);
-%> --%>
     
 
 <!DOCTYPE html>
@@ -95,7 +91,7 @@
 	                            </div>
 	    
 	                            <div>
-	                            	<input type="hidden" name="petid" value="${pram.petid}">
+	                            	<input type="hidden" name="petid" value="${param.petid}">
 	                                <input class="submit" type="submit" value="등록">
 	                            </div>
 	                            
