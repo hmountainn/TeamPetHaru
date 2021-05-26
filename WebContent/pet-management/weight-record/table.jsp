@@ -51,9 +51,9 @@
                     <nav class="aside-menu">
                         <h1 class="d-none">동물관리메뉴</h1>
                         <ul>
-                            <li><a href="../mypet/list.jsp">동물 관리</a></li>
-                            <li><a class="current-page" href="form.jsp">체중 관리</a></li>
-                            <li><a href="../schedule/calendar.html">일정 관리</a></li>                       
+                            <li><a href="../mypet/mypet-list.html">동물 관리</a></li>
+                            <li><a class="current-page" href="pet-list">체중 관리</a></li>
+                            <li><a href="../calendar/calendar.html">일정 관리</a></li>                      
                         </ul>
                     </nav>
                 </aside>
@@ -61,14 +61,14 @@
                     
                     <div class="record">
                         <h1 class="record-title">전체 체중기록</h1>
-                        <div class="petphoto">
+<!--                         <div class="petphoto">
                             <ol>
                                 <li><a class="img pet1" href="">강아지1</a></li>
                                 <li><a class="img pet2 current" href="">강아지2</a></li>
                                 <li><a class="img pet3" href="">강아지3</a></li>
                                 <li><a class="img pet4" href="">강아지4</a></li>
                             </ol>
-                        </div>
+                        </div> -->
     
                         <a href="form?petid=${param.petid}"><div class="regbutton">체중등록</div></a>
                         <a href="stats.html"><div class="statbutton">통계보기</div></a>

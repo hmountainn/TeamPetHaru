@@ -51,7 +51,7 @@
                         <h1 class="d-none">동물관리메뉴</h1>
                         <ul>
                             <li><a href="../mypet/mypet-list.html">동물 관리</a></li>
-                            <li><a class="current-page" href="form.html">체중 관리</a></li>
+                            <li><a class="current-page" href="pet-list">체중 관리</a></li>
                             <li><a href="../calendar/calendar.html">일정 관리</a></li>                       
                         </ul>
                     </nav>
