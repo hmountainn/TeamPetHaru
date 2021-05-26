@@ -82,21 +82,9 @@
                             <div class="img-member"></div> 
                             <span class="id">${knowhow.memberId}</span>
                         </section>
-                        <section class="pet-selecting-btn">
-                        	<%
-                        		String pet = "강아지";/* knowhow.getKnowhowTypeName(); */
-                        		String dog = "";
-                        		String cat = "";
-                        		
-                        		if(pet.equals("강아지"))
-                        			dog = "select";
-                        		
-                        		if(pet.equals("고양이"))
-                        			cat = "select";
-                        	%>
-                        
-                            <button class="<%=dog %> pet-btn font">강아지</button>
-                            <button class="<%=cat %> pet-btn font">고양이</button>
+                        <section class="pet-selecting-btn">                      
+                            <button class="${knowhow.knowhowTypeName == '강아지' ? 'select' : ''} pet-btn font">강아지</button>
+                            <button class="${knowhow.knowhowTypeName == '고양이' ? 'select' : ''} pet-btn font">고양이</button>
                         </section>
                     </section>
                     <section>
