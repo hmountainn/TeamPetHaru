@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.petharu.web.entity.Knowhow;
+import com.petharu.web.entity.KnowhowView;
 
 public class JDBCKnowhowService implements KnowhowService {
 
@@ -88,8 +89,80 @@ public class JDBCKnowhowService implements KnowhowService {
 			
 		//} catch (Exception e) {
 		//	throw new ServiceException();
-		//}
+		//}	
+	}
+	
+	@Override
+	public List<KnowhowView> getInfoList(int page, String pet) throws ClassNotFoundException, SQLException {
+		List<KnowhowView> infoList = new ArrayList<>();
+
+		int size = 12;
+		int startNum = 1 + (page - 1) * size;
+		int endNum = page * size;
 		
+		String sql = null;
+
+		if(!pet.equals("")) {
+			sql = "SELECT * FROM (" 
+				+ "    SELECT ROWNUM NUM, K.* FROM (" 
+				+ "        SELECT * FROM KNOWHOW_VIEW"
+				+ "        ORDER BY REGDATE DESC" 
+				+ ") K" 
+				+ ") WHERE NUM BETWEEN " + startNum + " AND " + endNum
+				+ " AND KNOWHOW_TYPE_NAME = " + pet;	
+		}
+		
+		if(pet.equals("")) {
+			sql = "SELECT * FROM (" 
+				+ "    SELECT ROWNUM NUM, K.* FROM (" 
+				+ "        SELECT * FROM KNOWHOW_VIEW"
+				+ "        ORDER BY REGDATE DESC" 
+				+ ") K" 
+				+ ") WHERE NUM BETWEEN " + startNum + " AND " + endNum;	
+		}
+		
+		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
+
+		//try {
+			Class.forName("oracle.jdbc.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "PETHARU", "1357");
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+
+			KnowhowView knowhowView = null;
+
+			while (rs.next()) {
+				// KnowhowView 데이터
+				int id = rs.getInt("id");
+				int memberId = rs.getInt("member_id");
+				String knowhowTypeName = rs.getString("knowhow_type_name");
+				String title = rs.getString("title");
+				Date regDate = rs.getDate("regdate");
+				int hit = rs.getInt("hit");
+				int likeCount = rs.getInt("like_count");
+				int commentCount = rs.getInt("comment_count");
+				String userId = rs.getString("user_id");
+
+				// list에 담아주기
+				knowhowView = new KnowhowView();
+				knowhowView.setId(id);
+				knowhowView.setMemberId(memberId);
+				knowhowView.setKnowhowTypeName(knowhowTypeName);
+				knowhowView.setTitle(title);
+				knowhowView.setRegDate(regDate);
+				knowhowView.setHit(hit);
+				knowhowView.setLikeCount(likeCount);
+				knowhowView.setCommentCount(commentCount);
+				knowhowView.setUserId(userId);
+				
+				infoList.add(knowhowView);
+			}
+
+			rs.close();
+			st.close();
+			con.close();
+
+			return infoList;
 	}
 
 	@Override
@@ -232,6 +305,5 @@ public class JDBCKnowhowService implements KnowhowService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
 
 }

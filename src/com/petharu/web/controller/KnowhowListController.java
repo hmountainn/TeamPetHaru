@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.petharu.web.entity.Knowhow;
+import com.petharu.web.entity.KnowhowView;
 import com.petharu.web.service.JDBCKnowhowService;
 import com.petharu.web.service.KnowhowService;
 
@@ -34,11 +35,11 @@ public class KnowhowListController extends HttpServlet {
 		}
 
 		KnowhowService knowhowService = new JDBCKnowhowService();
-		List<Knowhow> list = null;
+		List<KnowhowView> list = null;
 		
 		try {
 			
-			list = knowhowService.getList(page_, pet);
+			list = knowhowService.getInfoList(page_, pet);
 			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -49,8 +50,8 @@ public class KnowhowListController extends HttpServlet {
 		}
 	
 		request.setAttribute("list", list);
+		System.out.println(list.size());
 		request.getRequestDispatcher("list.jsp").forward(request, response);
-		
 	}
 	
 }
