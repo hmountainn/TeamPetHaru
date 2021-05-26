@@ -16,7 +16,7 @@ import com.petharu.web.service.NoticeService;
 
 @WebServlet("/community/notice/create")
 public class NoticeCreateController extends HttpServlet {
-
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
@@ -36,7 +36,7 @@ public class NoticeCreateController extends HttpServlet {
 			notice.setAdminId(1);
 			notice.setContent(content);
 			noticeService.insert(notice);
-			
+
 			resp.sendRedirect("list.html");
 		} catch (Exception e) {
 			resp.sendRedirect("exception.html");

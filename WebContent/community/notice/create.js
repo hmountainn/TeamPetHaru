@@ -14,9 +14,8 @@ window.addEventListener("load", function() {
 		} else {
 			let request = new XMLHttpRequest();
 			request.onload = function() {
-				//location.href = "list.html"
 			}
-			request.open("POST", `./create`);
+			request.open("GET", `./create`);
 			request.send(null);
 		}
 	};

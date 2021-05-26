@@ -148,7 +148,7 @@ window.addEventListener("load", function() {
 	                            <form method="post">
 	                               <input type="hidden" name="diary-id" value="${diary.id}">
 	                               <input type="hidden" name="comment-member-id" value="1">
-	                               <textarea name="comment-content" id="diary-comment-writing" cols="50" rows="3" placeholder="댓글을 작성해주세요."></textarea>
+	                               <textarea name="comment-content" id="diary-comment-writing" cols="45" rows="3" placeholder="댓글을 작성해주세요."></textarea>
 	                               <button class="submit-btn button-2" type="submit">등록</button>
 	                            </form>
 	                        </section>
