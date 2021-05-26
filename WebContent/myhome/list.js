@@ -97,7 +97,7 @@ window.addEventListener("load", function() {
 		
 		// 일기 id 얻어오기
 		diaryId = e.target.parentNode.parentNode.firstElementChild.value;
-		showDetail(`../../diary/detail?id=${diaryId}`);
+		showDetail(`../../diary/detail?id=${diaryId}`, commentFnctn);
 	}
 	
 	// 일기 세부내용 출력
@@ -160,7 +160,7 @@ window.addEventListener("load", function() {
 				
 				// 댓글창 추가
 				commentLoad(`/api/myhome/comment/list?diary-id=${diaryId}`);
-				commentFnctn(diaryId);
+				commentFnctn(`${diaryId}`);
 			}
 		
 		request.open("GET", url, true);
