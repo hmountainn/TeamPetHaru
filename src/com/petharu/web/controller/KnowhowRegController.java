@@ -26,6 +26,12 @@ import com.petharu.web.service.KnowhowService;
     maxRequestSize = 1024*1024*50*5 // 50메가 파일 5개까지
 )
 public class KnowhowRegController extends HttpServlet {
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		req.getRequestDispatcher("/community/knowhow/reg.jsp").forward(req, resp);
+	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

@@ -74,7 +74,7 @@
                         </section> -->
                         <section class="knowhow-upload-btn">
                             <h1 class="d-none">노하우 게시글 등록</h1>
-                            <a href="reg.jsp"><button class="font">노하우 등록하기</button></a>
+                            <a href="reg"><button class="font">노하우 등록하기</button></a>
                         </section>
                     </section>
                     <div class="knowhow-list">
