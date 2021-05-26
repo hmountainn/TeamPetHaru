@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.petharu.web.entity.Diary;
 import com.petharu.web.entity.DiaryComment;
 import com.petharu.web.entity.Friend;
+import com.petharu.web.entity.FriendDiaryView;
 import com.petharu.web.service.FriendService;
 import com.petharu.web.service.JdbcFriendDiaryService;
 
@@ -22,7 +23,7 @@ public class FriendDiaryListController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		JdbcFriendDiaryService friendService = new JdbcFriendDiaryService();
-		List<Diary> list = null;
+		List<FriendDiaryView> list = null;
 		List<DiaryComment> diaryCommentslist =null;		
 		int followerTotal = 1;
 		List<Friend> followerList = null;
