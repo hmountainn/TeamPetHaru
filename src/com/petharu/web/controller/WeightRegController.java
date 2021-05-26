@@ -31,6 +31,7 @@ public class WeightRegController extends HttpServlet {
 		resp.setContentType("text/html; charset=UTF-8");
 		
 		String petid_ = req.getParameter("petid");
+		System.out.println(petid_);
 		int petid = Integer.parseInt(petid_);
 		String date = req.getParameter("date");
 		String time = req.getParameter("time");
@@ -60,7 +61,7 @@ public class WeightRegController extends HttpServlet {
 			
 		}
 		
-		resp.sendRedirect("table.jsp?petid="+petid);
+		resp.sendRedirect("table?petid="+petid);
 			
 		}
 		

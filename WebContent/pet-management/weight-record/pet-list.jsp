@@ -4,19 +4,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<%@page import="com.petharu.web.entity.Pet"%>
-<%@page import="com.petharu.web.service.JDBCWeightService"%>
-<%@page import="java.util.List" %>
-
-<%
-	int id_ = 1;
-	if (request.getParameter("id") != null) {
-		id_ = Integer.parseInt(request.getParameter("id"));
-	}
-	
-	JDBCWeightService service = new JDBCWeightService();
-	List<Pet> list = service.getpetList(id_);
-%>
     
 <!DOCTYPE html>
 <html lang="en">
@@ -64,7 +51,7 @@
                         <h1 class="d-none">동물관리메뉴</h1>
                         <ul>
                             <li><a href="../mypet/mypet-list.html">동물 관리</a></li>
-                            <li><a class="current-page" href="form.html">체중 관리</a></li>
+                            <li><a class="current-page" href="pet-list">체중 관리</a></li>
                             <li><a href="../calendar/calendar.html">일정 관리</a></li>                       
                         </ul>
                     </nav>
@@ -76,25 +63,13 @@
                         </div>
                         
 	                       <div class="pet-list">
-	                       <%for(Pet n : list){ %>
-	                       	   <div class="pet">
-	                               <a href="table.jsp?petid=<%=n.getId() %>"><img class="img" src="../../images/pet1.png"></a>
-	                           </div>
-	                       <%} %>
+	                       <c:forEach var="n" items="${list}">
+	                       		<div class="pet">
+	                               <a href="table?petid=${n.id}"><img class="img" src="../../images/pet1.png"></a>
+	                           	</div>
+	                       </c:forEach>
 	                       </div>
                        
-
-<!--                             <div class="pet pet2">
-                                <a href=""><img class="img" src="../../images/pet2.png"></a>
-                            </div>
-
-                            <div class="pet pet3">
-                                <a href=""><img class="img" src="../../images/pet3.png"></a>
-                            </div>
-
-                            <div class="pet pet4">
-                                <a href=""><img class="img" src="../../images/pet4.jpg"></a>
-                            </div> -->
                         
                     </div>
 
