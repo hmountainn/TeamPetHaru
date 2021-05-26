@@ -25,7 +25,7 @@ public class WeightDelController extends HttpServlet {
 			
 		}
 		
-		resp.sendRedirect("table.jsp?petid="+petid);
+		resp.sendRedirect("table?petid="+petid);
 	}
 	
 }
