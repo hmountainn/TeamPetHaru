@@ -1,22 +1,21 @@
 window.addEventListener("load", function() {
-    var main = document.querySelector("#main");
-    var fileSelect = main.querySelector(".file-select");
-    var inputFile = main.querySelector('input[type=file]');
-	var submitBtn = main.querySelector("button[type=submit]");
+    let main = document.querySelector("#main");
+    let fileSelect = main.querySelector(".file-select");
+    let inputFile = main.querySelector('input[type=file]');
+	let submitBtn = main.querySelector("button[type=submit]");
 	
 	submitBtn.onclick = function() {
-		var title = main.querySelector(".notice-title-create").value;
-		var content = main.querySelector("#notice-article-create").value;
+		let title = main.querySelector(".notice-title-create").value;
+		let content = main.querySelector("#notice-article-create").value;
 		
 		if (!title || !content) {
 			alert("내용을 입력해주세요.");
 			return false;
 		} else {
-			var request = new XMLHttpRequest();
+			let request = new XMLHttpRequest();
 			request.onload = function() {
-				location.href = "./list.html";
 			}
-			request.open("POST", `./create`);
+			request.open("GET", `./create`);
 			request.send(null);
 		}
 	};
@@ -24,7 +23,7 @@ window.addEventListener("load", function() {
 
     fileSelect.onclick = function(e) {
         e.preventDefault();
-        var event = new MouseEvent("click", {
+        let event = new MouseEvent("click", {
             'view': window,
             'bubbles': true,
             'cancelable': true
@@ -32,8 +31,8 @@ window.addEventListener("load", function() {
         inputFile.dispatchEvent(event);
     };
 
-    inputFile.oninput = function() {
-        var span = document.createElement("span");
+    inputFile.oninput = function(e) {
+        let span = document.createElement("span");
         fileSelect.insertAdjacentElement("afterend", span);
         span.classList.add("file-name");
         span.innerText = inputFile.files[0].name;

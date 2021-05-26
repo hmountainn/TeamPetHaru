@@ -21,6 +21,7 @@ import com.petharu.web.service.JDBCWeightService;
 
 @WebServlet("/pet-management/weight-record/WeightReg")
 public class WeightRegController extends HttpServlet {
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
@@ -29,6 +30,8 @@ public class WeightRegController extends HttpServlet {
 		resp.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html; charset=UTF-8");
 		
+		String petid_ = req.getParameter("petid");
+		int petid = Integer.parseInt(petid_);
 		String date = req.getParameter("date");
 		String time = req.getParameter("time");
 		String kg = req.getParameter("kg");
@@ -48,7 +51,7 @@ public class WeightRegController extends HttpServlet {
 //			date = trans.parse(date_);
 //			time = (Time) transtime.parse(time_);
 			Weight weight = new Weight();
-			weight.setPetId(1);
+			weight.setPetId(petid);
 			weight.setMeasureDatetime(datetime);
 			weight.setKg(Float.parseFloat(kg));
 			weightservice.insert(weight);
@@ -57,7 +60,7 @@ public class WeightRegController extends HttpServlet {
 			
 		}
 		
-		resp.sendRedirect("table.jsp");
+		resp.sendRedirect("table.jsp?petid="+petid);
 			
 		}
 		

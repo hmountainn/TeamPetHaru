@@ -98,7 +98,7 @@
                         <div class="box">
                             <div class="img-box"><img class="diary-img" src="https://images.unsplash.com/photo-1562714529-94d65989df68?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=701&q=80"></div>
                         <div class="user"><a class="userinfo" href=""><img src="https://t3.ftcdn.net/jpg/02/92/94/20/240_F_292942036_FoCWnPBmDkeJaK2rvc7K6R9FctFfnTJs.jpg" alt="">
-                            <span>${n.memberId}</span></a><img class="heart"src="../images/heart.png"><span class="sub-info"> 114</span>                        
+                            <span>${n.userId}</span></a><img class="heart"src="../images/heart.png"><span class="sub-info"> 114</span>                        
                         </div>
                         <div class="diary-content">
                             <a class="diary-content-link" href="">
@@ -122,7 +122,7 @@
                                           <img class="user-img" src="https://images.unsplash.com/photo-1592817797597-392e3b878e1c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="">
                                       </div>
                                       <div>
-                                        <span class="user-id">${n.memberId}</span>
+                                        <span class="user-id">${n.userId}</span>
                                         <span>
                                             ${n.content}
                                         </span>

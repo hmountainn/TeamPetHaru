@@ -87,8 +87,8 @@
                             </ol>
                         </div>
     
-                        
-                        <a href="stats.html"><div class="button">통계보기</div></a>
+                        <a href="form.jsp?petid=<%=petid%>"><div class="regbutton">체중등록</div></a>
+                        <a href="stats.html"><div class="statbutton">통계보기</div></a>
                         <table class="record-table">
                             <thead>
                                 <tr>
@@ -108,7 +108,7 @@
                                			String hour = time.substring(0,2);
                                			String minute = time.substring(3,5);
                                 	%>
-                                    <td><a href="revise-form.jsp?id=<%=n.getId()%>"><%=date %></a></td>
+                                    <td><a href="revise-form.jsp?petid=<%=petid%>&id=<%=n.getId()%>"><%=date %></a></td>
                                     <%	
                                     	if(Integer.parseInt(hour)>12){ %>
                                     		<td class="pm"><%=Integer.parseInt(hour)-12%>:<%=minute%> PM</td>
@@ -118,6 +118,7 @@
                                     <td><%=n.getKg()%> KG</td>
                                 </tr>
                             <%} %>
+
                             </tbody>
                         </table>
                     </div>
