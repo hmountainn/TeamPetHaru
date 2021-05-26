@@ -1,26 +1,26 @@
 window.addEventListener("load", function() {
-	var section = document.querySelector("#main");
-	var searchBtn = section.querySelector("input[type=submit]");
-	var tbody = section.querySelector("tbody");
-	var pager = section.querySelector(".notice-table-pager");
-	var searchForm = section.querySelector(".notice-search-form");
-	var fieldBox = searchForm.querySelector("#select-notice-search");
-	var queryBox = searchForm.querySelector("input[type=text]");
-	var pageElement = pager.querySelector("ul a");
-	var sortingBox = section.querySelector("#select-main-sorting");
-	var sizingBox = section.querySelector("#select-main-sizing");
+	let section = document.querySelector("#main");
+	let searchBtn = section.querySelector("input[type=submit]");
+	let tbody = section.querySelector("tbody");
+	let pager = section.querySelector(".notice-table-pager");
+	let searchForm = section.querySelector(".notice-search-form");
+	let fieldBox = searchForm.querySelector("#select-notice-search");
+	let queryBox = searchForm.querySelector("input[type=text]");
+	let pageElement = pager.querySelector("ul a");
+	let sortingBox = section.querySelector("#select-main-sorting");
+	let sizingBox = section.querySelector("#select-main-sizing");
 	
 	bind(`../../api/notice/list`);
 	
 	sortingBox.onchange = function() {
-		var sort = sortingBox.options[sortingBox.selectedIndex].value;
-		var size = sizingBox.options[sizingBox.selectedIndex].value;
+		let sort = sortingBox.options[sortingBox.selectedIndex].value;
+		let size = sizingBox.options[sizingBox.selectedIndex].value;
 		bind(`../../api/notice/list?sort=${sort}&size=${size}`);
 	}
 	
 	sizingBox.onchange = function() {
-		var sort = sortingBox.options[sortingBox.selectedIndex].value;
-		var size = sizingBox.options[sizingBox.selectedIndex].value;
+		let sort = sortingBox.options[sortingBox.selectedIndex].value;
+		let size = sizingBox.options[sizingBox.selectedIndex].value;
 		bind(`../../api/notice/list?sort=${sort}&size=${size}`);
 	}
 
@@ -31,7 +31,7 @@ window.addEventListener("load", function() {
 			return;
 		};
 		
-		var page = e.target.innerText;
+		let page = e.target.innerText;
 		bind(`../../api/notice/list?page=${page}`);
 		
 		pageElement.classList.remove("current-pager");
@@ -42,22 +42,22 @@ window.addEventListener("load", function() {
 	searchBtn.onclick = function(e) {
 		e.preventDefault();
 
-		var field = fieldBox.value;
-		var query = queryBox.value;
+		let field = fieldBox.value;
+		let query = queryBox.value;
 		bind(`../../api/notice/list?field=${field}&query=${query}`);
 	};
 	
 	
 	function bind(url) {
-		var request = new XMLHttpRequest();
+		let request = new XMLHttpRequest();
 
 		request.onload = function() {
-			var list = JSON.parse(request.responseText);
+			let list = JSON.parse(request.responseText);
 			
 			if (list.length > 0) {
 				tbody.innerHTML = "";
-				for (var i = 0; i<list.length; i++) {
-					var tr = `<tr>
+				for (let i = 0; i<list.length; i++) {
+					let tr = `<tr>
 							<td class="table-w50">${list[i].id}</td>
 							<td><a name="${list[i].id}" href="./detail.html?id=${list[i].id}">${list[i].title}</a></td>
 							<td class="table-w50">${list[i].userId}</td>
@@ -68,7 +68,7 @@ window.addEventListener("load", function() {
 				};
 			}
 			else {
-				var trEmpty = `<tr class="trEmpty">
+				let trEmpty = `<tr class="trEmpty">
 	                            <td colspan="5">검색된 결과가 없습니다.</td>
 	                        </tr>`
 				tbody.innerHTML = trEmpty;

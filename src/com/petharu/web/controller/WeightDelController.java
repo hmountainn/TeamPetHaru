@@ -15,6 +15,7 @@ public class WeightDelController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int id = Integer.parseInt(req.getParameter("id"));
+		int petid = Integer.parseInt(req.getParameter("petid"));
 		
 		JDBCWeightService service = new JDBCWeightService();
 		
@@ -24,7 +25,7 @@ public class WeightDelController extends HttpServlet {
 			
 		}
 		
-		resp.sendRedirect("table.jsp");
+		resp.sendRedirect("table.jsp?petid="+petid);
 	}
 	
 }

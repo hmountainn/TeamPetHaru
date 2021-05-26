@@ -78,7 +78,7 @@
 	                       <div class="pet-list">
 	                       <%for(Pet n : list){ %>
 	                       	   <div class="pet">
-	                               <a href="table.jsp?id=<%=n.getId() %>"><img class="img" src="../../images/pet1.png"></a>
+	                               <a href="table.jsp?petid=<%=n.getId() %>"><img class="img" src="../../images/pet1.png"></a>
 	                           </div>
 	                       <%} %>
 	                       </div>

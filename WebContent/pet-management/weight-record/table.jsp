@@ -6,8 +6,19 @@
     pageEncoding="UTF-8"%>
     
 <%
+
+	String id_ = request.getParameter("petid");
+	int petid = 1;
+	
+	
+	if (request.getParameter("petid") != null) {
+		id_ = request.getParameter("petid");
+		petid = Integer.parseInt(id_);
+	}
+
+
     JDBCWeightService weightservice = new JDBCWeightService();
-    List<Weight> list = weightservice.getList();
+    List<Weight> list = weightservice.getList(petid);
 %>
     
 
@@ -76,8 +87,8 @@
                             </ol>
                         </div>
     
-                        
-                        <a href="stats.html"><div class="button">통계보기</div></a>
+                        <a href="form.jsp?petid=<%=petid%>"><div class="regbutton">체중등록</div></a>
+                        <a href="stats.html"><div class="statbutton">통계보기</div></a>
                         <table class="record-table">
                             <thead>
                                 <tr>
@@ -97,7 +108,7 @@
                                			String hour = time.substring(0,2);
                                			String minute = time.substring(3,5);
                                 	%>
-                                    <td><a href="revise-form.jsp?id=<%=n.getId()%>"><%=date %></a></td>
+                                    <td><a href="revise-form.jsp?petid=<%=petid%>&id=<%=n.getId()%>"><%=date %></a></td>
                                     <%	
                                     	if(Integer.parseInt(hour)>12){ %>
                                     		<td class="pm"><%=Integer.parseInt(hour)-12%>:<%=minute%> PM</td>
@@ -107,66 +118,7 @@
                                     <td><%=n.getKg()%> KG</td>
                                 </tr>
                             <%} %>
-<!--                                 <tr>
-                                    <td><a href="revise-form.html">2021-01-02</a></td>
-                                    <td class="pm">5:32 PM</td>
-                                    <td>5.05 KG</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="revise-form.html">2021-01-03</a></td>
-                                    <td class="am">9:06 AM</td>
-                                    <td>4.98 KG</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="revise-form.html">2021-01-03</a></td>
-                                    <td class="pm">6:41 PM</td>
-                                    <td>4.95 KG</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="revise-form.html">2021-01-04</a></td>
-                                    <td class="am">8:40 AM</td>
-                                    <td>5.12 KG</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="revise-form.html">2021-01-04</a></td>
-                                    <td class="pm">4:23 PM</td>
-                                    <td>5.10 KG</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="">2021-01-05</a></td>
-                                    <td class="am">9:03 AM</td>
-                                    <td>5.05 KG</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="">2021-01-05</a></td>
-                                    <td class="pm">5:32 PM</td>
-                                    <td>4.98 KG</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="">2021-01-06</a></td>
-                                    <td class="am">8:56 AM</td>
-                                    <td>5.03 KG</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="">2021-01-06</a></td>
-                                    <td class="pm">5:56 PM</td>
-                                    <td>5.07 KG</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="">2021-01-06</a></td>
-                                    <td class="am">9:15 AM</td>
-                                    <td>5.01 KG</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="">2021-01-06</a></td>
-                                    <td class="pm">6:03 PM</td>
-                                    <td>4.97 KG</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="">2021-01-06</a></td>
-                                    <td class="am">8:50 AM</td>
-                                    <td>5.13 KG</td>
-                                </tr> -->
+
                             </tbody>
                         </table>
                     </div>

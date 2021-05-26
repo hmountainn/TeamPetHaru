@@ -55,7 +55,7 @@
                 <main id="main">
                     <h1 class="title">PetHaru 노하우</h1>
                     <section>
-                    	<form action="reg" method="post">
+                    	<form action="reg" method="post" enctype="multipart/form-data">
 	                        <section>
 	                            <h1 class="sub-title">반려동물 선택</h1>
 	                            <span class="required">*</span>
@@ -75,7 +75,7 @@
 	                            <span class="required">*</span>
 	                            <div class="img-upload-box">
 						            <div class="upload-btn btn-sel center font">이미지 업로드</div> <!--.btn-file의 이벤트를 .btn-sel로 견인하는 방식(트리거)으로 사용-->
-						            <input class="btn-file d-none" type="file"> <!--사용자가 파일에 직접 접근할 수 있게 해야 함-->
+						            <input class="btn-file d-none" name="f" type="file"> <!--사용자가 파일에 직접 접근할 수 있게 해야 함-->
 						        </div>
 	                            <textarea class="input font" name="content" placeholder="내용을 입력해주세요"></textarea>
 	                        </section>

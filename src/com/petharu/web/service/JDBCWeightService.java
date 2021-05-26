@@ -51,6 +51,7 @@ public class JDBCWeightService implements WeightService {
 	public List<Weight> getList(){
 		List<Weight> list = new ArrayList<>();
 		
+		
 		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
 //		String sql = "SELECT * FROM WEIGHT";
 		String sql = "SELECT W.*,SUBSTR(MEASURE_DATETIME,0,10) DA FROM WEIGHT W ORDER BY DA";
@@ -61,6 +62,46 @@ public class JDBCWeightService implements WeightService {
 			Connection con = DriverManager.getConnection(url, "PETHARU", "1357"); //연결
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(sql);
+			
+			
+			while(rs.next()) {
+				int id = rs.getInt("ID");
+				int petId = rs.getInt("PET_ID");
+				String measureDatetime = rs.getString("MEASURE_DATETIME");
+				float kg = rs.getFloat("KG");
+				
+				Weight weight = new Weight();
+				weight.setId(id);
+				weight.setPetId(petId);
+				weight.setMeasureDatetime(measureDatetime);
+				weight.setKg(kg);
+				
+				list.add(weight);
+			}
+			
+			rs.close();
+			st.close();
+		}catch (Exception e) {
+			throw new ServiceException();
+		}
+		return list;
+	}
+	
+	public List<Weight> getList(int petid){
+		List<Weight> list = new ArrayList<>();
+		
+		System.out.println("멤버아이디"+petid);
+		
+		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
+		String sql = "SELECT W.*,SUBSTR(MEASURE_DATETIME,0,10) DA FROM WEIGHT W WHERE PET_ID="+petid+" ORDER BY DA";
+		
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver"); //드라이버 생성
+			Connection con = DriverManager.getConnection(url, "PETHARU", "1357"); //연결
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+			
 			
 			while(rs.next()) {
 				int id = rs.getInt("ID");

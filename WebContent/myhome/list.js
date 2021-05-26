@@ -12,8 +12,8 @@ window.addEventListener("load", function() {
 	let header = document.querySelector("#header");
     let modal = document.querySelector(".modal");
 	let closeBtn = document.querySelector(".close-btn");
+	let deleteBtn = document.querySelector(".delete");
 	let diaryId;
-	let deleteBtn;
 	
 	// 일기 목록 출력
 	showList(`../../api/diary/list`);
@@ -97,11 +97,11 @@ window.addEventListener("load", function() {
 		
 		// 일기 id 얻어오기
 		diaryId = e.target.parentNode.parentNode.firstElementChild.value;
-		showDetail(`../../diary/detail?id=${diaryId}`);
+		showDetail(`../../diary/detail?id=${diaryId}`, commentFnctn);
 	}
 	
 	// 일기 세부내용 출력
-	function showDetail(url) {
+	function showDetail(url, commentFnctn) {
 		let request = new XMLHttpRequest();
 		
 		request.onload = function() {
@@ -130,16 +130,37 @@ window.addEventListener("load", function() {
 		                    <div class="upload-date">${diary.regDate}</div>
 		                    <section class="button-menu">
 								<!-- 일기 아이디 심기 --!>
-								<input type="hidden" name="id" value="${diaryId}">
+								<input class="diaryId" type="hidden" name="id" value="${diaryId}">
 		                        <h1 class="d-none">버튼</h1>
 		                        <a href="edit.html?id=${diaryId}"><button class="btn edit-btn">수정</button></a>
 		                        <button class="btn delete-btn">삭제</button>
 		                    </section>
 		                    <hr>
 		                </section>
+
+
+						<!-- 댓글창 -->
+						<section id="diary-comment-sctn">
+	                        <h1 class="d-none">일기 댓글창</h1>
+	                        
+							<section class="diary-comment-write">
+	                            <h1 class="d-none">일기 댓글 작성</h1>
+	                            <form method="post">
+	                               <input type="hidden" name="diary-id" value="${diary.id}">
+	                               <input type="hidden" name="comment-member-id" value="1">
+	                               <textarea name="comment-content" id="diary-comment-writing" cols="45" rows="3" placeholder="댓글을 작성해주세요."></textarea>
+	                               <button class="submit-btn button-2" type="submit">등록</button>
+	                            </form>
+	                        </section>
+						<!-- 댓글창 -->
+						
 		            </div>`;
 				
 				detailSection.insertAdjacentHTML("afterbegin", diaryContent);
+				
+				// 댓글창 추가
+				commentLoad(`/api/myhome/comment/list?diary-id=${diaryId}`);
+				commentFnctn(`${diaryId}`);
 			}
 		
 		request.open("GET", url, true);
@@ -155,30 +176,38 @@ window.addEventListener("load", function() {
 		detailSection.removeChild(detailSection.firstChild);
 		detailSection.removeChild(detailSection.firstChild.nextSibling); 
 	}
-		
-	// 일기 수정하기
-	document.onclick = function(e) {
-		if(!e.target.classList.contains("edit-btn")) 
+	
+	// 일기 삭제 모달창 열기
+    document.onclick = function(e) {
+		if(!e.target.classList.contains("delete-btn"))
 			return;
-			
-		// 일기 id 얻어오기
-		diaryId = e.target.parentNode.firstElementChild.value;	
-/*		showEditPage(`../../diary/edit?id=${diaryId}`);
-*/	}
 	
-	// 일기 수정 페이지 출력
-	 
-	
-	
-	// 일기 삭제하기
-	deleteBtn = document.getElementsByClassName(".delete-btn");
-    deleteBtn.onclick = function() {
         background.classList.remove("d-none");
         modal.classList.remove("d-none");
 		detailSection.style.zIndex = 0;
 		background.style.opacity = 0.8;
     };
 
+	diaryId = document.getElementsByClassName(".diaryId");
+	console.log(diaryId);
+
+	// 일기 삭제
+	deleteBtn.onclick = function() {
+		deleleDiary(`/diary/del?id=${diaryId}`);
+	}
+	
+	function deleleDiary(url) {
+		let request = new XMLHttpRequest();
+		
+		request.onload = function() {
+			
+		}
+		
+		request.open("GET", url, true);
+		request.send(null);
+	}
+	
+	// 삭제 확인 모달창 닫기
     modal.onclick = function(e) {
         e.preventDefault();
 

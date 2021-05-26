@@ -39,6 +39,12 @@ button {
     align-items: center;
 }
 
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 .font {
     font-family: 'Nanum Gothic', sans-serif;
     font-size: 15px;
@@ -395,7 +401,6 @@ button {
     font-size: 13px;
     font-weight: bold;
     color: rgb(168, 166, 166);        
-    margin-right: 5px;
     cursor: pointer;
 }
 
@@ -410,7 +415,7 @@ button {
 .detail-section .img-pet {
     display: block;
     width: 360px;
-    height: 420px;
+    height: 430px;
     border-radius: 8px 0 0 8px;
 } 
 
@@ -489,12 +494,12 @@ button {
                 cursor: pointer;
             }
 
-            .modal-btn:nth-child(2) {
+            .modal-button-menu>.modal-btn:nth-child(2) {
                 background-color: rgb(207, 204, 204);
                 color: white;
             }
 
-            .modal-btn:nth-child(3) {
+            .modal-button-menu>.modal-btn:nth-child(3) {
                 margin-right: 0;
                 background-color: rgb(250, 195, 43);
                 color: white;
