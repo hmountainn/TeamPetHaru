@@ -13,7 +13,7 @@ import com.petharu.web.entity.Weight;
 import com.petharu.web.service.JDBCWeightService;
 
 @WebServlet("/pet-management/weight-record/table")
-public class WeightListController extends HttpServlet {
+public class WeightTableListController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
