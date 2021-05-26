@@ -31,7 +31,7 @@ window.addEventListener("load", function() {
         inputFile.dispatchEvent(event);
     };
 
-    inputFile.oninput = function() {
+    inputFile.oninput = function(e) {
         let span = document.createElement("span");
         fileSelect.insertAdjacentElement("afterend", span);
         span.classList.add("file-name");
