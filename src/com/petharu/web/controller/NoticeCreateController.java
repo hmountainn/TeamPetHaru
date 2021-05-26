@@ -36,6 +36,8 @@ public class NoticeCreateController extends HttpServlet {
 			notice.setAdminId(1);
 			notice.setContent(content);
 			noticeService.insert(notice);
+			
+			resp.sendRedirect("list.html");
 		} catch (Exception e) {
 			resp.sendRedirect("exception.html");
 		}

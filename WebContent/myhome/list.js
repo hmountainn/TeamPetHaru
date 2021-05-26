@@ -101,7 +101,7 @@ window.addEventListener("load", function() {
 	}
 	
 	// 일기 세부내용 출력
-	function showDetail(url) {
+	function showDetail(url, commentFnctn) {
 		let request = new XMLHttpRequest();
 		
 		request.onload = function() {
@@ -137,9 +137,30 @@ window.addEventListener("load", function() {
 		                    </section>
 		                    <hr>
 		                </section>
+
+
+						<!-- 댓글창 -->
+						<section id="diary-comment-sctn">
+	                        <h1 class="d-none">일기 댓글창</h1>
+	                        
+							<section class="diary-comment-write">
+	                            <h1 class="d-none">일기 댓글 작성</h1>
+	                            <form method="post">
+	                               <input type="hidden" name="diary-id" value="${diary.id}">
+	                               <input type="hidden" name="comment-member-id" value="1">
+	                               <textarea name="comment-content" id="diary-comment-writing" cols="50" rows="3" placeholder="댓글을 작성해주세요."></textarea>
+	                               <button class="submit-btn button-2" type="submit">등록</button>
+	                            </form>
+	                        </section>
+						<!-- 댓글창 -->
+						
 		            </div>`;
 				
 				detailSection.insertAdjacentHTML("afterbegin", diaryContent);
+				
+				// 댓글창 추가
+				commentLoad(`/api/myhome/comment/list?diary-id=${diaryId}`);
+				commentFnctn(diaryId);
 			}
 		
 		request.open("GET", url, true);
