@@ -90,8 +90,9 @@ public class JDBCMyhomeService implements MyhomeService {
 
 			// list에 담아주기
 			Friend friend = new Friend();
-			friend.setRequestId(requestId);
-			
+			/*
+			 * friend.setRequestId(requestId);
+			 */			
 			list.add(friend);
 		}
 		
@@ -122,8 +123,9 @@ public class JDBCMyhomeService implements MyhomeService {
 
 			// list에 담아주기
 			Friend friend = new Friend();
-			friend.setResponseId(responseId);
-			
+			/*
+			 * friend.setResponseId(responseId);
+			 */			
 			list.add(friend);
 		}
 		
@@ -232,9 +234,29 @@ public class JDBCMyhomeService implements MyhomeService {
 	}
 
 	@Override
-	public int delete(Diary diary) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int delete(int id) {
+		
+		int result = 0;
+
+		String sql = "DELETE DIARY WHERE ID=?";
+		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
+		
+		try {
+			Class.forName("oracle.jdbc.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "PETHARU", "1357");
+			
+			PreparedStatement st = con.prepareStatement(sql);
+			st.setInt(1, id);
+			result = st.executeUpdate();
+			
+			st.close();
+			con.close();
+			
+			return result;
+			
+		} catch (Exception e) {
+			throw new ServiceException();
+		}
 	}
 
 	@Override

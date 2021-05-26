@@ -14,6 +14,7 @@ window.addEventListener("load", function() {
 	let closeBtn = document.querySelector(".close-btn");
 	let deleteBtn = document.querySelector(".delete");
 	let diaryId;
+	let deleteUrl;
 	
 	// 일기 목록 출력
 	showList(`../../api/diary/list`);
@@ -167,24 +168,19 @@ window.addEventListener("load", function() {
 		background.style.opacity = 0.8;
     };
 
-	diaryId = document.getElementsByClassName(".diaryId");
-	console.log(diaryId);
-
 	// 일기 삭제
-	deleteBtn.onclick = function() {
+	deleteBtn.onclick = function(e) {
 		deleleDiary(`/diary/del?id=${diaryId}`);
+		
+		function deleleDiary(url) {
+			let request = new XMLHttpRequest();
+			
+			request.onload = function(){};
+			request.open("GET", url, true);
+			request.send(null);
+		}
 	}
 	
-	function deleleDiary(url) {
-		let request = new XMLHttpRequest();
-		
-		request.onload = function() {
-			
-		}
-		
-		request.open("GET", url, true);
-		request.send(null);
-	}
 	
 	// 삭제 확인 모달창 닫기
     modal.onclick = function(e) {
