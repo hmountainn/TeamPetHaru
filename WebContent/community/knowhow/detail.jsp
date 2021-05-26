@@ -1,6 +1,3 @@
-<%@page import="com.petharu.web.service.JDBCKnowhowService"%>
-<%@page import="com.petharu.web.entity.Knowhow"%>
-<%@page import="com.petharu.web.service.KnowhowService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -67,11 +64,11 @@
 	                  			</li>
 	                  			<li>
 	                  				<img src="../../images/heart.png">
-	                  				<span>3</span>
+	                  				<span>${knowhow.likeCount}</span>
 	                  			</li>
 	                  			<li>
 	                  				<img src="../../images/comment.png">
-	                  				<span>3</span>
+	                  				<span>${knowhow.commentCount}</span>
 	                  			</li>
 	                  		</ul>
 	                  	</div>
@@ -80,7 +77,8 @@
                         <section class="member-info flex"> 
                             <h1 class="d-none">회원 정보</h1>
                             <div class="img-member"></div> 
-                            <span class="id">${knowhow.memberId}</span>
+                            <span class="id">${knowhow.userId}</span>
+                            <img class="follow-btn" src="../../images/follow.png">
                         </section>
                         <section class="pet-selecting-btn">                      
                             <button class="${knowhow.knowhowTypeName == '강아지' ? 'select' : ''} pet-btn font">강아지</button>

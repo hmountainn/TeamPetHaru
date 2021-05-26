@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.petharu.web.entity.Knowhow;
+import com.petharu.web.entity.KnowhowView;
 import com.petharu.web.service.JDBCKnowhowService;
 import com.petharu.web.service.KnowhowService;
 
@@ -23,11 +23,11 @@ public class KnowhowDetailController extends HttpServlet {
 		int id = Integer.parseInt(id_);
 		
 		KnowhowService knowhowService = new JDBCKnowhowService();
-		Knowhow knowhow = null;
+		KnowhowView knowhow = null;
 		
 		try {
 			
-			knowhow = knowhowService.get(id);
+			knowhow = knowhowService.get(id); 
 			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block

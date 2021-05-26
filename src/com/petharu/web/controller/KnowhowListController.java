@@ -39,7 +39,7 @@ public class KnowhowListController extends HttpServlet {
 		
 		try {
 			
-			list = knowhowService.getInfoList(page_, pet);
+			list = knowhowService.getViewList(page_, pet);
 			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block

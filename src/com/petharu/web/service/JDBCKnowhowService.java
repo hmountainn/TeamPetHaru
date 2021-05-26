@@ -16,85 +16,14 @@ import com.petharu.web.entity.KnowhowView;
 public class JDBCKnowhowService implements KnowhowService {
 
 	@Override
-	public List<Knowhow> getList() throws ClassNotFoundException, SQLException {
+	public List<KnowhowView> getViewList() throws ClassNotFoundException, SQLException {
 
-		return getList(1, "");
+		return getViewList(1, "");
 	}
 
 	@Override
-	public List<Knowhow> getList(int page, String pet) throws ClassNotFoundException, SQLException {
-		List<Knowhow> list = new ArrayList<>();
-
-		int size = 12;
-		int startNum = 1 + (page - 1) * size;
-		int endNum = page * size;
-		
-		String sql = null;
-		
-		if(!pet.equals("")) {
-			sql = "SELECT * FROM (" 
-				+ "    SELECT ROWNUM NUM, K.* FROM (" 
-				+ "        SELECT * FROM KNOWHOW"
-				+ "        ORDER BY REGDATE DESC" 
-				+ ") K" 
-				+ ") WHERE NUM BETWEEN " + startNum + " AND " + endNum
-				+ " AND KNOWHOW_TYPE_NAME = " + pet;	
-		}
-		
-		if(pet.equals("")) {
-			sql = "SELECT * FROM (" 
-				+ "    SELECT ROWNUM NUM, K.* FROM (" 
-				+ "        SELECT * FROM KNOWHOW"
-				+ "        ORDER BY REGDATE DESC" 
-				+ ") K" 
-				+ ") WHERE NUM BETWEEN " + startNum + " AND " + endNum;	
-		}
-
-		//try {
-			String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
-			Class.forName("oracle.jdbc.OracleDriver");
-			Connection con = DriverManager.getConnection(url, "PETHARU", "1357");
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(sql);
-
-			while (rs.next()) {
-
-				// Knowhow 데이터
-				int id = rs.getInt("id");
-				int memberId = rs.getInt("member_id");
-				String knowhowTypeName = rs.getString("knowhow_type_name");
-				String title = rs.getString("title");
-				String content = rs.getString("content");
-				Date regDate = rs.getDate("regdate");
-				int hit = rs.getInt("hit");
-
-				// list에 담아주기
-				Knowhow knowhow = new Knowhow();
-				knowhow.setId(id);
-				knowhow.setMemberId(memberId);
-				knowhow.setKnowhowTypeName(knowhowTypeName);
-				knowhow.setTitle(title);
-				knowhow.setContent(content);
-				knowhow.setRegDate(regDate);
-				knowhow.setHit(hit);
-
-				list.add(knowhow);
-			}
-
-			rs.close();
-			st.close();
-			con.close();
-
-			return list;
-			
-		//} catch (Exception e) {
-		//	throw new ServiceException();
-		//}	
-	}
-	
-	@Override
-	public List<KnowhowView> getInfoList(int page, String pet) throws ClassNotFoundException, SQLException {
-		List<KnowhowView> infoList = new ArrayList<>();
+	public List<KnowhowView> getViewList(int page, String pet) throws ClassNotFoundException, SQLException {
+		List<KnowhowView> list = new ArrayList<>();
 
 		int size = 12;
 		int startNum = 1 + (page - 1) * size;
@@ -142,6 +71,7 @@ public class JDBCKnowhowService implements KnowhowService {
 				int likeCount = rs.getInt("like_count");
 				int commentCount = rs.getInt("comment_count");
 				String userId = rs.getString("user_id");
+				String content = rs.getString("content");
 
 				// list에 담아주기
 				knowhowView = new KnowhowView();
@@ -154,21 +84,22 @@ public class JDBCKnowhowService implements KnowhowService {
 				knowhowView.setLikeCount(likeCount);
 				knowhowView.setCommentCount(commentCount);
 				knowhowView.setUserId(userId);
+				knowhowView.setContent(content);
 				
-				infoList.add(knowhowView);
+				list.add(knowhowView);
 			}
 
 			rs.close();
 			st.close();
 			con.close();
 
-			return infoList;
+			return list;
 	}
 
 	@Override
-	public Knowhow get(int id) throws ClassNotFoundException, SQLException {
+	public KnowhowView get(int id) throws ClassNotFoundException, SQLException {
 
-		String sql = "SELECT * FROM KNOWHOW WHERE ID = " + id;
+		String sql = "SELECT * FROM KNOWHOW_VIEW WHERE ID = " + id;
 		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
 
 		//try {
@@ -177,34 +108,39 @@ public class JDBCKnowhowService implements KnowhowService {
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(sql);
 
-			Knowhow knowhow = null;
+			KnowhowView knowhowView = null;
 
 			if (rs.next()) {
 
-				// Knowhow 데이터
+				// KnowhowView 데이터
 				int memberId = rs.getInt("member_id");
 				String knowhowTypeName = rs.getString("knowhow_type_name");
 				String title = rs.getString("title");
-				String content = rs.getString("content");
 				Date regDate = rs.getDate("regdate");
 				int hit = rs.getInt("hit");
+				int likeCount = rs.getInt("like_count");
+				int commentCount = rs.getInt("comment_count");
+				String userId = rs.getString("user_id");
+				String content = rs.getString("content");
 
-				// list에 담아주기
-				knowhow = new Knowhow();
-				knowhow.setId(id);
-				knowhow.setMemberId(memberId);
-				knowhow.setKnowhowTypeName(knowhowTypeName);
-				knowhow.setTitle(title);
-				knowhow.setContent(content);
-				knowhow.setRegDate(regDate);
-				knowhow.setHit(hit);
+				knowhowView = new KnowhowView();
+				knowhowView.setId(id);
+				knowhowView.setMemberId(memberId);
+				knowhowView.setKnowhowTypeName(knowhowTypeName);
+				knowhowView.setTitle(title);
+				knowhowView.setRegDate(regDate);
+				knowhowView.setHit(hit);
+				knowhowView.setLikeCount(likeCount);
+				knowhowView.setCommentCount(commentCount);
+				knowhowView.setUserId(userId);
+				knowhowView.setContent(content);
 			}
 
 			rs.close();
 			st.close();
 			con.close();
 
-			return knowhow;
+			return knowhowView;
 
 		//} catch (Exception e) {
 		//	throw new ServiceException();

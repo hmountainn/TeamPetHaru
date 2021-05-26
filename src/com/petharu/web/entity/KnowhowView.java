@@ -13,13 +13,14 @@ public class KnowhowView {
 	private int likeCount;
 	private int commentCount;
 	private String userId;
+	private String content;
 	
 	public KnowhowView() {
 		
 	}
 
 	public KnowhowView(int id, int memberId, String knowhowTypeName, String title, Date regDate, int hit, int likeCount,
-			int commentCount, String userId) {
+			int commentCount, String userId, String content) {
 		super();
 		this.id = id;
 		this.memberId = memberId;
@@ -30,6 +31,7 @@ public class KnowhowView {
 		this.likeCount = likeCount;
 		this.commentCount = commentCount;
 		this.userId = userId;
+		this.content = content;
 	}
 
 	public int getId() {
@@ -104,11 +106,19 @@ public class KnowhowView {
 		this.userId = userId;
 	}
 
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
 	@Override
 	public String toString() {
 		return "KnowhowView [id=" + id + ", memberId=" + memberId + ", knowhowTypeName=" + knowhowTypeName + ", title="
 				+ title + ", regDate=" + regDate + ", hit=" + hit + ", likeCount=" + likeCount + ", commentCount="
-				+ commentCount + ", userId=" + userId + "]";
+				+ commentCount + ", userId=" + userId + ", content=" + content + "]";
 	}
-	
+
 }
