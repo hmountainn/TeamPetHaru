@@ -187,7 +187,7 @@ console.log(fileTriggetButtons);
 			console.log(`total:${e.total},loaded:${e.loaded}`);
 		}
 		
-		request.open("POST","/admin/uploader",true);
+		request.open("POST","/uploader",true);
 		request.send(formData);
 		
 		console.log("drop");
