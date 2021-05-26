@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.petharu.web.entity.Diary;
+import com.petharu.web.entity.FriendDiaryView;
 import com.petharu.web.entity.Pet;
 import com.petharu.web.service.FriendService;
 import com.petharu.web.service.JdbcFriendDiaryService;
@@ -37,8 +38,7 @@ public class FriendList extends HttpServlet {
 			System.out.println(id_);
 			
 			FriendService friendService = new JdbcFriendDiaryService();
-			List<Diary> list = friendService.getFriendDiaryList(id_);
-//			List<Pet> list = petService.getList();
+			List<FriendDiaryView> list = friendService.getFriendDiaryList(id_);
 			
 			Gson gson = new Gson();				
 			String json = gson.toJson(list);
