@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.petharu.web.entity.Diary;
+import com.petharu.web.entity.DiaryView;
 import com.petharu.web.service.JDBCMyhomeService;
 import com.petharu.web.service.MyhomeService;
 
@@ -43,7 +44,7 @@ public class DiaryList extends HttpServlet {
 			}
 			
 			MyhomeService myhomeService = new JDBCMyhomeService();
-			List<Diary> list = myhomeService.getList(page, memberId);
+			List<DiaryView> list = myhomeService.getViewList(page, memberId);
 			
 			Gson gson = new Gson();
 			String json = gson.toJson(list);

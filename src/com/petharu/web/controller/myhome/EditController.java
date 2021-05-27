@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.petharu.web.entity.Diary;
+import com.petharu.web.entity.DiaryView;
 import com.petharu.web.service.JDBCMyhomeService;
 import com.petharu.web.service.MyhomeService;
 
@@ -29,8 +30,7 @@ public class EditController extends HttpServlet {
 		String keyword = req.getParameter("keyword");
 	
 		MyhomeService myhomeService = new JDBCMyhomeService();
-		
-		Diary diary;
+		DiaryView diary = null;
 		
 		try {
 			diary = myhomeService.get(id);

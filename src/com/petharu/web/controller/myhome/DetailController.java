@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.petharu.web.entity.Diary;
+import com.petharu.web.entity.DiaryView;
 import com.petharu.web.service.JDBCMyhomeService;
 import com.petharu.web.service.MyhomeService;
 
@@ -31,10 +32,10 @@ public class DetailController extends HttpServlet {
 			int id = Integer.parseInt(id_);
 			
 			MyhomeService myhomeService = new JDBCMyhomeService();
-			Diary diary = myhomeService.get(id);
+			DiaryView diaryView = myhomeService.get(id);
 			
 			Gson gson = new Gson();
-			String json = gson.toJson(diary);
+			String json = gson.toJson(diaryView);
 			out.println(json);
 		
 		} catch (Exception e) {

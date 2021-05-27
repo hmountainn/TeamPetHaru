@@ -67,7 +67,7 @@ window.addEventListener("load", function() {
                             		<ul>
                             			<li>
                             				<img src="../../images/view.png">
-                            				<span>${list[i].hit}</span>
+                            				<span><!--${list[i].hit}--!>0</span>
                             			</li>
                             			<li>
                             				<img src="../../images/heart.png">
