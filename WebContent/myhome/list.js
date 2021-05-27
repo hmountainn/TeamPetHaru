@@ -39,12 +39,13 @@ window.addEventListener("load", function() {
 			console.log(list);
 
 			if(list.length > 0) {
+				memberInfo.innerHTML = "";
 				diarySection.innerHTML = "";
 					
 				// 멤버 정보 보여주기
 				let memberContent = 
 				   `<div class="img-member"></div>
-		            <span class="id">${list[0].memberId}</span>
+		            <span class="id">${list[0].userId}</span>
 		            <div class="friend-info">
 		                <span class="follower font">팔로워</span> 
 		                <span class="follower-num font">20</span>
@@ -88,10 +89,12 @@ window.addEventListener("load", function() {
 					
 					diarySection.insertAdjacentHTML("beforeend", diaryList);
 				}
-			} else {
+			} else if(list.length == 0) {
+				memberInfo.innerHTML = "";
+
 				let memberContent = 
 				   `<div class="img-member"></div>
-		            <span class="id">${list.memberId}</span>
+		            <span class="id"><!--${list.memberId}--!>id123</span>
 		            <div class="friend-info">
 		                <span class="follower font">팔로워</span> 
 		                <span class="follower-num font">20</span>
