@@ -1,5 +1,4 @@
 window.addEventListener("load", function() {
-	
 	let knowhowList = document.querySelector(".knowhow-list");
 	let dogBtn = document.querySelectorAll(".pet-selecting-btn>a")[0];
 	let dogBtnText = document.querySelectorAll(".pet-btn-text")[0];

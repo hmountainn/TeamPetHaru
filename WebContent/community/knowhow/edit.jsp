@@ -1,16 +1,6 @@
-<%@page import="com.petharu.web.entity.KnowhowView"%>
-<%@page import="com.petharu.web.service.JDBCKnowhowService"%>
-<%@page import="com.petharu.web.service.KnowhowService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%
-	String id_ = request.getParameter("id");
-	int id = Integer.parseInt(id_);
-	
-	KnowhowService knowhowService = new JDBCKnowhowService();
-	KnowhowView knowhow = knowhowService.get(id);
-%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -59,56 +49,43 @@
                         <h1 class="d-none">커뮤니티 메뉴</h1>
                         <ul>
                             <li><a href="../notice/list.html">공지사항</a></li>
-                            <li><a class="current-page" href="list.jsp">노하우</a></li>
+                            <li><a class="current-page" href="list">노하우</a></li>
                         </ul>
                     </nav>
                 </aside>
                 <main id="main">
                     <h1 class="title">PetHaru 노하우</h1>
                     <section>
-                    	<form action="edit" method="post">
+                    	<form action="edit" method="post" enctype="multipart/form-data">
 	                        <section>
 	                            <h1 class="sub-title">반려동물 선택</h1>
 	                            <span class="required">*</span>
 	                            <section class="pet-selecting-btn">
-	                            	<%
-		                        		String pet = knowhow.getKnowhowTypeName();
-		                        		String dog = "";
-		                        		String cat = "";
-		                        		
-		                        		if(pet.equals("강아지")) {
-		                        			dog = "select";
-		                        			pet = "강아지";		                        			
-		                        		}
-		                        			
-		                        		if(pet.equals("고양이")) {
-		                        			cat = "select";
-		                        			pet = "고양이";		                        				
-		                        		}
-		                        	%>
-	                            
-	                          		<input type="hidden" name="pet" value="<%=pet %>">
+	                          		<input type="hidden" name="pet" value="${knowhow.knowhowTypeName == '강아지' ? '강아지' : '고양이'}">
 	                          		<!-- 등록 시 선택한 동물의 종류를 수정 페이지에서도 동일하게 출력 -->
-	                                <span class="<%=dog %> center font">강아지</span>
-	                                <span class="<%=cat %> center font">고양이</span>
+	                                <span class="${knowhow.knowhowTypeName == '강아지' ? 'select' : ''} center font">강아지</span>
+	                                <span class="${knowhow.knowhowTypeName == '고양이' ? 'select' : ''} center font">고양이</span>
 	                            </section>
 	                        </section>
 	                        <section class="title-area">
 	                            <h1 class="sub-title">제목</h1>
 	                            <span class="required">*</span>
-	                            <input class="input underline font" type="text" name="title" value="<%=knowhow.getTitle()%>">
+	                            <input class="input underline font" type="text" name="title" value="${knowhow.title}">
 	                        </section>
 	                        <section class="write-content">
 	                            <h1 class="sub-title">글 작성</h1>
 	                            <span class="required">*</span>
-	                            <div class="img-upload-btn center font">이미지 업로드</div>
-	                            <textarea class="input font" name="content"><%=knowhow.getContent() %></textarea>
+	                           	<div class="img-upload-box">
+		                            <div class="img-upload-btn btn-sel center font">이미지 업로드</div>
+		                            <input class="btn-file d-none" name="f" type="file">
+	                            </div>
+	                            <textarea class="input font" name="content">${knowhow.content}</textarea>
 	                        </section>
 	                        <hr class="line">
 	                        <section class="button-menu">
 	                            <h1 class="d-none">버튼</h1>
-	                            <a class="btn center font" href="list.jsp">취소하기</a>
-	                            <input type="hidden" name="id" value="<%=id %>">
+	                            <a class="btn center font" href="list">취소하기</a>
+	                            <input type="hidden" name="id" value="${knowhow.id}">
 	                            <button class="btn font">저장하기</button>
 	                        </section>
                         </form>

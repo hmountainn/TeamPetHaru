@@ -48,7 +48,7 @@
                         <h1 class="d-none">커뮤니티 메뉴</h1>
                         <ul>
                             <li><a href="../notice/list.html">공지사항</a></li>
-                            <li><a class="current-page" href="list.jsp">노하우</a></li>
+                            <li><a class="current-page" href="list">노하우</a></li>
                         </ul>
                     </nav>
                 </aside>
@@ -82,7 +82,7 @@
 	                        <hr class="line">
 	                        <section class="button-menu">
 	                            <h1 class="d-none">버튼</h1>
-	                            <a class="btn center font" href="list.jsp">취소하기</a>
+	                            <a class="btn center font" href="list">취소하기</a>
 	                            <button class="btn font">등록하기</button>
 	                        </section>
                         </form>

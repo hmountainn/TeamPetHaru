@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.petharu.web.entity.Knowhow;
+import com.petharu.web.entity.KnowhowView;
 import com.petharu.web.service.JDBCKnowhowService;
 import com.petharu.web.service.KnowhowService;
 
@@ -43,7 +44,7 @@ public class KnowhowList extends HttpServlet {
 			}
 			
 			KnowhowService knowhowService = new JDBCKnowhowService();
-			List<Knowhow> list = knowhowService.getList();
+			List<KnowhowView> list = knowhowService.getViewList();
 			
 			Gson gson = new Gson();
 			String json = gson.toJson(list);

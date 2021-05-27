@@ -49,7 +49,7 @@
                         <h1 class="d-none">커뮤니티 메뉴</h1>
                         <ul>
                             <li><a href="../notice/list.html">공지사항</a></li>
-                            <li><a class="current-page" href="list.jsp">노하우</a></li>
+                            <li><a class="current-page" href="list">노하우</a></li>
                         </ul>
                     </nav>
                 </aside>
@@ -95,7 +95,7 @@
                     </section>
                     <section class="button-menu margin">
                         <h1 class="d-none">버튼</h1>
-                        <a class="flex-center btn" href="edit.jsp?id=${knowhow.id}"><span class="font">수정하기</span></a>
+                        <a class="flex-center btn" href="edit?id=${knowhow.id}"><span class="font">수정하기</span></a>
                         <span class="delete-btn flex-center btn font">삭제하기</span>
                     </section>
                     <hr>
@@ -116,9 +116,9 @@
                     <button class="modal-btn modal-close">취소</button>
                     <a class="modal-btn flex-center" href="del?id=${knowhow.id}">확인</a>
                </section>
-                <div>
-                    <img class="close-btn" src="../../images/close-button.png" alt="">
-                </div>
+               <div>
+                   <img class="close-btn" src="../../images/close-button.png" alt="">
+               </div>
             </div>
         </div>
     </div>        

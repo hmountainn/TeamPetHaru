@@ -70,11 +70,11 @@ button {
     font-family: 'Nanum Gothic', sans-serif;
 }
 
-.valid {
+.write-content .valid {
 	background-color: rgb(245, 222, 76);
 }
 
-.invalid {
+.write-content .invalid {
 	background-color: rgb(224, 223, 223);
 }
 :root {
