@@ -1,4 +1,4 @@
-package com.petharu.web.controller;
+package com.petharu.web.controller.petManagement.weightRecord;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -36,6 +36,7 @@ public class WeightRegController extends HttpServlet {
 		String date = req.getParameter("date");
 		String time = req.getParameter("time");
 		String kg = req.getParameter("kg");
+		String petname = req.getParameter("petname");
 
 		String datetime = date+" "+time;
 		
@@ -55,6 +56,7 @@ public class WeightRegController extends HttpServlet {
 			weight.setPetId(petid);
 			weight.setMeasureDatetime(datetime);
 			weight.setKg(Float.parseFloat(kg));
+			weight.setPetname(petname);
 			weightservice.insert(weight);
 			
 		} catch (Exception e) {
