@@ -12,6 +12,7 @@ import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -24,9 +25,14 @@ import com.petharu.web.service.JdbcPetService;
 import com.petharu.web.service.PetService;
 
 @WebServlet("/pet-management/mypet/reg")
+@MultipartConfig(
+	    fileSizeThreshold = 1024*1024,
+	    maxFileSize = 1024*1024*50, //50메가
+	    maxRequestSize = 1024*1024*50*5 // 50메가 5개까지
+	)
 public class PetRegController extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		PrintWriter out = response.getWriter();
 		request.setCharacterEncoding("UTF-8");
 
 		response.setCharacterEncoding("UTF-8");		
@@ -105,12 +111,13 @@ public class PetRegController extends HttpServlet{
 			petService.insertPetProfile(pet);
 			
 		} catch (Exception e) {
+			e.printStackTrace();
 			response.sendRedirect("exception.html");
 		}
 		System.out.println(list);
 		request.setAttribute("pet", pet);
-		response.sendRedirect("/pet-management/mypet/list");
-//		req.getRequestDispatcher("/pet-management/mypet/list.jsp").forward(request, response);
-
+//		response.sendRedirect("/pet-management/mypet/list");
+//		request.getRequestDispatcher("/pet-management/mypet/list.jsp").forward(request, response);
+		out.println("<script>location.href='/pet-management/mypet/list'</script>");
 	}
 }
