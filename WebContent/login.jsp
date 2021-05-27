@@ -70,8 +70,11 @@
                                             </div>
                                         </div>
                                 </fieldset>
-                        <input class="login-btn" type="submit" value="로그인"></button>    
-                        <a class="btn-signUp" href="member/signup.html">회원가입</a> 
+                        <input class="login-btn" type="submit" value="로그인"></button>  
+                        <div class="btn-signUp">
+                        
+                        <a  href="member/signup.html">회원가입</a> 
+                        </div>  
                             </form>
                         </section>   
                             
