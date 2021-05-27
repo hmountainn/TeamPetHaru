@@ -11,7 +11,6 @@ window.addEventListener("load", function() {
     };
 
     modal.onclick = function(e) {
-		e.preventDefault();
         if(!e.target.classList.contains("modal-close") && !e.target.classList.contains("close-btn"))
             return;
 
