@@ -85,7 +85,7 @@
 	                        <hr class="line">
 	                        <section class="button-menu">
 	                            <h1 class="d-none">버튼</h1>
-	                            <a class="btn center font" href="list.jsp">취소하기</a>
+	                            <a class="btn center font" href="list">취소하기</a>
 	                            <input type="hidden" name="id" value="${knowhow.id}">
 	                            <button class="btn font">저장하기</button>
 	                        </section>

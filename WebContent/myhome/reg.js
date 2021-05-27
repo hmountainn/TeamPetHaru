@@ -3,6 +3,27 @@ window.addEventListener("load", function() {
     let selButton = document.querySelector(".btn-sel");
     let fileButton = document.querySelector(".btn-file");
 
+	fileButton.oninput = function(e) { // 파일 등록버튼 선택
+		let file = fileButton.files[0]; // 파일에 대한 정보만 가져온 상태
+		if(file.type.indexOf("image/") < 0)
+			alert("이미지 형식만 사용할 수 있습니다");
+		console.log(file);
+			
+		// 선택된 파일을 메모리에 올릴 수 있음, 로컬에 파일 로드 가능
+		// 웹(원격)이라는 브라우저는 로컬의 문서에 접근하지 못함
+		var reader = new FileReader(); // 파일 읽어오기 가능, Reader 하나당 파일 하나 읽기 가능
+		reader.onload = function(evt) { // 아직 원격에 올라간 거 아닌데도 웹에서 이미지 보기 가능
+			let img = document.createElement("img");
+			img.style.width = "270px";
+			img.style.height = "270px";
+			img.style.borderRadius = "10px";
+			img.src = evt.target.result; 	
+			uploadBox.insertAdjacentElement("afterbegin", img);
+		}
+	
+		reader.readAsDataURL(file); // 비동기로 읽어옴, 위 코드가 바로 진행되지 않게 onload 이벤트에 넣어주기	
+	}
+
 	uploadBox.onclick = function() {
 		console.log("test");
 	}
@@ -49,7 +70,7 @@ window.addEventListener("load", function() {
 		formData.append("p", "/upload/test");
 		formData.append("f", dt.files[0]); // 키값은 name값이라고 생각하기
 		
-		let request = new XMLHttpRequest();
+		let request = new XMLHttpRequest(e);
 		request.onload = function(e) {
 			let filePath = request.responseText;			
 			let img = `<img style="width: 270px; height: 270px; border-radius: 10px" src="${filePath}">`;
