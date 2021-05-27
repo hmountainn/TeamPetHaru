@@ -1,4 +1,4 @@
-package com.petharu.web.controller;
+package com.petharu.web.controller.community.notice;
 
 import java.io.File;
 import java.io.FileOutputStream;
