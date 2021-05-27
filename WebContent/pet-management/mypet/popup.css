@@ -93,7 +93,7 @@
 }
 
 .dog-breed-gender li:first-child {
-	margin: 0px 2rem 1.5rem 0;
+	margin: 0px 2.5px 1.5rem 0;
 }
 
 .table {
@@ -109,14 +109,23 @@
 }
 
 /*--------�����ϱ�--------------*/
-.update-profile-box .img-box, .add-mypet .img-box {
+.form{
+	    margin-top: 12px;
+}
+.add-mypet .img-box {
 	width: 50%;
 	position: relative;
 	overflow: hidden;
 	text-align: center;
 	line-height: 25rem;
 }
-
+.update-profile-box .img-box{
+	line-height: 25rem;
+	
+}
+.update-dnd-section{
+	    margin-top: 10px;
+}
 .img-box img {
 	position: absolute;
 	top: 0px;
@@ -132,7 +141,7 @@
 
 .add-dog-info, .update-dog-info {
 	position: absolute;
-	top: 40px;
+	top: 30px;
 	right: 24px;
 	height: 350px;
 	width: 42%;
@@ -215,24 +224,21 @@ select {
 .dog_gender_input input:nth-child(2) {
 	margin-left: 2rem;
 }
-
-/* .file-button {
+.file-trigger-button{
+	width: 220px;
+	padding:10px 15px;
+    height: 35px;
+    border-radius: 5px;
+    background-color: #64b5f6;
+    font-weight: bold;
+    font-size: 14px;
+    color: white;
+    cursor: pointer;
+}
+.file-button{
 	display: none;
 }
 
-.file-trigger-button {
-	background-color: white;
-	border: 1px solid #2196f3;
-	border-radius: 4px;
-	padding: 5px 20px;
-	color: #2196f3;
-	cursor: pointer;
-	font-weight: bold;
-}
-
-.file-trigger-button:hover {
-	background-color: #bbdefb;
-} */
 /*---------confirm pop up---------*/
 .confirm-box h3 {
 	margin-bottom: 15px;
@@ -271,11 +277,11 @@ select {
 	font-weight: bold;
 }
 /*-----------picture upload------------*/
+.update-dnd-section,
 #dnd-section .img-box {
 	width: 340px;
 	height: 340px;
 	border: 1px solid #90caf9;
-	padding: 10px;
 	border-radius: 5px;
 }
 
@@ -287,26 +293,3 @@ select {
 	background: rgb(255, 128, 128);
 }
 
-.progress-status {
-	position: absolute;
-	top: 100px;
-	width: 100%;
-}
-
-.progress-status .bar {
-	display: inline-block;
-	height: 20px;
-	width: 0%;
-	background: green;
-	text-align: right;
-	color: green;
-	transition: 0.2s;
-}
-
-/*--------------Pet type----------------*/
-.catimg{
-    padding-left: 50px;
-}
-input[value="고양이"]{
-    margin-left: 50px;
-}
