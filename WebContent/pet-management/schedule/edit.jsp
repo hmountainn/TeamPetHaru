@@ -1,5 +1,13 @@
+<%@page import="com.petharu.web.entity.Schedule"%>
+<%@page import="com.petharu.web.service.JDBCScheduleService"%>
+<%@page import="com.petharu.web.service.ScheduleService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%
+	
+	
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -89,27 +97,27 @@
                         <div class="overlay"></div>
                         <div class="popup-wrapper">
                             <div class="add-schedule">
-                                <div class="close-btn">
+                                <a href="calendar.html" class="close-btn">
                                 <img src="../../images/icon-close-btn.png" alt="">
                                     
-                                </div>
+                                </a>
                                 <div class="add-schedule-form">
     
                                     <h1 class="d-none">일정추가</h1>                                   
-                                    <form action="reg" method="post">
+                                    <form action="edit" method="post">
                                         <div class="schedule-input-container title-container">
                                             <label class="schedule-lable title-lable d-none" for="">제목</label>
-                                            <input class="title-input" type="text" placeholder="제목" name="title">
+                                            <input class="title-input" type="text" placeholder="제목" name="title" value="${schedule.title}">
                                         </div>
                                         <div class="schedule-input-container date-time-container">
-                                            <label class="schedule-lable  date-time-lable btn" for="">일시</label>
+                                            <label class="schedule-lable  date-time-lable btn" for="" >일시</label>
                                            
-                                            <input type = "datetime-local" name = "datetime" >
+                                            <input type = "datetime-local" name = "datetime" value="${schedule.dateTime}">
 
                                         </div>
                                         <div class="schedule-input-container content-container">
                                             <label class="schedule-lable content-lable btn" for="">내용</label>
-                                            <textarea class="content-input"cols="40" rows="7" placeholder="내용" name="content"></textarea>
+                                            <textarea class="content-input"cols="40" rows="7" placeholder="내용" name="content">${schedule.content}</textarea>
                                         </div>
                                         
                                         
@@ -125,6 +133,7 @@
   											<label for="hashtag4">#기타</label>
                                              
                                         </div>
+                                        <input type="hidden" name="id" value="${schedule.id}">
                                         
                                         <div class="submit">
     

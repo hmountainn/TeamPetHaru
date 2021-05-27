@@ -35,8 +35,8 @@ window.addEventListener("load",function(){
             target.classList.toggle("selected-hashtag");
         }
 
-    var closeBtn = popup.querySelectorAll(".close-btn");
-    closeBtn = closeBtn.querySelectorAll("img");
+    var closeBtn = popup.querySelector(".close-btn");
+    closeBtn = closeBtn.querySelector("img");
     var section = document.querySelector("#content-wrap");
 
     closeBtn.onclick = function(){
