@@ -114,6 +114,83 @@
 	                                                    </span>
 	                                                </div>
 	                                            </div>
+	                                            <div class="main-box-comment">
+	                                                <div class="user-img-box">
+	                                                    <img class="user-img" src="../images/girl-img.png" alt="">
+	                                                </div>
+	                                                <div>
+	                                                    <span class="user-id">its_nawon</span>
+	                                                    <span>
+	                                                        강아지가 너무 귀여워요~
+	                                                    </span>
+	                                                </div>
+	                                            </div>
+	                                            <div class="main-box-comment">
+	                                                <div class="user-img-box">
+	                                                    <img class="user-img" src="../images/girl-img.png" alt="">
+	                                                </div>
+	                                                <div>
+	                                                    <span class="user-id">its_nawon</span>
+	                                                    <span>
+	                                                        강아지가 너무 귀여워요~
+	                                                    </span>
+	                                                </div>
+	                                            </div>
+	                                            <div class="main-box-comment">
+	                                                <div class="user-img-box">
+	                                                    <img class="user-img" src="../images/girl-img.png" alt="">
+	                                                </div>
+	                                                <div>
+	                                                    <span class="user-id">its_nawon</span>
+	                                                    <span>
+	                                                        강아지가 너무 귀여워요~
+	                                                    </span>
+	                                                </div>
+	                                            </div>
+	                                            <div class="main-box-comment">
+	                                                <div class="user-img-box">
+	                                                    <img class="user-img" src="../images/girl-img.png" alt="">
+	                                                </div>
+	                                                <div>
+	                                                    <span class="user-id">its_nawon</span>
+	                                                    <span>
+	                                                        강아지가 너무 귀여워요~
+	                                                    </span>
+	                                                </div>
+	                                            </div>
+	                                            <div class="main-box-comment">
+	                                                <div class="user-img-box">
+	                                                    <img class="user-img" src="../images/girl-img.png" alt="">
+	                                                </div>
+	                                                <div>
+	                                                    <span class="user-id">its_nawon</span>
+	                                                    <span>
+	                                                        강아지가 너무 귀여워요~
+	                                                    </span>
+	                                                </div>
+	                                            </div>
+	                                            <div class="main-box-comment">
+	                                                <div class="user-img-box">
+	                                                    <img class="user-img" src="../images/girl-img.png" alt="">
+	                                                </div>
+	                                                <div>
+	                                                    <span class="user-id">its_nawon</span>
+	                                                    <span>
+	                                                        강아지가 너무 귀여워요~
+	                                                    </span>
+	                                                </div>
+	                                            </div>
+	                                            <div class="main-box-comment">
+	                                                <div class="user-img-box">
+	                                                    <img class="user-img" src="../images/girl-img.png" alt="">
+	                                                </div>
+	                                                <div>
+	                                                    <span class="user-id">its_nawon</span>
+	                                                    <span>
+	                                                        강아지가 너무 귀여워요~
+	                                                    </span>
+	                                                </div>
+	                                            </div>
 	                                        </div>
 	
 	                                        <div class="comment-record">

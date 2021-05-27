@@ -52,6 +52,43 @@ public class JDBCInfluenceService {
 		return list;
 	}
 	
+	public List<DiaryComment> getCommentList(int diaryId){
+		List<DiaryComment> list = new ArrayList<>();
+		
+		String sql = "SELECT * FROM DIARY_COMMENT_VIEW WHERE DIARY_ID = ?";
+		
+		try {
+			String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
+			Class.forName("oracle.jdbc.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "PETHARU", "1357");
+			
+			PreparedStatement st = con.prepareStatement(sql);
+			st.setInt(1, diaryId);
+			
+			ResultSet rs = st.executeQuery(sql);
+			
+			while(rs.next()) {
+				String comment = rs.getString("CONTENT");
+				String userId = rs.getString("USER_ID");
+				
+				DiaryComment dcomment = new DiaryComment();
+				dcomment.setContent(comment);
+				dcomment.setUserId(userId);
+				
+				list.add(dcomment);
+			}
+			
+			
+			st.close();
+			con.close();
+		} catch (Exception e) {
+			throw new ServiceException();
+		}
+		
+		
+		return list;
+	}
+	
 	
 	
 	public int insert(DiaryComment dcomment) {
