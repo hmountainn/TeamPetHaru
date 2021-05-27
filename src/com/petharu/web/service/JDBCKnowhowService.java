@@ -210,14 +210,14 @@ public class JDBCKnowhowService implements KnowhowService {
 	}
 	
 	@Override
-	public int delete(int id) {
+	public int delete(int id) throws ClassNotFoundException, SQLException {
 		
 		int result = 0;
 
 		String sql = "DELETE KNOWHOW WHERE ID=?";
 		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
 		
-		try {
+		//try {
 			Class.forName("oracle.jdbc.OracleDriver");
 			Connection con = DriverManager.getConnection(url, "PETHARU", "1357");
 			
@@ -230,9 +230,9 @@ public class JDBCKnowhowService implements KnowhowService {
 			
 			return result;
 			
-		} catch (Exception e) {
-			throw new ServiceException();
-		}
+		//} catch (Exception e) {
+		//	throw new ServiceException();
+		//}
 	}
 
 	@Override

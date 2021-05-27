@@ -25,8 +25,8 @@
                             <h1 class="d-none">메인메뉴</h1>
                             <ul>
                                 <li><a href="../../myhome/list.html">우리집</a></li>
-                                <li><a href="../../friends/list.html">이웃집</a></li>
-                                <li><a href="../../pet-management/mypet/list.html">내 동물 관리</a></li>
+                                <li><a href="../../friends/list">이웃집</a></li>
+                                <li><a href="../../pet-management/mypet/list">내 동물 관리</a></li>
                                 <li><a href="../notice/list.html">커뮤니티</a></li>
                             </ul>
                     </nav>

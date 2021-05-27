@@ -8,6 +8,7 @@ import java.sql.SQLException;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,23 +21,32 @@ import com.petharu.web.service.JDBCKnowhowService;
 import com.petharu.web.service.KnowhowService;
 
 @WebServlet("/community/knowhow/edit")
+@MultipartConfig (
+    fileSizeThreshold = 1024*1024,
+    maxFileSize = 1024*1024*50, // 50메가
+    maxRequestSize = 1024*1024*50*5 // 50메가 파일 5개까지
+)
 public class EditController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		
+		req.setCharacterEncoding("UTF-8");
+		resp.setCharacterEncoding("UTF-8");
+		resp.setContentType("text/html; charset=UTF-8");
+		
 		int id = Integer.parseInt(req.getParameter("id"));
-		String pet = req.getParameter("pet");
-		String title = req.getParameter("title");
-		String content = req.getParameter("content");
 		
 		KnowhowService service = new JDBCKnowhowService();
 		KnowhowView knowhow = null;
 		
 		try {
 			knowhow = service.get(id);
-			
-		} catch (Exception e) {
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -45,31 +55,23 @@ public class EditController extends HttpServlet {
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		req.setCharacterEncoding("UTF-8");
-		resp.setCharacterEncoding("UTF-8");
-		resp.setContentType("text/html; charset=UTF-8");
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
 		
-		int id = 1;
-		
-		if(req.getParameter("id") != null)
-			id = Integer.parseInt(req.getParameter("id"));
-			
-		
-		System.out.println("아아아" + req.getParameter("id"));
-		System.out.println("아아아" + id);
-		
-		String pet = req.getParameter("pet");
-		String title = req.getParameter("title");
-		String content = req.getParameter("content");
+		int id = Integer.parseInt(request.getParameter("id"));
+		String pet = request.getParameter("pet");
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
 		
 		// 파일 업로드하기
-		Part fpart = req.getPart("f"); // 파일을 가져오기, 반환 타입이 파트형
+		Part fpart = request.getPart("f"); // 파일을 가져오기, 반환 타입이 파트형
 		String fileName = fpart.getSubmittedFileName(); // 전송된 파일 이름
 		InputStream fis = fpart.getInputStream(); // 파일 스트림
 		
-		ServletContext application = req.getServletContext(); // 어플리케이션의 저장소 역할, 다른 서블릿이 작업을 이어가려면 동일한 도구, 저장소(ServletContext)가 필요
+		ServletContext application = request.getServletContext(); // 어플리케이션의 저장소 역할, 다른 서블릿이 작업을 이어가려면 동일한 도구, 저장소(ServletContext)가 필요
 		String path = "/upload"; // 업로드할 경로, 해당 경로는 절대 경로로 설정해야 파일 출력 나옴, 하지만 배포 서버가 모두 다를 것이므로 정적으로 설정하면 안됨
 		String realPath = application.getRealPath(path); // 실제 물리 경로를 얻어내줌
 		
@@ -106,7 +108,7 @@ public class EditController extends HttpServlet {
 			e.printStackTrace();
 		} 
 		
-		resp.sendRedirect("detail?id="+id);
+		response.sendRedirect("detail?id="+id);
 	
 	}
 }
