@@ -14,7 +14,6 @@ import com.petharu.web.service.JDBCMyhomeService;
 import com.petharu.web.service.MyhomeService;
 
 
-
 @WebServlet("/myhome/edit")
 public class DiaryEditController extends HttpServlet {
 

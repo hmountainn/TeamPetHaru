@@ -13,7 +13,7 @@ import com.petharu.web.service.JDBCMyhomeService;
 import com.petharu.web.service.MyhomeService;
 
 
-@WebServlet("/diary/del")
+@WebServlet("/myhome/del")
 public class DiaryDeleteController extends HttpServlet {
 
 	@Override
@@ -29,6 +29,6 @@ public class DiaryDeleteController extends HttpServlet {
 			e.printStackTrace();
 		} 
 		
-		resp.sendRedirect("/myhome/list.html");
+		resp.sendRedirect("list.html");
 	}
 }
