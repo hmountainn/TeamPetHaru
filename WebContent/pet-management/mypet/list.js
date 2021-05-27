@@ -1,3 +1,9 @@
+//종류묻기
+function askPet(){
+  console.log("askPet");
+  document.getElementById("popup-6").classList.toggle("active");
+}
+
 //등록하기
   function addPopup(){
     console.log("addPopup");
@@ -99,25 +105,17 @@
     /*---------------반려 동물 삭제---------------------*/
     const deleteButton = document.querySelector(".delete");
     const cancel = document.querySelector(".cancel");
-    
-    // deleteButton.onclick = function(e){
-    //   var target = e.target;
-    //   console.log("삭제버튼눌림");
-    //   //삭제여부묻기
-    //   document.getElementById("popup-4").classList.toggle("active");
-    //   console.log(target);
-    // }
-    // cancel.onclick =function(e){
-    //   console.log("취소버튼눌림");
-    //   document.getElementById("popup-4").classList.toggle("active");
-    // }
+
 
 window.addEventListener("load", function() {    
 /*-------------------사진업로드----------------------*/
+	const uploadBox = document.querySelector("#upload-box");
+	const fileInput = document.querySelector(".form input[type='file']");
+	const progressStatusDiv = document.querySelector(".progress-status");
 	var fileButton = document.querySelector(".file-button"); //가 실행
 	var fileTriggetButtons = document.querySelectorAll(".file-trigger-button");//가 클릭되지만
 console.log(fileTriggetButtons);
-	for(let i = 0; i < fileTriggetButtons.length; i++) {
+/*	for(let i = 0; i < fileTriggetButtons.length; i++) {
 		fileTriggetButtons[i].onclick = function() {
 			var event = new MouseEvent("click", {
 				'view': window,
@@ -126,28 +124,38 @@ console.log(fileTriggetButtons);
 			});
 			fileButton.dispatchEvent(event);//이벤트전달
 		};	
+	}*/
+	
+	console.log(fileInput);
+	fileInput.oninput = function(e){
+		let file = fileInput.files[0];
+		if(file.type.indexOf("image/") <0)
+			alert("이미지 형식만 사용 할 수 있습니다.");
+		//미리보기	
+		var reader = new FileReader();
+		reader.onload = function(evt){
+			let img = document.createElement("img");
+			img.src = evt.target.result;
+			
+			fileInput.insertAdjacentElement("afterend",img);
+		};
+		reader.readAsDataURL(file);
 	}
 	
-	const uploadBox = document.querySelector("#upload-box");
-	console.log(uploadBox);
-	
-	uploadBox.ondragenter = function() {
-
+	uploadBox.ondragenter = function(){
 		console.log("enter");
-	};
+	}
 	
-	uploadBox.ondragleave = function() {
+	uploadBox.ondragleave = function(){
 		console.log("leave");
 		uploadBox.classList.remove("valid");
 		uploadBox.classList.remove("invalid");
-	};
+	}
 	
-	uploadBox.ondragover = function(e) {
+	uploadBox.ondragover = function(e){
 		e.preventDefault();
-		let dt= e.dataTransfer;
-		
-		//가져오는순간 유효하지않다면말해주기
-		var valid = dt.types.indexOf("Files") >= 0;
+		//파일형식
+		var valid = e.dataTransfer.types.indexOf("Files") >= 0;
 		
 		if(valid){
 			uploadBox.classList.add("valid");
@@ -155,42 +163,50 @@ console.log(fileTriggetButtons);
 		else{
 			uploadBox.classList.add("invalid");
 		}
-
-	};
+		
+		console.log("over");
+	}
 	
-	uploadBox.ondrop = function(e) {
-		e.preventDefault();		
+	uploadBox.ondrop = function(e){
+		e.preventDefault();
 		
-		uploadBox.classList.remove("valid");
-		uploadBox.classList.remove("invalid");
+		uploadBox.classList.remove("valid");//파일형식
+		uploadBox.classList.remove("invalid");		
 		
-		let dt = e.dataTransfer;
+		let dt = e.dataTransfer;//드래그 앤 드롭 조작을 통해 데이터를 전달
 		if(dt.files.length>1){
-			alert("파일은 하나만 전송이가능합니다.");
+			alert("파일은 하나씩만 전송이 가능합니다.");
 			return;
-		}
-		
-		if(dt.files[0].size > 500*1024*1024){
-			alert("죄송합니다. 500MByte를 초과할수 없습니다.");
+		};
+		if(dt.files[0].size > 50*1024*1024){
+			alert("죄송합니다. 50MByte를 넘는 파일은 전송 할 수 없습니다.");
 			return;
-		}		
-		
+		};
+		//페이지 전환 없이 폼 데이터를 제출하고 싶을 때 바로 FormData 객체를 사용
 		let formData = new FormData();
-		formData.append("p","/upload/test");
-		formData.append("f",dt.files[0])//서버에 f로보냄
-		
+		formData.append("p","/upload");
+		formData.append("f",dt.files[0]);
+		//파일경로
 		let request = new XMLHttpRequest();
 		request.onload = function(){
-			console.log("완료");
+			console.log(request.responseText);
+			let filePath = request.responseText;
 		};
-		request.upload.onprogress = function(e){
+
+		//진척도
+/*		request.upload.onprogress = function(e){
 			console.log(`total:${e.total},loaded:${e.loaded}`);
-		}
+			let status = Math.round(e.loaded*100/e.total)+'%';
+			let bar = progressStatusDiv.firstElementChild.firstElementChild;
+			
+			bar.innerText =status;
+			//bar.style.width = status;
+		};	*/		
 		
-		request.open("POST","/uploader",true);
-		request.send(formData);
-		
+		request.open("POST","/uploader",true);//업로드콘트롤러연결
+		request.send(formData);		
 		console.log("drop");
-	};
+	};	
 	
+
 })

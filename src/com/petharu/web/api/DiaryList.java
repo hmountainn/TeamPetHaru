@@ -17,7 +17,7 @@ import com.petharu.web.service.JDBCMyhomeService;
 import com.petharu.web.service.MyhomeService;
 
 
-@WebServlet("/api/diary/list")
+@WebServlet("/api/myhome/list")
 public class DiaryList extends HttpServlet {
 
 	@Override

@@ -1,5 +1,5 @@
 /*-------------------pop up------------------------*/
-.result-popup, .confirm-popup, .update-popup, .profile-popup, .add-mypet
+.add-mypet-popup, .result-popup, .confirm-popup, .update-popup, .profile-popup, .add-mypet
 	{
 	position: fixed;
 	top: 0px;
@@ -11,7 +11,7 @@
 	display: none;
 }
 
-.result-popup .popup-content, .confirm-popup .popup-content, .add-mypet .popup-content,
+.add-mypet-popup .popup-content, .result-popup .popup-content, .confirm-popup .popup-content, .add-mypet .popup-content,
 	.profile-popup .popup-content, .update-popup .popup-content {
 	position: absolute;
 	top: 50%;
@@ -30,12 +30,12 @@
 	box-shadow: rgba(0, 0, 0, 0.08) 0px 12px 20px 0px;
 }
 
-.result-popup .popup-content, .confirm-popup .popup-content {
+.add-mypet-popup .popup-content,.add-mypet-popup .close-btn,.result-popup .popup-content, .confirm-popup .popup-content {
 	width: 30rem;
 	height: 15rem;
 }
 
-.result-popup .close-btn, .confirm-popup .close-btn, .add-mypet .close-btn,
+.add-mypet-popup .close-btn,.result-popup .close-btn, .confirm-popup .close-btn, .add-mypet .close-btn,
 	.update-popup .close-btn, .profile-popup .close-btn {
 	position: absolute;
 	right: 5px;
@@ -49,7 +49,7 @@
 	border-radius: 50%;
 }
 
-.confirm-popup.active, .result-popup.active, .add-mypet.active,
+.add-mypet-popup.active,.confirm-popup.active, .result-popup.active, .add-mypet.active,
 	.update-popup.active, .profile-popup.active {
 	display: block;
 }
@@ -216,7 +216,7 @@ select {
 	margin-left: 2rem;
 }
 
-.file-button {
+/* .file-button {
 	display: none;
 }
 
@@ -232,7 +232,7 @@ select {
 
 .file-trigger-button:hover {
 	background-color: #bbdefb;
-}
+} */
 /*---------confirm pop up---------*/
 .confirm-box h3 {
 	margin-bottom: 15px;
@@ -280,9 +280,33 @@ select {
 }
 
 #dnd-section .img-box.valid {
-	background: green;
+	background: rgb(153, 198, 238);
 }
 
 #dnd-section .img-box.invalid {
-	background: red;
+	background: rgb(255, 128, 128);
+}
+
+.progress-status {
+	position: absolute;
+	top: 100px;
+	width: 100%;
+}
+
+.progress-status .bar {
+	display: inline-block;
+	height: 20px;
+	width: 0%;
+	background: green;
+	text-align: right;
+	color: green;
+	transition: 0.2s;
+}
+
+/*--------------Pet type----------------*/
+.catimg{
+    padding-left: 50px;
+}
+input[value="고양이"]{
+    margin-left: 50px;
 }

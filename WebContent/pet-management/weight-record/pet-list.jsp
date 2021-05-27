@@ -25,10 +25,10 @@
                     <nav class="main-menu">   
                             <h1 class="d-none">메인메뉴</h1>
                             <ul>
-                                <li><a>우리집</a></li>
-                                <li><a>이웃집</a></li>
-                                <li><a>내 동물관리</a></li>
-                                <li><a>커뮤니티</a></li>
+                                <li><a href="../../myhome/list.html">우리집</a></li>
+                                <li><a href="../../friends/list">이웃집</a></li>
+                                <li><a href="../mypet/list">내 동물관리</a></li>
+                                <li><a href="../../community/notice/list.html">커뮤니티</a></li>
                             </ul>
                     </nav>
                 </div>
@@ -50,9 +50,9 @@
                     <nav class="aside-menu">
                         <h1 class="d-none">동물관리메뉴</h1>
                         <ul>
-                            <li><a href="../mypet/mypet-list.html">동물 관리</a></li>
+                            <li><a href="../mypet/list">동물 관리</a></li>
                             <li><a class="current-page" href="pet-list">체중 관리</a></li>
-                            <li><a href="../calendar/calendar.html">일정 관리</a></li>                       
+                            <li><a href="../schedule/calendar.html">일정 관리</a></li>                  
                         </ul>
                     </nav>
                 </aside>
@@ -66,6 +66,7 @@
 	                       <c:forEach var="n" items="${list}">
 	                       		<div class="pet">
 	                               <a href="table?petid=${n.id}"><img class="img" src="../../images/pet1.png"></a>
+	                               ${n.name}
 	                           	</div>
 	                       </c:forEach>
 	                       </div>

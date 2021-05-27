@@ -10,6 +10,8 @@ window.addEventListener("load", function() {
 	let downPager = section.querySelector(".article-pager .down-article-pager");
 	let updateBtn = section.querySelector(".article-button .update-btn");
 	let deleteBtn = section.querySelector(".article-button .delete-btn");
+	let thumbnail = section.querySelector(".thumbnail");
+	let img = thumbnail.querySelector("img")
 
 	let params = new URLSearchParams(window.location.search);
 	let noticeId = parseInt(params.get("id"));
@@ -23,6 +25,11 @@ window.addEventListener("load", function() {
 		regdate.innerHTML += `${notice.regdate}`;
 		hit.innerHTML += `${notice.hit}`;
 		article.innerHTML += `${notice.content}`;
+		
+		if (`${notice.files}` != "undefined") {
+			thumbnail.href = `/community/notice/upload/${notice.files}`;
+			img.src = `/community/notice/upload/${notice.files}`;
+		}
 		
 		if (`${notice.upId}` == 0) {
 			

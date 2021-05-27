@@ -30,16 +30,16 @@
 						<h1 class="d-none">메인메뉴</h1>
 						<ul>
 							<li><a href="../../myhome/list.html">우리집</a></li>
-							<li><a href="../../friends/list.html">이웃집</a></li>
-							<li><a href="list.html">내 동물관리</a></li>
-							<li><a href="../../community/knowhow/list.html">커뮤니티</a></li>
+							<li><a href="../../friends/list">이웃집</a></li>
+							<li><a href="list">내 동물관리</a></li>
+							<li><a href="../../community/notice/list.html">커뮤니티</a></li>
 						</ul>
 					</nav>
 				</div>
 				<nav class="member-menu">
 					<h1 class="d-none">회원메뉴</h1>
 					<ul>
-						<li><a href="../../mypage/profile/progile-edit.html">MyPage</a></li>
+						<li><a href="../../mypage/profile/profile-edit.html">MyPage</a></li>
 						<li><a href="../../login">LogOut</a></li>
 					</ul>
 				</nav>
@@ -54,9 +54,9 @@
 					<nav class="aside-menu">
 						<h1 class="d-none">동물관리메뉴</h1>
 						<ul>
-							<li><a class="current-page" href="list.html"><i
+							<li><a class="current-page" href="list"><i
 									class="fas fa-paw"></i>동물 관리</a></li>
-							<li><a href="../weight-record/form.html"><i
+							<li><a href="../weight-record/pet-list"><i
 									class="fas fa-weight"></i>체중 관리</a></li>
 							<li><a href="../schedule/calendar.html"><i
 									class="far fa-calendar-alt"></i>일정 관리</a></li>
@@ -313,13 +313,18 @@
 						<div class="popup-content">
 							<div class="close-btn" onclick="addPopup()">×</div>
 							<section id="dnd-section">
+								<form action="reg" method="post" class="form">
 							<div class="img-box" id="upload-box">
-								<input type="file" class="file-button"> 
+								<input type="file" class="file-button" name="f"> 
 								<span class="file-trigger-button">Upload</span>
+<!-- 								<div class="progress-status">
+									<div>
+										<span class="bar">0%</span>
+									</div>
+								</div> -->
 							</div>
 							</section>
 							<div class="add-dog-info">
-								<form action="reg" method="post">
 									<div class="dog_name add-container">
 										<label class="add-label">이름<span class="necessary">*</span></label>
 										<input class="add-input" type="text" name="name"

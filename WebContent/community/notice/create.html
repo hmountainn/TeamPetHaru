@@ -20,7 +20,7 @@
                         <h1 class="d-none">메인메뉴</h1>
                         <ul>
                             <li><a href="../../myhome/list.html">우리집</a></li>
-                            <li><a href="../../friends/list.html">이웃집</a></li>
+                            <li><a href="../../friends/list">이웃집</a></li>
                             <li><a href="../../pet-management/mypet/list.html">내동물관리</a></li>
                             <li><a href="./list.html">커뮤니티</a></li>
                         </ul>
@@ -43,18 +43,18 @@
                         <h1 class="d-none">커뮤니티</h1>
                         <ul>
                             <li><a class="current-page" href="./list.html">공지사항</a></li>                       
-                            <li><a href="../knowhow/list.html">노하우</a></li>
+                            <li><a href="../knowhow/list">노하우</a></li>
                         </ul>
                     </nav>
                 </aside>
 
                 <main id="main">
                     <h1 class="d-none">공지사항 작성</h1>
-                    <form action="create" method="post">
+                    <form action="create" method="post" enctype="multipart/form-data">
                         <input name="title" class="notice-title-create" type="text" placeholder="제목을 입력하세요.">
                         <textarea name="content" id="notice-article-create" cols="110" rows="10"></textarea>
-                        <button class="file-select button-5">파일 선택</button>
-                        <input class="d-none" type="file" name="file">
+                        <input type="file" name="file" accept="image/*">
+                        <div class="thumbnail"></div>
 	                    <button class="button-5" type="submit">등록 완료</button>
                     </form>
                 </main>
