@@ -652,11 +652,10 @@ button:hover {
     padding: 5px;
 }
 .diary-comment-write .button-2 {
-    margin: 10px 0 auto auto;
+	margin: 10px 0 0 0;
+    display: block;
 }
 
 #diary-comment-writing, .submit-btn {
 	font-family: 'Nanum Gothic', sans-serif;	
-	margin: 10px 0 0 0;
-    display: block;
 }
