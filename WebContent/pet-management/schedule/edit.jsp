@@ -1,3 +1,13 @@
+<%@page import="com.petharu.web.entity.Schedule"%>
+<%@page import="com.petharu.web.service.JDBCScheduleService"%>
+<%@page import="com.petharu.web.service.ScheduleService"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+<%
+	
+	
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,16 +24,16 @@
         <header id="header">
             <div class="float-content">
                 <div class="flex align-center">
-                    <a href="../../myhome/list.html" class="logo-title-container">
+                    <a href="" class="logo-title-container">
                         <img src="../../images/logo.png" alt="">
                     </a>
                     <nav class="main-menu">   
                             <h1 class="d-none">메인메뉴</h1>
                             <ul>
-                                <li><a href="../../myhome/list.html">우리집</a></li>
-                                <li><a href="../../friends/list">이웃집</a></li>
-                                <li><a href="../mypet/list">내 동물관리</a></li>
-                                <li><a href="../../community/notice/list.html">커뮤니티</a></li>
+                                <li><a>우리집</a></li>
+                                <li><a>이웃집</a></li>
+                                <li><a>내 동물관리</a></li>
+                                <li><a>커뮤니티</a></li>
                             </ul>
                     </nav>
                 </div>
@@ -45,8 +55,8 @@
                     <nav class="aside-menu">
                         <h1 class="d-none">동물관리메뉴</h1>
                         <ul>
-                            <li><a href="../mypet/list">동물 관리</a></li>
-                            <li><a href="../weight-record/pet-list">체중 관리</a></li>
+                            <li><a href="../mypet/list.html">동물 관리</a></li>
+                            <li><a href="../weight-record/form.html">체중 관리</a></li>
                             <li><a class="current-page" href="calendar.html">일정 관리</a></li>                       
                         </ul>
                     </nav>
@@ -84,30 +94,30 @@
                                 </tr>
                               </thead>
                         </table>
-                        <div class="overlay d-none"></div>
-                        <div class="popup-wrapper d-none">
+                        <div class="overlay"></div>
+                        <div class="popup-wrapper">
                             <div class="add-schedule">
-                                <div class="close-btn">
+                                <a href="calendar.html" class="close-btn">
                                 <img src="../../images/icon-close-btn.png" alt="">
                                     
-                                </div>
+                                </a>
                                 <div class="add-schedule-form">
     
                                     <h1 class="d-none">일정추가</h1>                                   
-                                    <form action="reg" method="post">
+                                    <form action="edit" method="post">
                                         <div class="schedule-input-container title-container">
                                             <label class="schedule-lable title-lable d-none" for="">제목</label>
-                                            <input class="title-input" type="text" placeholder="제목" name="title">
+                                            <input class="title-input" type="text" placeholder="제목" name="title" value="${schedule.title}">
                                         </div>
                                         <div class="schedule-input-container date-time-container">
-                                            <label class="schedule-lable  date-time-lable btn" for="">일시</label>
+                                            <label class="schedule-lable  date-time-lable btn" for="" >일시</label>
                                            
-                                            <input type = "datetime-local" name = "datetime" >
+                                            <input type = "datetime-local" name = "datetime" value="${schedule.dateTime}">
 
                                         </div>
                                         <div class="schedule-input-container content-container">
                                             <label class="schedule-lable content-lable btn" for="">내용</label>
-                                            <textarea class="content-input"cols="40" rows="7" placeholder="내용" name="content"></textarea>
+                                            <textarea class="content-input"cols="40" rows="7" placeholder="내용" name="content">${schedule.content}</textarea>
                                         </div>
                                         
                                         
@@ -123,7 +133,7 @@
   											<label for="hashtag4">#기타</label>
                                              
                                         </div>
-                                        	
+                                        <input type="hidden" name="id" value="${schedule.id}">
                                         
                                         <div class="submit">
     
@@ -135,55 +145,6 @@
                             </div>
                         </div>
                         
-                        <div class="overlay2 d-none"></div>
-                        <div class="popup-wrapper2 d-none">
-                            <div class="add-schedule">
-                                <div class="close-btn">
-                                <img src="../../images/icon-close-btn.png" alt="">
-                                    
-                                </div>
-                                <div class="add-schedule-form">
-    
-                                    <h1 class="d-none">일정추가</h1>                                   
-                                    <form action="reg" method="post">
-                                        <div class="schedule-input-container title-container">
-                                            <label class="schedule-lable title-lable d-none" for="">제목</label>
-                                            <input class="title-input" type="text" placeholder="제목" name="title">
-                                        </div>
-                                        <div class="schedule-input-container date-time-container">
-                                            <label class="schedule-lable  date-time-lable btn" for="">일시</label>
-                                           
-                                            <input type = "datetime-local" name = "datetime" >
-
-                                        </div>
-                                        <div class="schedule-input-container content-container">
-                                            <label class="schedule-lable content-lable btn" for="">내용</label>
-                                            <textarea class="content-input"cols="40" rows="7" placeholder="내용" name="content"></textarea>
-                                        </div>
-                                        
-                                        
-                                        <div class="hashtag-container">
-                                            
-                                            <input class="hashtag hashtag1" id="hashtag1" type="radio" name="scheduleType" value="진료">
-  											<label for="hashtag1">#진료</label>
-  											<input class="hashtag hashtag2" id="hashtag2"type="radio" name="scheduleType" value="접종">
-  											<label for="hashtag2">#예방접종</label>
-  											<input class="hashtag hashtag3" id="hashtag3" type="radio" name="scheduleType" value="미용">
-  											<label for="hashtag3">#미용</label>
-  											<input class="hashtag hashtag4" id="hashtag4" type="radio" name="scheduleType" value="기타">
-  											<label for="hashtag4">#기타</label>
-                                             
-                                        </div>
-                                        
-                                        <div class="submit">
-    
-                                            <input class="submit-btn" type="submit" value="수정">
-                                        </div>
-                                    </form>
-                                </div>
-                                
-                            </div>
-                        </div>   
                         
                         <div class="schedule-detail d-none">
                                     
@@ -194,7 +155,7 @@
             </div>
         </div>
 
-        <footer id="footer"></footer>
+        <footer id="footer">footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer</footer>
 
 
     </div>

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="reg.css" type="text/css" rel="stylesheet">
+    <script src="reg.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
 </head>
@@ -47,8 +48,10 @@
 	                            <section>
 	                                <h1>이미지 등록</h1>
 	                                <span class="required">*</span>
-	                                <div class="img-pet">
-	                                    <div class="img-upload-btn center">이미지 업로드</div>
+	                                <div class="img-upload-box">
+	                                
+	                                    <div class="img-upload-btn btn-sel center">이미지 업로드</div>
+	                                    <input class="btn-file d-none" name="f" type="file"> <!--사용자가 파일에 직접 접근할 수 있게 해야 함-->
 	                                </div>
 	                            </section>
 	                            <section>
