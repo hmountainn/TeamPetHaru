@@ -358,3 +358,7 @@ button:hover {
 .article-button button:last-child {
     float: right;
 }
+.thumbnail img {
+	width: 100px;
+	height: 100px;
+}
