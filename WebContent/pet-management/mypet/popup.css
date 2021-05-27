@@ -170,7 +170,7 @@
 	color: #666;
 	line-height: 40px;
 }
-
+input:focus {outline:none;}
 select, .add-input-personality, .add-container input[type=text],
 	.add-container input[type=date] {
 	height: 2rem;
@@ -184,7 +184,7 @@ select, .add-input-personality, .add-container input[type=text],
 }
 
 select {
-	width: 200px;
+	width: 202px;
 }
 
 .add-input-personality {
@@ -270,7 +270,7 @@ select {
 	color: white;
 	font-weight: bold;
 }
-
+/*-----------picture upload------------*/
 #dnd-section .img-box {
 	width: 340px;
 	height: 340px;
