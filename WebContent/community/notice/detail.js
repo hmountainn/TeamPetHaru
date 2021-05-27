@@ -25,8 +25,11 @@ window.addEventListener("load", function() {
 		regdate.innerHTML += `${notice.regdate}`;
 		hit.innerHTML += `${notice.hit}`;
 		article.innerHTML += `${notice.content}`;
-		thumbnail.href = `/community/notice/upload/${notice.files}`;
-		img.src = `/community/notice/upload/${notice.files}`;
+		
+		if (`${notice.files}` != "undefined") {
+			thumbnail.href = `/community/notice/upload/${notice.files}`;
+			img.src = `/community/notice/upload/${notice.files}`;
+		}
 		
 		if (`${notice.upId}` == 0) {
 			
