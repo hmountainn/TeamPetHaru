@@ -1,4 +1,4 @@
-package com.petharu.web.controller;
+package com.petharu.web.controller.petManagement.mypet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
