@@ -20,7 +20,7 @@ public class JDBCWeightService implements WeightService {
 		List<Pet> list = new ArrayList<>();
 		
 		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
-		String sql = "SELECT ID FROM PET WHERE MEMBER_ID="+memberid;
+		String sql = "SELECT * FROM PET WHERE MEMBER_ID="+memberid;
 		
 		
 		try {
@@ -31,9 +31,11 @@ public class JDBCWeightService implements WeightService {
 			
 			while(rs.next()) {
 				int id = rs.getInt("ID");
-
+				String name = rs.getString("NAME");
+				
 				Pet pet = new Pet();
 				pet.setId(id);
+				pet.setName(name);
 
 				list.add(pet);
 			}
@@ -108,12 +110,14 @@ public class JDBCWeightService implements WeightService {
 				int petId = rs.getInt("PET_ID");
 				String measureDatetime = rs.getString("MEASURE_DATETIME");
 				float kg = rs.getFloat("KG");
+				String petname = rs.getString("PET_NAME");
 				
 				Weight weight = new Weight();
 				weight.setId(id);
 				weight.setPetId(petId);
 				weight.setMeasureDatetime(measureDatetime);
 				weight.setKg(kg);
+				weight.setPetname(petname);
 				
 				list.add(weight);
 			}
@@ -129,7 +133,7 @@ public class JDBCWeightService implements WeightService {
 	public int insert(Weight weight) {
 		int result = 0;
 		
-		String sql = "INSERT INTO WEIGHT(PET_ID,MEASURE_DATETIME,KG) VALUES(?,?,?)"; //?에 데이터 꽂아넣을거임
+		String sql = "INSERT INTO WEIGHT(PET_ID,MEASURE_DATETIME,KG,PET_NAME) VALUES(?,?,?,?)"; //?에 데이터 꽂아넣을거임
 		
 		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
 		try {
@@ -141,6 +145,7 @@ public class JDBCWeightService implements WeightService {
 			st.setInt(1,weight.getPetId()); //데이터를 꽂음
 			st.setString(2,weight.getMeasureDatetime());
 			st.setFloat(3, weight.getKg());
+			st.setString(4, weight.getPetname());
 			
 			
 			result = st.executeUpdate();

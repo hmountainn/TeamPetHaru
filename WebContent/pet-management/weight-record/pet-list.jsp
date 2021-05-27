@@ -66,6 +66,7 @@
 	                       <c:forEach var="n" items="${list}">
 	                       		<div class="pet">
 	                               <a href="table?petid=${n.id}"><img class="img" src="../../images/pet1.png"></a>
+	                               ${n.name}
 	                           	</div>
 	                       </c:forEach>
 	                       </div>

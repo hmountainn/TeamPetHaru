@@ -60,7 +60,7 @@
                 <main id="main">
                     
                     <div class="record">
-                        <h1 class="record-title">전체 체중기록</h1>
+                        <h1 class="record-title">${list[0].petname}의 체중기록</h1>
 <!--                         <div class="petphoto">
                             <ol>
                                 <li><a class="img pet1" href="">강아지1</a></li>
@@ -70,7 +70,7 @@
                             </ol>
                         </div> -->
     
-                        <a href="form?petid=${param.petid}"><div class="regbutton">체중등록</div></a>
+                        <a href="form?petid=${param.petid}&petname=${list[0].petname}"><div class="regbutton">체중등록</div></a>
                         <a href="stats.html"><div class="statbutton">통계보기</div></a>
                         <table class="record-table">
                             <thead>

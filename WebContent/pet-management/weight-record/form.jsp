@@ -92,6 +92,7 @@
 	    
 	                            <div>
 	                            	<input type="hidden" name="petid" value="${param.petid}">
+	                            	<input type="hidden" name="petname" value="${param.petname}">
 	                                <input class="submit" type="submit" value="등록">
 	                            </div>
 	                            

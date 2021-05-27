@@ -32,6 +32,7 @@ public class WeightPetListController extends HttpServlet {
 			id_ = Integer.parseInt(request.getParameter("id"));
 		}
 		
+		
 		JDBCWeightService service = new JDBCWeightService();
 		List<Pet> list = service.getpetList(id_);
 
