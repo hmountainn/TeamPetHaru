@@ -1,4 +1,4 @@
-package com.petharu.web.controller;
+package com.petharu.web.controller.myhome;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -15,7 +15,7 @@ import com.petharu.web.service.MyhomeService;
 
 
 @WebServlet("/myhome/edit")
-public class DiaryEditController extends HttpServlet {
+public class EditController extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

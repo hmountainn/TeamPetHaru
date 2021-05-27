@@ -1,4 +1,4 @@
-package com.petharu.web.controller;
+package com.petharu.web.controller.myhome;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,7 +16,7 @@ import com.petharu.web.service.JDBCMyhomeService;
 import com.petharu.web.service.MyhomeService;
 
 @WebServlet("/myhome/detail")
-public class DiaryDetailController extends HttpServlet {
+public class DetailController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

@@ -1,4 +1,4 @@
-package com.petharu.web.controller;
+package com.petharu.web.controller.myhome;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -14,7 +14,7 @@ import com.petharu.web.service.MyhomeService;
 
 
 @WebServlet("/myhome/del")
-public class DiaryDeleteController extends HttpServlet {
+public class DeleteController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
