@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.util.Collection;
 
 import javax.servlet.ServletContext;
@@ -54,11 +55,14 @@ public class UploaderController extends HttpServlet {
 		byte[] buf = new byte[1024];
 		int len = 0;
 		
-		while((len = fis.read(buf, 0, 1024)) >= 0)
-			fos.write(buf, 0, len);
+		while((len = fis.read(buf, 0, 1024)) >= 0) // 최대 1024개까지 한번에 읽을 수 있음, len: 입력 스트림에서 버퍼에 담은 바이트 개수(최대 1024)
+			fos.write(buf, 0, len); // 읽어들인 len만큼 write하는 것
 		
 		fos.flush();
 		fos.close();
 		fis.close();
+		
+		PrintWriter out = response.getWriter();
+		out.println(path + "/" + fileName); // response로 보내줌!
 	}	
 }

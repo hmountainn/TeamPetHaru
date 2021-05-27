@@ -1,4 +1,4 @@
-package com.petharu.web.controller;
+package com.petharu.web.controller.myhome;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -13,8 +13,8 @@ import com.petharu.web.service.JDBCMyhomeService;
 import com.petharu.web.service.MyhomeService;
 
 
-@WebServlet("/diary/del")
-public class DiaryDeleteController extends HttpServlet {
+@WebServlet("/myhome/del")
+public class DeleteController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -29,6 +29,6 @@ public class DiaryDeleteController extends HttpServlet {
 			e.printStackTrace();
 		} 
 		
-		resp.sendRedirect("/myhome/list.html");
+		resp.sendRedirect("list.html");
 	}
 }
