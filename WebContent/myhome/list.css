@@ -657,4 +657,6 @@ button:hover {
 
 #diary-comment-writing, .submit-btn {
 	font-family: 'Nanum Gothic', sans-serif;	
-} 
+	margin: 10px 0 0 0;
+    display: block;
+}

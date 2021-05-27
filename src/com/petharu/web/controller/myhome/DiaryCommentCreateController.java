@@ -1,4 +1,4 @@
-package com.petharu.web.controller;
+package com.petharu.web.controller.myhome;
 
 import java.io.IOException;
 
@@ -12,27 +12,32 @@ import com.petharu.web.entity.DiaryComment;
 import com.petharu.web.service.DiaryCommentService;
 import com.petharu.web.service.JDBCDiaryCommentService;
 
-@WebServlet("/myhome/comment/delete")
-public class DiaryCommentDeleteController extends HttpServlet {
+@WebServlet("/myhome/comment/create")
+public class DiaryCommentCreateController extends HttpServlet {
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		req.setCharacterEncoding("UTF-8");
 
 		resp.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html; charset=UTF-8");
 
-		int id = Integer.parseInt(req.getParameter("comment-id"));
+		String content = req.getParameter("comment-content");
+		int memberId = Integer.parseInt(req.getParameter("comment-member-id"));
+		int diaryId = Integer.parseInt(req.getParameter("diary-id"));
 		
 		DiaryCommentService diaryCommentService = new JDBCDiaryCommentService();
 		
 		try {
-			diaryCommentService.delete(id);
+			DiaryComment diaryComment = new DiaryComment();
+			diaryComment.setContent(content);
+			diaryComment.setMemberId(memberId);
+			diaryComment.setDiaryId(diaryId);
+			diaryCommentService.insert(diaryComment);			
 		} catch(Exception e) {
 			resp.sendRedirect("/myhome/exception.html");
 		}
-		
 	}
 	
 }

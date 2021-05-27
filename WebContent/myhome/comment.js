@@ -99,6 +99,7 @@ function commentFnctn(diaryId) {
 					location.reload();
 				};
 				request.open("GET", `/myhome/comment/delete?comment-id=${commentId}`);
+				request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 				request.send(null);
 			} else
 				e.preventDefault();

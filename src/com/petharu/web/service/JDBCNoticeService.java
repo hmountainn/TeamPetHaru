@@ -208,7 +208,7 @@ public class JDBCNoticeService implements NoticeService {
 		
 		int result = 0;
 		
-		String sql = "INSERT INTO NOTICE(TITLE, ADMIN_ID, CONTENT) VALUES(?, ?, ?)";
+		String sql = "INSERT INTO NOTICE(TITLE, ADMIN_ID, CONTENT, FILES) VALUES(?, ?, ?, ?)";
 		
 		try {
 			String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
@@ -219,6 +219,7 @@ public class JDBCNoticeService implements NoticeService {
 			st.setString(1, notice.getTitle());
 			st.setInt(2, notice.getAdminId());
 			st.setString(3, notice.getContent());
+			st.setString(4, notice.getFiles());
 			
 			result = st.executeUpdate();
 			

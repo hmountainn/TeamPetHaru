@@ -1,4 +1,4 @@
-package com.petharu.web.controller;
+package com.petharu.web.controller.petManagement.weightRecord;
 
 import java.io.IOException;
 

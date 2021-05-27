@@ -380,7 +380,9 @@ ul,ol{
             line-height: 22px;
             font-size: 13px;
             
-            background-color: #F5A9A9;
+            background-color: white;
+            border:0.5px solid #848d95;
+            
             padding: 2px 8px;
 
             display: inline;
