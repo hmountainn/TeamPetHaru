@@ -1,9 +1,8 @@
-package com.petharu.web.api;
+package com.petharu.web.controller.myhome;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,10 +15,9 @@ import com.petharu.web.entity.Diary;
 import com.petharu.web.service.JDBCMyhomeService;
 import com.petharu.web.service.MyhomeService;
 
-
-@WebServlet("/api/myhome/list")
-public class DiaryList extends HttpServlet {
-
+@WebServlet("/myhome/detail")
+public class DetailController extends HttpServlet {
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
@@ -27,28 +25,18 @@ public class DiaryList extends HttpServlet {
 		resp.setContentType("text/html; charset=UTF-8");
 		
 		PrintWriter out = resp.getWriter();
-		
-		try {
-			String p = req.getParameter("page");
-			String m = req.getParameter("memberId");
 
-			int page = 1;
-			int memberId = 1;
-			
-			if (p != null && !p.equals("")) {
-				page = Integer.parseInt(p);
-			}			
-			if (m != null && !m.equals("")) {
-				memberId = Integer.parseInt(m);
-			}
+		try {
+			String id_ = req.getParameter("id");
+			int id = Integer.parseInt(id_);
 			
 			MyhomeService myhomeService = new JDBCMyhomeService();
-			List<Diary> list = myhomeService.getList(page, memberId);
+			Diary diary = myhomeService.get(id);
 			
 			Gson gson = new Gson();
-			String json = gson.toJson(list);
+			String json = gson.toJson(diary);
 			out.println(json);
-			
+		
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 

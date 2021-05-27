@@ -1,4 +1,4 @@
-package com.petharu.web.controller;
+package com.petharu.web.controller.community.knowhow;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -14,7 +14,7 @@ import com.petharu.web.service.JDBCKnowhowService;
 import com.petharu.web.service.KnowhowService;
 
 @WebServlet("/community/knowhow/detail")
-public class KnowhowDetailController extends HttpServlet {
+public class DetailController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

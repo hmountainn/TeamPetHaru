@@ -12,7 +12,7 @@ window.addEventListener("load", function() {
 	let diaryId = getParameter("id");
 	let form = document.querySelector("#main form");
 	
-	showEditPage(`/diary/detail?id=${diaryId}`);
+	showEditPage(`/myhome/detail?id=${diaryId}`);
 	console.log(diaryId);
 	
 	function showEditPage(url) {

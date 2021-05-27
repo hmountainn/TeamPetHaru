@@ -1,4 +1,4 @@
-package com.petharu.web.controller;
+package com.petharu.web.controller.community.knowhow;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -25,7 +25,7 @@ import com.petharu.web.service.KnowhowService;
     maxFileSize = 1024*1024*50, // 50메가
     maxRequestSize = 1024*1024*50*5 // 50메가 파일 5개까지
 )
-public class KnowhowRegController extends HttpServlet {
+public class RegController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

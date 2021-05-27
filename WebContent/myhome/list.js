@@ -4,20 +4,16 @@ window.addEventListener("load", function() {
 	let memberInfo = section.querySelector(".member-info");
 	let diarySection = section.querySelector(".diary-list");
 	let detailSection = document.querySelector(".detail-section");
-	let imgArea = detailSection.getElementsByClassName(".img-area");
-	let contentArea = detailSection.getElementsByClassName(".content-area");
 	let pager = section.querySelector(".pager");
 	let pageNum = pager.querySelector("ul a")
 	let background = document.querySelector(".black-bg");
 	let header = document.querySelector("#header");
-    let modal = document.querySelector(".modal");
-	let closeBtn = document.querySelector(".close-btn");
-	let deleteBtn = document.querySelector(".delete");
+    let modal;
+	let deleteSection;
 	let diaryId;
-	let deleteUrl;
 	
 	// 일기 목록 출력
-	showList(`../../api/diary/list`);
+	showList(`../../api/myhome/list`);
 	
 	pager.onclick = function(e) {	
 		e.preventDefault();
@@ -27,7 +23,7 @@ window.addEventListener("load", function() {
 
 		let page = e.target.innerText;
 		console.log(page);
-		showList(`../../api/diary/list?page=${page}`);
+		showList(`../../api/myhome/list?page=${page}`);
 		
 		pageNum.classList.remove("text-strong");
 		e.target.classList.add("text-strong");
@@ -41,33 +37,48 @@ window.addEventListener("load", function() {
 		request.onload = function() {
 			let list = JSON.parse(request.responseText);
 			console.log(list);
-			
+
 			if(list.length > 0) {
-				memberInfo.innerHTML = "";
 				diarySection.innerHTML = "";
-				
+					
 				// 멤버 정보 보여주기
 				let memberContent = 
 				   `<div class="img-member"></div>
-	                <span class="id">${list[0].memberId}</span>
-	                <div class="friend-info">
-	                    <span class="follower font">팔로워</span> 
-	                    <span class="follower-num font">20</span>
-	                    <span class="follow font">팔로우</span> 
-	                    <span class="follow-num font">10</span>
-	                </div>`;
+		            <span class="id">${list[0].memberId}</span>
+		            <div class="friend-info">
+		                <span class="follower font">팔로워</span> 
+		                <span class="follower-num font">20</span>
+		                <span class="follow font">팔로우</span> 
+		                <span class="follow-num font">10</span>
+		            </div>`;
 	
 				memberInfo.insertAdjacentHTML("beforeend", memberContent);
-				
+		
 				// 일기 목록 보여주기
 				for(let i=0; i<list.length; i++) {
-					diaryList = 
+					let diaryList = 
 					    `<div>
 							<input type="hidden" name="id" value="${list[i].id}">
 	                        <div class="img-area">
 	                            <img class="img-pet" src="../images/cat-rest.jpg">
 	                        </div>
 	                        <div class="text-area">
+								<div class="diary-info">
+                            		<ul>
+                            			<li>
+                            				<img src="../../images/view.png">
+                            				<span>${list[i].hit}</span>
+                            			</li>
+                            			<li>
+                            				<img src="../../images/heart.png">
+                            				<span>${list[i].likeCount}</span>
+                            			</li>
+                            			<li>
+                            				<img src="../../images/comment.png">
+                            				<span>${list[i].commentCount }</span>
+                            			</li>
+                            		</ul>
+                            	</div>
 	                            <span class="diary-content">${list[i].content}</span>
 	                            <div class="keyword">
 	                                <span>${list[i].keyword}</span>
@@ -78,6 +89,18 @@ window.addEventListener("load", function() {
 					diarySection.insertAdjacentHTML("beforeend", diaryList);
 				}
 			} else {
+				let memberContent = 
+				   `<div class="img-member"></div>
+		            <span class="id">${list.memberId}</span>
+		            <div class="friend-info">
+		                <span class="follower font">팔로워</span> 
+		                <span class="follower-num font">20</span>
+		                <span class="follow font">팔로우</span> 
+		                <span class="follow-num font">10</span>
+		            </div>`;
+	
+				memberInfo.insertAdjacentHTML("beforeend", memberContent);
+			
 				let empty = `<p>존재하지 않는 페이지입니다<p>`;
 				diarySection.innerHTML = empty;
 			}
@@ -89,8 +112,7 @@ window.addEventListener("load", function() {
 	
 	// 일기 클릭 시 일기 세부내용 보여주기
 	diarySection.onclick = function(e) {
-		if(!e.target.classList.contains("img-pet") && !e.target.classList.contains("diary-content") 
-			&& !e.target.classList.contains("close-btn"))
+		if(!e.target.classList.contains("img-pet") && !e.target.classList.contains("diary-content"))
             return;
 
 		background.classList.remove("d-none");
@@ -98,7 +120,7 @@ window.addEventListener("load", function() {
 		
 		// 일기 id 얻어오기
 		diaryId = e.target.parentNode.parentNode.firstElementChild.value;
-		showDetail(`../../diary/detail?id=${diaryId}`, commentFnctn);
+		showDetail(`../../myhome/detail?id=${diaryId}`, commentFnctn);
 	}
 	
 	// 일기 세부내용 출력
@@ -139,7 +161,6 @@ window.addEventListener("load", function() {
 		                    <hr>
 		                </section>
 
-
 						<!-- 댓글창 -->
 						<section id="diary-comment-sctn">
 	                        <h1 class="d-none">일기 댓글창</h1>
@@ -149,13 +170,16 @@ window.addEventListener("load", function() {
 	                            <form method="post">
 	                               <input type="hidden" name="diary-id" value="${diary.id}">
 	                               <input type="hidden" name="comment-member-id" value="1">
-	                               <textarea name="comment-content" id="diary-comment-writing" cols="45" rows="3" placeholder="댓글을 작성해주세요."></textarea>
+	                               <textarea name="comment-content" id="diary-comment-writing" cols="50" rows="3" placeholder="댓글을 작성해주세요."></textarea>
 	                               <button class="submit-btn button-2" type="submit">등록</button>
 	                            </form>
 	                        </section>
 						<!-- 댓글창 -->
 						
-		            </div>`;
+		            </div>
+					<div class="modal-close">
+			        	<img class="close-btn" src="../images/close-button.png" alt="">
+			        </div>`;
 				
 				detailSection.insertAdjacentHTML("afterbegin", diaryContent);
 				
@@ -168,53 +192,75 @@ window.addEventListener("load", function() {
 		request.send(null);
 	}
 	
-	// 일기 세부내용 창 닫기	
-	closeBtn.onclick = function(e) {
-		background.classList.add("d-none");
-		detailSection.classList.add("d-none");
-		
-		// 창 닫을 때 일기 세부내용 엘리먼트 지우기
-		detailSection.removeChild(detailSection.firstChild);
-		detailSection.removeChild(detailSection.firstChild.nextSibling); 
-	}
-	
-	// 일기 삭제 모달창 열기
-    document.onclick = function(e) {
-		if(!e.target.classList.contains("delete-btn"))
-			return;
-	
-        background.classList.remove("d-none");
-        modal.classList.remove("d-none");
-		detailSection.style.zIndex = 0;
-		background.style.opacity = 0.8;
-    };
-
-	// 일기 삭제
-	deleteBtn.onclick = function(e) {
-		deleleDiary(`/diary/del?id=${diaryId}`);
-		
-		function deleleDiary(url) {
-			let request = new XMLHttpRequest();
+	document.onclick = function(e) {
+		// 일기 세부내용 창 닫기	
+		if(e.target.classList.contains("close-btn")) {
+			console.log("아자!");
+			background.classList.add("d-none");
+			detailSection.classList.add("d-none");
 			
-			request.onload = function(){};
-			request.open("GET", url, true);
-			request.send(null);
+			// 창 닫을 때 일기 세부내용 엘리먼트 지우기
+			detailSection.removeChild(detailSection.firstChild);
+			detailSection.removeChild(detailSection.firstChild.nextSibling); 
+			
 		}
-	}
+		
+		// 일기 삭제 모달창 열기
+		if(e.target.classList.contains("delete-btn")) {
+			console.log("click");
+				
+			deleteSection = 
+				`<div class="delete-section">
+		            <div class="black-bg d-none"></div>
+		            <div class="modal">
+		                <div class="modal-content">
+		                    게시글을 삭제하시겠습니까?
+		                </div>
+		                <section class="modal-button-menu">
+		                    <h1 class="d-none">모달창 버튼</h1>
+		                    <button class="modal-btn modal-close">취소</button>
+		                    <button class="modal-btn delete">확인</button>
+		                </section>
+		                <div>
+		                    <a class="modal-close" href="#"><img class="close-btn2" src="../images/close-button.png" alt=""></a>
+		                </div>
+		            </div>
+		        </div>`;
+			
+			detailSection.insertAdjacentHTML("afterend", deleteSection);
+		
+	        background.classList.remove("d-none");
+			detailSection.style.zIndex = 0;
+			background.style.opacity = 0.8;
+		}
+		
+		modal = document.getElementsByClassName("modal");
+		
+		// 일기 삭제하기
+		if(e.target.classList.contains("delete")) {
+			deleleDiary(`/myhome/del?id=${diaryId}`);
+			
+			function deleleDiary(url) {
+				let request = new XMLHttpRequest();
+				
+				request.onload = function(){
+					location.href = "list.html";
+				};
+				request.open("GET", url, true);
+				request.send(null);
+			}	
+		}
+
+		// 삭제 확인 모달창 닫기
+		if(e.target.classList.contains("modal-close") || e.target.classList.contains("close-btn2")) {
+			console.log(modal);
+			
+			header.style.zIndex = 0;
+			background.style.opacity = 0.7;
+			background.style.zIndex = 999;
+			detailSection.style.zIndex = 1000;
+			modal[0].classList.add("d-none");
+		}	
+	}	
 	
-	
-	// 삭제 확인 모달창 닫기
-    modal.onclick = function(e) {
-        e.preventDefault();
-
-        if(!e.target.classList.contains("modal-close") && !e.target.classList.contains("close-btn"))
-            return;
-
-		header.style.zIndex = 0;
-		background.style.opacity = 0.7;
-		background.style.zIndex = 999;
-		detailSection.style.zIndex = 1000;
-        modal.classList.add("d-none");
-    }
-
 });
