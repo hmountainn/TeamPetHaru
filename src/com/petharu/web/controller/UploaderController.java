@@ -19,35 +19,35 @@ import javax.servlet.http.Part;
 @WebServlet("/uploader")
 @MultipartConfig (
     fileSizeThreshold = 1024*1024,
-    maxFileSize = 1024*1024*500, // 50¸Þ°¡
-    maxRequestSize = 1024*1024*500*5 // 50¸Þ°¡ ÆÄÀÏ 5°³±îÁö
+    maxFileSize = 1024*1024*500, // 50ï¿½Þ°ï¿½
+    maxRequestSize = 1024*1024*500*5 // 50ï¿½Þ°ï¿½ ï¿½ï¿½ï¿½ï¿½ 5ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 )
 public class UploaderController extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// ÆÄÀÏ ¾÷·ÎµåÇÏ±â
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½ï¿½Ï±ï¿½
 		request.setCharacterEncoding("UTF-8");
 		String p = request.getParameter("p");
 		
-		Part fpart = request.getPart("f"); // ÆÄÀÏÀ» °¡Á®¿À±â, ¹ÝÈ¯ Å¸ÀÔÀÌ ÆÄÆ®Çü
-		String fileName = fpart.getSubmittedFileName(); // Àü¼ÛµÈ ÆÄÀÏ ÀÌ¸§
-		InputStream fis = fpart.getInputStream(); // ÆÄÀÏ ½ºÆ®¸²
+		Part fpart = request.getPart("f"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½È¯ Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½
+		String fileName = fpart.getSubmittedFileName(); // ï¿½ï¿½ï¿½Ûµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½
+		InputStream fis = fpart.getInputStream(); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½
 	
-		ServletContext application = request.getServletContext(); // ¾îÇÃ¸®ÄÉÀÌ¼ÇÀÇ ÀúÀå¼Ò ¿ªÇÒ, ´Ù¸¥ ¼­ºí¸´ÀÌ ÀÛ¾÷À» ÀÌ¾î°¡·Á¸é µ¿ÀÏÇÑ µµ±¸, ÀúÀå¼Ò(ServletContext)°¡ ÇÊ¿ä
+		ServletContext application = request.getServletContext(); // ï¿½ï¿½ï¿½Ã¸ï¿½ï¿½ï¿½ï¿½Ì¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Û¾ï¿½ï¿½ï¿½ ï¿½Ì¾î°¡ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½(ServletContext)ï¿½ï¿½ ï¿½Ê¿ï¿½
 		
-		String path = "/upload"; // ¾÷·ÎµåÇÒ °æ·Î, ÇØ´ç °æ·Î´Â Àý´ë °æ·Î·Î ¼³Á¤ÇØ¾ß ÆÄÀÏ Ãâ·Â ³ª¿È, ÇÏÁö¸¸ ¹èÆ÷ ¼­¹ö°¡ ¸ðµÎ ´Ù¸¦ °ÍÀÌ¹Ç·Î Á¤ÀûÀ¸·Î ¼³Á¤ÇÏ¸é ¾ÈµÊ
+		String path = "/upload"; // ï¿½ï¿½ï¿½Îµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½, ï¿½Ø´ï¿½ ï¿½ï¿½Î´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Î·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½Ì¹Ç·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½Èµï¿½
 		if(p != null && !p.equals(""))
 			path = p;
 		
-		String realPath = application.getRealPath(path); // ½ÇÁ¦ ¹°¸® °æ·Î¸¦ ¾ò¾î³»ÁÜ
+		String realPath = application.getRealPath(path); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Î¸ï¿½ ï¿½ï¿½î³»ï¿½ï¿½
 		
-		File pathFile = new File(realPath); // ÆÄÀÏ ¸¸µé±â
-		if(!pathFile.exists()) // ÆÄÀÏÀÌ ¾øÀ¸¸é
-			pathFile.mkdirs(); // °æ·Î¸¦ ¸¸µé¾îÁÜ
+		File pathFile = new File(realPath); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+		if(!pathFile.exists()) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			pathFile.mkdirs(); // ï¿½ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		
-		String filePath = realPath + File.separator + fileName; // ¿î¿µÃ¼Á¦¸¶´Ù ÆÄÀÏ ±¸ºÐÀÚ°¡ ´Ù¸¦ ¼ö ÀÖÀ½
+		String filePath = realPath + File.separator + fileName; // ï¿½î¿µÃ¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ú°ï¿½ ï¿½Ù¸ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		FileOutputStream fos = new FileOutputStream(filePath);
 		
 		System.out.println(realPath);
@@ -55,14 +55,16 @@ public class UploaderController extends HttpServlet {
 		byte[] buf = new byte[1024];
 		int len = 0;
 		
-		while((len = fis.read(buf, 0, 1024)) >= 0) // ÃÖ´ë 1024°³±îÁö ÇÑ¹ø¿¡ ÀÐÀ» ¼ö ÀÖÀ½, len: ÀÔ·Â ½ºÆ®¸²¿¡¼­ ¹öÆÛ¿¡ ´ãÀº ¹ÙÀÌÆ® °³¼ö(ÃÖ´ë 1024)
-			fos.write(buf, 0, len); // ÀÐ¾îµéÀÎ len¸¸Å­ writeÇÏ´Â °Í
+		while((len = fis.read(buf, 0, 1024)) >= 0) // ï¿½Ö´ï¿½ 1024ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, len: ï¿½Ô·ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Û¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½(ï¿½Ö´ï¿½ 1024)
+			fos.write(buf, 0, len); // ï¿½Ð¾ï¿½ï¿½ï¿½ï¿½ lenï¿½ï¿½Å­ writeï¿½Ï´ï¿½ ï¿½ï¿½
 		
 		fos.flush();
 		fos.close();
 		fis.close();
 		
 		PrintWriter out = response.getWriter();
-		out.println(path + "/" + fileName); // response·Î º¸³»ÁÜ!
+
+		out.println(path + "/" + fileName); // responseï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!
+
 	}	
 }

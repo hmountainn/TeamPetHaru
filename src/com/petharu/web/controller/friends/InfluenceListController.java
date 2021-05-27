@@ -20,6 +20,7 @@ public class InfluenceListController extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
+		
 		JDBCInfluenceService service = new JDBCInfluenceService();
 		List<Influence> list = service.getList();
 		
