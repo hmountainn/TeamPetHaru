@@ -11,15 +11,16 @@ import java.util.Date;
 import java.util.List;
 
 import com.petharu.web.entity.Knowhow;
+import com.petharu.web.entity.KnowhowView;
 
 public interface KnowhowService {
 
-	List<Knowhow> getList() throws ClassNotFoundException, SQLException;
-	List<Knowhow> getList(int page, String pet) throws ClassNotFoundException, SQLException;
-
-	Knowhow get(int id) throws ClassNotFoundException, SQLException;
+	List<KnowhowView> getViewList() throws ClassNotFoundException, SQLException;
+	List<KnowhowView> getViewList(int page, String pet) throws ClassNotFoundException, SQLException;
+	
+	KnowhowView get(int id) throws ClassNotFoundException, SQLException;
 	int insert(Knowhow knowhow) throws ClassNotFoundException, SQLException;
-	int update(Knowhow knowhow);
+	int update(KnowhowView knowhow) throws ClassNotFoundException, SQLException;
 	int delete(int id);
 	
 	int hitUp(Knowhow knowhow);

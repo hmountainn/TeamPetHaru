@@ -39,6 +39,12 @@ button {
     align-items: center;
 }
 
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 .font {
     font-family: 'Nanum Gothic', sans-serif;
 }
@@ -136,7 +142,6 @@ button {
     .logo-title-container>img {
         width: 120px;
         height: auto;
-        margin-top: 7px;
         /* margin-bottom: auto; */
     }
 
@@ -224,7 +229,6 @@ button {
             }
 
                 .img-upload-btn {
-                    display: inline-block;
                     position: absolute;
                     bottom: 15px;
                     /* margin-left: auto;
@@ -233,11 +237,11 @@ button {
                     margin-left: -60px;
                     width: 120px;
                     height: 35px;
-
                     border-radius: 5px;
                     background-color: rgb(153, 151, 151);
                     font-weight: bold;
                     font-family: 'Nanum Gothic', sans-serif; 
+                    font-size: 14px;
                     color: white;  
                     cursor: pointer;   
                 }
@@ -248,7 +252,7 @@ button {
 
         .keyword {
             display: block;
-            width: 110px;
+            width: 130px;
             height: 30px;
             background-color: rgb(224, 223, 223);
             border-radius: 5px;
@@ -267,15 +271,19 @@ button {
         justify-content: center;
     }
 
-        .button-menu>button {
+        .button-menu>a, .reg-btn {
             width: 150px;
             height: 40px;
             background-color: rgb(207, 204, 204);
             border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            color: white;
             cursor: pointer;
         }
 
-        .button-menu>button:nth-child(3) {
+        .button-menu>button {
+        	margin-left: 15px;
             background-color: rgb(250, 195, 43);
         }
 

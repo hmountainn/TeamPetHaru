@@ -4,10 +4,8 @@ html{
 }
 body{
     height: 100%;
-    font-family: "맑은 고딕","고딕",'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: "留묒� 怨좊뵓","怨좊뵓",'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin: 0;
-    overflow-x: hidden;
-    
 }
 h1,ul,ol{
     margin: 0;
@@ -19,7 +17,16 @@ a{
 }
 ul,ol{
     list-style: none;
+    padding: 0;
+    /* margin-top: 16px; */
 }
+
+.img{
+    display: inline-block;
+    text-indent: -999px;
+    overflow: hidden;
+}
+
 .d-none{
     display: none !important;
 }
@@ -40,8 +47,6 @@ ul,ol{
     margin-right: auto;
     height: 100%;
     min-height:inherit;
-    /* opacity: 0.7;     */
-    /* height: inherit; */
 }
 /*-----------------*/
 
@@ -79,20 +84,15 @@ ul,ol{
         
         height: 100%;
         display: grid;  
-        grid-template-columns:1fr;
+        grid-template-columns: 200px 1fr;
         grid-template-rows: 1fr;
         grid-template-areas:
-        "main";
+        "aside main";
     }
 
 #aside{
     grid-area: aside;
     border-right: solid #e4e6e8 1px;
-    /* margin-top: 10PX;
-    background-color: white;
-    position: fixed;
-    width: 200px; */
-    
 }
 #main{  
     grid-area: main;
@@ -207,6 +207,64 @@ ul,ol{
     border-radius: 3px;
 }
 
+/* ------------main-------------------- */
+#main{
+    grid-area: main;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: antiquewhite; */
+}
+
+    .subject{
+        height: 50px;
+        text-align: center;
+        width: 100%;
+    }
+    .subject h1{
+        color: orange;
+        font-size: 22px;
+        display: inline-block;
+        border-bottom: 4px solid;
+        padding-bottom: 10px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        
+    }
+.pet-list-box{
+    height: 100%;
+    width: 100%;
+}
+
+    .pet-list{
+        height: 100%;
+        width: 100%;
+
+        display: flex;
+        flex-wrap: wrap;
+
+        justify-content: space-between;
+        align-items: center;
+        
+    }
+
+        .pet{
+            height: 250px;
+            width: 250px;
+        }
+
+        .pet:hover{
+            opacity: 70%;
+            box-shadow: 7px 7px #3b3b3b;
+        }
+
+            .pet .img{
+                height: 100%;
+                width: 100%;
+            }
+
+
+
 
 @media screen and (max-width:500px){
     #root{
@@ -234,91 +292,3 @@ ul,ol{
         margin: 0;
     }
 } 
-
-
-/* ------------------------------------------------------------------- */
-.content{  
-    height: 100%;
-}
-.mypet-section{
-    text-align: center;
-
-   }
-   .inner-width{
-     max-width: 600px;
-     margin: auto;
-     padding: 40px;
-     color: #333;
-     overflow: visible;
-    
- 
-   }
-   .pets{
-       margin-top: 0px;
-       margin-left: 90px;
-   }
-   .mypet-section h1{
-     font-size: 20px;
-     display: inline-block;
-     border-bottom: 4px solid;
-     padding-bottom: 10px;
-   }
-   .fas{
-        margin-left: 260px;
-   }
-   .list-box{
-     width: 400px;
-     padding: 0 0;
-     transition: 0.4s;
-     border: 1px solid #ddd;
-     border-radius: 15px;
-     box-shadow: 5px 5px 5px 5px #ddd;
-     margin: 0 0;
-     height: 500px;
-     overflow-y: scroll;
-   }
-   .total{
-       border-bottom:1px solid #ddd;
-   }
- .follow-info{
-     display: flex;
-     margin: 20px 10px 10px 30px;
-
- }
-   .list-box img{
-     width: 60px;
-     height: 60px;
-     border-radius: 30px;
-
-   }
-   .f-name{
-     margin-left: 20px;
-     line-height: 50px;
-     font-weight: bold;
-     }
-   .f-name a{
-       font-size: 18px;
-       margin: 0 15px ;
-   }
-   .f-status{
-     margin:10px 20px; 
-   }
- 
-   .button {
-     display: inline-block;
- 
-     border: 2px solid #ffa726;
-     border-radius: 15px;
-     color: #ffa726;
-     padding: 5px 10px;
-     text-decoration: none;
-     transition: 200ms ease-in-out;
-     font-size: 15px;
- 
-   }
-
-.selected{ /*---------------------ektlwjr*/
-    border: 2px solid gray;
-    color: gray;
-} 
-

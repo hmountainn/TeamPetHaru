@@ -1,15 +1,9 @@
-<%@page import="com.petharu.web.entity.Weight"%>
-<%@page import="com.petharu.web.service.JDBCWeightService"%>
-<%@page import="java.util.List" %>
-<%@page import="java.sql.Time" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<%
-    JDBCWeightService weightservice = new JDBCWeightService();
-    List<Weight> list = weightservice.getList();
-%>
-    
+        
 
 <!DOCTYPE html>
 <html lang="en">
@@ -32,10 +26,10 @@
                     <nav class="main-menu">   
                             <h1 class="d-none">메인메뉴</h1>
                             <ul>
-                                <li><a>우리집</a></li>
-                                <li><a>이웃집</a></li>
-                                <li><a>내 동물관리</a></li>
-                                <li><a>커뮤니티</a></li>
+                                <li><a href="../../myhome/list.html">우리집</a></li>
+                                <li><a href="../../friends/list">이웃집</a></li>
+                                <li><a href="../mypet/list">내 동물관리</a></li>
+                                <li><a href="../../community/notice/list.html">커뮤니티</a></li>
                             </ul>
                     </nav>
                 </div>
@@ -57,8 +51,8 @@
                     <nav class="aside-menu">
                         <h1 class="d-none">동물관리메뉴</h1>
                         <ul>
-                            <li><a href="../mypet/list.jsp">동물 관리</a></li>
-                            <li><a class="current-page" href="form.jsp">체중 관리</a></li>
+                            <li><a href="../mypet/list">동물 관리</a></li>
+                            <li><a class="current-page" href="pet-list">체중 관리</a></li>
                             <li><a href="../schedule/calendar.html">일정 관리</a></li>                       
                         </ul>
                     </nav>
@@ -66,18 +60,18 @@
                 <main id="main">
                     
                     <div class="record">
-                        <h1 class="record-title">전체 체중기록</h1>
-                        <div class="petphoto">
+                        <h1 class="record-title">${list[0].petname}의 체중기록</h1>
+<!--                         <div class="petphoto">
                             <ol>
                                 <li><a class="img pet1" href="">강아지1</a></li>
                                 <li><a class="img pet2 current" href="">강아지2</a></li>
                                 <li><a class="img pet3" href="">강아지3</a></li>
                                 <li><a class="img pet4" href="">강아지4</a></li>
                             </ol>
-                        </div>
+                        </div> -->
     
-                        
-                        <a href="stats.html"><div class="button">통계보기</div></a>
+                        <a href="form?petid=${param.petid}&petname=${list[0].petname}"><div class="regbutton">체중등록</div></a>
+                        <a href="stats.html"><div class="statbutton">통계보기</div></a>
                         <table class="record-table">
                             <thead>
                                 <tr>
@@ -87,86 +81,27 @@
                                 </tr>
                             </thead>
                             <tbody class="tbody">
-                            <%for(Weight n : list){ %>
-                                <tr>
-                                	<%
-                                		String Datetime = n.getMeasureDatetime();
-                                		String date = Datetime.substring(0,10);
-                                		String time = Datetime.substring(11,16);
-                                		
-                               			String hour = time.substring(0,2);
-                               			String minute = time.substring(3,5);
-                                	%>
-                                    <td><a href="revise-form.jsp?id=<%=n.getId()%>"><%=date %></a></td>
-                                    <%	
-                                    	if(Integer.parseInt(hour)>12){ %>
-                                    		<td class="pm"><%=Integer.parseInt(hour)-12%>:<%=minute%> PM</td>
-                                    	<%} else{ %>
-                                    		<td class="am"><%=Integer.parseInt(hour)%>:<%=minute%> AM</td>
-                                    	<%}%>
-                                    <td><%=n.getKg()%> KG</td>
-                                </tr>
-                            <%} %>
-<!--                                 <tr>
-                                    <td><a href="revise-form.html">2021-01-02</a></td>
-                                    <td class="pm">5:32 PM</td>
-                                    <td>5.05 KG</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="revise-form.html">2021-01-03</a></td>
-                                    <td class="am">9:06 AM</td>
-                                    <td>4.98 KG</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="revise-form.html">2021-01-03</a></td>
-                                    <td class="pm">6:41 PM</td>
-                                    <td>4.95 KG</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="revise-form.html">2021-01-04</a></td>
-                                    <td class="am">8:40 AM</td>
-                                    <td>5.12 KG</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="revise-form.html">2021-01-04</a></td>
-                                    <td class="pm">4:23 PM</td>
-                                    <td>5.10 KG</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="">2021-01-05</a></td>
-                                    <td class="am">9:03 AM</td>
-                                    <td>5.05 KG</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="">2021-01-05</a></td>
-                                    <td class="pm">5:32 PM</td>
-                                    <td>4.98 KG</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="">2021-01-06</a></td>
-                                    <td class="am">8:56 AM</td>
-                                    <td>5.03 KG</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="">2021-01-06</a></td>
-                                    <td class="pm">5:56 PM</td>
-                                    <td>5.07 KG</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="">2021-01-06</a></td>
-                                    <td class="am">9:15 AM</td>
-                                    <td>5.01 KG</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="">2021-01-06</a></td>
-                                    <td class="pm">6:03 PM</td>
-                                    <td>4.97 KG</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="">2021-01-06</a></td>
-                                    <td class="am">8:50 AM</td>
-                                    <td>5.13 KG</td>
-                                </tr> -->
+                            <c:forEach var="n" items="${list}">
+                            	<tr>
+                            		<c:set var="Datetime" value="${n.measureDatetime}"/>
+                            		<c:set var="date" value="${fn:substring(Datetime,0,10)}"/>
+                            		<c:set var="time" value="${fn:substring(Datetime,11,16)}"/>
+                            		
+                            		<c:set var="hour" value="${fn:substring(time,0,2)}"/>
+                            		<c:set var="minute" value="${fn:substring(time,3,5)}"/>
+                            		<fmt:parseNumber var = "numhour" value="${hour}" pattern = "00" />
+	                            	<td>
+	                            		<a href="revise-form?petid=${param.petid}&id=${n.id}">${date}</a>
+	                            	</td>
+	                            	<c:if test="${numhour>12}">
+	                            		<td class="pm">${numhour-12}:${minute} PM</td>
+	                            	</c:if>
+	                            	<c:if test="${numhour<=12}">
+	                            		<td class="am">${numhour}:${minute} AM</td>
+	                            	</c:if>	                            	
+ 	   								<td>${n.kg} KG</td>
+                            	</tr>
+                            </c:forEach>
                             </tbody>
                         </table>
                     </div>

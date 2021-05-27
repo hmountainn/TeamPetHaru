@@ -12,9 +12,9 @@ window.addEventListener("load", function() {
 	let header = document.querySelector("#header");
     let modal = document.querySelector(".modal");
 	let closeBtn = document.querySelector(".close-btn");
-	let closeBtn2;
+	let deleteBtn = document.querySelector(".delete");
 	let diaryId;
-	let deleteBtn;
+	let deleteUrl;
 	
 	// 일기 목록 출력
 	showList(`../../api/diary/list`);
@@ -26,6 +26,7 @@ window.addEventListener("load", function() {
 			return;
 
 		let page = e.target.innerText;
+		console.log(page);
 		showList(`../../api/diary/list?page=${page}`);
 		
 		pageNum.classList.remove("text-strong");
@@ -39,6 +40,7 @@ window.addEventListener("load", function() {
 		
 		request.onload = function() {
 			let list = JSON.parse(request.responseText);
+			console.log(list);
 			
 			if(list.length > 0) {
 				memberInfo.innerHTML = "";
@@ -59,7 +61,7 @@ window.addEventListener("load", function() {
 				
 				// 일기 목록 보여주기
 				for(let i=0; i<list.length; i++) {
-					let diaryList = 
+					diaryList = 
 					    `<div>
 							<input type="hidden" name="id" value="${list[i].id}">
 	                        <div class="img-area">
@@ -76,8 +78,8 @@ window.addEventListener("load", function() {
 					diarySection.insertAdjacentHTML("beforeend", diaryList);
 				}
 			} else {
-				let empty = `<p>존재하지 않는 페이지입니다<p>`
-				diaryList.innerHTML = empty;
+				let empty = `<p>존재하지 않는 페이지입니다<p>`;
+				diarySection.innerHTML = empty;
 			}
 		}
 		
@@ -96,16 +98,15 @@ window.addEventListener("load", function() {
 		
 		// 일기 id 얻어오기
 		diaryId = e.target.parentNode.parentNode.firstElementChild.value;
-		showDetail(`../../diary/detail?id=${diaryId}`);
+		showDetail(`../../diary/detail?id=${diaryId}`, commentFnctn);
 	}
 	
 	// 일기 세부내용 출력
-	function showDetail(url) {
+	function showDetail(url, commentFnctn) {
 		let request = new XMLHttpRequest();
 		
 		request.onload = function() {
 			let diary = JSON.parse(request.responseText);
-			console.log(diary);
 						
 				// 일기 세부내용 보여주기
 				let diaryContent = 
@@ -129,15 +130,38 @@ window.addEventListener("load", function() {
 		                    </div>
 		                    <div class="upload-date">${diary.regDate}</div>
 		                    <section class="button-menu">
+								<!-- 일기 아이디 심기 --!>
+								<input class="diaryId" type="hidden" name="id" value="${diaryId}">
 		                        <h1 class="d-none">버튼</h1>
-		                        <button class="btn"><a href="edit.html">수정</a></button>
+		                        <a href="edit.html?id=${diaryId}"><button class="btn edit-btn">수정</button></a>
 		                        <button class="btn delete-btn">삭제</button>
 		                    </section>
 		                    <hr>
 		                </section>
+
+
+						<!-- 댓글창 -->
+						<section id="diary-comment-sctn">
+	                        <h1 class="d-none">일기 댓글창</h1>
+	                        
+							<section class="diary-comment-write">
+	                            <h1 class="d-none">일기 댓글 작성</h1>
+	                            <form method="post">
+	                               <input type="hidden" name="diary-id" value="${diary.id}">
+	                               <input type="hidden" name="comment-member-id" value="1">
+	                               <textarea name="comment-content" id="diary-comment-writing" cols="45" rows="3" placeholder="댓글을 작성해주세요."></textarea>
+	                               <button class="submit-btn button-2" type="submit">등록</button>
+	                            </form>
+	                        </section>
+						<!-- 댓글창 -->
+						
 		            </div>`;
 				
 				detailSection.insertAdjacentHTML("afterbegin", diaryContent);
+				
+				// 댓글창 추가
+				commentLoad(`/api/myhome/comment/list?diary-id=${diaryId}`);
+				commentFnctn(`${diaryId}`);
 			}
 		
 		request.open("GET", url, true);
@@ -146,8 +170,6 @@ window.addEventListener("load", function() {
 	
 	// 일기 세부내용 창 닫기	
 	closeBtn.onclick = function(e) {
-
-		console.log("test");
 		background.classList.add("d-none");
 		detailSection.classList.add("d-none");
 		
@@ -156,15 +178,32 @@ window.addEventListener("load", function() {
 		detailSection.removeChild(detailSection.firstChild.nextSibling); 
 	}
 	
-	// 일기 삭제하기
-	deleteBtn = document.getElementsByClassName(".delete-btn");
-    deleteBtn.onclick = function() {
+	// 일기 삭제 모달창 열기
+    document.onclick = function(e) {
+		if(!e.target.classList.contains("delete-btn"))
+			return;
+	
         background.classList.remove("d-none");
         modal.classList.remove("d-none");
 		detailSection.style.zIndex = 0;
 		background.style.opacity = 0.8;
     };
 
+	// 일기 삭제
+	deleteBtn.onclick = function(e) {
+		deleleDiary(`/diary/del?id=${diaryId}`);
+		
+		function deleleDiary(url) {
+			let request = new XMLHttpRequest();
+			
+			request.onload = function(){};
+			request.open("GET", url, true);
+			request.send(null);
+		}
+	}
+	
+	
+	// 삭제 확인 모달창 닫기
     modal.onclick = function(e) {
         e.preventDefault();
 

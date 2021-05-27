@@ -1,17 +1,7 @@
-<%@page import="com.petharu.web.entity.DiaryComment"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="java.util.List"%>
-<%@page import="com.petharu.web.entity.Diary"%>
-<%@page import="com.petharu.web.service.JdbcFriendService"%>
-<%@page import="com.petharu.web.service.FriendService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
-<%
-JdbcFriendService friendService = new JdbcFriendService();
-List<Diary> list = friendService.getFriendDiaryList(1);
-List<DiaryComment> diaryCommentslist = friendService.getFriendDiaryCommentList(1);
-%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -73,9 +63,9 @@ List<DiaryComment> diaryCommentslist = friendService.getFriendDiaryCommentList(1
                        <table class="table">
                          <thead class="table-head">
                              <tr class="total">
-                                <td class="requests">2</td>  
-                                <td class="followers">7</td>
-                                <td class="following">7</td>
+                                <td class="requests">2</td>                                  
+                                <td class="followers">${followerTotal}</td>
+                                <td class="following">${followingTotal}</td>
                              </tr>
                          </thead>
                          <tbody class="table-body">
@@ -103,15 +93,16 @@ List<DiaryComment> diaryCommentslist = friendService.getFriendDiaryCommentList(1
                     <div class=container><!--container : box list-->
                       
                     <div class="big-box">
-                    <%for(Diary d:list){ %>
+                    <c:forEach var="n" items ="${list}">
+                    <%--<%for(Diary d:list){ %> --%> 
                         <div class="box">
                             <div class="img-box"><img class="diary-img" src="https://images.unsplash.com/photo-1562714529-94d65989df68?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=701&q=80"></div>
                         <div class="user"><a class="userinfo" href=""><img src="https://t3.ftcdn.net/jpg/02/92/94/20/240_F_292942036_FoCWnPBmDkeJaK2rvc7K6R9FctFfnTJs.jpg" alt="">
-                            <span><%=d.getMemberId()%></span></a><img class="heart"src="../images/heart.png"><span class="sub-info"> 114</span>                        
+                            <span>${n.userId}</span></a><img class="heart"src="../images/heart.png"><span class="sub-info"> 114</span>                        
                         </div>
                         <div class="diary-content">
                             <a class="diary-content-link" href="">
-                            <p><%=d.getContent() %></p></a>
+                            <p>${n.content}</p></a>
                         </div>
 
                         <div class="showDiary">
@@ -123,7 +114,7 @@ List<DiaryComment> diaryCommentslist = friendService.getFriendDiaryCommentList(1
                               <div class="close-btn">x</div>
                               <div class="main-box">
                                   <div class="main-box-title">
-                                      <span><%=d.getContent() %></span>    
+                                      <span>${n.keyword}</span>    
                                   </div>
                                   
                                   <div class="main-box-content">
@@ -131,26 +122,28 @@ List<DiaryComment> diaryCommentslist = friendService.getFriendDiaryCommentList(1
                                           <img class="user-img" src="https://images.unsplash.com/photo-1592817797597-392e3b878e1c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="">
                                       </div>
                                       <div>
-                                        <span class="user-id"><%=d.getMemberId() %></span>
+                                        <span class="user-id">${n.userId}</span>
                                         <span>
-                                            <%=d.getContent() %>
+                                            ${n.content}
                                         </span>
                                     </div>
                                   </div>
                                   <div class="comment-box">
-                                  <%for(DiaryComment dc : diaryCommentslist){ %>
+                                  <c:forEach var="dc" items="${diaryCommentslist}">
+                                  <%--<%for(DiaryComment dc : diaryCommentslist){ --%>
                                       <div class="main-box-comment">
                                           <div class="user-img-box">
                                               <img class="user-img" src="https://images.unsplash.com/photo-1561312176-5aedf7172115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=633&q=80" alt="">
                                           </div>
                                           <div>
-                                              <span class="user-id"><%=dc.getUserId() %></span>
+                                              <span class="user-id">${dc.userId}</span>
                                               <span>
-                                                  <%=dc.getContent() %>
+                                                  ${dc.content}
                                               </span>
                                           </div>
                                       </div>
-									<%} %>
+									<%--<%} --%>
+									</c:forEach>
                                   </div>
 
                                   <div class="comment-record">
@@ -164,7 +157,8 @@ List<DiaryComment> diaryCommentslist = friendService.getFriendDiaryCommentList(1
                       </div>
 
                         </div><!--box-->
-					<%} %>
+					<%-- <%} %> --%>
+					</c:forEach>
                     </div><!--big box-->
 
 
@@ -222,26 +216,18 @@ List<DiaryComment> diaryCommentslist = friendService.getFriendDiaryCommentList(1
                       <div class="close-btn">&times;</div>
                       <div class="list-box">
                         <div class="total">
-                          <h4>Followers ( <span class="num">7</span> )</h4>
+                         <c:set var ="followerTotal" value ="${followerTotal}"/>
+                          <h4>Followers ( <span class="num">${followerTotal}</span> )</h4>
                         </div>
-                
+                <c:forEach var="follower" items="${followerList}">
                         <div class="follow-info">
                             <img src="../images/dog.jpg" alt="">
-                            <div class="f-name"><a href="">id00000000</a></div>
+                            <div class="f-name"><a href="">${follower.userId}</a></div>
                             <div class="f-status">
                               <span class="button">Following</span>
                             </div>
                           </div>
-                
-                       <div class="follow-info">
-                         <img src="../images/dog.jpg" alt="">
-                         <div class="f-name"><a href="">id00000000</a></div>
-                         <div class="f-status">
-                           <span class="button">Following</span>
-                         </div>
-                       </div>
-                
-        
+                </c:forEach>        
                 
                       </div><!--list box-->
                     </div>
@@ -255,62 +241,17 @@ List<DiaryComment> diaryCommentslist = friendService.getFriendDiaryCommentList(1
                         <div class="list-box">
                     
                             <div class="total">
-                                <h4>Following ( <span class="num">7</span> )</h4>
+                            <c:set var ="followingTotal" value ="${followingTotal}"/>
+                                <h4>Following ( <span class="num">${followingTotal}</span> )</h4>
                             </div>
-                    
+                    <c:forEach var="following" items="${followingList}">
                         <div class="follow-info">
                             <img src="../images/dog.jpg" alt="">
-                            <div class="f-name"><a href="">id00000000</a></div>
+                            <div class="f-name"><a href="">${following.userId}</a></div>
                             <div class="f-status"><span class="button">Following</span></div>
-                        </div>
-                    
-                        <div class="follow-info">
-                            <img src="../images/dog.jpg" alt="">
-                            <div class="f-name"><a href="">id00000000</a></div>
-                            <div class="f-status">
-                            <span class="button">Following</span>
-                            </div>
-                        </div>
-                    
-                        <div class="follow-info">
-                            <img src="../images/dog.jpg" alt="">
-                            <div class="f-name"><a href="">id00000000</a></div>
-                            <div class="f-status">
-                            <span class="button">Following</span>
-                            </div>
-                        </div>
-                    
-                        <div class="follow-info">
-                            <img src="../images/dog.jpg" alt="">
-                            <div class="f-name"><a href="">id00000000</a></div>
-                            <div class="f-status">
-                            <span class="button">Following</span>
-                            </div>
-                        </div>
-                    
-                        <div class="follow-info">
-                            <img src="../images/dog.jpg" alt="">
-                            <div class="f-name"><a href="">id00000000</a></div>
-                            <div class="f-status">
-                            <span class="button">Following</span>
-                            </div>
-                        </div>
-                    
-                        <div class="follow-info">
-                            <img src="../images/dog.jpg" alt="">
-                            <div class="f-name"><a href="">id00000000</a></div>
-                            <div class="f-status">
-                            <span class="button">Following</span>
-                            </div>
-                        </div>
-                    
-                        <div class="follow-info">
-                            <img src="../images/dog.jpg" alt="">
-                            <div class="f-name"><a href="">id00000000</a></div>
-                            <div class="f-status">
-                            <span class="button">Following</span>
-                            </div>
-                        </div>
+                        </div>                    
+					</c:forEach>                 
+
                     
                         </div><!--list-box-->
                     

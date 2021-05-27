@@ -1,4 +1,4 @@
-package com.petharu.web.controller;
+package com.petharu.web.controller.petManagement.weightRecord;
 
 import java.io.IOException;
 
@@ -21,6 +21,7 @@ public class WeightEditController extends HttpServlet {
 		resp.setContentType("text/html; charset=UTF-8");
 		
 		int id = Integer.parseInt(req.getParameter("id"));
+		int petid = Integer.parseInt(req.getParameter("petid"));
 		String date = req.getParameter("date");
 		String time = req.getParameter("time");
 		String kg = req.getParameter("kg");
@@ -44,7 +45,7 @@ public class WeightEditController extends HttpServlet {
 			
 		}
 		
-		resp.sendRedirect("table.jsp");
+		resp.sendRedirect("table?petid="+petid);
 
 	}
 }

@@ -303,6 +303,13 @@ button {
         font-size: 18px;
         font-weight: bold;
     }
+    
+    .follow-btn {
+    	width: 50px;
+    	height: 50px;
+    	margin: 2px 0 0 10px;
+    	cursor: pointer;
+    }
 
     .pet-selecting-btn {
         line-height: 50px;
@@ -440,12 +447,13 @@ button {
                 color: white;
             }
 
-        .modal-close img {
+        .modal img {
             position: absolute;
             top: 0px;
             right: -40px;
             width: 28px;
             height: 28px;
+            cursor: pointer;
         }
         
 @media screen and (max-width:500px) {

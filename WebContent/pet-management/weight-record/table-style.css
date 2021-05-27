@@ -4,7 +4,7 @@ html{
 }
 body{
     height: 100%;
-    font-family: "맑은 고딕","고딕",'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: "留묒� 怨좊뵓","怨좊뵓",'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin: 0;
 }
 h1,ul,ol{
@@ -220,13 +220,13 @@ ul,ol{
         border: none;
         padding: 0;
         height: 70vh;
-        width: 110vh;
+        width: 100vh;
         
         display: flex;
         position: relative;
     }
 
-        .petphoto{
+/*         .petphoto{
             display: flex;
             position: absolute;
         }
@@ -280,7 +280,7 @@ ul,ol{
         .pet4{
             background-image: url("../../images/pet4.jpg");
             background-size: cover;
-        }
+        } */
 
         .record-title{
             padding: 7px 7px 7px 7px;
@@ -296,7 +296,7 @@ ul,ol{
             right: 40.5vh;
         }
 
-        .button{
+        .regbutton{
             padding: 10px 35px;
             border: none;
             font-family: sans-serif;
@@ -307,10 +307,25 @@ ul,ol{
 
             position: absolute;
             bottom: 4.5vh;
-            right: 42.5vh;
+            right: 55vh;
         }
+        
+        .statbutton{
+            padding: 10px 35px;
+            border: none;
+            font-family: sans-serif;
+            font-weight: bold;
+            font-size: 13px;
+            background-color: rgb(255, 209, 124);
+            border-radius: 10px;
 
-        .button:hover{
+            position: absolute;
+            bottom: 4.5vh;
+            right: 30vh;
+        }        
+
+        .regbutton:hover,
+        .statbutton:hover{
             opacity: 50%;
         }
 

@@ -1,7 +1,6 @@
 package com.petharu.web.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -10,36 +9,43 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-import com.petharu.web.entity.Notice;
-import com.petharu.web.service.JDBCNoticeService;
-import com.petharu.web.service.NoticeService;
+import com.petharu.web.entity.Diary;
+import com.petharu.web.service.JDBCMyhomeService;
+import com.petharu.web.service.MyhomeService;
 
-@WebServlet("/community/notice/update")
-public class NoticeUpdateController extends HttpServlet {
+
+
+@WebServlet("/myhome/edit")
+public class DiaryEditController extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		req.setCharacterEncoding("UTF-8");
-
 		resp.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html; charset=UTF-8");
 		
 		int id = Integer.parseInt(req.getParameter("id"));
-		String title = req.getParameter("title");
 		String content = req.getParameter("content");
+		String keyword = req.getParameter("keyword");
+	
+		MyhomeService myhomeService = new JDBCMyhomeService();
 		
-		NoticeService noticeService = new JDBCNoticeService();
+		Diary diary;
 		
 		try {
-			Notice notice = noticeService.get(id);
-			notice.setTitle(title);
-			notice.setContent(content);
-			noticeService.update(notice);			
+			diary = myhomeService.get(id);
+			diary.setMemberId(1);
+			diary.setKeyword(keyword);
+			diary.setContent(content);
+			myhomeService.update(diary);
+			
 		} catch (Exception e) {
-			resp.sendRedirect("exception.html");
-		}
-	}
+			e.printStackTrace();
+		} 
+		
+		resp.sendRedirect("list.html");
 	
+	}
 }
+	

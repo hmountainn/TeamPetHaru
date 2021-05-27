@@ -1,4 +1,4 @@
-package com.petharu.web.controller;
+package com.petharu.web.controller.community.notice;
 
 import java.io.IOException;
 import java.sql.SQLException;

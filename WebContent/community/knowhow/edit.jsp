@@ -1,5 +1,5 @@
+<%@page import="com.petharu.web.entity.KnowhowView"%>
 <%@page import="com.petharu.web.service.JDBCKnowhowService"%>
-<%@page import="com.petharu.web.entity.Knowhow"%>
 <%@page import="com.petharu.web.service.KnowhowService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -9,7 +9,7 @@
 	int id = Integer.parseInt(id_);
 	
 	KnowhowService knowhowService = new JDBCKnowhowService();
-	Knowhow knowhow = knowhowService.get(id);
+	KnowhowView knowhow = knowhowService.get(id);
 %>
 
 <!DOCTYPE html>
@@ -76,14 +76,18 @@
 		                        		String dog = "";
 		                        		String cat = "";
 		                        		
-		                        		if(pet.equals("강아지"))
-		                        			dog = "select";		                        		
-		                        		
-		                        		if(pet.equals("고양이"))
+		                        		if(pet.equals("강아지")) {
+		                        			dog = "select";
+		                        			pet = "강아지";		                        			
+		                        		}
+		                        			
+		                        		if(pet.equals("고양이")) {
 		                        			cat = "select";
+		                        			pet = "고양이";		                        				
+		                        		}
 		                        	%>
 	                            
-	                          		<input type="hidden" name="pet"">
+	                          		<input type="hidden" name="pet" value="<%=pet %>">
 	                          		<!-- 등록 시 선택한 동물의 종류를 수정 페이지에서도 동일하게 출력 -->
 	                                <span class="<%=dog %> center font">강아지</span>
 	                                <span class="<%=cat %> center font">고양이</span>

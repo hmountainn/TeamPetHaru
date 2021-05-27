@@ -1,19 +1,17 @@
-window.addEventListener("load", function() {
-    var section = document.querySelector("#diary-comment-sctn"); //댓글 전체창
-	var diaryId = section.querySelector("input[name=diary-id]").value;
-	var newCommentBtn = section.querySelector(".submit-btn");
-	var memberId = section.querySelector(".diary-comment-write input[name=comment-member-id]").value;
+function commentLoad(url) {
+	let section = document.querySelector("#diary-comment-sctn"); //댓글 전체창
+	let memberId = section.querySelector(".diary-comment-write input[name=comment-member-id]").value;
 
-	var request = new XMLHttpRequest();
+	let request = new XMLHttpRequest();
 	request.onload = function() {
-		var commentList = JSON.parse(request.responseText);
+		let commentList = JSON.parse(request.responseText);
 
 		if (commentList.length > 0) {
 			
-			for (var i = 0; i<commentList.length; i++) {
+			for (let i = 0; i<commentList.length; i++) {
 				
 				if(`${commentList[i].memberId}` == memberId) {
-					var diaryComment = `<section class="diary-comment">
+					let diaryComment = `<section class="diary-comment">
 		                                    <h1 class="d-none">일기 개별댓글</h1>
 											<input type="hidden" name="comment-id" value="${commentList[i].id}">
 		                                    <section class="comment-info">
@@ -38,7 +36,7 @@ window.addEventListener("load", function() {
 					section.insertAdjacentHTML("beforeend", diaryComment);
 					
 				} else {
-					var diaryComment = `<section class="diary-comment">
+					let diaryComment = `<section class="diary-comment">
 		                                    <h1 class="d-none">일기 개별댓글</h1>
 											<input type="hidden" name="comment-id" value="${commentList[i].id}">
 		                                    <section class="comment-info">
@@ -58,178 +56,158 @@ window.addEventListener("load", function() {
 		                                    </div>
 		                                </section>`
 		
-					section.insertAdjacentHTML("beforeend", diaryComment);;
+					section.insertAdjacentHTML("beforeend", diaryComment);
 				}
 				
 			}
 		}
 	};
 	
-	request.open("GET", `/api/myhome/comment/list?diary-id=${diaryId}`);
+	request.open("GET", url);
 	request.send(null);
+};
+
 	
+function commentFnctn(diaryId) {
+	let section = document.querySelector("#diary-comment-sctn"); //댓글 전체창
+	let newCommentBtn = section.querySelector(".submit-btn");
+	let memberId = section.querySelector(".diary-comment-write input[name=comment-member-id]").value;
 	
 	newCommentBtn.onclick = function() {
-		var content = section.querySelector(".diary-comment-write textarea").value;
-		var request = new XMLHttpRequest();
-		request.onload = function() {
-			location.href = "./comment.html";
+		let content = section.querySelector(".diary-comment-write textarea").value;
+		if (!content) {
+			alert("내용을 입력해주세요.");
+			return false;
+		} else {
+			let request = new XMLHttpRequest();
+			request.onload = function() {
+				location.href = "./list.html";
+			}
+			request.open("POST", `/myhome/comment/create?diary-id=${diaryId}`);
+			request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			request.send(`comment-content=${content}&comment-member-id=${memberId}`);
 		}
-		request.open("POST", `/myhome/comment/create?diary-id=${diaryId}`);
-		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-		request.send(`comment-content=${content}&comment-member-id=${memberId}`);
 	}
-
-
+	
 	section.onclick = function(e) {
-		
 		//삭제
 		if (e.target.classList.contains("del-btn")) {
             if(confirm("정말로 삭제하시겠습니까?")) {
-				var commentId = e.target.parentElement.parentElement.querySelector("input[name=comment-id]").value;
-				var request = new XMLHttpRequest();
+				let commentId = e.target.parentElement.parentElement.querySelector("input[name=comment-id]").value;
+				let request = new XMLHttpRequest();
 				request.onload = function() {
 					location.reload();
 				};
 				request.open("GET", `/myhome/comment/delete?comment-id=${commentId}`);
+				request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 				request.send(null);
 			} else
 				e.preventDefault();
         }
 
 		//수정
-		if (e.target.classList.contains("update-btn")) {
-			var commentId = e.target.parentElement.parentElement.querySelector("input[name=comment-id]").value;
-			var writerBtns = e.target.parentElement;
-            var contentSection = writerBtns.previousElementSibling; //댓글내용.comment-content
-            var currentContent = contentSection.querySelector("span");
-            var currentTxt = currentContent.innerText;
-            var input = document.createElement("input", "text");
+		else if (e.target.classList.contains("update-btn")) {
+			let commentId = e.target.parentElement.parentElement.querySelector("input[name=comment-id]").value;
+			let writerBtns = e.target.parentElement;
+            let contentSection = writerBtns.previousElementSibling; //댓글내용.comment-content
+            let currentContent = contentSection.querySelector("span");
+            let currentTxt = currentContent.innerText;
+            let input = document.createElement("input", "text");
 
             input.value = currentTxt;
             input.style.width = "250px";
             input.style.fontSize = "16px";
             contentSection.replaceChild(input, currentContent);
 
-            var btnList = writerBtns.children;
-            for(var i=0; i<btnList.length; i++) {
+            let btnList = writerBtns.children;
+            for(let i=0; i<btnList.length; i++) {
                 btnList[i].classList.toggle("d-none");
             };
 			
 			//수정 후 등록
-			var postBtn = writerBtns.querySelector(".post-cmt-btn");
+			let postBtn = writerBtns.querySelector(".post-cmt-btn");
             postBtn.onclick = function() {
-				var updateContent = contentSection.querySelector("input").value;
-				var request = new XMLHttpRequest();
-				request.onload = function() {
-					location.reload();
+				let updateContent = contentSection.querySelector("input").value;
+				if (!updateContent) {
+					alert("내용을 입력해주세요.");
+					return false;
+				} else {
+					let request = new XMLHttpRequest();
+					request.onload = function() {
+						location.reload();
+					}
+					request.open("POST", `/myhome/comment/update?comment-id=${commentId}`);
+					request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+					request.send(`comment-content=${updateContent}`);					
 				}
-				request.open("POST", `/myhome/comment/update?comment-id=${commentId}`);
-				request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-				request.send(`comment-content=${updateContent}`);
 			}
 			
 			//수정 취소
-		}
-
-        
-        else
-            return;
-	}
-
-
-    /*section.onclick = function(e) {
-
-        //내가 단 댓글 수정
-        if (e.target.classList.contains("update-btn")) {
-            var writerBtn = e.target.parentElement;
-            var content = writerBtn.previousElementSibling; //댓글내용.comment-content
-            var contentSpan = content.querySelector("span");
-            var contentTxt = contentSpan.innerText;
-            var input = document.createElement("input", "text");
-            var eleList = writerBtn.children;
-
-            input.value = contentTxt;
-            input.style.width = "250px";
-            input.style.fontSize = "16px";
-            content.replaceChild(input, contentSpan);
-
-            for(var i=0; i<eleList.length; i++) {
-                eleList[i].classList.toggle("d-none");
-            };
-
-            //등록
-            var postBtn = writerBtn.querySelector(".post-cmt-btn");
-            postBtn.onclick = function() {
-                var eleList = writerBtn.children;
-                for (var i=0; i<eleList.length; i++) {
-                    eleList[i].classList.toggle("d-none");
-                };
-                var input = content.querySelector("input");
-                contentSpan.innerText = input.value;
-                content.removeChild(input);
-                content.append(contentSpan);
-            };
-
-            //취소
-            var cancleBtn = writerBtn.querySelector(".cancle-cmt-btn")
+			let cancleBtn = writerBtns.querySelector(".cancle-cmt-btn");
             cancleBtn.onclick = function() {
-                var eleList = writerBtn.children;
-                for(var i=0; i<eleList.length; i++) {
-                    eleList[i].classList.toggle("d-none");
+                let btnList = writerBtns.children;
+                for(let i=0; i<btnList.length; i++) {
+                    btnList[i].classList.toggle("d-none");
                 }
-                var input = content.querySelector("input");
-                content.removeChild(input);
-                content.append(contentSpan);
+                let input = contentSection.querySelector("input");
+                contentSection.removeChild(input);
+                contentSection.append(currentContent);
             };
-        }
-
-
-        //답댓글
-        else if (e.target.classList.contains("reply-btn")) {
-            var input = document.createElement("input", "text");
+		}
+		
+		//답댓글
+		else if (e.target.classList.contains("reply-btn")) {
+			let input = document.createElement("input", "text");
             input.style.width = "250px";
             input.style.fontSize = "16px";
             input.style.marginBottom = "10px";
-            
-            var commentBtn = e.target.parentElement;
-            var eleList = commentBtn.children;
-            for(var i=0; i<eleList.length; i++) {
-                eleList[i].classList.toggle("d-none");
-            };
-            commentBtn.insertAdjacentElement("beforebegin", input);
 
-            //등록
-            var postBtn = commentBtn.querySelector(".post-cmt-btn")
-            var comment = commentBtn.parentElement; //개별댓글.diary-comment
+			let commentBtns = e.target.parentElement;
+            let btnList = commentBtns.children;
+            for(let i=0; i<btnList.length; i++) {
+                btnList[i].classList.toggle("d-none");
+            };
+            commentBtns.insertAdjacentElement("beforebegin", input);
+			
+			//답댓글 등록
+			let postBtn = commentBtns.querySelector(".post-cmt-btn")
             postBtn.onclick = function() {
-                var eleList = commentBtn.children;
-                for (var i=0; i<eleList.length; i++) {
-                    eleList[i].classList.toggle("d-none");
-                };
-                
-                var replyDiv = `<div style="margin-top:15px; margin-left:25px;">
-                                    <span>${input.value}</span>
-                                </div>`;
-                commentBtn.insertAdjacentHTML("afterend", replyDiv);
-                comment.removeChild(input);
+				if (!input.value) {
+					alert("내용을 입력해주세요.");
+					return false;
+				} else {
+	                let eleList = commentBtns.children;
+	                for (let i=0; i<eleList.length; i++) {
+	                    eleList[i].classList.toggle("d-none");
+	                };
+	
+					let replyIdSpan = input.previousElementSibling.previousElementSibling.querySelector(".comment-writer-id");
+					let replyId = replyIdSpan.innerText; 
+					let request = new XMLHttpRequest();
+					request.onload = function() {
+						location.href = "./list.html";
+					};
+					request.open("POST", `/myhome/comment/create?diary-id=${diaryId}`);
+					request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+					request.send(`comment-content=${'@'+replyId+')'}+${input.value}&comment-member-id=${memberId}`);
+				}
             };
 
-            //취소
-            var cancleBtn = commentBtn.querySelector(".cancle-cmt-btn");
-            cancleBtn.onclick = function() {
-                var eleList = commentBtn.children;
-                for(var i=0; i<eleList.length; i++) {
-                    eleList[i].classList.toggle("d-none");
-                };
-                comment.removeChild(input);
+			//답댓글 취소
+			let cancleBtn = commentBtns.querySelector(".cancle-cmt-btn");
+            cancleBtn.onclick = function(e) {
+				let commentBtns = e.target.parentElement;
+                let btnList = commentBtns.children;
+                for(let i=0; i<btnList.length; i++) {
+                    btnList[i].classList.toggle("d-none");
+                }
+				let input = commentBtns.previousElementSibling;
+                let comment = commentBtns.parentElement;
+				comment.removeChild(input); 
             };
-        }
+		}
 
-        
         else
             return;
-        
-    };*/
-
-})
+	}
+};

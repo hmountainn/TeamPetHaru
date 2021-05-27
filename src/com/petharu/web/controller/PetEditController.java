@@ -53,7 +53,6 @@ public class PetEditController extends HttpServlet {
 			pet.setGender(gender);
 			pet.setBirthday(birthday);
 			pet.setPersonality(personality);
-			// pet.setMemberId(id_);
 			pet.setBreedId(breedId);
 			petService.updatePetProfile(pet);
 
@@ -63,8 +62,8 @@ public class PetEditController extends HttpServlet {
 		}
 		
 		req.setAttribute("pet", pet);
-		resp.sendRedirect("/pet-management/mypet/list");
-//		out.println("<script>location.href='/pet-management/mypet/list'</script>");
+//		resp.sendRedirect("/pet-management/mypet/list");
+		out.println("<script>location.href='/pet-management/mypet/list'</script>");
 
 	}
 }

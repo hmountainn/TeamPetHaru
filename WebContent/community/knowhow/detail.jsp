@@ -1,6 +1,3 @@
-<%@page import="com.petharu.web.service.JDBCKnowhowService"%>
-<%@page import="com.petharu.web.entity.Knowhow"%>
-<%@page import="com.petharu.web.service.KnowhowService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -67,11 +64,11 @@
 	                  			</li>
 	                  			<li>
 	                  				<img src="../../images/heart.png">
-	                  				<span>3</span>
+	                  				<span>${knowhow.likeCount}</span>
 	                  			</li>
 	                  			<li>
 	                  				<img src="../../images/comment.png">
-	                  				<span>3</span>
+	                  				<span>${knowhow.commentCount}</span>
 	                  			</li>
 	                  		</ul>
 	                  	</div>
@@ -80,23 +77,12 @@
                         <section class="member-info flex"> 
                             <h1 class="d-none">회원 정보</h1>
                             <div class="img-member"></div> 
-                            <span class="id">${knowhow.memberId}</span>
+                            <span class="id">${knowhow.userId}</span>
+                            <img class="follow-btn" src="../../images/follow.png">
                         </section>
-                        <section class="pet-selecting-btn">
-                        	<%
-                        		String pet = "강아지";/* knowhow.getKnowhowTypeName(); */
-                        		String dog = "";
-                        		String cat = "";
-                        		
-                        		if(pet.equals("강아지"))
-                        			dog = "select";
-                        		
-                        		if(pet.equals("고양이"))
-                        			cat = "select";
-                        	%>
-                        
-                            <button class="<%=dog %> pet-btn font">강아지</button>
-                            <button class="<%=cat %> pet-btn font">고양이</button>
+                        <section class="pet-selecting-btn">                      
+                            <button class="${knowhow.knowhowTypeName == '강아지' ? 'select' : ''} pet-btn font">강아지</button>
+                            <button class="${knowhow.knowhowTypeName == '고양이' ? 'select' : ''} pet-btn font">고양이</button>
                         </section>
                     </section>
                     <section>
@@ -131,7 +117,7 @@
                     <a class="modal-btn flex-center" href="del?id=${knowhow.id}">확인</a>
                </section>
                 <div>
-                    <a class="modal-close" href="#"><img class="close-btn" src="../../images/close-button.png" alt=""></a>
+                    <img class="close-btn" src="../../images/close-button.png" alt="">
                 </div>
             </div>
         </div>

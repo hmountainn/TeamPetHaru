@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
@@ -16,15 +15,14 @@ public class JDBCNoticeService implements NoticeService {
 
 	@Override
 	public List<Notice> getList() {
-		return getList(1, "title", "");
+		return getList(1, "title", "", "desc", 10);
 	}
 
 	@Override
-	public List<Notice> getList(int page, String field, String query) {
+	public List<Notice> getList(int page, String field, String query, String sort, int size) {
 		
 		List<Notice> list = new ArrayList<>();
 		
-		int size = 10;
 		int startIdx = (page-1)*size + 1;
 		int endIdx = size*page;
 		
@@ -45,7 +43,7 @@ public class JDBCNoticeService implements NoticeService {
 				+ "            SELECT *"
 				+ "            FROM NOTICE_VIEW"
 				+ "            WHERE "+field+" LIKE '%"+query+"%'"
-				+ "            ORDER BY REGDATE DESC"
+				+ "            ORDER BY REGDATE " + sort
 				+ "        ) NV"
 				+ "    ) N"
 				+ "    WHERE RN BETWEEN "+startIdx+" AND "+endIdx;
@@ -210,7 +208,7 @@ public class JDBCNoticeService implements NoticeService {
 		
 		int result = 0;
 		
-		String sql = "INSERT INTO NOTICE(TITLE, ADMIN_ID, CONTENT) VALUES(?, ?, ?)";
+		String sql = "INSERT INTO NOTICE(TITLE, ADMIN_ID, CONTENT, FILES) VALUES(?, ?, ?, ?)";
 		
 		try {
 			String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
@@ -221,6 +219,7 @@ public class JDBCNoticeService implements NoticeService {
 			st.setString(1, notice.getTitle());
 			st.setInt(2, notice.getAdminId());
 			st.setString(3, notice.getContent());
+			st.setString(4, notice.getFiles());
 			
 			result = st.executeUpdate();
 			

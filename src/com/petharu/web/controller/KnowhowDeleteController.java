@@ -28,6 +28,6 @@ public class KnowhowDeleteController extends HttpServlet {
 			e.printStackTrace();
 		} 
 		
-		resp.sendRedirect("list.jsp");
+		resp.sendRedirect("list");
 	}
 }

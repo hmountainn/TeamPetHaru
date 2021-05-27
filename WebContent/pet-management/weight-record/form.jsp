@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,10 +24,10 @@
                     <nav class="main-menu">   
                             <h1 class="d-none">메인메뉴</h1>
                             <ul>
-                                <li><a>우리집</a></li>
-                                <li><a>이웃집</a></li>
-                                <li><a>내 동물관리</a></li>
-                                <li><a>커뮤니티</a></li>
+                                <li><a href="../../myhome/list.html">우리집</a></li>
+                                <li><a href="../../friends/list">이웃집</a></li>
+                                <li><a href="../mypet/list">내 동물관리</a></li>
+                                <li><a href="../../community/notice/list.html">커뮤니티</a></li>
                             </ul>
                     </nav>
                 </div>
@@ -46,9 +49,9 @@
                     <nav class="aside-menu">
                         <h1 class="d-none">동물관리메뉴</h1>
                         <ul>
-                            <li><a href="../mypet/list.jsp">동물 관리</a></li>
-                            <li><a class="current-page" href="form.jsp">체중 관리</a></li>
-                            <li><a href="../schedule/calendar.html">일정 관리</a></li>                       
+                            <li><a href="../mypet/list">동물 관리</a></li>
+                            <li><a class="current-page" href="pet-list">체중 관리</a></li>
+                            <li><a href="../schedule/calendar.html">일정 관리</a></li>                         
                         </ul>
                     </nav>
                 </aside>
@@ -59,14 +62,14 @@
                         <form class="weight-input" action="WeightReg" method="post">
 	                        
 	                            <h1 class="d-none">펫 선택</h1>
-	                            <div class="petphoto">
+<!-- 	                            <div class="petphoto">
 	                                <ol>
 	                                    <li><a class="img pet1 current" href="">강아지1</a></li>
 	                                    <li><a class="img pet2" href="">강아지2</a></li>
 	                                    <li><a class="img pet3" href="">강아지3</a></li>
 	                                    <li><a class="img pet4" href="">강아지4</a></li>
 	                                </ol>
-	                            </div>
+	                            </div> -->
 	    						
 	                            <div class="record">기록하기</div>
 	                            <div class="weight-input-container">
@@ -88,8 +91,12 @@
 	                            </div>
 	    
 	                            <div>
+	                            	<input type="hidden" name="petid" value="${param.petid}">
+	                            	<input type="hidden" name="petname" value="${param.petname}">
 	                                <input class="submit" type="submit" value="등록">
 	                            </div>
+	                            
+	                           
 	                        </form>
 
                     </fieldset>

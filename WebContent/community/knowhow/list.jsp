@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -50,7 +51,7 @@
                         <h1 class="d-none">커뮤니티 메뉴</h1>
                         <ul>
                             <li><a href="../notice/list.html">공지사항</a></li>
-                            <li><a class="current-page" href="list.jsp">노하우</a></li>
+                            <li><a class="current-page" href="list">노하우</a></li>
                         </ul>
                     </nav>
                 </aside>
@@ -74,7 +75,7 @@
                         </section> -->
                         <section class="knowhow-upload-btn">
                             <h1 class="d-none">노하우 게시글 등록</h1>
-                            <a href="reg.jsp"><button class="font">노하우 등록하기</button></a>
+                            <a href="reg"><button class="font">노하우 등록하기</button></a>
                         </section>
                     </section>
                     <div class="knowhow-list">
@@ -92,7 +93,7 @@
                         <c:forEach var="k" items="${list}">
                         	<div>
 	                            <div class="img-area">
-	                                <a href="detail.jsp?id=${k.id}">
+	                                <a href="detail?id=${k.id}">
 	                                <img class="img-pet" src="../../images/cat-rest1.jpg">
 	                                </a>
 	                            </div>
@@ -105,23 +106,28 @@
 	                            			</li>
 	                            			<li>
 	                            				<img src="../../images/heart.png">
-	                            				<span>3</span>
+	                            				<span>${k.likeCount}</span>
 	                            			</li>
 	                            			<li>
 	                            				<img src="../../images/comment.png">
-	                            				<span>2</span>
+	                            				<span>${k.commentCount }</span>
 	                            			</li>
 	                            		</ul>
 	                            	</div>
-	                                <div class="knowhow-title"><a href="detail.jsp?id=${k.id}">${k.title}</a></div>
+	                                <div class="knowhow-title"><a href="detail?id=${k.id}">${k.title}</a></div>
 	                                <section class="flex">
 	                                    <div class="img-member"></div>
-	                                    <span class="id">${k.memberId}</span>
+	                                    <span class="id">${k.userId}</span>
 	                                </section>
 	                            </div>
 	                        </div>	
                         </c:forEach>
                     </div>
+                
+                    <c:if test="${fn:length(list) == 0 }">
+                    	<p class="non-page">존재하지 않는 페이지입니다</p>
+                    </c:if>
+                    
                     <nav class="pager">
                         <h1 class="d-none">현재 페이지 정보</h1>
                         <a href=""><img class="prev" src="../../images/left-arrow.png" alt=""></a>

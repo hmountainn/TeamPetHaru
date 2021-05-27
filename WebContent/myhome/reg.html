@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="upload.css" type="text/css" rel="stylesheet">
+    <link href="reg.css" type="text/css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
 </head>
@@ -42,30 +42,32 @@
                 <main id="main">
                     <section>
                         <h1 class="title">PetHaru 다이어리</h1>
-                        <section class="write-content">
-                            <section>
-                                <h1>이미지 등록</h1>
-                                <span class="required">*</span>
-                                <div class="img-pet">
-                                    <button class="img-upload-btn">이미지 업로드</button>
-                                </div>
-                            </section>
-                            <section>
-                                <h1>일기 작성</h1>
-                                <span class="required">*</span>
-                                <textarea placeholder="내용을 입력해주세요"></textarea>
-                            </section>
-                        </section>
-                        <section class="write-keyword">
-                            <h1>키워드 입력</h1>
-                            <input class="keyword" type="text" placeholder="#">
-                        </section>
-                        <hr class="line">
-                        <section class="button-menu">
-                            <h1 class="d-none">버튼</h1>
-                            <button><a class="font" href="list.html">취소하기</a></button>
-                            <button><a class="font" href="list.html">등록하기</a></button>
-                        </section>
+                        <form action="reg" method="post">
+	                        <section class="write-content">
+	                            <section>
+	                                <h1>이미지 등록</h1>
+	                                <span class="required">*</span>
+	                                <div class="img-pet">
+	                                    <div class="img-upload-btn center">이미지 업로드</div>
+	                                </div>
+	                            </section>
+	                            <section>
+	                                <h1>일기 작성</h1>
+	                                <span class="required">*</span>
+	                                <textarea name="content" placeholder="내용을 입력해주세요"></textarea>
+	                            </section>
+	                        </section>
+	                        <section class="write-keyword">
+	                            <h1>키워드 입력</h1>
+	                            <input class="keyword font" type="text" name="keyword" placeholder="예) #뽀삐#산책">
+	                        </section>
+	                        <hr class="line">
+	                        <section class="button-menu">
+	                            <h1 class="d-none">버튼</h1>
+	                            <a class="center font" href="list.html">취소하기</a>
+	                            <button class="reg-btn font">등록하기</button>
+	                        </section>
+                        </form>
                     </section>
                 </main>
             </div>

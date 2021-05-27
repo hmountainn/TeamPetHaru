@@ -14,9 +14,9 @@
 	
 	if(id) 
 	petId.value = `${id}`;
-console.log(petId.value);
+	console.log(petId.value);
 	
-	var pet;
+	let pet;
 	pet = document.querySelector(`.pet-id-${petId.value}`);
 	if (pet.classList.contains('d-none')) {
 		pet.classList.remove('d-none');	
@@ -26,7 +26,7 @@ console.log(petId.value);
 //수정하기  
   function updatePopup(id){
     console.log("update");
-	let inputId = document.querySelector('.hiddenId');
+	const inputId = document.querySelector('.hiddenId');
 	
 	console.log(inputId.value);
 	
@@ -97,8 +97,8 @@ console.log(petId.value);
 	
 
     /*---------------반려 동물 삭제---------------------*/
-    var deleteButton = document.querySelector(".delete");
-    var cancel = document.querySelector(".cancel");
+    const deleteButton = document.querySelector(".delete");
+    const cancel = document.querySelector(".cancel");
     
     // deleteButton.onclick = function(e){
     //   var target = e.target;
@@ -127,4 +127,70 @@ console.log(fileTriggetButtons);
 			fileButton.dispatchEvent(event);//이벤트전달
 		};	
 	}
+	
+	const uploadBox = document.querySelector("#upload-box");
+	console.log(uploadBox);
+	
+	uploadBox.ondragenter = function() {
+
+		console.log("enter");
+	};
+	
+	uploadBox.ondragleave = function() {
+		console.log("leave");
+		uploadBox.classList.remove("valid");
+		uploadBox.classList.remove("invalid");
+	};
+	
+	uploadBox.ondragover = function(e) {
+		e.preventDefault();
+		let dt= e.dataTransfer;
+		
+		//가져오는순간 유효하지않다면말해주기
+		var valid = dt.types.indexOf("Files") >= 0;
+		
+		if(valid){
+			uploadBox.classList.add("valid");
+		}
+		else{
+			uploadBox.classList.add("invalid");
+		}
+
+	};
+	
+	uploadBox.ondrop = function(e) {
+		e.preventDefault();		
+		
+		uploadBox.classList.remove("valid");
+		uploadBox.classList.remove("invalid");
+		
+		let dt = e.dataTransfer;
+		if(dt.files.length>1){
+			alert("파일은 하나만 전송이가능합니다.");
+			return;
+		}
+		
+		if(dt.files[0].size > 500*1024*1024){
+			alert("죄송합니다. 500MByte를 초과할수 없습니다.");
+			return;
+		}		
+		
+		let formData = new FormData();
+		formData.append("p","/upload/test");
+		formData.append("f",dt.files[0])//서버에 f로보냄
+		
+		let request = new XMLHttpRequest();
+		request.onload = function(){
+			console.log("완료");
+		};
+		request.upload.onprogress = function(e){
+			console.log(`total:${e.total},loaded:${e.loaded}`);
+		}
+		
+		request.open("POST","/uploader",true);
+		request.send(formData);
+		
+		console.log("drop");
+	};
+	
 })

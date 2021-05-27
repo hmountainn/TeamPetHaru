@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.petharu.web.entity.Knowhow;
+import com.petharu.web.entity.KnowhowView;
 import com.petharu.web.service.JDBCKnowhowService;
 import com.petharu.web.service.KnowhowService;
 
@@ -30,7 +31,7 @@ public class KnowhowEditController extends HttpServlet {
 	
 		KnowhowService service = new JDBCKnowhowService();
 		
-		Knowhow knowhow;
+		KnowhowView knowhow;
 		
 		try {
 			knowhow = service.get(id);
@@ -43,7 +44,7 @@ public class KnowhowEditController extends HttpServlet {
 			e.printStackTrace();
 		} 
 		
-		resp.sendRedirect("detail.jsp?id="+id);
+		resp.sendRedirect("detail?id="+id);
 	
 	}
 }

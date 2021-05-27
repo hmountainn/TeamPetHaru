@@ -5,12 +5,13 @@ window.addEventListener("load", function() {
     var modal = document.querySelector(".modal");
     var deleteBtn = document.querySelector(".button-menu .delete-btn");
 
-    deleteBtn.onclick = function() {
+    deleteBtn.onclick = function(e) {	
         background.classList.remove("d-none");
         modal.classList.remove("d-none");
     };
 
     modal.onclick = function(e) {
+		e.preventDefault();
         if(!e.target.classList.contains("modal-close") && !e.target.classList.contains("close-btn"))
             return;
 

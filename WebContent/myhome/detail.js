@@ -1,8 +1,9 @@
 window.addEventListener("load", function() {
-    var background = document.querySelector(".black-bg");
-    var modal = document.querySelector(".modal");
-    var deleteBtn = document.querySelector(".delete-btn");
-
+    let background = document.querySelector(".black-bg");
+    let modal = document.querySelector(".modal");
+	let editBtn = document.querySelector(".edit-btn");
+    let deleteBtn = document.querySelector(".delete-btn");
+	
     deleteBtn.onclick = function() {
         background.classList.remove("d-none");
         modal.classList.remove("d-none");

@@ -12,11 +12,47 @@ import java.util.ArrayList;
 import java.sql.Date;
 import java.util.List;
 
+import com.petharu.web.entity.Pet;
 import com.petharu.web.entity.Weight;
 
 public class JDBCWeightService implements WeightService {
+	public List<Pet> getpetList(int memberid){
+		List<Pet> list = new ArrayList<>();
+		
+		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
+		String sql = "SELECT * FROM PET WHERE MEMBER_ID="+memberid;
+		
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver"); //드라이버 생성
+			Connection con = DriverManager.getConnection(url, "PETHARU", "1357"); //연결
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+			
+			while(rs.next()) {
+				int id = rs.getInt("ID");
+				String name = rs.getString("NAME");
+				
+				Pet pet = new Pet();
+				pet.setId(id);
+				pet.setName(name);
+
+				list.add(pet);
+			}
+			
+			rs.close();
+			st.close();
+		}catch (Exception e) {
+			throw new ServiceException();
+		}
+		return list;
+		
+		
+	}
+	
 	public List<Weight> getList(){
 		List<Weight> list = new ArrayList<>();
+		
 		
 		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
 //		String sql = "SELECT * FROM WEIGHT";
@@ -28,6 +64,7 @@ public class JDBCWeightService implements WeightService {
 			Connection con = DriverManager.getConnection(url, "PETHARU", "1357"); //연결
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(sql);
+			
 			
 			while(rs.next()) {
 				int id = rs.getInt("ID");
@@ -52,10 +89,51 @@ public class JDBCWeightService implements WeightService {
 		return list;
 	}
 	
+	public List<Weight> getList(int petid){
+		List<Weight> list = new ArrayList<>();
+		
+		System.out.println("멤버아이디"+petid);
+		
+		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
+		String sql = "SELECT W.*,SUBSTR(MEASURE_DATETIME,0,10) DA FROM WEIGHT W WHERE PET_ID="+petid+" ORDER BY DA";
+		
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver"); //드라이버 생성
+			Connection con = DriverManager.getConnection(url, "PETHARU", "1357"); //연결
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+			
+			
+			while(rs.next()) {
+				int id = rs.getInt("ID");
+				int petId = rs.getInt("PET_ID");
+				String measureDatetime = rs.getString("MEASURE_DATETIME");
+				float kg = rs.getFloat("KG");
+				String petname = rs.getString("PET_NAME");
+				
+				Weight weight = new Weight();
+				weight.setId(id);
+				weight.setPetId(petId);
+				weight.setMeasureDatetime(measureDatetime);
+				weight.setKg(kg);
+				weight.setPetname(petname);
+				
+				list.add(weight);
+			}
+			
+			rs.close();
+			st.close();
+		}catch (Exception e) {
+			throw new ServiceException();
+		}
+		return list;
+	}
+	
 	public int insert(Weight weight) {
 		int result = 0;
 		
-		String sql = "INSERT INTO WEIGHT(PET_ID,MEASURE_DATETIME,KG) VALUES(?,?,?)"; //?에 데이터 꽂아넣을거임
+		String sql = "INSERT INTO WEIGHT(PET_ID,MEASURE_DATETIME,KG,PET_NAME) VALUES(?,?,?,?)"; //?에 데이터 꽂아넣을거임
 		
 		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
 		try {
@@ -67,6 +145,7 @@ public class JDBCWeightService implements WeightService {
 			st.setInt(1,weight.getPetId()); //데이터를 꽂음
 			st.setString(2,weight.getMeasureDatetime());
 			st.setFloat(3, weight.getKg());
+			st.setString(4, weight.getPetname());
 			
 			
 			result = st.executeUpdate();
@@ -177,6 +256,7 @@ public class JDBCWeightService implements WeightService {
 		
 		return result;
 	}
+	
 	
 	
 }

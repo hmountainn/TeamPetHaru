@@ -1,28 +1,32 @@
 window.addEventListener("load", function() {
-	var section = document.querySelector("#main");
-	var title = section.querySelector("h1");
-	var id = section.querySelector(".notice-info .id");
-	var userId = section.querySelector(".notice-info .user-id");
-	var regdate = section.querySelector(".notice-info .reg-date");
-	var hit = section.querySelector(".notice-info .hit");
-	var article = section.querySelector(".notice-article div")
-	var upPager = section.querySelector(".article-pager .up-article-pager");
-	var downPager = section.querySelector(".article-pager .down-article-pager");
-	var updateBtn = section.querySelector(".article-button .update-btn");
-	var deleteBtn = section.querySelector(".article-button .delete-btn");
+	let section = document.querySelector("#main");
+	let title = section.querySelector("h1");
+	let id = section.querySelector(".notice-info .id");
+	let userId = section.querySelector(".notice-info .user-id");
+	let regdate = section.querySelector(".notice-info .reg-date");
+	let hit = section.querySelector(".notice-info .hit");
+	let article = section.querySelector(".notice-article div")
+	let upPager = section.querySelector(".article-pager .up-article-pager");
+	let downPager = section.querySelector(".article-pager .down-article-pager");
+	let updateBtn = section.querySelector(".article-button .update-btn");
+	let deleteBtn = section.querySelector(".article-button .delete-btn");
+	let thumbnail = section.querySelector(".thumbnail");
+	let img = thumbnail.querySelector("img")
 
 	let params = new URLSearchParams(window.location.search);
 	let noticeId = parseInt(params.get("id"));
 	
-	var request = new XMLHttpRequest();
+	let request = new XMLHttpRequest();
 	request.onload = function() {
-		var notice = JSON.parse(request.responseText);
+		let notice = JSON.parse(request.responseText);
 		title.innerHTML += `${notice.title}`;
 		id.innerHTML += `${notice.id}`;
 		userId.innerHTML += `${notice.userId}`;
 		regdate.innerHTML += `${notice.regdate}`;
 		hit.innerHTML += `${notice.hit}`;
 		article.innerHTML += `${notice.content}`;
+		thumbnail.href = `/community/notice/upload/${notice.files}`;
+		img.src = `/community/notice/upload/${notice.files}`;
 		
 		if (`${notice.upId}` == 0) {
 			
@@ -47,7 +51,7 @@ window.addEventListener("load", function() {
 
 		}
 		
-		var updateATag = updateBtn.firstChild;
+		let updateATag = updateBtn.firstChild;
 		updateATag.href = `./update.html?id=${noticeId}`;
 	};
 	
@@ -57,7 +61,7 @@ window.addEventListener("load", function() {
 	
 	deleteBtn.onclick = function(e) {
 		if(confirm("정말로 삭제하시겠습니까?")) {
-			var request = new XMLHttpRequest();
+			let request = new XMLHttpRequest();
 			request.onload = function() {
 				location.href = "./list.html";
 			};
