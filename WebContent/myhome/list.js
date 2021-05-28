@@ -44,7 +44,7 @@ window.addEventListener("load", function() {
 					
 				// 멤버 정보 보여주기
 				let memberContent = 
-				   `<div class="img-member"></div>
+				   `<img class="img-member" src="../images/user.png">
 		            <span class="id">${list[0].userId}</span>
 		            <div class="friend-info">
 		                <span class="follower font">팔로워</span> 
@@ -141,7 +141,7 @@ window.addEventListener("load", function() {
 		            <div class="content-area">
 		                <section class="member-info">
 		                    <h1 class="d-none">회원 정보</h1>
-		                    <div class="img-member"></div>
+		                    <img class="img-member" src="../images/user.png">
 		                    <span class="id">My Diary<!--${diary.memberId}--!></span>
 		                </section>
 		                <section>
