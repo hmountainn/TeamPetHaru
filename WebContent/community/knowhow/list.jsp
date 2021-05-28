@@ -116,7 +116,7 @@
 	                            	</div>
 	                                <div class="knowhow-title"><a href="detail?id=${k.id}">${k.title}</a></div>
 	                                <section class="flex">
-	                                    <div class="img-member"></div>
+	                                    <img class="img-member" src="../../images/user.png">
 	                                    <span class="id">${k.userId}</span>
 	                                </section>
 	                            </div>

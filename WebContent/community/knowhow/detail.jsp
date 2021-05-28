@@ -76,7 +76,7 @@
                     <section class="margin flex">
                         <section class="member-info flex"> 
                             <h1 class="d-none">회원 정보</h1>
-                            <div class="img-member"></div> 
+                            <img class="img-member" src="../../images/user.png">
                             <span class="id">${knowhow.userId}</span>
                             <img class="follow-btn" src="../../images/follow.png">
                         </section>
