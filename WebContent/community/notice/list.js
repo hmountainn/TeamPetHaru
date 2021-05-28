@@ -9,20 +9,22 @@ window.addEventListener("load", function() {
 	let pageElement = pager.querySelector("ul a");
 	let sortingBox = section.querySelector("#select-main-sorting");
 	let sizingBox = section.querySelector("#select-main-sizing");
+	let sort = sortingBox.options[sortingBox.selectedIndex].value;
+	let size = sizingBox.options[sizingBox.selectedIndex].value;
 	let field = fieldBox.value;
 	let query = queryBox.value;
 	
 	bind(`../../api/notice/list?field=${field}&query=${query}`);
 	
 	sortingBox.onchange = function() {
-		let sort = sortingBox.options[sortingBox.selectedIndex].value;
-		let size = sizingBox.options[sizingBox.selectedIndex].value;
+		sort = sortingBox.options[sortingBox.selectedIndex].value;
+		size = sizingBox.options[sizingBox.selectedIndex].value;
 		bind(`../../api/notice/list?sort=${sort}&size=${size}&field=${field}&query=${query}`);
 	}
 	
 	sizingBox.onchange = function() {
-		let sort = sortingBox.options[sortingBox.selectedIndex].value;
-		let size = sizingBox.options[sizingBox.selectedIndex].value;
+		sort = sortingBox.options[sortingBox.selectedIndex].value;
+		size = sizingBox.options[sizingBox.selectedIndex].value;
 		bind(`../../api/notice/list?sort=${sort}&size=${size}&field=${field}&query=${query}`);
 	}
 
@@ -34,7 +36,7 @@ window.addEventListener("load", function() {
 		};
 		
 		let page = e.target.innerText;
-		bind(`../../api/notice/list?page=${page}`);
+		bind(`../../api/notice/list?page=${page}&sort=${sort}&size=${size}&field=${field}&query=${query}`);
 		
 		pageElement.classList.remove("current-pager");
 		e.target.classList.add("current-pager");
