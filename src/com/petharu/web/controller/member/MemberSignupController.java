@@ -1,4 +1,4 @@
-package com.petharu.web.controller;
+package com.petharu.web.controller.member;
 
 import java.io.IOException;
 
