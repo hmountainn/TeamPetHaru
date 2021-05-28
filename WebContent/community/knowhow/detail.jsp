@@ -36,7 +36,7 @@
                     <h1 class="d-none">회원메뉴</h1>
                     <ul>
                         <li><a href="../../member/profile-edit.html">MyPage</a></li>
-                        <li><a href="../../../login.html">LogOut</a></li>
+                        <li><a href="../../../login">LogOut</a></li>
                     </ul>
                 </nav>
             </div>
