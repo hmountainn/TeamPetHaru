@@ -33,7 +33,7 @@ public class FriendDiaryListController extends HttpServlet{
 		
 		try {
 			list = friendService.getFriendDiaryList(1);
-			diaryCommentslist = friendService.getFriendDiaryCommentList(1);
+			diaryCommentslist = friendService.getFriendDiaryCommentList();
 			followerTotal = friendService.getFollowerCount(1);
 			System.out.println("컨트롤러에서 팔로우 수:"+followerTotal);
 			followerList = friendService.getFollowerList(1);

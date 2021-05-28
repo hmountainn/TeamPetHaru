@@ -55,7 +55,7 @@
                   <div class="outline">
 
                     <div class="page-description"><h3>이웃집의 반려동물 소식을 알려드려요!</h3></div>
-                    <div class="subject"><h1>이웃집</h1><span class="recommend"><a href="">둘러보기</a></span></div>
+                    <div class="subject"><h1>이웃집</h1><span class="recommend"><a href="influence">둘러보기</a></span></div>
                    
                     <div class="follow-menu-outline">
                     <div class="friends">
@@ -80,7 +80,7 @@
 
                         <div class="search-form-outline">
                             <div class='search-form'>
-                            <input type='search' class='input_search' value="친구 검색"/>
+                            <input type='search' class='input_search' value="검색"/>
                             <div class="autocom-box">
                                 <!-- here list are inserted from javascript -->
                               </div>
@@ -196,7 +196,7 @@
                                 <li class="request-box">
                                     <div class="name"><a href="">id00000000</a></div>
                                     <img class="request-img"src="https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=660&q=80" alt="">
-                                    <span calss="date">2021-05-18</span> 
+                                    <span calss="date">3일 전</span> 
                                       <span class="accept" id="button">Accept</span>
                                       <span class="decline">Decline</span>
                                 </li>
