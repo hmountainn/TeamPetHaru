@@ -83,9 +83,7 @@ public class JdbcPetService implements PetService {
 			String birthday = rs.getString("birthday");
 			String personality = rs.getString("personality");
 			int age = rs.getInt("age");
-//			int memberId = rs.getInt("memberId"); 회원이 회원ID를 입력하지않으므로 오류인가 ?  
-//			int breedId = rs.getInt("breedId");
-//			
+	
 			
 			Pet pet = new Pet();
 			pet.setName(name);

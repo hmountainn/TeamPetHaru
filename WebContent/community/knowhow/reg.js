@@ -23,9 +23,9 @@ window.addEventListener("load", function() {
 	
 	fileButton.oninput = function(e) { // 파일 등록버튼 선택
 		let file = fileButton.files[0]; // 파일에 대한 정보만 가져온 상태
+		console.log(file);
 		if(file.type.indexOf("image/") < 0)
 			alert("이미지 형식만 사용할 수 있습니다");
-		console.log(file);
 			
 		// 선택된 파일을 메모리에 올릴 수 있음, 로컬에 파일 로드 가능
 		// 웹(원격)이라는 브라우저는 로컬의 문서에 접근하지 못함

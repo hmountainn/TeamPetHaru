@@ -1,4 +1,4 @@
-package com.petharu.web.controller;
+package com.petharu.web.controller.member;
 
 import java.io.IOException;
 
@@ -34,9 +34,11 @@ public class LoginController extends HttpServlet{
 			//회원이 없을 경우
 			//에러 메시지를 보여주거나 jsp에서 보여주게한다.
 			resp.sendRedirect("/login");
+			return;
 			
 		}else if(!memberService.getPwd(userId).equals(passWord)) {
 			resp.sendRedirect("/login");
+			return;
 		}else {
 			
 		
@@ -44,7 +46,7 @@ public class LoginController extends HttpServlet{
 			//session에 인증정보를 기록한다.		
 			HttpSession session = req.getSession();//세션이라는 캐비넷 얻음
 			session.setAttribute("uid", userId); //인증된 사용자아이디 세션저장소에 넣음(알아서 ex)1004번 캐비넷 넣어줌)
-			if(returnUrl != null) {
+			if(returnUrl != null && !returnUrl.equals("")) {
 				resp.sendRedirect(returnUrl);
 				return;
 			}

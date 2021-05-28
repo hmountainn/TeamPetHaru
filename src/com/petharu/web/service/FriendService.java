@@ -15,7 +15,7 @@ public interface FriendService {
 	//친구다이어리
 	List<FriendDiaryView> getFriendDiaryList(int memberId)throws ClassNotFoundException, SQLException;
 	//친구다이어리 댓글
-	List<DiaryComment> getFriendDiaryCommentList(int diaryId)throws ClassNotFoundException, SQLException;
+	List<DiaryComment> getFriendDiaryCommentList()throws ClassNotFoundException, SQLException;
 	//팔로워수
 	int getFollowerCount(int memberId) throws ClassNotFoundException, SQLException;
 	//팔로워목록
