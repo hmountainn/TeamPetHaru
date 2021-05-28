@@ -34,9 +34,11 @@ public class LoginController extends HttpServlet{
 			//회원이 없을 경우
 			//에러 메시지를 보여주거나 jsp에서 보여주게한다.
 			resp.sendRedirect("/login");
+			return;
 			
 		}else if(!memberService.getPwd(userId).equals(passWord)) {
 			resp.sendRedirect("/login");
+			return;
 		}else {
 			
 		
