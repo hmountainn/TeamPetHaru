@@ -1,17 +1,17 @@
 // Popup
 window.addEventListener("load",function(){
   /*------follow&following----- */
-  var followers = document.querySelector('.followers');
-  var following  = document.querySelector('.following');
-  var outlinePopup = document.querySelector('.outline-popup');
-  var selected = null;
-  var listBox = document.querySelector(".list-box");
-  var buttons = listBox.querySelectorAll(".button");
-  var num = listBox.querySelector(".num");
+  let followers = document.querySelector('.followers');
+  let following  = document.querySelector('.following');
+  let outlinePopup = document.querySelector('.outline-popup');
+  let selected = null;
+  let listBox = document.querySelector(".list-box");
+  let buttons = listBox.querySelectorAll(".button");
+  let num = listBox.querySelector(".num");
      
   
   /*---------requests------------*/  
-  var requests = document.querySelector(".requests");
+  let requests = document.querySelector(".requests");
   
   requests.onclick = function(){
     document.getElementById("popup-3").classList.add("active");
@@ -28,7 +28,7 @@ window.addEventListener("load",function(){
   outlinePopup.onclick = function(e){
     console.log("outline-popup");
     
-    var target = e.target;
+    let target = e.target;
     selected = e.target;
     
     //closing pop up
@@ -68,23 +68,20 @@ window.addEventListener("load",function(){
   };
   
   /*----------------showDiary--------------------------*/ 
-  var bigBox = document.querySelector(".big-box");
+  let bigBox = document.querySelector(".big-box");
   
   bigBox.onclick = function(e){
     console.log(e.target)
     e.preventDefault();
     
-    
-    // if(e.target.classList.contains("overlay")){
-      //   showDiary.classList.toggle("active"); 
-      // }
+
       if(e.target.classList.contains("diary-img")){    
-        var showDiary = e.target.parentNode.parentNode.querySelector(".showDiary")
+        let showDiary = e.target.parentNode.parentNode.querySelector(".showDiary")
       console.log(showDiary);
       showDiary.classList.toggle("active"); 
     }
     if(e.target.classList.contains("close-btn")){
-      var showDiary = e.target.parentNode.parentNode
+      let showDiary = e.target.parentNode.parentNode
       showDiary.classList.toggle("active");    
       console.log(e.target);
 
@@ -98,15 +95,15 @@ window.addEventListener("load",function(){
   timeBefore();
   function timeBefore(){
       //현재시간을 가져옴
-      var now = new Date(); 
+      let now = new Date(); 
       console.log(now);
       
       //글쓴 시간 
-      var writeDay = new Date('2021-05-19 01:15');
+      let writeDay = new Date('2021-05-27 01:15');
      //또는 파라미터로 시간을 넘겨받아서 계산할 수도 있음..
       
       
-     var minus;
+     let minus;
       //현재 년도랑 글쓴시간의 년도 비교 
       if(now.getFullYear() > writeDay.getFullYear()){
           minus= now.getFullYear()-writeDay.getFullYear();
@@ -125,8 +122,8 @@ window.addEventListener("load",function(){
           console.log(minus+"일 전");
       }else if(now.getDate() == writeDay.getDate()){
       //당일인 경우에는 
-          var nowTime = now.getTime();
-          var writeTime = writeDay.getTime();
+          let nowTime = now.getTime();
+          let writeTime = writeDay.getTime();
           if(nowTime>writeTime){
           //시간을 비교
               sec =parseInt(nowTime - writeTime) / 1000;

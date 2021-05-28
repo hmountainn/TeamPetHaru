@@ -65,13 +65,12 @@ public class JdbcFriendDiaryService implements FriendService {
 
 	}
 
-	public List<DiaryComment> getFriendDiaryCommentList(int diaryId) throws ClassNotFoundException, SQLException {
+	public List<DiaryComment> getFriendDiaryCommentList() throws ClassNotFoundException, SQLException {
 		List<DiaryComment> list = new ArrayList<>();
 		System.out.println("다이어리 댓글:" + list);
 
 		String url = "jdbc:oracle:thin:@hi.namoolab.com:1521/xepdb1";
-		String sql = "SELECT DIARY_COMMENT.*,MEMBER.USER_ID FROM DIARY_COMMENT LEFT JOIN MEMBER ON MEMBER.ID = diary_comment.member_id WHERE DIARY_ID="
-				+ diaryId;
+		String sql = "SELECT * FROM DIARY_COMMENT_VIEW";
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
 			Connection con = DriverManager.getConnection(url, "PETHARU", "1357");
@@ -84,7 +83,7 @@ public class JdbcFriendDiaryService implements FriendService {
 				int id = rs.getInt("id");
 				String content = rs.getString("content");
 				java.sql.Date regDate = rs.getDate("regdate");
-				String userId = rs.getString("user_id");
+				String userId = rs.getString("USER_ID");
 
 				DiaryComment diary = new DiaryComment();
 				diary.setId(id);

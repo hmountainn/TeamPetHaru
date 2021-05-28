@@ -54,12 +54,9 @@
 					<nav class="aside-menu">
 						<h1 class="d-none">동물관리메뉴</h1>
 						<ul>
-							<li><a class="current-page" href="list"><i
-									class="fas fa-paw"></i>동물 관리</a></li>
-							<li><a href="../weight-record/pet-list"><i
-									class="fas fa-weight"></i>체중 관리</a></li>
-							<li><a href="../schedule/calendar.html"><i
-									class="far fa-calendar-alt"></i>일정 관리</a></li>
+							<li><a class="current-page" href="list">동물 관리</a></li>
+							<li><a href="../weight-record/pet-list">체중 관리</a></li>
+							<li><a href="../schedule/calendar.html">일정 관리</a></li>
 						</ul>
 					</nav>
 				</aside>
@@ -89,12 +86,10 @@
 							    <p>반려동물을 추가해주세요.</p>
 							  </div> -->
 											<div class="box">
-												<a class="" href="">
 													<div class="img-box">
 														<img
 															src="https://static.parastorage.com/services/instagram-cdn/1.691.0/assets/ig-templates-accounts/Editor/Dogs%20Apparel/03.jpg">
 													</div>
-												</a>
 												<div class="diary-content">
 													<h4>${n.name}</h4>
 													<div class="button detail-btn" id="detail-button"
