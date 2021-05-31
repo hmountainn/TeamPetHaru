@@ -4,8 +4,8 @@ html{
 }
 body{
     height: 100%;
-    font-family: "留묒� 怨좊뵓","怨좊뵓",'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin: 0;
+    font-family: 'Nanum Gothic', sans-serif;
 }
 
 h1,ul,ol{
@@ -28,9 +28,10 @@ ul,ol{
 }
 .align-center{
     align-items: center;
-
 }
-
+.font {
+	font-family: 'Nanum Gothic', sans-serif;
+}
 
 :root{
     --shadow : 0 1px 2px rgba(0,0,0,0.05),0 1px 4px rgba(0,0,0,0.05),0 2px 8px rgba(0,0,0,0.05);
@@ -184,8 +185,8 @@ ul,ol{
         color: #4b4b4b;
         font-size: 22px;
         font-weight: bold;
-        padding-top: 12px;
-        padding-left: 3px;
+        padding-top: 10px;
+        padding-left: 5px;
         display: inline-block;
     }
 
@@ -209,7 +210,8 @@ ul,ol{
     }
     .aside-container>.copyright{
         display: inline-block;
-        font-family: 'Inter','RixSinGoRound','sans-serif'; 
+        font-family: 'Nanum Gothic', sans-serif;
+        /*font-family: 'Inter','RixSinGoRound','sans-serif'; */
         color: #585858;
         font-size: 22px;
         margin-top: 0;
@@ -311,7 +313,7 @@ ul,ol{
 }
 
 .login-menu{
-    font-family: "留묒� 怨좊뵓","怨좊뵓",'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: "筌띾쵐占� �⑥쥓逾�","�⑥쥓逾�",'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 15px;
     font-weight: 700;
     color: #000;
@@ -324,7 +326,8 @@ ul,ol{
     justify-content: space-evenly;
 }
 .btn-signUp{
-	margin-top:15px;
+	font-size: 18px;
+ 	margin-top:15px;
 	display: flex;
 	justify-content:center;
 }
