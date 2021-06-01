@@ -74,7 +74,7 @@
                         <a href="stats.html"><div class="statbutton">통계보기</div></a>
                         <table class="record-table">
                             <thead>
-                                <tr>
+                                <tr class="tr">
                                     <td class="img date">날짜</td>
                                     <td class="img time">시간</td>
                                     <td class="img weight">몸무게</td>

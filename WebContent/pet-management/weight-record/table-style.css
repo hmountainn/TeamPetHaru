@@ -213,17 +213,22 @@ ul,ol{
     display: flex;
     align-items: center;
     justify-content: center;
-    /* background-color: antiquewhite; */
+    height:90%;
+    width:95%;
 }
 
     .record{
         border: none;
         padding: 0;
-        height: 70vh;
-        width: 100vh;
+        height: 100%;
+        width: 80%;
+        background-color: antiquewhite;
+        border-radius: 10px;
+        border-collapse: collapse;
         
         display: flex;
         position: relative;
+        
     }
 
 /*         .petphoto{
@@ -291,9 +296,9 @@ ul,ol{
             background-size: 5vh;
             border-radius: 10px;
 
-            position: absolute;
-            top: 3vh;
-            right: 40.5vh;
+         	position: absolute;
+         	top: 5%;
+			left:39.5%;
         }
 
         .regbutton{
@@ -306,8 +311,9 @@ ul,ol{
             border-radius: 10px;
 
             position: absolute;
-            bottom: 4.5vh;
-            right: 55vh;
+			bottom: 10%;
+			left: 30%;
+            
         }
         
         .statbutton{
@@ -320,8 +326,8 @@ ul,ol{
             border-radius: 10px;
 
             position: absolute;
-            bottom: 4.5vh;
-            right: 30vh;
+            bottom: 10%;
+            right: 30%;
         }        
 
         .regbutton:hover,
@@ -330,27 +336,31 @@ ul,ol{
         }
 
         .record-table{
-            background-color: antiquewhite;
-            height: 100%;
-            width: 100%;
+            height: 60%;
+            width: 80%;
             font-family: sans-serif;
             font-weight: bold;
-            border-radius: 10px;
-            border-collapse: collapse;
             table-layout: fixed;
             text-align: center;
-
-            display: flex;
-
-            align-items: center;
-            justify-content: space-around;
+            
+            position:absolute;
+			left:10%;
+			top: 25%;
         }
 
             thead{
-                position: absolute;
-                top: 12.5vh;
-                right: 10.5vh;
-            }  
+            	width: 100%;
+				position: absolute;
+                top:-13%;
+            }
+            
+            	.tr{
+            		width:100%;
+            		display:flex;
+            		
+            		
+            	}
+              
                 thead .date{
                     background-image: url("../../images/icon-calendar.png");
                     background-repeat: no-repeat;
@@ -375,9 +385,10 @@ ul,ol{
 
             tbody{
                 position: absolute;
-                top: 18.5vh;
-                right: 8vh;
-                height: 300px;
+                /* top: 18.5vh; */
+                left: 2%;
+                height: 90%;
+                width:100%;
                 overflow-x: hidden;
                 overflow-y: scroll;
             }
