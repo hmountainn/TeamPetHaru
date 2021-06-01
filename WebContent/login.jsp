@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="login.css" type="text/css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="root">
@@ -59,21 +60,20 @@
                                             <div>
                                                 <input type="checkbox" name="" id="">
                                                 <span>
-                                                    아이디저장
+                                                    아이디 저장
                                                 </span>
                                             </div>
                                             <div>
                                                 <input type="checkbox" name="" id="">
                                                 <span>
-                                                    관리자로 로그인
+                                                    관리자 로그인
                                                 </span>
                                             </div>
                                         </div>
                                 </fieldset>
-                        <input class="login-btn" type="submit" value="로그인"></button>  
+                        <input class="login-btn font" type="submit" value="로그인"></button>  
                         <div class="btn-signUp">
-                        
-                        <a  href="member/signup.html">회원가입</a> 
+                        	<a href="member/signup.html">회원가입</a> 
                         </div>  
                             </form>
                         </section>   
@@ -90,7 +90,7 @@
             </div>
         </div>
 
-        <footer id="footer"></footer>
+        <!-- <footer id="footer"></footer> -->
 
 
     </div>

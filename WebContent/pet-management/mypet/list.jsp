@@ -23,7 +23,7 @@
 			<div class="float-content">
 				<div class="flex align-center">
 					<a href="" class="logo-title-container"> <img
-						src="https://haileykim2014.github.io/petharu/images/logo.png"
+						src="../../images/logo.png"
 						alt="">
 					</a>
 					<nav class="main-menu">
@@ -381,10 +381,10 @@
 			</div>
 		</div>
 
-		<footer id="footer">footer footer footer footer footer footer
+		<footer id="footer"><!-- footer footer footer footer footer footer
 			footer footer footer footer footer footer footer footer footer footer
 			footer footer footer footer footer footer footer footer footer footer
-			footer footer</footer>
+			footer footer --></footer>
 
 
 	</div>
