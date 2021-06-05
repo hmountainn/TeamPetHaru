@@ -62,14 +62,6 @@
                         <form class="weight-input" action="WeightEdit" method="post">
     
                             <h1 class="d-none">펫 선택</h1>
-<!--                             <div class="petphoto">
-                                <ol>
-                                    <li><a class="img pet1" href="">강아지1</a></li>
-                                    <li><a class="img pet2 current" href="">강아지2</a></li>
-                                    <li><a class="img pet3" href="">강아지3</a></li>
-                                    <li><a class="img pet4" href="">강아지4</a></li>
-                                </ol>
-                            </div> -->
     						
                             <div class="revise">수정하기</div>
                             <div class="weight-input-container">

@@ -13,7 +13,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="table-style.css" type="text/css" rel="stylesheet">
-<!--     <script src="table.js"></script> -->
 </head>
 <body>
     <div id="root">
@@ -61,14 +60,6 @@
                     
                     <div class="record">
                         <h1 class="record-title">${list[0].petname}의 체중기록</h1>
-<!--                         <div class="petphoto">
-                            <ol>
-                                <li><a class="img pet1" href="">강아지1</a></li>
-                                <li><a class="img pet2 current" href="">강아지2</a></li>
-                                <li><a class="img pet3" href="">강아지3</a></li>
-                                <li><a class="img pet4" href="">강아지4</a></li>
-                            </ol>
-                        </div> -->
     
                         <a href="form?petid=${param.petid}&petname=${list[0].petname}"><div class="regbutton">체중등록</div></a>
                         <a href="stats.html"><div class="statbutton">통계보기</div></a>
@@ -109,7 +100,7 @@
             </div>
         </div>
 
-        <!-- <footer id="footer">footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer</footer> -->
+        <footer id="footer">footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer footer</footer>
 
 
     </div>
