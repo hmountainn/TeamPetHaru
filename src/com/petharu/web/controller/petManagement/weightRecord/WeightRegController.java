@@ -32,6 +32,11 @@ public class WeightRegController extends HttpServlet {
 		
 		String petid_ = req.getParameter("petid");
 		System.out.println(petid_);
+		System.out.println(req.getParameter("date"));
+		System.out.println(req.getParameter("time"));
+		System.out.println(req.getParameter("kg"));
+		System.out.println(req.getParameter("petname"));
+		
 		int petid = Integer.parseInt(petid_);
 		String date = req.getParameter("date");
 		String time = req.getParameter("time");
@@ -42,16 +47,10 @@ public class WeightRegController extends HttpServlet {
 		
 		System.out.println(datetime);
 		
-//		SimpleDateFormat trans = new SimpleDateFormat("yy-mm-dd");
-//		DateFormat transtime = new SimpleDateFormat("hh:mm:ss");
-//		Date date;
-//		Time time;
 		
 		JDBCWeightService weightservice = new JDBCWeightService();
 		
 		try {
-//			date = trans.parse(date_);
-//			time = (Time) transtime.parse(time_);
 			Weight weight = new Weight();
 			weight.setPetId(petid);
 			weight.setMeasureDatetime(datetime);
