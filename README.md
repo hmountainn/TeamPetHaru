@@ -23,7 +23,7 @@
   - Oracle
 
 ## 📰 기획 및 설게
-- [명세서](https://docs.google.com/presentation/d/1zBCoPFSWb6nnVYjlZpRAebQLJIZsHfsKIG1aTtk96dg/edit?usp=sharing)
+- [명세서](https://docs.google.com/presentation/d/159w7wMq9Wmil32vnDXsOlIdg_nW_f7t4S2cFrbWxXmc/edit?usp=sharing)
 
 ## 👩‍💻 PetHaru 팀
 - Developer👩‍💻 [김영화](https://github.com/haileykim2014)
