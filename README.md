@@ -22,7 +22,7 @@
   - JSP
   - Oracle
 
-## 📰 기획 및 설게
+## 📰 기획 및 설계
 - [명세서](https://docs.google.com/presentation/d/159w7wMq9Wmil32vnDXsOlIdg_nW_f7t4S2cFrbWxXmc/edit?usp=sharing)
 
 ## 👩‍💻 PetHaru 팀
